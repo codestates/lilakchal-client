@@ -1,0 +1,18 @@
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  align-items: center;
+  max-width: 1000px;
+  height: 100px;
+  border-bottom: 5px solid var(--header-border-color);
+  background-color: var(--background-color);
+  z-index: 998;
+}
+
+.header-logo {
+  margin-top: 10px;
+margin-bottom: 10px;
+max-height: 80px;
+margin-left: 2.5%;
+}
