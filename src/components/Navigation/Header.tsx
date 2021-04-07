@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import MyoptionGroup from './MyoptionGroup';
 import DefaultGroup from './DefaultGroup';
 import logo from '../../res/logo.png';
-import '../Style/Header.scss';
+import './style/Header.scss';
 
 const Header: React.FC = () => {
 
