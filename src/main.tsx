@@ -13,13 +13,13 @@ const Main:React.FC<RouterProps> = ({ history }) => {
     <Router history={history}>
       <Header/>
       <Switch>
-        <Route path='/main/register'>
+        <Route path='/ko/register'>
           <RegisterPage/>
         </Route>
-        <Route path='/mypage'>
+        <Route path='/ko/mypage'>
           <Mypage/>
         </Route>
-        <Route path='/main/search'>
+        <Route path='/ko/search'>
           <SearchPage/>
         </Route>
       </Switch>

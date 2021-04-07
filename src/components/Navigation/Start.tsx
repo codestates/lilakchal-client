@@ -6,7 +6,7 @@ type SomeComponentProps = RouteComponentProps;
 
 const Start: React.FC<SomeComponentProps> = ({ history }) => {
 
-  const goMain = () => history.push('/main/search');
+  const goMain = () => history.push('/ko/search');
   
   return (
     <div className='start-button'>
