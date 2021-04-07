@@ -1,12 +1,10 @@
-import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import Header from '../components/Navigation/Header';
+import * as React from 'react';
 
-const SearchPage: React.FC = () => {
+const SearchPage:React.FC = () => {
   return (
-    <BrowserRouter>
-      <Header/>
-    </BrowserRouter>
+    <div>
+      검색 페이지
+    </div>
   );
 };
 

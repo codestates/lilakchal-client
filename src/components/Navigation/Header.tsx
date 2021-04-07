@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 import MyoptionGroup from './MyoptionGroup';
 import DefaultGroup from './DefaultGroup';
 import logo from '../../res/logo.png';
-import '../Style/Header.scss';
+import './style/Header.scss';
 
-const Header: React.FC = () => {
+
+
+const Header: React.FC = () => { 
 
   const [NowPage, setNowPage] = useState<boolean>(true); //true면 defalultgroup, false면 myoptiongroup
 
@@ -15,7 +17,7 @@ const Header: React.FC = () => {
     // <LoginSection> => 로그인 상태에 따라서 <LoginBtn> : <MypageBtn>
     <div className="header-container">
       <div className="logo">
-        <Link to="landing" onClick={()=> setNowPage(true)}>
+        <Link to="/" onClick={()=> setNowPage(true)}>
           <div className='header-logo-wrapper'>
             <img className='header-logo' alt="Logo" src={logo} />
           </div>

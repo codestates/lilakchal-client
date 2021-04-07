@@ -1,14 +1,20 @@
-import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import Main from './pages/Main';
+import * as React from 'react';
+import { Switch, Route } from 'react-router-dom';
+import Main from '../src/main';
+import LandingPage from './pages/LandingPage';
 
-const App: React.FC = () => {
+const App:React.FC = () => {
   return (
-    <BrowserRouter>
+    <>
       <Switch>
-        <Route path="/" exact component={Main} />
+        <Route exact path='/'>
+          <LandingPage/>
+        </Route>
+        <Route path='/main'>
+          <Main/>
+        </Route>
       </Switch>
-    </BrowserRouter>
+    </>
   );
 };
 
