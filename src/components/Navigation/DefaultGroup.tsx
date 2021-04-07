@@ -1,6 +1,6 @@
 import React from 'react';
 import SearchBar from './SearchBar';
-import RegistBtn from './RegistBtn';
+import GoRegister from './GoRegister';
 import LoginSection from './LoginSection';
 import { RouteComponentProps, withRouter } from 'react-router';
 
@@ -15,8 +15,8 @@ const DefaultGroup:React.FC<SomeComponentProps> = ({ history }) => {
       <div className='searchbar-container'>
         <SearchBar/>
       </div>
-      <div className='registbtn-container'>
-        <RegistBtn/>
+      <div className='GoRegister-container'>
+        <GoRegister/>
       </div>
       <div className='loginsection-container'>
         <LoginSection/>
