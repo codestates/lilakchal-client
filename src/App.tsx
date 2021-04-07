@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Main from '../src/main';
+import Main from './pages/Main';
 import LandingPage from './pages/LandingPage';
 
 const App:React.FC = () => {
