@@ -6,7 +6,11 @@ import { RouteComponentProps, withRouter } from 'react-router';
 
 type SomeComponentProps = RouteComponentProps;
 
-const DefaultGroup:React.FC<SomeComponentProps> = ({ history }) => {
+interface props {
+  setNowPage: any,
+}
+
+const DefaultGroup:React.FC<props & SomeComponentProps> = ({ history, setNowPage }) => {
 
   //서치바, 물품등록 btn
   //서치바는 input, 물품등록은 버튼 =>  두개다 컴포넌트로 만들어야함
@@ -19,7 +23,7 @@ const DefaultGroup:React.FC<SomeComponentProps> = ({ history }) => {
         <GoRegister/>
       </div>
       <div className='loginsection-container'>
-        <LoginSection/>
+        <LoginSection setNowPage={setNowPage}/>
       </div>
       
     </div>

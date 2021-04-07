@@ -10,6 +10,7 @@ import './style/Header.scss';
 const Header: React.FC = () => { 
 
   const [NowPage, setNowPage] = useState<boolean>(true); //true면 defalultgroup, false면 myoptiongroup
+  console.log(NowPage);
 
   return (
     //로고
@@ -24,7 +25,7 @@ const Header: React.FC = () => {
         </Link>
       </div>
       <div className="group">
-        {NowPage ? (<DefaultGroup />) : (<MyoptionGroup setNowPage={setNowPage}/>) }
+        {NowPage ? (<DefaultGroup setNowPage={setNowPage}/>) : (<MyoptionGroup setNowPage={setNowPage}/>) }
       </div>
       
     </div>
