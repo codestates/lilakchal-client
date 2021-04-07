@@ -1,5 +1,5 @@
 import React from 'react';
-import units from '../../modules/units';
+import {units} from '../../modules/units';
 
 interface Props {
   itemId: number,
@@ -9,7 +9,7 @@ interface Props {
 const CurrentPrice: React.FC<Props> = ({itemId, price}) => {
   return (
     <div className="itemcard-price"  id={`itemcard-${itemId}`}>
-      <span>{price}</span><span>units.price</span>
+      <span>{price}</span><span>{units.price}</span>
     </div>
   );
 };
