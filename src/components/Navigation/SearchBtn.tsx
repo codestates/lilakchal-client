@@ -7,7 +7,6 @@ interface props {
 }
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-
 const SearchBtn = ({handleSubmit}: props) => {
   
   //1. 버튼을 눌렀을 때 searchBar에서 받은 props인 handleSubmit함수를 실행한다
