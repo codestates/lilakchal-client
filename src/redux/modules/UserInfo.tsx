@@ -5,7 +5,7 @@ export interface userInfoState {
   id: number,
   kakaoId: string,
   name: string,
-};
+}
 
 export const initialState: userInfoState = {
   id: 0,
