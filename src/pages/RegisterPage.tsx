@@ -1,10 +1,9 @@
 import React from 'react';
+import RegisterFrom from '../components/Register/RegisterForm';
 
 const RegisterPage: React.FC = () => {
   return (
-    <div>
-      등록페이지
-    </div>
+    <RegisterFrom />
   );
 };
 
