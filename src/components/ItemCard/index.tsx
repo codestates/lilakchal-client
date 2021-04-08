@@ -1,6 +1,7 @@
-import React from 'react'; //{useState}
+import React, {useState} from 'react'; //{useState}
 import CurrentPrice from './CurrentPrice';
 import GoChat from './GoChat';
+import Timer from './Timer';
 import {Item} from '../../redux/modules/Items';
 import {Container, Thumbnail, Contents, Location, Title} from './style/ItemCardStyle';
 
@@ -10,12 +11,10 @@ interface Props {
 
 const ItemCard: React.FC<Props> = ({item}) => {
 
-  //Timer 넣고 주석 풀기(지금 풀면 eslint로 걸림)
-  // const [isExpired, setIsExpired] = useState<boolean>(false);
-
-  // const handleBidStatus = (isExpired: boolean) : void => {
-  //   setIsExpired(isExpired);
-  // };
+  const [isExpired, setIsExpired] = useState<boolean>(false);
+  const handleBidStatus = (isExpired: boolean) : void => {
+    setIsExpired(isExpired);
+  };
 
   return (
     <Container className={'itemcard-container'}>
@@ -23,11 +22,13 @@ const ItemCard: React.FC<Props> = ({item}) => {
       <Contents>
         <Location>{item.city}</Location>
         <Title>{item.title}</Title>
-        {
-        /* isExpired?  Timer:<></> */
-        }
+        <Timer endtime={item.endTime} handleBidStatus={handleBidStatus}/>
         <CurrentPrice itemId={item.id} price={item.price}></CurrentPrice>
-        <GoChat itemId={item.id}></GoChat>
+        {
+          isExpired ?
+            <GoChat itemId={item.id}></GoChat> :
+            <></>
+        }
       </Contents>
     </Container>
   );

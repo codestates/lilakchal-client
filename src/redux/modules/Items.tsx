@@ -40,6 +40,17 @@ export const initialState: ItemsState = {
       winnerId: 3,
       isClosed: false,
       city: '서울 동대문구'
+    },
+    {
+      id: 2, 
+      title: '나이키 후드집업', 
+      price: 24000, 
+      photo: 'nike.png',
+      endTime: new Date('2021-04-11 07:11:11'),
+      description: '옷 정리. s사이즈입니다.',
+      winnerId: 3,
+      isClosed: false,
+      city: '서울 동대문구'
     }
   ]
 };
