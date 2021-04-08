@@ -2,6 +2,8 @@ import React, {useEffect} from 'react';
 import { useDispatch } from 'react-redux';
 import { UserInfoHandler } from '../redux/modules/UserInfo';
 import { LoginHandler } from '../redux/modules/account';
+import {initialState} from '../redux/modules/Items';
+import ItemCard from '../components/ItemCard/index';
 
 import axios from 'axios';
 
@@ -26,10 +28,11 @@ const SearchPage:React.FC = () => {
       oauthLoginHandler(authorizationCode);
     }
   }, []);
-
+    
   return (
     <div>
       검색 페이지
+      <ItemCard item={initialState.items[0]}></ItemCard>
     </div>
   );
 };
