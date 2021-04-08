@@ -1,7 +1,8 @@
 import React from 'react';
 import CurrentPrice from './CurrentPrice';
+import GoChat from './GoChat';
 import {Item} from '../../redux/modules/Items';
-import {Container, Thumbnail, Contents, Location} from './style/ItemCardStyle';
+import {Container, Thumbnail, Contents, Location, Title} from './style/ItemCardStyle';
 
 interface Props {
   item: Item
@@ -13,10 +14,12 @@ const ItemCard: React.FC<Props> = ({item}) => {
       <Thumbnail bg={item.photo}></Thumbnail>
       <Contents>
         <Location>{item.city}</Location>
+        <Title>{item.title}</Title>
         {
         /* Timer */
         }
-        <CurrentPrice itemId={1} price={item.price}></CurrentPrice>
+        <CurrentPrice itemId={item.id} price={item.price}></CurrentPrice>
+        <GoChat itemId={item.id}></GoChat>
       </Contents>
     </Container>
   );
