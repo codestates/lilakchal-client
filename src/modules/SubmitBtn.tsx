@@ -1,8 +1,8 @@
-import * as React from 'react';
+import React from 'react';
 
 interface Iprops {
   str: string,
-  submitHandler(): any
+  submitHandler(): void
 }
 
 const SubmitBtn = ({str, submitHandler}: Iprops) => {
