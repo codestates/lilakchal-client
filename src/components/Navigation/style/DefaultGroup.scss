@@ -1,0 +1,24 @@
+.defalut-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.search-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-top: 10px;
+}
+.GoRegister-container {
+  display: flex;
+  flex: 1;
+  margin-top: -10px;
+  margin-left: 50px;
+}
+.loginsection-container {
+  display: flex;
+  margin-top: -10px;
+  flex: 1;
+  margin-left: 50px;
+  width: 70px;
+}

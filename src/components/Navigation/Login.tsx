@@ -1,4 +1,5 @@
 import React from 'react';
+import './style/Login.scss';
 
 //1. 카카오 소셜로그인하기
 //2. autorization code 서버로 보내기
@@ -15,8 +16,8 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div>
-      <button onClick={kakaoLogin}>로그인</button>
+    <div className='login-container'>
+      <button className='login-button'onClick={kakaoLogin}></button>
     </div>
   );
 };
