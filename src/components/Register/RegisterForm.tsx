@@ -1,29 +1,54 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
-import SubmitBtn from '../SubmitBtn';
+import SubmitBtn from '../../modules/SubmitBtn';
 
 import './style/RegisterForm.scss';
 
 const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
 
   const [photo, setImage] = useState<any>(null);
+  const [imgbase64, setImgbase64] = useState<string>('');
   const [title, setTitle] = useState<string>('');
   const [price, setPrice] = useState<number>(0);
   const [endtime, setEndtime] = useState<string>('');
   const [description, setDescription] = useState<string>('');
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
   const fileChange = (e: any): void => {
-    setImage(e.target.files[0]);
+
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      const base64 = reader.result;
+      if (base64) {
+        setImgbase64(base64.toString());
+      }
+    };
+
+    if (e.target.files[0]) {
+      reader.readAsDataURL(e.target.files[0]);
+      setImage(e.target.files[0]);
+    }
   };
 
   const submitHandler = async () => {
-    // 유효성
+
+    if (!photo) {
+      setErrorMessage('사진을 등록해 주세요!');
+      return;
+    } else if (price <= 0) {
+      setErrorMessage('최소 가격을 1원 이상 가격을 정해주세요!');
+      return;
+    } else if (!/^[0-9]/g.test(String(price))) {
+      setErrorMessage('최소 가격은 숫자만 입력 가능합니다!');
+    }
+
     const formData = new FormData();
-    formData.append('file', photo);
-    formData.append('filename', photo.name);
+    formData.append('photo', photo);
+    formData.append('photoname', photo.name);
     formData.append('title', title);
-    formData.append('price', String(price)); // 타입을 number로 지정했지만 사용처의 대부분이 string
+    formData.append('price', String(price));
     formData.append('endtime', endtime);
     formData.append('description', description);
 
@@ -37,17 +62,19 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
     const getTime = () => {
       const YYMMDD = date.toLocaleDateString('fr-CA', {year: 'numeric', month: '2-digit', day: '2-digit'});
 
-      let hh: string | number = date.getHours();
+      type Union = string | number;
+
+      let hh: Union = date.getHours();
       if(hh < 10) {
         hh = `0${hh}`;
       }
 
-      let mm: string | number = date.getMinutes();
+      let mm: Union = date.getMinutes();
       if(mm < 10) {
         mm = `0${mm}`;
       }
 
-      let ss: string | number = date.getSeconds();
+      let ss: Union = date.getSeconds();
       if(ss < 10) {
         ss = `0${ss}`;
       }
@@ -71,8 +98,8 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
 
   return (
     <section className="register">
-      <input className="register-photo"type="file" accept="image/jpeg, image/png" onChange={fileChange}/>
-      {/* image */}
+      {imgbase64 ? <img className="register-photo" src={imgbase64} /> : <></>}
+      <input className="register-file"type="file" accept="image/jpeg, image/png" onChange={fileChange}/>
       <input className="register-title" type="text" onChange={e => setTitle(e.target.value)} placeholder="제목을 입력해주세요" />
       <input className="register-price" type="text" onChange={e => setPrice(Number(e.target.value))} placeholder="최소 가격을 입력해주세요"/>
       <div>
@@ -81,6 +108,7 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
         <button className="register-period" value="7d" onClick={getEndtime} >7일</button>
       </div>
       <textarea className="register-description" onChange={e => setDescription(e.target.value)}></textarea>
+      {errorMessage ? <div className="register-error">{errorMessage}</div> : <></>}
       <SubmitBtn str={str} submitHandler={submitHandler}/>
     </section>
   );
