@@ -23,8 +23,8 @@ const ItemCard: React.FC<Props> = ({item}) => {
       <Thumbnail bg={item.photo}></Thumbnail>
       <Contents>
         <Location>{item.city}</Location>
-        <Title>{item.title}</Title>
         <Timer endtime={item.endTime} handleBidStatus={handleBidStatus}/>
+        <Title>{item.title}</Title>
         <CurrentPrice itemId={item.id} price={item.price}></CurrentPrice>
         {
           (isExpired && id === item.sellerId) ?

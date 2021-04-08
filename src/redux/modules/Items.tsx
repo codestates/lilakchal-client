@@ -45,7 +45,7 @@ export const initialState: ItemsState = {
       city: '서울 동대문구'
     },
     {
-      id: 2, 
+      id: 3, 
       title: '나이키 후드집업', 
       price: 24000, 
       photo: 'nike.png',
