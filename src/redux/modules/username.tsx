@@ -1,9 +1,9 @@
 import { createAction, ActionType, createReducer  } from 'typesafe-actions';
 
 //State 정의
-export type usernameState = {
+export interface usernameState {
   username: string
-};
+}
 
 export const initialState: usernameState = {
   username: ''
