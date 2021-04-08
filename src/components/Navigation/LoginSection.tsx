@@ -1,7 +1,7 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/modules/reducer';
-import {LoginHandler, LogoutHandler} from '../../redux/modules/account';
+// import {LoginHandler, LogoutHandler} from '../../redux/modules/account';
 import GoMypage from '../Navigation/GoMypage';
 import Login from './Login';
 
@@ -12,25 +12,24 @@ interface props {
 const LoginSection: React.FC<props> = ({setNowPage}) => {
   const loginState = useSelector((state: RootState) => state.AccountReducer);
   const {isLogin} = loginState;
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   
-  const clickLogin = () => {
-    if(isLogin) {
-      dispatch(LogoutHandler(false));
-    } else {
-      dispatch(LoginHandler(true));
-    }
-  };
+  // const clickLogin = () => {
+  //   if(isLogin) {
+  //     dispatch(LogoutHandler(false));
+  //   } else {
+  //     dispatch(LoginHandler(true));
+  //   }
+  // };
 
   return (
     <div className='loginsection'>
-      <button onClick={clickLogin}>
-        {
-          isLogin ?
-            <GoMypage setNowPage={setNowPage}/> :
-            <Login/>
-        }
-      </button>
+      {
+        isLogin ?
+          <GoMypage setNowPage={setNowPage}/> :
+          <Login/>
+      }
+      
     </div>
   );
 };

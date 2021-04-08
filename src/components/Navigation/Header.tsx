@@ -10,7 +10,7 @@ import './style/Header.scss';
 const Header: React.FC = () => { 
 
   const [NowPage, setNowPage] = useState<boolean>(true); //true면 defalultgroup, false면 myoptiongroup
-  console.log(NowPage);
+  console.log('true면 defaultGroup보여주기', NowPage);
 
   return (
     //로고
