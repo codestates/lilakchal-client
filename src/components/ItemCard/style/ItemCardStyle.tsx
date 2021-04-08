@@ -34,3 +34,7 @@ export const Contents = styled.div`
 export const Location = styled.div`
   background-color: #D9418C;
 `;
+
+export const Title = styled.div`
+background-color: #6B66FF;
+`;
