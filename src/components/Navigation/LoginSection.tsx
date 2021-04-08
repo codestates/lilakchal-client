@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../redux/modules/reducer';
 import {LoginHandler, LogoutHandler} from '../../redux/modules/account';
 import GoMypage from '../Navigation/GoMypage';
+import Login from './Login';
 
 interface props {
   setNowPage: any,
@@ -27,7 +28,7 @@ const LoginSection: React.FC<props> = ({setNowPage}) => {
         {
           isLogin ?
             <GoMypage setNowPage={setNowPage}/> :
-            '로그인'
+            <Login/>
         }
       </button>
     </div>

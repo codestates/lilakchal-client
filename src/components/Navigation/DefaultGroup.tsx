@@ -2,15 +2,12 @@ import React from 'react';
 import SearchBar from './SearchBar';
 import GoRegister from './GoRegister';
 import LoginSection from './LoginSection';
-import { RouteComponentProps, withRouter } from 'react-router';
-
-type SomeComponentProps = RouteComponentProps;
 
 interface props {
-  setNowPage: any,
+  setNowPage?: any,
 }
 
-const DefaultGroup:React.FC<props & SomeComponentProps> = ({ history, setNowPage }) => {
+const DefaultGroup:React.FC<props> = ({setNowPage }) => {
 
   //서치바, 물품등록 btn
   //서치바는 input, 물품등록은 버튼 =>  두개다 컴포넌트로 만들어야함
@@ -30,4 +27,4 @@ const DefaultGroup:React.FC<props & SomeComponentProps> = ({ history, setNowPage
   );
 };
 
-export default withRouter (DefaultGroup);
+export default DefaultGroup;
