@@ -10,14 +10,14 @@ export const initialState: ItemsState = {
 };
 
 //Action type 정의
-const ITEMS = 'ttmk/Item/LOGIN'; //Action은 '앱이름/reducer이름/Acction_type' 형태여야 한다.
+const ITEMS = 'ttmk/Item/ITEMS'; //Action은 '앱이름/reducer이름/Acction_type' 형태여야 한다.
 
 //Action 생성자 정의 및 export
 export const ItemHandler = createAction(ITEMS)<Array<string>>();
 
 const actions = ItemHandler;
 
-export type ItemAction = ActionType<typeof actions>
+export type ItemAction = ActionType<typeof actions> //옥션이 아니라 액션이었습니다
 
 const ItemReducer = createReducer<ItemsState, ItemAction>(initialState, {
   [ITEMS]: (state, action) => {
