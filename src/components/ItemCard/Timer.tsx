@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {getRestTime} from '../../modules/utils';
+import {constantString} from '../../modules/strings';
 
 interface Props {
   endtime: Date,
@@ -11,7 +12,12 @@ const Timer: React.FC<Props> = ({endtime, handleBidStatus}) => {
 
   useEffect(() => {
     const countdown = setInterval(() => {
-      setRestTime(getRestTime(endtime));
+      const result = getRestTime(endtime);
+      setRestTime(result);
+      if(result === constantString.endBid) {
+        handleBidStatus(true);
+        clearInterval(countdown); 
+      }
     }, 1000);
 
     return () => clearInterval(countdown); //componenwillunmount

@@ -3,6 +3,7 @@ import CurrentPrice from './CurrentPrice';
 import GoChat from './GoChat';
 import Timer from './Timer';
 import {Item} from '../../redux/modules/Items';
+import { useSelector, RootStateOrAny  } from 'react-redux';
 import {Container, Thumbnail, Contents, Location, Title} from './style/ItemCardStyle';
 
 interface Props {
@@ -10,7 +11,8 @@ interface Props {
 }
 
 const ItemCard: React.FC<Props> = ({item}) => {
-
+  const userState = useSelector((state:RootStateOrAny) => state.UserInfoReducer);
+  const {id} = userState;
   const [isExpired, setIsExpired] = useState<boolean>(false);
   const handleBidStatus = (isExpired: boolean) : void => {
     setIsExpired(isExpired);
@@ -25,7 +27,7 @@ const ItemCard: React.FC<Props> = ({item}) => {
         <Timer endtime={item.endTime} handleBidStatus={handleBidStatus}/>
         <CurrentPrice itemId={item.id} price={item.price}></CurrentPrice>
         {
-          isExpired ?
+          (isExpired && id === item.sellerId) ?
             <GoChat itemId={item.id}></GoChat> :
             <></>
         }

@@ -1,7 +1,7 @@
 .header-container {
   display: flex;
+  flex: 0 1 100px;
   justify-content: space-between;
-  position: fixed;
   align-items: center;
   max-width: 1000px;
   height: 100px;

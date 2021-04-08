@@ -1,14 +1,18 @@
 import React, {useEffect} from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector, RootStateOrAny  } from 'react-redux';
 import { UserInfoHandler } from '../redux/modules/UserInfo';
 import { LoginHandler } from '../redux/modules/account';
-import {initialState} from '../redux/modules/Items';
+//import {initialState} from '../redux/modules/Items';
 import ItemCard from '../components/ItemCard/index';
+import {Container} from './style/SearchPageStyle';
+import {Item} from '../redux/modules/Items';
 
 import axios from 'axios';
 
 const SearchPage:React.FC = () => {
 
+  const itemState = useSelector((state:RootStateOrAny) => state.ItemReducer);
+  const {items} = itemState;
   const dispatch = useDispatch();
 
   const oauthLoginHandler = (authorizationCode: string) => {
@@ -30,10 +34,13 @@ const SearchPage:React.FC = () => {
   }, []);
     
   return (
-    <div>
-      검색 페이지
-      <ItemCard item={initialState.items[0]}></ItemCard>
-    </div>
+    <Container>
+      {
+        items ? (items.map((item: Item) => 
+          <ItemCard item={item}></ItemCard>
+        )) : <></>
+      }
+    </Container>
   );
 };
 
