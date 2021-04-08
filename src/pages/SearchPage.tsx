@@ -1,6 +1,6 @@
 import * as React from 'react';
-import Timer from '../components/ItemCard/Timer';
-import CurrentPrice from '../components/ItemCard/CurrentPrice';
+import ItemCard from '../components/ItemCard/index';
+import {initialState} from '../redux/modules/Items';
 
 const SearchPage:React.FC = () => {
 
@@ -11,8 +11,7 @@ const SearchPage:React.FC = () => {
   return (
     <div>
       검색 페이지
-      <Timer endtime={new Date('2021-04-07 20:27:00') }  handleBidStatus={handleBidStatus}></Timer>
-      <CurrentPrice itemId={41} price={12000}></CurrentPrice>
+      <ItemCard item={initialState.items[0]}></ItemCard>
     </div>
   );
 };
