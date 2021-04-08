@@ -38,7 +38,7 @@ const SearchBar: React.FC<SomeComponentProps> = ({ history }) => {
     }
   };
   return (
-    <div className="searchbar-container">
+    <div className="searchbar-input">
       <input id="searchbar" type="search" placeholder="Search" onChange={e => setInputValue(e.target.value)}/>
       <SearchBtn handleSubmit={handleSubmit}/>
     </div>

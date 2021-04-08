@@ -1,5 +1,6 @@
 import React from 'react';
 import './style/SearchBtn.scss';
+import { FaSearch } from 'react-icons/fa';
 
 interface props {
   
@@ -13,8 +14,8 @@ const SearchBtn = ({handleSubmit}: props) => {
   //2. Link로 만들어서 버튼의 이미지를 넣는다
   //3. 다 한다음에 feature 새로운거 파서 searchBar에서 실제로 함수 만들어서 props로 내려주기
   return (
-    <div className='header-search-btn'>
-      <button className='submit-button' onClick={()=>handleSubmit()} >검색</button>
+    <div className='submit-button' onClick={()=>handleSubmit()}>
+      <FaSearch size='40' />
     </div>
   );
 };

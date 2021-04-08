@@ -23,7 +23,7 @@ const LoginSection: React.FC<props> = ({setNowPage}) => {
   // };
 
   return (
-    <div className='loginsection'>
+    <div className='login-section'>
       {
         isLogin ?
           <GoMypage setNowPage={setNowPage}/> :
