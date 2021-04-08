@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {getRestTime} from '../../modules/utils';
 import {constantString} from '../../modules/strings';
+import './style/Timer.scss';
 
 interface Props {
   endtime: Date,

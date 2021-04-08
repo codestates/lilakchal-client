@@ -4,14 +4,14 @@ const alImgStr = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJ
 
 export const Container = styled.div`
   height: 200px;
-  background-image: linear-gradient(to top, #5ee7df 0%, #b490ca 100%);
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  border-radius: 30px;
+  border-bottom: 1px solid #cecece;
   padding: 0% 5%;
+  margin: 5px 0;
 `;
 
 export const Thumbnail = styled.div<{bg: string}>`
@@ -21,20 +21,18 @@ export const Thumbnail = styled.div<{bg: string}>`
   background-size: cover;
   background-position: center center;
   background-image: url(${props => props.bg}), url(${alImgStr});
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 `;
 
 export const Contents = styled.div`
   flex: 2 1 auto;
   height: 80%;
-  background-color: #D1B2FF;
-
+  text-align: center;
 `;
 
 export const Location = styled.div`
-  background-color: #D9418C;
+  text-align: right;
 `;
 
 export const Title = styled.div`
-background-color: #6B66FF;
+  font-size: 1rem;
 `;
