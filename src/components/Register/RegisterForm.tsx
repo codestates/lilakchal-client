@@ -33,7 +33,6 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
   };
 
   const submitHandler = async () => {
-
     if (!photo) {
       setErrorMessage('사진을 등록해 주세요!');
       return;
@@ -45,14 +44,23 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
     }
 
     const formData = new FormData();
-    formData.append('photo', photo);
-    formData.append('photoname', photo.name);
+    formData.append('file', photo);
+    formData.append('photo', photo.name);
     formData.append('title', title);
     formData.append('price', String(price));
-    formData.append('endtime', endtime);
+    formData.append('endTime', endtime);
     formData.append('description', description);
 
-    await axios.post('https://localhost:4000/auction/register', formData, {withCredentials: true});
+    // eslint-disable-next-line prefer-const
+    for (let key of formData.keys()) {
+      console.log(key);
+    }
+    // eslint-disable-next-line prefer-const
+    for (let value of formData.values()) {
+      console.log(value);
+    }
+
+    await axios.post('https://localhost:4000/auction/register', formData, { headers: {'Content-Type': 'multipart/form-data'}, withCredentials: true });
     history.push('/ko/search');
   };
 
@@ -99,7 +107,7 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
   return (
     <section className="register">
       {imgbase64 ? <img className="register-photo" src={imgbase64} /> : <></>}
-      <input className="register-file"type="file" accept="image/jpeg, image/png" onChange={fileChange}/>
+      <input className="register-file" type="file" accept="image/jpeg, image/png" onChange={fileChange}/>
       <input className="register-title" type="text" onChange={e => setTitle(e.target.value)} placeholder="제목을 입력해주세요" />
       <input className="register-price" type="text" onChange={e => setPrice(Number(e.target.value))} placeholder="최소 가격을 입력해주세요"/>
       <div>

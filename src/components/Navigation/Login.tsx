@@ -7,7 +7,7 @@ import './style/Login.scss';
 const Login: React.FC = () => {
 
   const kakaoLogin = () => {
-    const clientId = 'b215c82657f8b9b2b4b7122c866cf0e4';
+    const clientId = '4d6b5048295d43015b06e9ffdf6419dd';
 
     const redirectUri = 'http://localhost:3000/ko/search';
 
