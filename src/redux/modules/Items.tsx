@@ -8,7 +8,20 @@ export interface Item {
   endTime: Date,
   description: string,
   winnerId: number,
-  sellerId: number,
+  sellerId?: number,
+  isClosed: boolean,
+  city:string,
+}
+
+export interface UnformatedItem {
+  id: number,
+  title: string,
+  price: number,
+  photo: string,
+  endTime: string,
+  description: string,
+  winnerId: number,
+  sellerId?: number,
   isClosed: boolean,
   city:string,
 }
@@ -72,7 +85,7 @@ export type ItemAction = ActionType<typeof actions> //옥션이 아니라 액션
 const ItemReducer = createReducer<ItemsState, ItemAction>(initialState, {
   [ITEMS]: (state, action) => {
     return Object.assign({}, state, {
-      'items': action.payload
+      'items': action.payload.items
     });
   }
 });
