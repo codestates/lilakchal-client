@@ -8,8 +8,8 @@ interface Props {
 
 const CurrentPrice: React.FC<Props> = ({itemId, price}) => {
   return (
-    <div className="itemcard-price"  id={`itemcard-${itemId}`}>
-      <span>{price}</span><span>{units.price}</span>
+    <div className="itemcard-price" >
+      <span id={`itemcard-${itemId}`}>{price}</span><span>{units.price}</span>
     </div>
   );
 };
