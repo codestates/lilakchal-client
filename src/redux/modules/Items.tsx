@@ -25,7 +25,7 @@ export const initialState: ItemsState = {
       title: '나이키 바람막이', 
       price: 11000, 
       photo: 'error.png',
-      endTime: new Date('2021-04-08 01:00:00'),
+      endTime: new Date('2021-04-08 20:33:00'),
       description: '바람막이 급처합니다.',
       winnerId: 3,
       sellerId: 1,
