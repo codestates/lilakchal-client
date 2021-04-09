@@ -1,3 +1,3 @@
 export const units = {
-  'price': '원'
+  'price': ' 원'
 };

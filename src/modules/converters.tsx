@@ -8,6 +8,6 @@ export const convertSecToHourString = (targetSec: number): string => {
   if(hour <= 0 && min <= 0 && sec <= 0) {
     return constantString.endBid;
   } else {
-    return `${hour}:${min}:${sec}`;
+    return `${hour.toString().padStart(2, '0')}:${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
   }
 };
