@@ -1,13 +1,17 @@
 import React from 'react';
+import UserName from './UserName';
+import GoSearch from './GoSearch';
+
 interface props {
   setNowPage: any
 }
 
-const MyoptionGroup:React.FC<props> = ({setNowPage}) => {
+const MyoptionGroup:React.FC<props> = () => {
   return (
     //auctionFilter , 위치btn, 로그아웃btn
     <div>
-      <button onClick={()=>setNowPage(true)}>Myoptiongroup보여지는중</button>
+      <UserName />
+      <GoSearch />
     </div>
   );
 };
