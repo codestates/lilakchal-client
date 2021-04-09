@@ -1,4 +1,5 @@
 import {constantString} from './strings';
+import { ItemsState, UnformatedItem } from '../redux/modules/Items';
 
 export const convertSecToHourString = (targetSec: number): string => {
   const hour = Math.floor(targetSec / 3600);
@@ -10,4 +11,11 @@ export const convertSecToHourString = (targetSec: number): string => {
   } else {
     return `${hour.toString().padStart(2, '0')}:${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
   }
+};
+
+export const getFormatedItems = (items: Array<UnformatedItem>): ItemsState => {
+  return {items: items.map(item => {
+    const {id, title, price, photo, description, winnerId, sellerId, isClosed, city} = item;
+    return {id, title, price, photo, endTime: new Date(item.endTime), description, winnerId, sellerId, isClosed, city};
+  })};
 };
