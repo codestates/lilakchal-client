@@ -7,6 +7,7 @@ import ItemCard from '../components/ItemCard/index';
 import {Container} from './style/SearchPageStyle';
 import {Item} from '../redux/modules/Items';
 import {kakaoKey} from '../modules/constants';
+import {auctionSocket, bidData} from '../modules/socket';
 
 import axios from 'axios';
 
@@ -47,24 +48,19 @@ const SearchPage:React.FC = () => {
           }
         );
         const {region_1depth_name, region_2depth_name} = address.data.documents[0].address;
-        console.log('??');
         dispatch(LocationInfoHandler(`${region_1depth_name} ${region_2depth_name}`));
-      }, (error) => {
-        console.error(error);
-      }, {
-        enableHighAccuracy: false,
-        maximumAge: 0,
-        timeout: Infinity
       });
     } else {
       alert('GPS를 지원하지 않습니다');
     }
     
 
-    //3. socketio에 연결한다.
-
-
-
+    //3. socketio에 연결: 가격정보 수신 시 querySelector로 해당 부분의 가격을 변경한다.
+    auctionSocket.on('bid', ({itemId, price}: bidData) => {
+      console.log('receive bid', price);
+      const priceDiv = document.querySelector(`#itemcard-${itemId}`) as Node;
+      priceDiv.textContent = price.toString();
+    });
   }, []);
     
   return (
