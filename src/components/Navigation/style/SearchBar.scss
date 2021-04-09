@@ -1,4 +1,9 @@
-.searchbar-container {
+.searchbar-input {
   display: flex;
   justify-content: center;
+  width: 300px;
+  margin-left: 50px;
+}
+#searchbar {
+  width: 100%;
 }

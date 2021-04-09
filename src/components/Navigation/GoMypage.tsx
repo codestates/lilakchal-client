@@ -1,5 +1,6 @@
 import React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
+import {BsPersonFill} from 'react-icons/bs';
 
 //1.버튼을 누르면 마이페이지로 라우팅
 //2.마이페이지로 가는 동시에, html에 있는 검색 값 지우기
@@ -20,8 +21,8 @@ const GoMypage: React.FC<props & SomeComponentProps> = ({history, setNowPage}) =
   };
 
   return (
-    <div>
-      <button className='mypage-btn' onClick={goMypage}>마이페이지</button>
+    <div className='mypage-btn' onClick={goMypage}>
+      <BsPersonFill size='40'/>
     </div>
   );
 };
