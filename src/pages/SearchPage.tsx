@@ -9,8 +9,11 @@ const SearchPage:React.FC = () => {
   const dispatch = useDispatch();
 
   const oauthLoginHandler = (authorizationCode: string) => {
-    axios.post('https://ttangttang.ml/user/oauth', { authorizationCode: authorizationCode })
+    axios.post('https://localhost:4000/user/oauth',
+      { authorizationCode },
+      {withCredentials: true})
       .then(res => {
+        console.log('res.data = ', res.data);
         dispatch(UserInfoHandler({id: res.data.id, kakaoId: res.data.kakaoId, name: res.data.name})); //서버로부터 응답받으면 리덕스에 정보 저장
         dispatch(LoginHandler(true)); // 정보 저장하고 isLogin true로 (마이페이지 보이도록)
       });
