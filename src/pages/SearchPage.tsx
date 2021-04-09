@@ -1,10 +1,7 @@
 import React, {useEffect} from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, } from 'react-redux';
 import { UserInfoHandler } from '../redux/modules/UserInfo';
 import { LoginHandler } from '../redux/modules/account';
-import {initialState} from '../redux/modules/Items';
-import ItemCard from '../components/ItemCard/index';
-
 import axios from 'axios';
 
 const SearchPage:React.FC = () => {
@@ -18,8 +15,9 @@ const SearchPage:React.FC = () => {
         dispatch(LoginHandler(true)); // 정보 저장하고 isLogin true로 (마이페이지 보이도록)
       });
   };
-
+  
   useEffect(() => {
+    
     const url = new URL(window.location.href);
     const authorizationCode = url.searchParams.get('code');
 
@@ -28,11 +26,10 @@ const SearchPage:React.FC = () => {
       oauthLoginHandler(authorizationCode);
     }
   }, []);
-    
+
   return (
     <div>
-      검색 페이지
-      <ItemCard item={initialState.items[0]}></ItemCard>
+      
     </div>
   );
 };

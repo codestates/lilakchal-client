@@ -17,17 +17,19 @@ const Header: React.FC = () => {
     // 어디 페이지인가에 따라서 <MyoptionGroup> : <DefaultGroup>
     // <LoginSection> => 로그인 상태에 따라서 <LoginBtn> : <MypageBtn>
     <div className="header-container">
-      <div className="logo">
-        <Link to="/" onClick={()=> setNowPage(true)}>
-          <div className='header-logo-wrapper'>
-            <img className='header-logo' alt="Logo" src={logo} />
-          </div>
-        </Link>
+      <div className='header'>
+        <div className="logo">
+          <Link to="/" onClick={()=> setNowPage(true)}>
+            <div className='header-logo-wrapper'>
+              <img className='header-logo' alt="Logo" src={logo} />
+            </div>
+          </Link>
+        </div>
+        <div className="group">
+          {NowPage ? (<DefaultGroup setNowPage={setNowPage}/>) : (<MyoptionGroup setNowPage={setNowPage}/>) }
+        </div>
+
       </div>
-      <div className="group">
-        {NowPage ? (<DefaultGroup setNowPage={setNowPage}/>) : (<MyoptionGroup setNowPage={setNowPage}/>) }
-      </div>
-      
     </div>
   );
 };
