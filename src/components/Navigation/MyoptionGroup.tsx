@@ -6,12 +6,12 @@ interface props {
   setNowPage: any
 }
 
-const MyoptionGroup:React.FC<props> = () => {
+const MyoptionGroup:React.FC<props> = ({ setNowPage }) => {
   return (
     //auctionFilter , 위치btn, 로그아웃btn
     <div>
       <UserName />
-      <GoSearch />
+      <GoSearch setNowPage={setNowPage}/>
     </div>
   );
 };
