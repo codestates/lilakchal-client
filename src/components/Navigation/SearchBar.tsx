@@ -19,6 +19,7 @@ const SearchBar: React.FC<SomeComponentProps> = ({ history, match }) => {
   const [inputValue, setInputValue] = useState<string>('');
 
   console.log('inputValue', inputValue);
+  console.log('SearchBar에서 city', city);
 
   const handleKeyPress = (e: { key: string; }) => {
     if(e.key === 'Enter') {
