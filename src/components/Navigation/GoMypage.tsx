@@ -16,8 +16,8 @@ const GoMypage: React.FC<props & SomeComponentProps> = ({history, setNowPage}) =
     //1. html에 있는 검색 값 지우기
     const SearchValue = (document.getElementById('searchbar') as HTMLInputElement);
     SearchValue.value = '';
-    history.push('/ko/mypage');
     setNowPage(false);
+    history.push('/ko/mypage');
   };
 
   return (
