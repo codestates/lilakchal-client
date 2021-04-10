@@ -7,7 +7,7 @@ import {BsPersonFill} from 'react-icons/bs';
 type SomeComponentProps = RouteComponentProps;
 
 interface props {
-  setNowPage: any,
+  setNowPage?: any,
 }
 
 const GoMypage: React.FC<props & SomeComponentProps> = ({history, setNowPage}) => {
@@ -21,8 +21,8 @@ const GoMypage: React.FC<props & SomeComponentProps> = ({history, setNowPage}) =
   };
 
   return (
-    <div className='mypage-btn' onClick={goMypage}>
-      <BsPersonFill size='40'/>
+    <div className='mypage-btn'>
+      <BsPersonFill size='40'onClick={goMypage} />
     </div>
   );
 };
