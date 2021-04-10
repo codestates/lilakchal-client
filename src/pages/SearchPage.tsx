@@ -1,5 +1,8 @@
 import React, {useEffect} from 'react';
 import { useDispatch, useSelector, RootStateOrAny  } from 'react-redux';
+import axios from 'axios';
+import dotenv from 'dotenv';
+
 import { UserInfoHandler, LocationInfoHandler } from '../redux/modules/UserInfo';
 import { LoginHandler } from '../redux/modules/account';
 //import {initialState} from '../redux/modules/Items';
@@ -9,7 +12,7 @@ import {Item} from '../redux/modules/Items';
 import {kakaoKey} from '../modules/constants';
 import {auctionSocket, bidData} from '../modules/socket';
 
-import axios from 'axios';
+dotenv.config();
 
 const SearchPage:React.FC = () => {
 
@@ -18,12 +21,12 @@ const SearchPage:React.FC = () => {
   const dispatch = useDispatch();
 
   const oauthLoginHandler = (authorizationCode: string) => {
-    axios.post('https://localhost:4000/user/oauth',
+    axios.post(`${process.env.REACT_APP_SERVER_ADDRESS}/user/oauth`,
       { authorizationCode },
       {withCredentials: true})
       .then(res => {
         console.log('res.data = ', res.data);
-        dispatch(UserInfoHandler({id: res.data.id, kakaoId: res.data.kakaoId, name: res.data.name})); //서버로부터 응답받으면 리덕스에 정보 저장
+        dispatch(UserInfoHandler({id: res.data.id, name: res.data.name})); //서버로부터 응답받으면 리덕스에 정보 저장
         dispatch(LoginHandler(true)); // 정보 저장하고 isLogin true로 (마이페이지 보이도록)
       });
   };
