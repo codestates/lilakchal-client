@@ -1,13 +1,19 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/modules/reducer';
 import './style/Location.scss';
 
 
 const Location: React.FC = () => {
 
-  //리덕스에 저장된 유저정보를 받아와서 여기에 표시함
+  //1. 리덕스에 저장된 유저위치 가져오기
+  //2. 가져와서 유저위치 표시하기
+
+  const LocationState = useSelector((state: RootState) => state.UserInfoReducer);
+  const { city } = LocationState;
   return (
     <div className='location-section'>
-      <div className='location'>리덕스에서 받아온 지역이름</div>
+      {city ? <div>{city}</div> : ('위치를 찾고이땅!')}
     </div>
   );
 };

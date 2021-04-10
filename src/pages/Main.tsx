@@ -10,6 +10,8 @@ import {Content, Container} from './style/MainPageStyle';
 
 const Main:React.FC<RouterProps> = ({ history }) => {
 
+  console.log('뒤로가기 하면 main페이지가 재랜더링 되나요?');
+
   return (
     <Router history={history}>
       <Container>
@@ -22,7 +24,7 @@ const Main:React.FC<RouterProps> = ({ history }) => {
             <Route path='/ko/mypage'>
               <Mypage/>
             </Route>
-            <Route path='/ko/search'>
+            <Route path={['/ko/search', '/ko/search/:keyword']}>
               <SearchPage/>
             </Route>
           </Switch>
