@@ -7,16 +7,20 @@ import axios from 'axios';
 
 const EditForm: React.FC = () => {
 
-  const [newName, setNewName] = useState<string>('');
-  const usernameState = useSelector((state: RootState) => state.UserInfoReducer);
-  const { id } = usernameState;
+  const [userName, setUserName] = useState<string>('');
+  const useridState = useSelector((state: RootState) => state.UserInfoReducer);
+  const { id, name } = useridState;
 
   const submitHandler = async () => {
-    await axios.patch('https://localhost:4000/user/name', {id, name: newName});
+    await axios.patch('https://localhost:4000/user/name', 
+      {userId: id, name: userName}, 
+      {withCredentials: true});
+    console.log('EditForm line 18', name);
+    setTimeout(() => console.log('EditForm line 19', name), 5000);
   };
 
   const getUserName = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setNewName(e.target.value);
+    setUserName(e.target.value);
   };
 
   const str = '변경';
