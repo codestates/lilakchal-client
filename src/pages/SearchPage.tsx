@@ -65,6 +65,8 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({history, match})
 
     const SearchValue = (document.getElementById('searchbar') as HTMLInputElement);
     SearchValue.value = '';
+
+    console.log('match.params.keyword=', match.params.keyword);
           
     if(match.params.keyword) {
       axios.get('https://localhost:4000/search',
