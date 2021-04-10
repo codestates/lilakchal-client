@@ -3,10 +3,11 @@ import Logout from './Logout';
 import UserName from './UserName';
 
 interface props {
-  setNowPage: any
+  setNowPage: (state: boolean) => void
 }
 
-const MyoptionGroup:React.FC<props> = () => {
+const MyoptionGroup:React.FC<props> = ({setNowPage}) => {
+
   return (
     // FilterBtn , username, GoSearch, Logout
     <div className='MyoptionGroup-container'>

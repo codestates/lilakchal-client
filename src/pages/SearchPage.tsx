@@ -68,7 +68,6 @@ const SearchPage:React.FC = () => {
 
   return (
     <Container>
-      { console.log(items) }
       {
         items ? (items.map((item: Item) => 
           <ItemCard item={item} key={item.id}></ItemCard>

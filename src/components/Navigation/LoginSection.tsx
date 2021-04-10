@@ -6,7 +6,7 @@ import GoMypage from '../Navigation/GoMypage';
 import Login from './Login';
 
 interface props {
-  setNowPage: any,
+  setNowPage?: any,
 }
 
 const LoginSection: React.FC<props> = ({setNowPage}) => {
