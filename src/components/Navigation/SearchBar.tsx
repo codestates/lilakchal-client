@@ -1,12 +1,16 @@
 import React, {useState} from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
 import { useDispatch } from 'react-redux';
+import axios from 'axios';
+import dotenv from 'dotenv';
+
 import {SearchInputHandler} from '../../redux/modules/SearchValue';
 import {ItemHandler} from '../../redux/modules/Items';
 import SearchBtn from './SearchBtn';
-import axios from 'axios';
 import './style/SearchBar.scss';
 import { getFormatedItems } from '../../modules/converters';
+
+dotenv.config();
 
 type SomeComponentProps = RouteComponentProps;
 
@@ -26,7 +30,7 @@ const SearchBar: React.FC<SomeComponentProps> = ({ history }) => {
     //4.검색값을 리덕스에 저장(searchpage에서 나중에 무한스크롤 사용시 필요할 수 있기 때문에)
 
     if(inputValue !== '') {
-      axios.get('https://localhost:4000/search',
+      axios.get(`${process.env.REACT_APP_SERVER_ADDRESS}/search`,
         { params: { city: '도시', keyword: inputValue }})
         .then(res => {
           console.log(res.data.items);
