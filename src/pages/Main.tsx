@@ -24,7 +24,7 @@ const Main:React.FC<RouterProps> = ({ history }) => {
             <Route path='/ko/mypage'>
               <Mypage/>
             </Route>
-            <Route path={['/ko/search', '/ko/search/:keyword']}>
+            <Route exact path={['/ko/search', '/ko/search/:keyword']}>
               <SearchPage/>
             </Route>
           </Switch>
