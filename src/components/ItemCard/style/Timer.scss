@@ -1,0 +1,6 @@
+/*styled component는 렌더링 될 때마다 style 파일을 불러와야하는 단점이 있다.
+타이머의 경우 매 초 새롭게 렌더링 되므로 styled component보단 scss를 쓰는 것이 나아 보인다.*/
+
+.timer {
+  font-size: 2rem;
+}

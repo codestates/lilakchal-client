@@ -6,6 +6,7 @@ import {ItemHandler} from '../../redux/modules/Items';
 import SearchBtn from './SearchBtn';
 import axios from 'axios';
 import './style/SearchBar.scss';
+import { getFormatedItems } from '../../modules/converters';
 
 type SomeComponentProps = RouteComponentProps;
 
@@ -25,11 +26,13 @@ const SearchBar: React.FC<SomeComponentProps> = ({ history }) => {
     //4.검색값을 리덕스에 저장(searchpage에서 나중에 무한스크롤 사용시 필요할 수 있기 때문에)
 
     if(inputValue !== '') {
-      axios.get('http://localhost/ko/search',
+      axios.get('https://localhost:4000/search',
         { params: { city: '도시', keyword: inputValue }})
         .then(res => {
-        // 리덕스 상태 만들어서 응답으로 온 검색결과 저장하기
-          dispatch(ItemHandler(res.data.items)); //검색결과 받아서 리덕스에 저장
+          console.log(res.data.items);
+          console.log(getFormatedItems(res.data.items));
+          // 리덕스 상태 만들어서 응답으로 온 검색결과 저장하기
+          dispatch(ItemHandler(getFormatedItems(res.data.items))); //검색결과 받아서 리덕스에 저장
         });
       dispatch(SearchInputHandler(inputValue));
       // setInputValue(''); 없앨려고 했으나 당근마켓 보니까 검색값이 남아있음, 페이지 이동시에 html에서 vlaue와 동시에 없애야 할듯
