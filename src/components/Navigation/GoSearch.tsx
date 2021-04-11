@@ -9,7 +9,7 @@ interface props {
 const GoSearch: React.FC<RouteComponentProps & props> = ({ history, setNowPage }) => {
 
   const clickHandler = () => {
-    history.push('/ko/search');
+    window.location.href = '/ko/search';
     setNowPage(true);
   };
 

@@ -1,17 +1,13 @@
 import React, {useState} from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RouterProps, withRouter } from 'react-router';
 import axios from 'axios';
 import dotenv from 'dotenv';
 
-import {SearchInputHandler} from '../../redux/modules/SearchValue';
 import {ItemHandler} from '../../redux/modules/Items';
 import SearchBtn from './SearchBtn';
 import './style/SearchBar.scss';
-import axios from 'axios';
 import { getFormatedItems } from '../../modules/converters';
-import { ItemHandler } from '../../redux/modules/Items';
-import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/modules/reducer';
 
 dotenv.config();
@@ -41,7 +37,7 @@ const SearchBar: React.FC<RouterProps> = ({history}) => {
           dispatch(ItemHandler(getFormatedItems(res.data.items))); 
         });
     }
-    history.push(`/ko/search/${inputValue}`);
+    window.location.href = `/ko/search/${inputValue}`;
     console.log('요청보내기');
   };
   
