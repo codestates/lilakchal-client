@@ -22,7 +22,7 @@ const UserName: React.FC = () => {
       <Modal visible={isOpenPopup} color={'#fff'} onClose={closePopUp} backColor={true}>
         <EditForm />
       </Modal>
-      <button onClick={openPopUp}>{name ? <div>{name}</div> : '이름없음'}</button>
+      <button onClick={openPopUp}>{name ? `${name}` : '이름없음'}</button>
     </>
   );
 };

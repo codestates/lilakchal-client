@@ -8,12 +8,12 @@ interface props {
   setNowPage?: any
 }
 
-const MyoptionGroup:React.FC<props> = ({setNowPage}) => {
+const MyoptionGroup:React.FC<props> = ({ setNowPage }) => {
   return (
     // FilterBtn , username, GoSearch, Logout
     <div className='MyoptionGroup-container'>
       <UserName />
-      <GoSearch setNowPage={setNowPage}/> 
+      <GoSearch setNowPage={setNowPage}/>
       <Logout/>
     </div>
   );
