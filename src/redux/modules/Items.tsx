@@ -41,8 +41,8 @@ export const initialState: ItemsState = {
       endTime: new Date('2021-04-08 20:33:00'),
       description: '바람막이 급처합니다.',
       winnerId: 3,
-      sellerId: 1,
-      isClosed: false,
+      sellerId: 3,
+      isClosed: true,
       city: '서울 성동구'
     },
     {
@@ -53,7 +53,7 @@ export const initialState: ItemsState = {
       endTime: new Date('2021-04-10 04:11:11'),
       description: '운동화 급처합니다.',
       winnerId: 3,
-      sellerId: 1,
+      sellerId: 3,
       isClosed: false,
       city: '서울 동대문구'
     },
@@ -65,7 +65,7 @@ export const initialState: ItemsState = {
       endTime: new Date('2021-04-11 07:11:11'),
       description: '옷 정리. s사이즈입니다.',
       winnerId: 3,
-      sellerId: 1,
+      sellerId: 3,
       isClosed: false,
       city: '서울 동대문구'
     }

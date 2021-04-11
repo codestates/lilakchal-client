@@ -13,6 +13,13 @@ export const convertSecToHourString = (targetSec: number): string => {
   }
 };
 
+export const getFormatedChatDate = (time: Date):string => {
+  const hour = time.getHours();
+  const min = time.getMinutes();
+  const ampm = hour <= 12 ? '오전' : '오후';
+  return `${ampm} ${hour} ${min}`;
+};
+
 export const getFormatedItems = (items: Array<UnformatedItem>): ItemsState => {
   return {items: items.map(item => {
     const {id, title, price, photo, description, winnerId, sellerId, isClosed, city} = item;
