@@ -10,11 +10,10 @@ import ItemDetail from './ItemDetail';
 import Modal from '../Modal/index';
 
 interface Props {
-  item: Item,
-  city?: string
+  item: Item
 }
 
-const ItemCard: React.FC<Props> = ({item, city}) => {
+const ItemCard: React.FC<Props> = ({item}) => {
   const userState = useSelector((state:RootStateOrAny) => state.UserInfoReducer);
   const {id} = userState;
   const [isExpired, setIsExpired] = useState<boolean>(false);
@@ -23,8 +22,6 @@ const ItemCard: React.FC<Props> = ({item, city}) => {
   const handleBidStatus = (isExpired: boolean) : void => {
     setIsExpired(isExpired);
   };
-  console.log('item.city', item.city);
-  console.log('item.photo', item.photo);
 
   //{userId, itemId, price}
   const requestBid = (price: number) => {
@@ -52,7 +49,7 @@ const ItemCard: React.FC<Props> = ({item, city}) => {
       </Modal>
       <Thumbnail bg={item.photo}></Thumbnail>
       <Contents>
-        <Location>{city ? (city) : (item.city)}</Location>
+        <Location>{item.city}</Location>
         <Timer endtime={item.endTime} handleBidStatus={handleBidStatus}/>
         <Title onClick={() => openPopUp()}>{item.title}</Title>
         <CurrentPrice itemId={item.id} price={item.price}></CurrentPrice>

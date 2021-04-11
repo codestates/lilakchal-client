@@ -12,15 +12,6 @@ interface props {
 const LoginSection: React.FC<props> = ({setNowPage}) => {
   const loginState = useSelector((state: RootState) => state.AccountReducer);
   const {isLogin} = loginState;
-  // const dispatch = useDispatch();
-  
-  // const clickLogin = () => {
-  //   if(isLogin) {
-  //     dispatch(LogoutHandler(false));
-  //   } else {
-  //     dispatch(LoginHandler(true));
-  //   }
-  // };
 
   return (
     <div className='login-section'>

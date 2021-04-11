@@ -28,8 +28,8 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
   const dispatch = useDispatch();
 
   //ouath관련 함수
-  const oauthLoginHandler = (authorizationCode: string) => {
-    axios.post('https://localhost:4000/user/oauth',
+  const oauthLoginHandler = async (authorizationCode: string) => {
+    await axios.post('https://localhost:4000/user/oauth',
       { authorizationCode },
       {withCredentials: true})
       .then(res => {
@@ -42,6 +42,7 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
       });
   };
   
+  
   useEffect(() => {
 
     //search 페이지 들어오면 할일
@@ -49,25 +50,7 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
     const url = new URL(window.location.href);
     const authorizationCode = url.searchParams.get('code');
     const login = localStorage.getItem('isLogin');
-
-    //1. 사용자에게 위치 정보 이용 동의 요청을 보낸다
     
-    if(window.navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(async ({coords}) => {
-        const address = await axios.get(
-          `https://dapi.kakao.com/v2/local/geo/coord2address.json?x=${coords.longitude}&y=${coords.latitude}`,
-          {
-            headers: {
-              Authorization: `KakaoAK ${kakaoKey.REST_API}`,
-            },
-          }
-        );
-        const {region_1depth_name, region_2depth_name} = address.data.documents[0].address;
-        dispatch(LocationInfoHandler(`${region_1depth_name} ${region_2depth_name}`));
-      });
-    } else {
-      alert('GPS를 지원하지 않습니다');
-    }
 
     if(login === 'true') {
       dispatch(LoginHandler(true));
@@ -79,9 +62,36 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
       dispatch(LoginHandler(true));
     }
 
-    //2-(1) 검색키워드가 있을 때 서버에 요청
+    //1. 사용자에게 위치 정보 이용 동의 요청을 보낸다
+
+    if(city === '') {
+      if(window.navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(async ({coords}) => {
+          const address = await axios.get(
+            `https://dapi.kakao.com/v2/local/geo/coord2address.json?x=${coords.longitude}&y=${coords.latitude}`,
+            {
+              headers: {
+                Authorization: `KakaoAK ${kakaoKey.REST_API}`,
+              },
+            }
+          );
+          const {region_1depth_name, region_2depth_name} = address.data.documents[0].address;
+          dispatch(LocationInfoHandler(`${region_1depth_name} ${region_2depth_name}`));
+          localStorage.setItem('city', `${region_1depth_name} ${region_2depth_name}`);
+          
+        });
+      } else {
+        alert('GPS를 지원하지 않습니다');
+      }
+    }
+    
+    // 2-(1) 검색키워드가 있을 때 서버에 요청
 
     const SearchValue = (document.getElementById('searchbar') as HTMLInputElement);
+
+    if(SearchValue.value === null) {
+      SearchValue.value = '';
+    }
     SearchValue.value = '';
 
     console.log('match.params.keyword=', match.params.keyword);
@@ -91,10 +101,8 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
         { params: { city: city, keyword: match.params.keyword }})
         .then(res => {
           console.log('SearchPage에서 city', res.data.items.city);
-          console.log(res.data.items);
-          console.log(getFormatedItems(res.data.items));
           // 리덕스 상태 만들어서 응답으로 온 검색결과 저장하기
-          dispatch(ItemHandler(getFormatedItems(res.data.items))); //검색결과 받아서 리덕스에 저장
+          dispatch(ItemHandler(getFormatedItems(res.data.items))); 
         });
     }
     //2-(2) 검색 키워드가 없을때(처음 입장) 모든 자료 요청
@@ -102,7 +110,6 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
       axios.get('https://localhost:4000/search',
         { params: { city: city}})
         .then(res => {
-          console.log('SearchPage에서 city', res.data.items.city);
           console.log(getFormatedItems(res.data.items));
           // 리덕스 상태 만들어서 응답으로 온 검색결과 저장하기
           dispatch(ItemHandler(getFormatedItems(res.data.items))); //검색결과 받아서 리덕스에 저장
@@ -116,21 +123,20 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
       priceDiv.textContent = price.toString();
     });
   }, [],);
+  console.log('SearchPage에서 city', items);
+  
 
-  // useEffect(()=> {
-  //   items
-  // }, [items]);
 
   return (
     <Container>
-      { console.log('SearchPage에서 city', items.city) }
       {
         items ? (items.map((item: Item) => 
-          <ItemCard city={city} item={item} key={item.id}></ItemCard>
+          <ItemCard item={item} key={item.id}></ItemCard>
         )) : <></>
       }
     </Container>
   );
 };
+
 
 export default withRouter(SearchPage);
