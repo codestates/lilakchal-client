@@ -26,7 +26,7 @@ interface IOuterContainer {
 export const OuterContainer = styled.div<IOuterContainer>`
   box-sizing: border-box;
   display: ${(props) => (props.visible ? 'block' : 'none')};
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   bottom: 0;

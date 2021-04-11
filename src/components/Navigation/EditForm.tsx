@@ -36,9 +36,12 @@ const EditForm: React.FC<IEditFrom> = ({ setIsOpenPopup }) => {
         {userId: id, name}, 
         {withCredentials: true});
       console.log('EditForm line 38', name);
-      setTimeout(() => console.log('EditForm line 39', name), 3000);
       setErrorMessage('');
       setIsOpenPopup(false);
+      // 변경을 누르고, axios 요청을 보내고 응답을 받았을 때 변경 되어야 한다
+      // 리덕스의 username 상태를 응답 받은 값으로 변경
+      // useSelect로 name을 읽고 있다 바뀌었으면 읽는다
+      // .then dispatch
     }
   };
 
