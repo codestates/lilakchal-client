@@ -7,7 +7,7 @@ import {BsPersonFill} from 'react-icons/bs';
 type SomeComponentProps = RouteComponentProps;
 
 interface props {
-  setNowPage: any,
+  setNowPage?: any,
 }
 
 const GoMypage: React.FC<props & SomeComponentProps> = ({history, setNowPage}) => {
@@ -16,13 +16,13 @@ const GoMypage: React.FC<props & SomeComponentProps> = ({history, setNowPage}) =
     //1. html에 있는 검색 값 지우기
     const SearchValue = (document.getElementById('searchbar') as HTMLInputElement);
     SearchValue.value = '';
-    history.push('/ko/mypage');
     setNowPage(false);
+    history.push('/ko/mypage');
   };
 
   return (
-    <div className='mypage-btn' onClick={goMypage}>
-      <BsPersonFill size='40'/>
+    <div className='mypage-btn'>
+      <BsPersonFill size='40'onClick={goMypage} />
     </div>
   );
 };

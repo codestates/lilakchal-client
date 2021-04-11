@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import dotenv from 'dotenv';
+
 import { Wrapper, Title, Container, InputName } from './EditFormStyle';
 import SubmitBtn from '../../modules/SubmitBtn';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/modules/reducer';
-import axios from 'axios';
+
+dotenv.config();
 
 const EditForm: React.FC = () => {
 
@@ -12,7 +16,7 @@ const EditForm: React.FC = () => {
   const { id } = usernameState;
 
   const submitHandler = async () => {
-    await axios.patch('https://localhost:4000/user/name', {id, name: newName});
+    await axios.patch(`${process.env.REACT_APP_SERVER_ADDRESS}/user/name`, {id, name: newName});
   };
 
   const getUserName = (e: React.ChangeEvent<HTMLInputElement>) => {
