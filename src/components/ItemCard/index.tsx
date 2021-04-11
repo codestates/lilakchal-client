@@ -16,7 +16,7 @@ interface Props {
 const ItemCard: React.FC<Props> = ({item}) => {
   const userState = useSelector((state:RootStateOrAny) => state.UserInfoReducer);
   const {id} = userState;
-  const [isExpired, setIsExpired] = useState<boolean>(false);
+  const [isExpired, setIsExpired] = useState<boolean>(item.isClosed);
   const [isOpenPopup, setIsOpenPopup] = useState<boolean>(false);
   
   const handleBidStatus = (isExpired: boolean) : void => {
@@ -55,7 +55,7 @@ const ItemCard: React.FC<Props> = ({item}) => {
         <CurrentPrice itemId={item.id} price={item.price}></CurrentPrice>
         {
           (isExpired && id === item.sellerId) ?
-            <GoChat itemId={item.id}></GoChat> :
+            <GoChat itemId={item.id} title={item.title}></GoChat> :
             <></>
         }
       </Contents>
