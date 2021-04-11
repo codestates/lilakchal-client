@@ -20,7 +20,7 @@ interface MatchParams {
   keyword: string;
 }
 
-const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
+const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}) => {
 
 
   const userInfoState = useSelector((state: RootState) => state.UserInfoReducer);
@@ -40,7 +40,7 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
         dispatch(LoginHandler(true));
         localStorage.setItem('isLogin', 'true');
         localStorage.setItem('id', res.data.id);
-        window.location.href = '/ko/search';
+        history.push('/ko/search');
       });
   };
   
@@ -89,12 +89,12 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
     
     // 2-(1) 검색키워드가 있을 때 서버에 요청
 
-    const SearchValue = (document.getElementById('searchbar') as HTMLInputElement);
+    // const SearchValue = (document.getElementById('searchbar') as HTMLInputElement);
 
-    if(SearchValue.value === null) {
-      SearchValue.value = '';
-    }
-    SearchValue.value = '';
+    // if(SearchValue.value === null) {
+    //   SearchValue.value = '';
+    // }
+    // SearchValue.value = '';
 
 
     console.log('match.params.keyword=', match.params.keyword);

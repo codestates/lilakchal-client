@@ -13,7 +13,7 @@ const Login: React.FC = () => {
   const kakaoLogin = () => {
     const clientId = `${process.env.REACT_APP_KAKAO_CLIENT_ID}`;
 
-    const redirectUri = `${process.env.REACT_APP_REDIRECT_URI}/ko/search`;
+    const redirectUri = `${process.env.REACT_APP_KAKAO_REDIRECT_URI}/ko/search`;
 
     const kakaoLoginUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code`;
     window.location.assign(kakaoLoginUrl);
