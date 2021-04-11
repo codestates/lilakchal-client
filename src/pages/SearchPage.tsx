@@ -20,7 +20,7 @@ interface MatchParams {
   keyword: string;
 }
 
-const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
+const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}) => {
 
 
   const userInfoState = useSelector((state: RootState) => state.UserInfoReducer);
@@ -40,7 +40,7 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
         dispatch(LoginHandler(true));
         localStorage.setItem('isLogin', 'true');
         localStorage.setItem('id', res.data.id);
-        window.location.href = '/ko/search';
+        history.push('/ko/search');
       });
   };
   
