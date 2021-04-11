@@ -18,24 +18,25 @@ const EditForm: React.FC<IEditFrom> = ({ setIsOpenPopup }) => {
   const { id, kakaoId, name } = userinfoState;
 
   const [errorMessage, setErrorMessage] = useState<string>('');
+  const [newName, setNewName] = useState<string>('');
 
   const submitHandler = async () => {
 
     const regexr = /[\s]|[~!@#$%^&*()_+|<>?:{}]/;
     console.log('EditFrom line 25', regexr.test(name));
 
-    if (name.length === 0 || name.length > 12) {
+    if (newName.length === 0 || newName.length > 12) {
       console.log('EditFrom line 28', name);
       setErrorMessage('닉네임은 1글자 이상, 12글자 이하여야 합니다.');
       return;
-    } else if (regexr.test(name)) {
+    } else if (regexr.test(newName)) {
       setErrorMessage('공백, 특수문자는 사용할 수 없습니다.');
       return;
     } else {
       await axios.patch('https://localhost:4000/user/name', 
         {userId: id, name}, 
-        {withCredentials: true});
-      console.log('EditForm line 38', name);
+        {withCredentials: true})
+        .then(() => dispatch(UserInfoHandler({id, kakaoId, name: newName})));
       setErrorMessage('');
       setIsOpenPopup(false);
       // 변경을 누르고, axios 요청을 보내고 응답을 받았을 때 변경 되어야 한다
@@ -46,7 +47,7 @@ const EditForm: React.FC<IEditFrom> = ({ setIsOpenPopup }) => {
   };
 
   const getUserName = (e: React.ChangeEvent<HTMLInputElement>) => {
-    dispatch(UserInfoHandler({ id, kakaoId, name: e.target.value }));
+    setNewName(e.target.value);
   };
 
   const str = '변경';
