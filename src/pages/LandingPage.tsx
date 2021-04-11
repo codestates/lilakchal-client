@@ -1,6 +1,6 @@
 import React from 'react';
 import Start from '../components/Navigation/Start';
-import LoadingModal from '../components/Modal/LoadingModal';
+
 
 const LandingPage: React.FC = () => {
   localStorage.setItem('city', '');
@@ -8,7 +8,6 @@ const LandingPage: React.FC = () => {
   return (
     <div className='landing-container'>
       <Start/>
-      <LoadingModal isLoading={true}/>
     </div>
   );
 };

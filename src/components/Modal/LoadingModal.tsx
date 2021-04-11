@@ -1,7 +1,7 @@
 import React from 'react';
 import Lottie from 'react-lottie';
 import loadingBid from '../../res/lotties/bid2.json';
-import { Dimmer, LoadingContainer } from './style/ModalStyle';
+import { OpaqueDimmer, LoadingContainer } from './style/ModalStyle';
 
 interface Props {
   isLoading: boolean
@@ -18,11 +18,11 @@ const LoadingModal: React.FC<Props> = ({isLoading}) => {
   };
 
   return (
-    <Dimmer visible={isLoading} backColor={true}>
+    <OpaqueDimmer visible={isLoading}>
       <LoadingContainer>
         <Lottie options={defaultOptions} height='90%' width='90%' />
       </LoadingContainer>
-    </Dimmer>
+    </OpaqueDimmer>
   );
 };
 

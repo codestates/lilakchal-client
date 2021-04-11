@@ -14,6 +14,8 @@ import {kakaoKey} from '../modules/constants';
 import {auctionSocket, bidData} from '../modules/socket';
 import { getFormatedItems } from '../modules/converters';
 
+//import LoadingModal from '../components/Modal/LoadingModal';
+
 dotenv.config();
 
 interface MatchParams {
@@ -21,8 +23,6 @@ interface MatchParams {
 }
 
 const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}) => {
-
-
   const userInfoState = useSelector((state: RootState) => state.UserInfoReducer);
   const { id, city } = userInfoState;
   const itemState = useSelector((state:RootStateOrAny) => state.ItemReducer);
@@ -133,6 +133,7 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
 
   return (
     <Container>
+      {/* <LoadingModal isLoading={true}/> */}
       {
         items ? (items.map((item: Item) => 
           <ItemCard item={item} key={item.id}></ItemCard>
