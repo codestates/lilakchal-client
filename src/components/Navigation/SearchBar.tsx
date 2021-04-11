@@ -1,12 +1,20 @@
 import React, {useState} from 'react';
-import SearchBtn from './SearchBtn';
+import { useDispatch } from 'react-redux';
 import { RouterProps, withRouter } from 'react-router';
+import axios from 'axios';
+import dotenv from 'dotenv';
+
+import {SearchInputHandler} from '../../redux/modules/SearchValue';
+import {ItemHandler} from '../../redux/modules/Items';
+import SearchBtn from './SearchBtn';
 import './style/SearchBar.scss';
 import axios from 'axios';
 import { getFormatedItems } from '../../modules/converters';
 import { ItemHandler } from '../../redux/modules/Items';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/modules/reducer';
+
+dotenv.config();
 
 const SearchBar: React.FC<RouterProps> = ({history}) => {
 
@@ -25,7 +33,7 @@ const SearchBar: React.FC<RouterProps> = ({history}) => {
     
     // window.location.href = `/ko/search/${inputValue}`;
     if(inputValue) {
-      axios.get('https://localhost:4000/search',
+      axios.get(`${process.env.REACT_APP_SERVER_ADDRESS}/search`,
         { params: { city: city, keyword: inputValue }})
         .then(res => {
           console.log('SearchPage에서 city', res.data.items[0].city);

@@ -1,5 +1,9 @@
 import React from 'react';
+import dotenv from 'dotenv';
+
 import './style/Login.scss';
+
+dotenv.config();
 
 //1. 카카오 소셜로그인하기
 //2. autorization code 서버로 보내기
@@ -7,9 +11,9 @@ import './style/Login.scss';
 const Login: React.FC = () => {
 
   const kakaoLogin = () => {
-    const clientId = '4d6b5048295d43015b06e9ffdf6419dd';
+    const clientId = `${process.env.REACT_APP_KAKAO_CLIENT_ID}`;
 
-    const redirectUri = 'http://localhost:3000/ko/search';
+    const redirectUri = `${process.env.REACT_APP_REDIRECT_URI}/ko/search`;
 
     const kakaoLoginUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code`;
     window.location.assign(kakaoLoginUrl);

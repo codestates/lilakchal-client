@@ -1,10 +1,12 @@
 import React, {useEffect} from 'react';
 import { useDispatch, useSelector, RootStateOrAny  } from 'react-redux';
+import axios from 'axios';
+import dotenv from 'dotenv';
 import { RouteComponentProps, withRouter } from 'react-router';
+
 import { UserInfoHandler, LocationInfoHandler } from '../redux/modules/UserInfo';
 import { LoginHandler} from '../redux/modules/account';
 import { RootState } from '../redux/modules/reducer';
-// import {initialState} from '../';
 import ItemCard from '../components/ItemCard/index';
 import {Container} from './style/SearchPageStyle';
 import { Item, ItemHandler } from '../redux/modules/Items';
@@ -12,7 +14,7 @@ import {kakaoKey} from '../modules/constants';
 import {auctionSocket, bidData} from '../modules/socket';
 import { getFormatedItems } from '../modules/converters';
 
-import axios from 'axios';
+dotenv.config();
 
 interface MatchParams {
   keyword: string;
@@ -26,15 +28,15 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
   const itemState = useSelector((state:RootStateOrAny) => state.ItemReducer);
   const {items} = itemState;
   const dispatch = useDispatch();
-
+  
   //ouath관련 함수
   const oauthLoginHandler = async (authorizationCode: string) => {
-    await axios.post('https://localhost:4000/user/oauth',
+    await axios.post(`${process.env.REACT_APP_SERVER_ADDRESS}/user/oauth`,
       { authorizationCode },
       {withCredentials: true})
       .then(res => {
         console.log('res.data = ', res.data);
-        dispatch(UserInfoHandler({id: res.data.id, kakaoId: res.data.kakaoId, name: res.data.name}));
+        dispatch(UserInfoHandler({id: res.data.id, name: res.data.name}));
         dispatch(LoginHandler(true));
         localStorage.setItem('isLogin', 'true');
         localStorage.setItem('id', res.data.id);

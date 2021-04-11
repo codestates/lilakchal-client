@@ -3,14 +3,12 @@ import { createAction, ActionType, createReducer  } from 'typesafe-actions';
 //State 정의
 export interface userInfoState {
   id: number,
-  kakaoId: string,
   name: string,
   city?: string
 }
 
 export const initialState: userInfoState = {
   id: 0,
-  kakaoId: '',
   name: '',
   city: ''
 };
@@ -32,16 +30,15 @@ const UserInfoReducer = createReducer<userInfoState, UserInfoAction>(initialStat
   [userInfo]: (state, action) => {
     
     return Object.assign({}, state, {
-      id: action.payload.id,
-      kakaoId: action.payload.kakaoId,
-      name: action.payload.name
+      'id': action.payload.id,
+      'name': action.payload.name,
+      'city': state.city
     });
   },
   [changeInfoByGPS]: (state, action) => {
-    console.log(action.payload);
+    // console.log(action.payload);
     return Object.assign({}, state, {
       'id': state.id,
-      'kakaoId': state.kakaoId,
       'name': state.name,
       'city': action.payload
     });
