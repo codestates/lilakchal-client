@@ -1,8 +1,11 @@
 import React from 'react';
-import dotenv from 'dotenv';
 
+import dotenv from 'dotenv';
 import { useDispatch } from 'react-redux';
 import { LogoutHandler } from '../../redux/modules/account';
+import { UserInfoHandler } from '../../redux/modules/UserInfo';
+import { FaDoorOpen } from 'react-icons/fa';
+import './style/Logout.scss';
 
 dotenv.config();
 
@@ -18,11 +21,14 @@ const Logout: React.FC = () => {
     
     window.location.assign(`https://kauth.kakao.com/oauth/logout?client_id=${clientId}&logout_redirect_uri=${redirectUri}`);
     dispatch(LogoutHandler(false));
+    dispatch(UserInfoHandler({id: 0, kakaoId: '', name: ''})); //서버로부터 응답받으면 리덕스에 정보 저장
+    localStorage.setItem('isLogin', 'false');
+    localStorage.setItem('city', '');
     
   };
   return (
     <div>
-      <button onClick={Logout}>로그아웃</button>
+      <FaDoorOpen className='Logout' size='40' onClick={Logout}/>
     </div>
   );
 };

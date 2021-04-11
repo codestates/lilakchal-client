@@ -3,13 +3,15 @@ import { RouteComponentProps, withRouter } from 'react-router';
 import {constantString} from '../../modules/strings';
 
 interface Props extends RouteComponentProps{
-  itemId: number
+  itemId: number,
+  title: string
 }
 
-const GoChat: React.FC<Props> = ({ history, itemId }) => {
+const GoChat: React.FC<Props> = ({ history, itemId, title }) => {
 
   const goChat = () => history.push('/ko/mypage/chat', {
-    itemId //room
+    itemId, //room
+    title
   });
 
   return (
