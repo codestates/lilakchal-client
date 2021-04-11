@@ -3,7 +3,7 @@ import Logout from './Logout';
 import UserName from './UserName';
 
 interface props {
-  setNowPage: (state: boolean) => void
+  setNowPage: any
 }
 
 const MyoptionGroup:React.FC<props> = ({setNowPage}) => {
