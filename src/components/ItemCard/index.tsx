@@ -41,6 +41,8 @@ const ItemCard: React.FC<Props> = ({item}) => {
   const closePopUp = () => {
     setIsOpenPopup(false);
   };
+  console.log('itemcard에서 ', item.city);
+  
 
   return (
     <Container className={'itemcard-container'}>
