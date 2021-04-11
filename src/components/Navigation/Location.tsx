@@ -11,11 +11,14 @@ const Location: React.FC = () => {
 
   const LocationState = useSelector((state: RootState) => state.UserInfoReducer);
   const { city } = LocationState;
+  // const UserCity = localStorage.getItem('city');
+
   return (
     <div className='location-section'>
-      {city ? <div>{city}</div> : ('위치를 찾고이땅!')}
+      {(city !== '') ? <div>{city}</div> : ('위치를 찾고이땅!')}
     </div>
   );
 };
+
 
 export default Location;
