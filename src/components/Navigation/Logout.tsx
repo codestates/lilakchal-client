@@ -1,10 +1,13 @@
 import React from 'react';
-// import axios from 'axios';
+
+import dotenv from 'dotenv';
 import { useDispatch } from 'react-redux';
 import { LogoutHandler } from '../../redux/modules/account';
-// import qs from 'qs';
+import { UserInfoHandler } from '../../redux/modules/UserInfo';
+import { FaDoorOpen } from 'react-icons/fa';
+import './style/Logout.scss';
 
-
+dotenv.config();
 
 const Logout: React.FC = () => {
   //1. 카카오 서버에 로그아웃 요청을 보낸다
@@ -13,16 +16,19 @@ const Logout: React.FC = () => {
   const dispatch = useDispatch();
 
   const Logout = () => {
-    const clientId = '4d6b5048295d43015b06e9ffdf6419dd';
-    const redirectUri = 'http://localhost:3000';
+    const clientId = `${process.env.REACT_APP_KAKAO_CLIENT_ID}`;
+    const redirectUri = `${process.env.REACT_APP_KAKAO_REDIRECT_URI}`;
     
     window.location.assign(`https://kauth.kakao.com/oauth/logout?client_id=${clientId}&logout_redirect_uri=${redirectUri}`);
     dispatch(LogoutHandler(false));
+    dispatch(UserInfoHandler({id: 0, name: ''})); //서버로부터 응답받으면 리덕스에 정보 저장
+    localStorage.setItem('isLogin', 'false');
+    localStorage.setItem('city', '');
     
   };
   return (
     <div>
-      <button onClick={Logout}>로그아웃</button>
+      <FaDoorOpen className='Logout' size='40' onClick={Logout}/>
     </div>
   );
 };

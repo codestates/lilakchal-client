@@ -5,7 +5,7 @@ interface Iprops {
   submitHandler(): void
 }
 
-const SubmitBtn = ({str, submitHandler}: Iprops) => {
+const SubmitBtn: React.FC<Iprops> = ({str, submitHandler}) => {
   return (
     <button onClick={submitHandler}>{str}</button>
   );
