@@ -15,6 +15,7 @@ export const initialState: userInfoState = {
   city: ''
 };
 
+
 //Action type 정의
 const userInfo = 'ttmk/UserInfo/LOGIN'; //Action은 '앱이름/reducer이름/Acction_type' 형태여야 한다. changeInfoByLogin로 변수 이름 변경하고싶음
 const changeInfoByGPS = 'ttmk/UserInfo/GPS';
@@ -29,10 +30,11 @@ export type UserInfoAction = ActionType<typeof actions>
 
 const UserInfoReducer = createReducer<userInfoState, UserInfoAction>(initialState, {
   [userInfo]: (state, action) => {
+    
     return Object.assign({}, state, {
-      'id': action.payload.id,
-      'kakaoId': action.payload.kakaoId,
-      'name': action.payload.name
+      id: action.payload.id,
+      kakaoId: action.payload.kakaoId,
+      name: action.payload.name
     });
   },
   [changeInfoByGPS]: (state, action) => {
