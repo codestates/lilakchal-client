@@ -89,3 +89,15 @@ export const InnerContainer = styled.div<{isWarning: boolean, isSide: boolean}>`
     animation: ${shakeAnimation} 0.3s alternate;
   `}
 `;
+
+export const LoadingContainer = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  background-color: #F361A6;
+  border-radius: 50%;
+  width: 13.5vw;
+  height: 13.5vw;
+`;
