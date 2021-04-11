@@ -14,7 +14,7 @@ const GoSearch: React.FC<RouteComponentProps & props> = ({ history, setNowPage }
   };
 
   return (
-    <FaSearch onClick={clickHandler}/>
+    <FaSearch size='40' onClick={clickHandler}/>
   );
 };
 

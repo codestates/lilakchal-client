@@ -1,9 +1,11 @@
 import React from 'react';
 import Logout from './Logout';
 import UserName from './UserName';
+import GoSearch from './GoSearch';
+import './style/MyoptionGroup.scss';
 
 interface props {
-  setNowPage: any
+  setNowPage?: any
 }
 
 const MyoptionGroup:React.FC<props> = ({ setNowPage }) => {
