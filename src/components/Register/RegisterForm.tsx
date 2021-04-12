@@ -1,11 +1,16 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
-import SubmitBtn from '../../modules/SubmitBtn';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/modules/reducer';
 
+import SubmitBtn from '../../modules/SubmitBtn';
 import './style/RegisterForm.scss';
 
 const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
+
+  const userid = useSelector((state: RootState) => state.UserInfoReducer);
+  const { id } = userid;
 
   const [photo, setImage] = useState<any>(null);
   const [imgbase64, setImgbase64] = useState<string>('');
@@ -45,6 +50,7 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
 
     const formData = new FormData();
     formData.append('file', photo);
+    formData.append('UserId', String(id));
     formData.append('photo', photo.name);
     formData.append('title', title);
     formData.append('price', String(price));
