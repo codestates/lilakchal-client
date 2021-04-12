@@ -52,12 +52,12 @@ const Chat:React.FC<RouteComponentProps> = ({history}) => {
 
   }, []);
 
-  const inputMessage = (e:React.MouseEvent): void => {
+  const inputMessage = (message: string): void => {
     const newChat = {
       userId: 3,
       itemId: 1,
-      text: '언제가 좋으세요',
-      createAt: new Date('2021-04-10 15:33:46')
+      text: message,
+      createAt: new Date()
     };
     setChats([...chats, newChat]);
   };
@@ -72,7 +72,7 @@ const Chat:React.FC<RouteComponentProps> = ({history}) => {
         } 
       </div>
       <div className="chat-write-box">
-        <MessageInput handleSubmit={inputMessage}>입력하기</MessageInput>
+        <MessageInput submitMessage={inputMessage}>입력하기</MessageInput>
       </div>
     </div>
   );
