@@ -23,6 +23,6 @@ export const getFormatedChatDate = (time: Date):string => {
 export const getFormatedItems = (items: Array<UnformatedItem>): ItemsState => {
   return {items: items.map(item => {
     const {id, title, price, photo, description, winnerId, sellerId, isClosed, city} = item;
-    return {id, title, price, photo, endTime: new Date(item.endTime), description, winnerId, sellerId, isClosed, city};
+    return {id, title, price, photo: `https://localhost:4000/${photo}`, endTime: new Date(item.endTime), description, winnerId, sellerId, isClosed, city};
   })};
 };
