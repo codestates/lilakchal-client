@@ -14,6 +14,8 @@ import {kakaoKey} from '../modules/constants';
 import {auctionSocket, bidData} from '../modules/socket';
 import { getFormatedItems } from '../modules/converters';
 
+let count = 0; // 인피니티 스크롤 offset 설정
+
 dotenv.config();
 
 interface MatchParams {
@@ -46,7 +48,6 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
   
   
   useEffect(() => {
-
     //search 페이지 들어오면 할일
 
     const url = new URL(window.location.href);
@@ -105,7 +106,7 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
         .then(res => {
           console.log('SearchPage에서 city', res.data.items[0].city);
           // 리덕스 상태 만들어서 응답으로 온 검색결과 저장하기
-          dispatch(ItemHandler(getFormatedItems(res.data.items))); 
+          dispatch(ItemHandler(getFormatedItems(res.data.items)));
         });
     }
     //2-(2) 검색 키워드가 없을때(처음 입장) 모든 자료 요청
@@ -128,6 +129,27 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
     });
   }, [],);
   console.log('SearchPage에서 city', items);
+
+  // 인피니티 스크롤
+  
+  window.onscroll = function() {
+    //window height + window scrollY 값이 document height보다 클 경우,
+    if((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+      //실행할 로직 (콘텐츠 추가)
+      count += 5;
+      axios.get('https://localhost:4000/search',
+        { params: { city: city, offset: count, keyword: match.params.keyword }})
+        .then(res => {
+          // 리덕스 상태 만들어서 응답으로 온 검색결과 저장하기
+          if (!res.data.items) {
+            dispatch(ItemHandler(getFormatedItems(items)));
+          } else {
+            dispatch(ItemHandler(getFormatedItems([...items, ...res.data.items]))); //검색결과 받아서 리덕스에 저장    
+          }
+        });
+
+    }
+  };
   
 
 
