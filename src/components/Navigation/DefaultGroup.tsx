@@ -5,11 +5,7 @@ import LoginSection from './LoginSection';
 import Location from './Location';
 import './style/DefaultGroup.scss';
 
-interface props {
-  setNowPage?: any,
-}
-
-const DefaultGroup:React.FC<props> = ({setNowPage }) => {
+const DefaultGroup:React.FC = () => {
 
   //서치바, 물품등록 btn
   //서치바는 input, 물품등록은 버튼 =>  두개다 컴포넌트로 만들어야함
@@ -29,7 +25,7 @@ const DefaultGroup:React.FC<props> = ({setNowPage }) => {
         <GoRegister/>
       </div>
       <div className='loginsection-container'>
-        <LoginSection setNowPage={setNowPage}/>
+        <LoginSection/>
       </div>
       
     </div>
