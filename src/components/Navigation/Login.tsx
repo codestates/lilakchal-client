@@ -7,7 +7,9 @@ import axios from 'axios';
 import { UserInfoHandler } from '../../redux/modules/UserInfo';
 import { LoginHandler } from '../../redux/modules/account';
 import { useDispatch } from 'react-redux';
+
 const { Kakao } = window;
+dotenv.config();
 
 declare global {
   interface Window {
@@ -15,11 +17,6 @@ declare global {
   }
 }
 
-dotenv.config();
-
-//1. 카카오 소셜로그인하기
-//2. autorization code 서버로 보내기
-//3. isLogin true로 만들기
 const Login: React.FC<RouteComponentProps> = ({history}) => {
 
 

@@ -12,17 +12,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const Header: React.FC = () => { 
 
-  // const [NowPage, setNowPage] = useState<boolean>(true); //true면 defalultgroup, false면 myoptiongroup
-  // console.log('true면 defaultGroup보여주기', NowPage);
-
   const HeaderState = useSelector((state: RootState) => state.HeaderReducer);
   const { Default } = HeaderState;
   const dispatch = useDispatch();
-
-  window.onpopstate = function(event: any) {
-    // setNowPage(true);
-    // console.log('마이페이지에서 뒤로갔을 때 setnowpage', NowPage);
-  };
 
   return (
     //로고
