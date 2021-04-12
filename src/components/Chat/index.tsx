@@ -3,6 +3,7 @@ import { useSelector, RootStateOrAny  } from 'react-redux';
 import { RouteComponentProps, withRouter } from 'react-router';
 import './style/Chat.scss';
 import Message from './Message';
+import MessageInput from './MessageInput';
 
 interface itemInfo{
   itemId: number,
@@ -51,7 +52,7 @@ const Chat:React.FC<RouteComponentProps> = ({history}) => {
 
   }, []);
 
-  const inputMessage = (): void => {
+  const inputMessage = (e:React.MouseEvent): void => {
     const newChat = {
       userId: 3,
       itemId: 1,
@@ -71,7 +72,7 @@ const Chat:React.FC<RouteComponentProps> = ({history}) => {
         } 
       </div>
       <div className="chat-write-box">
-        <button onClick={inputMessage}>입력하기</button>
+        <MessageInput handleSubmit={inputMessage}>입력하기</MessageInput>
       </div>
     </div>
   );
