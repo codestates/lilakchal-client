@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { useDispatch, useSelector, RootStateOrAny  } from 'react-redux';
 import axios from 'axios';
 import dotenv from 'dotenv';
@@ -14,7 +14,7 @@ import {kakaoKey} from '../modules/constants';
 import {auctionSocket, bidData} from '../modules/socket';
 import { getFormatedItems } from '../modules/converters';
 
-let count = 0; // 인피니티 스크롤 offset 설정
+// 인피니티 스크롤 offset 설정
 //import LoadingModal from '../components/Modal/LoadingModal';
 
 dotenv.config();
@@ -29,6 +29,7 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
   const itemState = useSelector((state:RootStateOrAny) => state.ItemReducer);
   const {items} = itemState;
   const dispatch = useDispatch();
+  const [Count, setCount] = useState(5);
   
   //ouath관련 함수
   const oauthLoginHandler = async (authorizationCode: string) => {
@@ -54,6 +55,7 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
           console.log('SearchPage에서 items Effect', res.data.items);
           // 리덕스 상태 만들어서 응답으로 온 검색결과 저장하기
           dispatch(ItemHandler(getFormatedItems(res.data.items))); 
+          setCount(5);
         });
     }
     //2-(2) 검색 키워드가 없을때(처음 입장) 모든 자료 요청
@@ -65,6 +67,7 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
           console.log(getFormatedItems(res.data.items));
           // 리덕스 상태 만들어서 응답으로 온 검색결과 저장하기
           dispatch(ItemHandler(getFormatedItems(res.data.items))); //검색결과 받아서 리덕스에 저장
+          setCount(5);
         });
     }
     console.log('뒤로가기 체크');
@@ -166,9 +169,10 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
     //window height + window scrollY 값이 document height보다 클 경우,
     if((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
       //실행할 로직 (콘텐츠 추가)
-      count += 5;
+      // count += 5;
+      setCount(Count + 5);
       axios.get(`${process.env.REACT_APP_SERVER_ADDRESS}/search`,
-        { params: { city: city, offset: count, keyword: match.params.keyword }})
+        { params: { city: city, offset: Count, keyword: match.params.keyword }})
         .then(res => {
           // 리덕스 상태 만들어서 응답으로 온 검색결과 저장하기
           if (!res.data.items) {
