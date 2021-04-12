@@ -13,7 +13,7 @@ const CenterModal: React.FC<ICenterModal> = ({ visible, onClose, children, backC
   return (
     <>
       <Dimmer visible={visible} backColor={backColor}></Dimmer>
-      <OuterContainer visible={visible}>
+      <OuterContainer visible={visible} onClick={onClose}>
         <InnerContainer color={color}>
           {children}
           <AiOutlineClose onClick={onClose}>Close</AiOutlineClose>
