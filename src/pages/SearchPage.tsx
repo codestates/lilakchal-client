@@ -176,9 +176,11 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
         .then(res => {
           // 리덕스 상태 만들어서 응답으로 온 검색결과 저장하기
           if (!res.data.items) {
-            dispatch(ItemHandler(getFormatedItems(items)));
+            //dispatch(ItemHandler(getFormatedItems(items)));
+            console.log('없음..');
           } else {
-            dispatch(ItemHandler(getFormatedItems([...items, ...res.data.items]))); //검색결과 받아서 리덕스에 저장    
+            const newItems = getFormatedItems(res.data.items); 
+            dispatch(ItemHandler({ items: [...items, ...newItems.items]})); //검색결과 받아서 리덕스에 저장    
           }
         });
 
