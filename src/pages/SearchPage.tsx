@@ -15,6 +15,7 @@ import {auctionSocket, bidData} from '../modules/socket';
 import { getFormatedItems } from '../modules/converters';
 
 let count = 0; // 인피니티 스크롤 offset 설정
+//import LoadingModal from '../components/Modal/LoadingModal';
 
 dotenv.config();
 
@@ -23,8 +24,6 @@ interface MatchParams {
 }
 
 const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}) => {
-
-
   const userInfoState = useSelector((state: RootState) => state.UserInfoReducer);
   const { id, city } = userInfoState;
   const itemState = useSelector((state:RootStateOrAny) => state.ItemReducer);
@@ -155,6 +154,7 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
 
   return (
     <Container>
+      {/* <LoadingModal isLoading={true}/> */}
       {
         items ? (items.map((item: Item) => 
           <ItemCard item={item} key={item.id}></ItemCard>
