@@ -43,7 +43,21 @@ export const Dimmer = styled.div<{visible: boolean, backColor: boolean}>`
   width: 100%;
   height: 100%;
   z-index: 999;
-  background-color: ${(props) => (props.backColor ? 'rgba(0, 0, 0, 0.3)' : 'rgba(0, 0, 0, 0)')}; 
+  background-color: ${(props) => (props.backColor ? 'rgba(0, 0, 0, 0.3)' : 'rgba(0, 0, 0, 0)')};
+`;
+
+export const OpaqueDimmer = styled.div<{visible: boolean}>`
+  box-sizing: border-box;
+  display: ${(props) => (props.visible ? 'block' : 'none')};
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  background-color: #D4F4FA;
 `;
 
 export const OuterContainer = styled.div<{visible: boolean}>`
@@ -88,4 +102,16 @@ export const InnerContainer = styled.div<{isWarning: boolean, isSide: boolean}>`
   ${(props) => props.isWarning && css`
     animation: ${shakeAnimation} 0.3s alternate;
   `}
+`;
+
+export const LoadingContainer = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  background-color: #F361A6;
+  border-radius: 50%;
+  width: 13.5vw;
+  height: 13.5vw;
 `;
