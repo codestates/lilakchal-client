@@ -45,7 +45,7 @@ const ItemCard: React.FC<Props> = ({item}) => {
   return (
     <Container className={'itemcard-container'}>
       <Modal visible={isOpenPopup} color={'#7660dccc'}  closeCb={closePopUp} backColor={true} isWarning={false} isSide={true}>
-        <ItemDetail item={item} requestBid={requestBid} ></ItemDetail>
+        <ItemDetail item={item} requestBid={requestBid} endtime={item.endTime} handleBidStatus={handleBidStatus} isExpired={isExpired}></ItemDetail>
       </Modal>
       <Thumbnail bg={item.photo}></Thumbnail>
       <Contents>
