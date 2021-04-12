@@ -35,7 +35,7 @@ const shakeAnimation = keyframes`
 export const Dimmer = styled.div<{visible: boolean, backColor: boolean}>`
   box-sizing: border-box;
   display: ${(props) => (props.visible ? 'block' : 'none')};
-  position: fixed;>
+  position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
@@ -78,7 +78,8 @@ export const InnerContainer = styled.div<{isWarning: boolean, isSide: boolean}>`
   width: 30%;
   height: 100%;
   right: 0; 
-  position: fixed; ` : `
+  position: fixed; 
+  top: 50%; ` : `
   max-width: 600px;
   min-width: 50px;
   min-height: 100px;
@@ -86,6 +87,6 @@ export const InnerContainer = styled.div<{isWarning: boolean, isSide: boolean}>`
   `}
 
   ${(props) => props.isWarning && css`
-   animation: ${shakeAnimation} 0.3s alternate;
+  animation: ${shakeAnimation} 0.3s alternate;
   `}
 `;
