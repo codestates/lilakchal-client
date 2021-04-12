@@ -49,7 +49,7 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
   window.onpopstate = function(event: any) { 
     if(match.params.keyword) {
       axios.get('https://localhost:4000/search',
-        { params: { city: city, keyword: match.params.keyword, offset: 1 }})
+        { params: { city: city, keyword: match.params.keyword, offset: 0 }})
         .then(res => {
           console.log('SearchPage에서 items Effect', res.data.items);
           // 리덕스 상태 만들어서 응답으로 온 검색결과 저장하기
@@ -59,7 +59,7 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
     //2-(2) 검색 키워드가 없을때(처음 입장) 모든 자료 요청
     if(!match.params.keyword) {
       axios.get('https://localhost:4000/search',
-        { params: { city: city, offset: 1}})
+        { params: { city: city, offset: 0}})
         .then(res => {
           console.log(res.data.items);
           console.log(getFormatedItems(res.data.items));
@@ -127,8 +127,8 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
 
     // if(city !== '') {
     if(match.params.keyword) {
-      axios.get('https://localhost:4000/search',
-        { params: { city: city, keyword: match.params.keyword, offset: 1 }})
+      axios.get(`${process.env.REACT_APP_SERVER_ADDRESS}/search`,
+        { params: { city: city, keyword: match.params.keyword, offset: 0 }})
         .then(res => {
           console.log('SearchPage에서 items Effect', res.data.items);
           // 리덕스 상태 만들어서 응답으로 온 검색결과 저장하기
@@ -137,8 +137,8 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
     }
     //2-(2) 검색 키워드가 없을때(처음 입장) 모든 자료 요청
     if(!match.params.keyword) {
-      axios.get('https://localhost:4000/search',
-        { params: { city: city, offset: 1}})
+      axios.get(`${process.env.REACT_APP_SERVER_ADDRESS}/search`,
+        { params: { city: city, offset: 0}})
         .then(res => {
           console.log(res.data.items);
           console.log(getFormatedItems(res.data.items));
@@ -167,7 +167,7 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
     if((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
       //실행할 로직 (콘텐츠 추가)
       count += 5;
-      axios.get('https://localhost:4000/search',
+      axios.get(`${process.env.REACT_APP_SERVER_ADDRESS}/search`,
         { params: { city: city, offset: count, keyword: match.params.keyword }})
         .then(res => {
           // 리덕스 상태 만들어서 응답으로 온 검색결과 저장하기
