@@ -7,8 +7,43 @@
   margin: 20px;
 }
 
+.itemdetail-topbox {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
 .itemdetail-img {
   width: 300px;
   height: auto;
   border-radius: 20px;
+}
+
+.itemdetail-midbox {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 10px 0px;
+}
+
+.itemdetail-price {
+  display: flex;
+  justify-content: space-between;
+}
+
+.itemdetail-price {
+  font-size: 1rem;
+}
+
+.itemdetail-timer {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 1rem;
+}
+
+.itemdetail-description {
+  margin-bottom: 20px;
 }
