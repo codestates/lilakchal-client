@@ -35,7 +35,7 @@ const SearchBar: React.FC<RouterProps> = ({history}) => {
 
     if(inputValue) {
       axios.get(`${process.env.REACT_APP_SERVER_ADDRESS}/search`,
-        { params: { city: city, keyword: inputValue, offset: 1 }})
+        { params: { city: city, keyword: inputValue, offset: 0 }})
         .then(res => {
           console.log('검색할때 city가 있나요?', city);
           console.log('SearchPage에서 city', res.data.items);
