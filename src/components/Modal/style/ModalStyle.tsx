@@ -92,7 +92,8 @@ export const InnerContainer = styled.div<{isWarning: boolean, isSide: boolean}>`
   width: 30%;
   height: 100%;
   right: 0; 
-  position: fixed; ` : `
+  position: fixed; 
+  top: 50%; ` : `
   max-width: 600px;
   min-width: 50px;
   min-height: 100px;

@@ -25,3 +25,5 @@ export const InputName = styled.input`
   flex: 1 0 0;
   margin-right: 20px;
 `;
+
+export const ErrorMessage = styled.span``;
