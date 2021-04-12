@@ -10,11 +10,16 @@ interface ICenterModal {
 }
 
 const CenterModal: React.FC<ICenterModal> = ({ visible, onClose, children, backColor, color }): JSX.Element => {
+
+  const preventEventPropagation = (e: React.MouseEvent<HTMLElement>) => {
+    e.stopPropagation();
+  };
+
   return (
     <>
       <Dimmer visible={visible} backColor={backColor}></Dimmer>
       <OuterContainer visible={visible} onClick={onClose}>
-        <InnerContainer color={color}>
+        <InnerContainer color={color} onClick={preventEventPropagation}>
           {children}
           <AiOutlineClose onClick={onClose}>Close</AiOutlineClose>
         </InnerContainer>

@@ -19,7 +19,7 @@ const Modal: React.FC<Props> = ({ visible, isSide, color, closeCb, className, ch
     closeCb();
   };
 
-  const prevendEventPropagation = (e: React.MouseEvent<HTMLElement>) => { //any는 추후 수정하자..
+  const preventEventPropagation = (e: React.MouseEvent<HTMLElement>) => { //any는 추후 수정하자..
     e.stopPropagation();
   };
 
@@ -27,7 +27,7 @@ const Modal: React.FC<Props> = ({ visible, isSide, color, closeCb, className, ch
     <>
       <Dimmer visible={visible} backColor={backColor}></Dimmer>
       <OuterContainer visible={visible} onClick={onClickDimmerHandler}>
-        <InnerContainer isSide={isSide} color={color} className={className} isWarning={isWarning} onClick={prevendEventPropagation}>
+        <InnerContainer isSide={isSide} color={color} className={className} isWarning={isWarning} onClick={preventEventPropagation}>
           {children}
           {/* <Icon bg={isBlackBtn ? './res/close_black.png' : './res/close_white.png'} onClick={onClose}></Icon> */}
         </InnerContainer>
