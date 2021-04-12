@@ -17,9 +17,7 @@ const Header: React.FC = () => {
   const dispatch = useDispatch();
 
   return (
-    //로고
-    // 어디 페이지인가에 따라서 <MyoptionGroup> : <DefaultGroup>
-    // <LoginSection> => 로그인 상태에 따라서 <LoginBtn> : <MypageBtn>
+    
     <div className="header-container">
       <div className='header'>
         <div className="logo">
