@@ -55,7 +55,8 @@ export const InnerContainer = styled.div<IInnerContainer>`
   min-width: 50px;
   min-height: 100px;
   top: 50%;
-  margin: 0 auto;
+  left: 50%;
+  margin: 0;
   transform: translate(-50%);
   outline: none;
 `;

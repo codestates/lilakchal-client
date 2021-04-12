@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Wrapper, Title, Container, InputName, ErrorMessage } from './EditFormStyle';
+import { Wrapper, Title, Container, InputName, ErrorMessage } from './style/EditFormStyle';
 import SubmitBtn from '../../modules/SubmitBtn';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../redux/modules/reducer';
@@ -23,10 +23,8 @@ const EditForm: React.FC<IEditFrom> = ({ setIsOpenPopup }) => {
   const submitHandler = async () => {
 
     const regexr = /[\s]|[~!@#$%^&*()_+|<>?:{}]/;
-    console.log('EditFrom line 25', regexr.test(name));
 
     if (newName.length === 0 || newName.length > 12) {
-      console.log('EditFrom line 28', name);
       setErrorMessage('닉네임은 1글자 이상, 12글자 이하여야 합니다.');
       return;
     } else if (regexr.test(newName)) {
@@ -39,10 +37,6 @@ const EditForm: React.FC<IEditFrom> = ({ setIsOpenPopup }) => {
         .then(() => dispatch(UserInfoHandler({id, kakaoId, name: newName})));
       setErrorMessage('');
       setIsOpenPopup(false);
-      // 변경을 누르고, axios 요청을 보내고 응답을 받았을 때 변경 되어야 한다
-      // 리덕스의 username 상태를 응답 받은 값으로 변경
-      // useSelect로 name을 읽고 있다 바뀌었으면 읽는다
-      // .then dispatch
     }
   };
 

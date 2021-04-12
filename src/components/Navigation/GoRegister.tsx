@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/modules/reducer';
+import Modal from './modal/CenterModal';
+import LoginError from './LoginError';
 
 import './style/GoRegister.scss';
 // import { FaSearch } from 'react-icons/fa';
@@ -13,21 +15,29 @@ const GoRegister: React.FC<SomeComponentProps> = ({ history }) => {
 
   const loginState = useSelector((state: RootState) => state.AccountReducer);
   const { isLogin } = loginState;
+  const [isOpenPopup, setIsOpenPopup] = useState<boolean>(false);
+
+  const toglePopup = () => {
+    setIsOpenPopup(!isOpenPopup);
+  };
 
   const goRegister = () => {
-
     if(isLogin) {
       history.push('/ko/register');
     } else {
-      alert('로그인 후 이용 가능합니다.');
+      setIsOpenPopup(true);
     }
-
   };
 
   return (
-    <div className='register-btn'onClick={goRegister} >
-      <AiOutlinePlusCircle size='40' color='black'/>
-    </div>
+    <>
+      <Modal visible={isOpenPopup} color={'#fff'} onClose={toglePopup} backColor={false}>
+        <LoginError/>
+      </Modal>
+      <div className='register-btn' onClick={goRegister} >
+        <AiOutlinePlusCircle size='40' color='black'/>
+      </div>
+    </>
   );
 };
 
