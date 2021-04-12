@@ -1,42 +1,42 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {Item} from '../../redux/modules/Items';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../redux/modules/reducer';
 
-import Modal from '../Navigation/modal/CenterModal';
-import LoginError from '../Navigation/LoginError';
+import Timer from './Timer';
+import BidBtn from './BidBtn';
+import './style/itemDetail.scss';
 
 interface Props {
   item: Item,
-  requestBid: (price:number) => void
+  requestBid: (price:number) => void,
+  endtime: Date,
+  handleBidStatus: (isClosed: boolean) => void,
+  isExpired: boolean
 }
 
-const ItemDetail: React.FC<Props> = ({item, requestBid}) => {
-
-  const loginState = useSelector((state: RootState) => state.AccountReducer);
-  const { isLogin } = loginState;
-  const [isOpenPopup, setIsOpenPopup] = useState<boolean>(false);
-
-  const toglePopup = () => {
-    setIsOpenPopup(!isOpenPopup);
-  };
-
-  const clickHandler = () => {
-
-    if(isLogin) {
-      requestBid(77777);
-    } else {
-      setIsOpenPopup(true);
-    }
-  };
+const ItemDetail: React.FC<Props> = ({item, requestBid, endtime, handleBidStatus, isExpired}) => {
+  
+  const unit1000 = 1000;
+  const unit10000 = 10000;
+  const unit100000 = 100000;
 
   return (
     <>
-      <Modal visible={isOpenPopup} color={'#fff'} onClose={toglePopup} backColor={false}>
-        <LoginError/>
-      </Modal>
-      <div>ItemDefail: {item.price}</div>
-      <button onClick={clickHandler}>상위입찰</button>
+      <section className="itemdetail">
+        <article className="itemdetail-topbox">
+          <h1 className="itemdetail-title">{item.title}</h1>
+          <img className="itemdetail-img" src={item.photo} alt=""/>
+        </article>
+        <article className="itemdetail-midbox">
+          <div className="itemdetail-price">현재가격: {item.price}원</div>
+          <div className="itemdetail-timer">남은시간: <Timer endtime={endtime} handleBidStatus={handleBidStatus} /></div>
+        </article>
+        <div className="itemdetail-description">{item.description}</div>
+        <article className="itemdetail-btnbox">
+          <BidBtn item={item} requestBid={requestBid} unit={unit1000} isExpired={isExpired}/>
+          <BidBtn item={item} requestBid={requestBid} unit={unit10000} isExpired={isExpired}/>
+          <BidBtn item={item} requestBid={requestBid} unit={unit100000} isExpired={isExpired}/>
+        </article>
+      </section>
     </>
   );
 };
