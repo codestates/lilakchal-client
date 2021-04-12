@@ -22,8 +22,6 @@ const Logout: React.FC = () => {
     window.location.assign(`https://kauth.kakao.com/oauth/logout?client_id=${clientId}&logout_redirect_uri=${redirectUri}`);
     dispatch(LogoutHandler(false));
     dispatch(UserInfoHandler({id: 0, name: ''})); //서버로부터 응답받으면 리덕스에 정보 저장
-    localStorage.setItem('isLogin', 'false');
-    localStorage.setItem('city', '');
     
   };
   return (

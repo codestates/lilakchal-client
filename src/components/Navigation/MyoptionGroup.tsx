@@ -4,16 +4,12 @@ import UserName from './UserName';
 import GoSearch from './GoSearch';
 import './style/MyoptionGroup.scss';
 
-interface props {
-  setNowPage?: any
-}
-
-const MyoptionGroup:React.FC<props> = ({ setNowPage }) => {
+const MyoptionGroup:React.FC = () => {
   return (
     // FilterBtn , username, GoSearch, Logout
     <div className='MyoptionGroup-container'>
       <UserName />
-      <GoSearch setNowPage={setNowPage}/>
+      <GoSearch />
       <Logout/>
     </div>
   );

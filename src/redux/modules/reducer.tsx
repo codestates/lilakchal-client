@@ -3,12 +3,14 @@ import AccountReducer from './account';
 import InputvalueReducer from './SearchValue';
 import ItemReducer from './Items';
 import UserInfoReducer from './UserInfo';
+import HeaderReducer from './HeaderState';
 
 const rootReducer = combineReducers({
   AccountReducer,
   InputvalueReducer,
   ItemReducer,
-  UserInfoReducer
+  UserInfoReducer,
+  HeaderReducer
 });
 
 export default rootReducer;
