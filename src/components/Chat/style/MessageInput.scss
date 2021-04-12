@@ -1,12 +1,15 @@
 .message-input-form{
-  min-width: 40%;
+  min-width: 80%;
   border: 1px solid #cecece;
+  display: flex;
 }
 
 .message-input{
   font-size: 1rem;
+  flex: 2 1 auto;
 }
 
 .message-submit-btn{
   font-size: 1rem;
+  flex: 0 1 auto;
 }

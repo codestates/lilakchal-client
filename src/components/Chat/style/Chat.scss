@@ -1,7 +1,9 @@
 .chat-container{
-  min-height: 60vh;
-  min-width: 40%;
-  border: 1px solid #cecece;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 70vh;
+  min-width: 30%;
 }
 
 .chat-title{
@@ -11,8 +13,14 @@
 
 .chat-message-box{
   background-color: #EAEAEA;
+  overflow-y: scroll;
+  height: 60vh;
+  padding: 10px;
 }
 
 .chat-write-box{
   background-color: #FFD9EC;
+  display:flex;
+  align-items: center;
+  justify-content: center;
 }

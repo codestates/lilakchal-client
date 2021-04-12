@@ -4,40 +4,17 @@ import { RouteComponentProps, withRouter } from 'react-router';
 import './style/Chat.scss';
 import Message from './Message';
 import MessageInput from './MessageInput';
+import {chatSocket} from '../../modules/socket';
+import {itemInfo, message, unFormatedMessage} from '../../interface/Chat';
+import {getFormatedMessages, getFormatedMessage} from '../../modules/converters';
 
-interface itemInfo{
-  itemId: number,
-  title: string
-}
-
-interface messageForm{
-  userId: number,
-  itemId: number,
-  text: string,
-  createAt: Date
-}
-
-const testData: Array<messageForm> = [
-  {
-    userId: 3,
-    itemId: 1,
-    text: '안녕하세요 거래할까요',
-    createAt: new Date('2021-04-10 15:33:44')
-  },
-  {
-    userId: 2,
-    itemId: 1,
-    text: 'ㅇㅇ',
-    createAt: new Date('2021-04-10 15:33:45')
-  }
-];
 
 const Chat:React.FC<RouteComponentProps> = ({history}) => {
 
   const userState = useSelector((state:RootStateOrAny) => state.UserInfoReducer);
   const {id} = userState;
   const [itemInfo, setItemInfo] = useState<itemInfo>({itemId: 0, title: 'title'}); //채팅방 정보
-  const [chats, setChats] = useState<Array<messageForm>>(testData);
+  const [chats, setChats] = useState<Array<message>>([]);
   
 
   useEffect(() => {
@@ -45,21 +22,39 @@ const Chat:React.FC<RouteComponentProps> = ({history}) => {
     const { itemId, title } = history.location.state as itemInfo;
     setItemInfo({itemId, title});
 
-    //2. socketio로 접속하여 이전까지의 메시지내용을 불러온후 렌더링한다.
-    //renderMessage()
+    //2. socketio로 접속하여 
+    chatSocket.emit('join', {
+      userId: id,
+      itemId: itemId
+    });
 
-    //3. socketio에서 메시지를 받으면 setChats를 통해 재렌더링한다.
-
+    return () => {
+      chatSocket.off('messages');
+      chatSocket.off('message');
+    };
   }, []);
+
+  useEffect(() => { //소켓이벤트 [chats]에 안붙이면 이전 메시지(chats) state가 빈배열이 된다.
+    //2. 이전까지의 메시지내용을 불러온후 렌더링한다.
+    chatSocket.on('messages', (data:Array<unFormatedMessage>) => {
+      setChats(getFormatedMessages(data));
+    });
+
+    //3. socketio에서 하나의 메시지를 받으면 setChats를 통해 재렌더링한다.
+    chatSocket.on('message', (data:unFormatedMessage) => {
+      setChats([...chats, getFormatedMessage(data)]);
+    });
+  }, [chats]);
 
   const inputMessage = (message: string): void => {
     const newChat = {
-      userId: 3,
-      itemId: 1,
+      userId: id,
+      itemId: itemInfo.itemId,
       text: message,
-      createAt: new Date()
+      createdAt: new Date()
     };
     setChats([...chats, newChat]);
+    chatSocket.emit('message', newChat);
   };
 
   return (
@@ -67,8 +62,8 @@ const Chat:React.FC<RouteComponentProps> = ({history}) => {
       <div className="chat-title">{itemInfo.title}</div>
       <div className="chat-message-box" id="chat-message-box">
         {
-          chats.map((chat:messageForm) => 
-            <Message key={`${chat.createAt.getTime()}-${chat.userId}`} isMine={id === chat.userId} text={chat.text} time={chat.createAt}/>)
+          chats.map((chat:message) => 
+            <Message key={`${chat.createdAt.getTime()}-${chat.userId}`} isMine={id === chat.userId} text={chat.text} time={chat.createdAt}/>)
         } 
       </div>
       <div className="chat-write-box">
