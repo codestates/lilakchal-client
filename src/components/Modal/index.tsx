@@ -1,5 +1,5 @@
 import React from 'react';
-import { Dimmer, OuterContainer, InnerContainer } from './ModalStyle';
+import { Dimmer, OuterContainer, InnerContainer } from './style/ModalStyle';
 
 interface Props {
   visible: boolean,
