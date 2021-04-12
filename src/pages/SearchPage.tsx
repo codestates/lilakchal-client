@@ -43,6 +43,32 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
         history.push('/ko/search');
       });
   };
+
+  // history.pushState(null, '', ''); 
+  window.onpopstate = function(event: any) { 
+    if(match.params.keyword) {
+      axios.get('https://localhost:4000/search',
+        { params: { city: city, keyword: match.params.keyword, offset: 1 }})
+        .then(res => {
+          console.log('SearchPage에서 items Effect', res.data.items);
+          // 리덕스 상태 만들어서 응답으로 온 검색결과 저장하기
+          dispatch(ItemHandler(getFormatedItems(res.data.items))); 
+        });
+    }
+    //2-(2) 검색 키워드가 없을때(처음 입장) 모든 자료 요청
+    if(!match.params.keyword) {
+      axios.get('https://localhost:4000/search',
+        { params: { city: city, offset: 1}})
+        .then(res => {
+          console.log(res.data.items);
+          console.log(getFormatedItems(res.data.items));
+          // 리덕스 상태 만들어서 응답으로 온 검색결과 저장하기
+          dispatch(ItemHandler(getFormatedItems(res.data.items))); //검색결과 받아서 리덕스에 저장
+        });
+    }
+    console.log('뒤로가기 체크');
+
+  };
   
   
   useEffect(() => {
@@ -98,12 +124,13 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
 
 
     console.log('match.params.keyword=', match.params.keyword);
-          
+
+    // if(city !== '') {
     if(match.params.keyword) {
       axios.get('https://localhost:4000/search',
-        { params: { city: city, keyword: match.params.keyword }})
+        { params: { city: city, keyword: match.params.keyword, offset: 1 }})
         .then(res => {
-          console.log('SearchPage에서 city', res.data.items[0].city);
+          console.log('SearchPage에서 items Effect', res.data.items);
           // 리덕스 상태 만들어서 응답으로 온 검색결과 저장하기
           dispatch(ItemHandler(getFormatedItems(res.data.items))); 
         });
@@ -111,14 +138,17 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
     //2-(2) 검색 키워드가 없을때(처음 입장) 모든 자료 요청
     if(!match.params.keyword) {
       axios.get('https://localhost:4000/search',
-        { params: { city: city}})
+        { params: { city: city, offset: 1}})
         .then(res => {
-          console.log(res.data.items[0].city);
+          console.log(res.data.items);
           console.log(getFormatedItems(res.data.items));
           // 리덕스 상태 만들어서 응답으로 온 검색결과 저장하기
           dispatch(ItemHandler(getFormatedItems(res.data.items))); //검색결과 받아서 리덕스에 저장
         });
     }
+    // }
+          
+    
 
     //3. socketio에 연결: 가격정보 수신 시 querySelector로 해당 부분의 가격을 변경한다.
     auctionSocket.on('bid', ({itemId, price}: bidData) => {
@@ -126,8 +156,10 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
       const priceDiv = document.querySelector(`#itemcard-${itemId}`) as Node;
       priceDiv.textContent = price.toString();
     });
-  }, [],);
-  console.log('SearchPage에서 city', items);
+    console.log('뒤로가기를 했을 때 SearchPage useeffect 실행되나요?');
+  }, []);
+  console.log('SearchPage에서 items', items);
+  
   
 
 

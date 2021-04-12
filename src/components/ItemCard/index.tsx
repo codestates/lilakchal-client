@@ -16,7 +16,7 @@ interface Props {
 const ItemCard: React.FC<Props> = ({item}) => {
   const userState = useSelector((state:RootStateOrAny) => state.UserInfoReducer);
   const {id} = userState;
-  const [isExpired, setIsExpired] = useState<boolean>(item.isClosed);
+  const [isExpired, setIsExpired] = useState<boolean>(false);
   const [isOpenPopup, setIsOpenPopup] = useState<boolean>(false);
   
   const handleBidStatus = (isExpired: boolean) : void => {
@@ -41,8 +41,6 @@ const ItemCard: React.FC<Props> = ({item}) => {
   const closePopUp = () => {
     setIsOpenPopup(false);
   };
-  console.log('itemcard에서 ', item.city);
-  
 
   return (
     <Container className={'itemcard-container'}>
