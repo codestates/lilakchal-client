@@ -4,7 +4,7 @@ import { RouteComponentProps, withRouter } from 'react-router';
 import './style/Chat.scss';
 import Message from './Message';
 import MessageInput from './MessageInput';
-import {chatSocket} from '../../modules/socket';
+import { chatSocket } from '../../modules/socket';
 import {itemInfo, message, unFormatedMessage} from '../../interface/Chat';
 import {getFormatedMessages, getFormatedMessage} from '../../modules/converters';
 
