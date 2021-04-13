@@ -1,4 +1,4 @@
-import React, {useEffect, useState}from 'react';
+import React, {useEffect, useState, useRef}from 'react';
 import { useSelector, RootStateOrAny  } from 'react-redux';
 import { RouteComponentProps, withRouter } from 'react-router';
 import './style/Chat.scss';
@@ -15,7 +15,7 @@ const Chat:React.FC<RouteComponentProps> = ({history}) => {
   const {id} = userState;
   const [itemInfo, setItemInfo] = useState<itemInfo>({itemId: 0, title: 'title'}); //채팅방 정보
   const [chats, setChats] = useState<Array<message>>([]);
-  
+  const messageBox = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     //1. 어떤 물품의 채팅인지 정보를 받는다.
@@ -46,6 +46,10 @@ const Chat:React.FC<RouteComponentProps> = ({history}) => {
     });
   }, [chats]);
 
+  useEffect(() => {
+    messageBox?.current?.scrollTo(0, messageBox.current.scrollHeight);
+  });
+
   const inputMessage = (message: string): void => {
     const newChat = {
       userId: id,
@@ -60,7 +64,7 @@ const Chat:React.FC<RouteComponentProps> = ({history}) => {
   return (
     <div className="chat-container">
       <div className="chat-title">{itemInfo.title}</div>
-      <div className="chat-message-box" id="chat-message-box">
+      <div className="chat-message-box" id="chat-message-box" ref={messageBox}>
         {
           chats.map((chat:message) => 
             <Message key={`${chat.createdAt.getTime()}-${chat.userId}`} isMine={id === chat.userId} text={chat.text} time={chat.createdAt}/>)
