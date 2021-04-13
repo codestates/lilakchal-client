@@ -15,6 +15,8 @@ const Chat:React.FC<RouteComponentProps> = ({history}) => {
   const {id} = userState;
   const [itemInfo, setItemInfo] = useState<itemInfo>({itemId: 0, title: 'title'}); //채팅방 정보
   const [chats, setChats] = useState<Array<message>>([]);
+
+  
   
 
   useEffect(() => {

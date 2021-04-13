@@ -33,21 +33,29 @@ const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
   };
 
   useEffect(() => {
-    handlefilter();
+    axios.post(`${process.env.REACT_APP_SERVER_ADDRESS}/user/myauction/buyer`,
+      {userId: id },
+      {withCredentials: true})
+      .then(res => {
+        dispatch(ItemHandler(getFormatedItems(res.data.items)));
+        console.log(res.data.items);
+        // history.push('/ko/mypage/auction');
+        console.log('buyer 응답');
+      });
     console.log('왜');
   }, [searchType]);
 
-  const handlefilter = () => {
+  const handlefilter = (props: string) => {
     //1.setSearchType으로 서버에 요청 분기(요청할 때 필요한것:userId => 리덕스에 있음)
     //2.응답받아서 리덕스에 저장하기
-    if(searchType === 'buyer') {
+    if(props === 'buyer') {
       axios.post(`${process.env.REACT_APP_SERVER_ADDRESS}/user/myauction/buyer`,
         {userId: id },
         {withCredentials: true})
         .then(res => {
           dispatch(ItemHandler(getFormatedItems(res.data.items)));
           console.log(res.data.items);
-          // history.push('/ko/mypage/auction');
+          history.push('/ko/mypage/auction');
           console.log('buyer 응답');
         });
     }
@@ -58,7 +66,7 @@ const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
         .then(res => {
           dispatch(ItemHandler(getFormatedItems(res.data.items)));
           console.log(res.data.items);
-          // history.push('/ko/mypage/auction');
+          history.push('/ko/mypage/auction');
           console.log('seller 응답');
         });
     }
@@ -71,14 +79,14 @@ const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
         <div className='radio-button'>
           <div className="buyer">
             <label className="tooltip-container">
-              <input name='radio' type="radio" value="buyer" onChange={() => setsearchType('buyer')} checked={searchType === 'buyer' ? true : false} />
+              <input name='radio' type="radio" value="buyer" onClick={()=>handlefilter('buyer')} onChange={() => setsearchType('buyer')} checked={searchType === 'buyer' ? true : false} />
               <span className="checkmark"></span>
                     입찰
             </label>
           </div>
           <div className="seller">
             <label className="tooltip-container">
-              <input name='radio' type="radio" value="seller" onChange={() => setsearchType('seller')} checked={searchType === 'seller' ? true : false} />
+              <input name='radio' type="radio" value="seller" onClick={()=>handlefilter('seller')} onChange={() => setsearchType('seller')} checked={searchType === 'seller' ? true : false} />
               <span className="checkmark"></span>
                     판매
             </label>
