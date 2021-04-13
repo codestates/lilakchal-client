@@ -37,12 +37,12 @@ const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
   //   console.log('왜');
   // }, [searchType]);
 
-  const temp = (value: string) => {
+  const handleFilter = (value: string) => {
     setsearchType(value);
-    handlefilter();
+    requestItems();
   };
 
-  const handlefilter = () => {
+  const requestItems = () => {
     //1.setSearchType으로 서버에 요청 분기(요청할 때 필요한것:userId => 리덕스에 있음)
     //2.응답받아서 리덕스에 저장하기
     if(searchType === 'buyer') {
@@ -76,14 +76,14 @@ const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
         <div className='radio-button'>
           <div className="buyer">
             <label className="tooltip-container">
-              <input name='radio' type="radio" value="buyer" readOnly onClick={() => temp('buyer')} checked={searchType === 'buyer' ? true : false} />
+              <input name='radio' type="radio" value="buyer" readOnly onClick={() => handleFilter('buyer')} checked={searchType === 'buyer' ? true : false} />
               <span className="checkmark"></span>
                     입찰
             </label>
           </div>
           <div className="seller">
             <label className="tooltip-container">
-              <input name='radio' type="radio" value="seller" readOnly onClick={() => temp('seller')} checked={searchType === 'seller' ? true : false} />
+              <input name='radio' type="radio" value="seller" readOnly onClick={() => handleFilter('seller')} checked={searchType === 'seller' ? true : false} />
               <span className="checkmark"></span>
                     판매
             </label>
