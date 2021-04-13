@@ -18,7 +18,8 @@ export const getFormatedChatDate = (time: Date):string => {
   const hour = time.getHours();
   const min = time.getMinutes();
   const ampm = hour <= 12 ? '오전' : '오후';
-  return `${ampm} ${hour}:${min}`;
+
+  return `${ampm} ${hour.toString().padStart(2, '0')}:${min.toString().padStart(2, '0')}`;
 };
 
 export const getFormatedItems = (items: Array<UnformatedItem>): ItemsState => {
