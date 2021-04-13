@@ -10,7 +10,8 @@ import ItemCard from '../components/ItemCard/index';
 import {Container} from './style/SearchPageStyle';
 import { Item, ItemHandler } from '../redux/modules/Items';
 // import {kakaoKey} from '../modules/constants';
-import {auctionSocket, bidData} from '../modules/socket';
+import {auctionSocket} from '../modules/socket';
+import {bidData} from '../interface/Bid';
 import { getFormatedItems } from '../modules/converters';
 
 import LoadingModal from '../components/Modal/LoadingModal';
@@ -56,8 +57,6 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
           setCount(5);
         });
     }
-    console.log('뒤로가기 체크');
-
   };
   
   useEffect(() => {    
@@ -100,15 +99,29 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
     // }
           
     
-
-    //3. socketio에 연결: 가격정보 수신 시 querySelector로 해당 부분의 가격을 변경한다.
-    auctionSocket.on('bid', ({itemId, price}: bidData) => {
-      console.log('receive bid', price);
-      const priceDiv = document.querySelector(`#itemcard-${itemId}`) as Node;
-      priceDiv.textContent = price.toString();
-    });
-    console.log('뒤로가기를 했을 때 SearchPage useeffect 실행되나요?');
   }, [city, match.params.keyword]);
+
+  useEffect(() => {
+    //3. socketio에 연결: 가격정보 수신 시 querySelector로 해당 부분의 가격을 변경한다.
+    auctionSocket.on('bid', ({itemId, price, userId}: bidData) => {
+      console.log('receive bid', price, userId, itemId);
+      //const priceDiv = document.querySelector(`#itemcard-${itemId}`) as Node;
+      //priceDiv.textContent = price.toString();
+      console.log(items);
+      const newItems = items.map((item: Item) => {
+        if(item.id === itemId) {
+          item.winnerId = userId;
+          item.price = price;
+        }
+        return item;
+      });
+      console.log(newItems);
+      dispatch(ItemHandler({items: newItems}));
+    });
+    return () => {
+      auctionSocket.off('bid');
+    };
+  }, [items]);
   
   console.log('SearchPage에서 city', items);
 

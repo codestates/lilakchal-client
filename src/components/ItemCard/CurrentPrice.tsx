@@ -9,7 +9,7 @@ interface Props {
 const CurrentPrice: React.FC<Props> = ({itemId, price}) => {
   return (
     <div className="itemcard-price" >
-      <span id={`itemcard-${itemId}`}>{price}</span><span>{units.price}</span>
+      <span id={`itemcard-${itemId}`}>{price.toLocaleString('ko-KR')}</span><span>{units.price}</span>
     </div>
   );
 };
