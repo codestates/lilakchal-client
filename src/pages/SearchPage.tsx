@@ -14,6 +14,7 @@ import {auctionSocket, bidData} from '../modules/socket';
 import { getFormatedItems } from '../modules/converters';
 
 import LoadingModal from '../components/Modal/LoadingModal';
+import Empty from '../components/ItemCard/Empty';
 
 dotenv.config();
 
@@ -140,9 +141,9 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
     <Container>
       {!city ?  <LoadingModal isLoading={true}/> 
         :
-        items ? (items.map((item: Item) => 
+        items.length ? (items.map((item: Item) => 
           <ItemCard item={item} key={item.id}></ItemCard>
-        )) : <></>
+        )) : < Empty />
       }
     </Container>
   );
