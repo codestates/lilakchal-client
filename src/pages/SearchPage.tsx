@@ -4,18 +4,17 @@ import axios from 'axios';
 import dotenv from 'dotenv';
 import { RouteComponentProps, withRouter } from 'react-router';
 
-import { UserInfoHandler, LocationInfoHandler } from '../redux/modules/UserInfo';
+import { UserInfoHandler } from '../redux/modules/UserInfo';
 import { LoginHandler} from '../redux/modules/account';
 import { RootState } from '../redux/modules/reducer';
 import ItemCard from '../components/ItemCard/index';
 import {Container} from './style/SearchPageStyle';
 import { Item, ItemHandler } from '../redux/modules/Items';
-import {kakaoKey} from '../modules/constants';
+// import {kakaoKey} from '../modules/constants';
 import {auctionSocket, bidData} from '../modules/socket';
 import { getFormatedItems } from '../modules/converters';
 
-// 인피니티 스크롤 offset 설정
-//import LoadingModal from '../components/Modal/LoadingModal';
+import LoadingModal from '../components/Modal/LoadingModal';
 
 dotenv.config();
 
@@ -74,10 +73,8 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
 
   };
   
-  
   useEffect(() => {
     //search 페이지 들어오면 할일
-
     const url = new URL(window.location.href);
     const authorizationCode = url.searchParams.get('code');
     const login = localStorage.getItem('isLogin');
@@ -93,28 +90,6 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
       dispatch(LoginHandler(true));
     }
 
-    //1. 사용자에게 위치 정보 이용 동의 요청을 보낸다
-
-    
-    if(window.navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(async ({coords}) => {
-        const address = await axios.get(
-          `https://dapi.kakao.com/v2/local/geo/coord2address.json?x=${coords.longitude}&y=${coords.latitude}`,
-          {
-            headers: {
-              Authorization: `KakaoAK ${kakaoKey.REST_API}`,
-            },
-          }
-        );
-        const {region_1depth_name, region_2depth_name} = address.data.documents[0].address;
-        dispatch(LocationInfoHandler(`${region_1depth_name} ${region_2depth_name}`));
-        // localStorage.setItem('city', `${region_1depth_name} ${region_2depth_name}`);
-          
-      });
-    } else {
-      alert('GPS를 지원하지 않습니다');
-    }
-    
     
     // 2-(1) 검색키워드가 있을 때 서버에 요청
 
@@ -136,10 +111,11 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
           console.log('SearchPage에서 items Effect', res.data.items);
           // 리덕스 상태 만들어서 응답으로 온 검색결과 저장하기
           dispatch(ItemHandler(getFormatedItems(res.data.items)));
+          setCount(5);
         });
     }
     //2-(2) 검색 키워드가 없을때(처음 입장) 모든 자료 요청
-    if(!match.params.keyword) {
+    if(!match.params.keyword ) {
       axios.get(`${process.env.REACT_APP_SERVER_ADDRESS}/search`,
         { params: { city: city, offset: 0}})
         .then(res => {
@@ -147,6 +123,7 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
           console.log(getFormatedItems(res.data.items));
           // 리덕스 상태 만들어서 응답으로 온 검색결과 저장하기
           dispatch(ItemHandler(getFormatedItems(res.data.items))); //검색결과 받아서 리덕스에 저장
+          setCount(5);
         });
     }
     // }
@@ -160,7 +137,8 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
       priceDiv.textContent = price.toString();
     });
     console.log('뒤로가기를 했을 때 SearchPage useeffect 실행되나요?');
-  }, [],);
+  }, [city],);
+  
   console.log('SearchPage에서 city', items);
 
   // 인피니티 스크롤
@@ -188,11 +166,10 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
   };
   
 
-
   return (
     <Container>
-      {/* <LoadingModal isLoading={true}/> */}
-      {
+      {!city ?  <LoadingModal isLoading={true}/> 
+        :
         items ? (items.map((item: Item) => 
           <ItemCard item={item} key={item.id}></ItemCard>
         )) : <></>
