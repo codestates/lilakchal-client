@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/modules/reducer';
-import Modal from './modal/CenterModal';
-import LoginError from './LoginError';
+import Modal from '../Modal';
+import LoginError from '../Modal/LoginError';
 
 import './style/GoRegister.scss';
 // import { FaSearch } from 'react-icons/fa';
@@ -31,7 +31,7 @@ const GoRegister: React.FC<SomeComponentProps> = ({ history }) => {
 
   return (
     <>
-      <Modal visible={isOpenPopup} color={'#fff'} onClose={toglePopup} backColor={false}>
+      <Modal visible={isOpenPopup} color={'#fff'} closeCb={toglePopup} backColor={true} isWarning={true} isSide={false}>
         <LoginError/>
       </Modal>
       <div className='register-btn' onClick={goRegister} >

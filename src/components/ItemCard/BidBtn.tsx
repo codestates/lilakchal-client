@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/modules/reducer';
 import { Item } from '../../redux/modules/Items';
 
-import Modal from '../Navigation/modal/CenterModal';
-import LoginError from '../Navigation/LoginError';
+import Modal from '../Modal';
+import LoginError from '../Modal/LoginError';
 
 interface IBidBtn {
   item: Item,
@@ -37,7 +37,7 @@ const BidBtn: React.FC<IBidBtn> = ({ item, requestBid, unit, isExpired }) => {
 
   return (
     <>
-      <Modal visible={isOpenPopup} color={'#fff'} onClose={toglePopup} backColor={false}>
+      <Modal visible={isOpenPopup} color={'#fff'} closeCb={toglePopup} backColor={true} isWarning={true} isSide={false}>
         <LoginError/>
       </Modal>
       <button onClick={clickHandler}>{`+${unit}원`}</button>

@@ -63,11 +63,13 @@ export const OpaqueDimmer = styled.div<{visible: boolean}>`
 export const OuterContainer = styled.div<{visible: boolean}>`
   box-sizing: border-box;
   display: ${(props) => (props.visible ? 'block' : 'none')};
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
+  width: 100%;
+  height: 100%;
   z-index: 1000;
   overflow: auto;
   outline: 0;
@@ -85,7 +87,6 @@ export const InnerContainer = styled.div<{isWarning: boolean, isSide: boolean}>`
   margin: 0 auto;
   transform: translateY(-50%);
   outline:none;
-
   ;
 
   ${(props) => props.isSide && css ? `
@@ -97,7 +98,7 @@ export const InnerContainer = styled.div<{isWarning: boolean, isSide: boolean}>`
   max-width: 600px;
   min-width: 50px;
   min-height: 100px;
-  top: 50%
+  top: 50%;
   `}
 
   ${(props) => props.isWarning && css`
