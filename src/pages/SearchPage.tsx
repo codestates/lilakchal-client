@@ -34,6 +34,8 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
 
   // history.pushState(null, '', ''); 
   window.onpopstate = function(event: any) {
+
+    console.log('나는 inpopstate다');
     
     if(match.params.keyword) {
       axios.get('https://localhost:4000/search',
@@ -126,7 +128,17 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
   console.log('SearchPage에서 city', items);
 
   // 인피니티 스크롤
-  
+
+  useEffect(() => {
+
+    
+    
+    return () => {
+      window.onscroll = null;
+      window.onpopstate = null;
+    };
+  }, []);
+
   window.onscroll = function() {
     //window height + window scrollY 값이 document height보다 클 경우,
     if((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
@@ -148,6 +160,8 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
 
     }
   };
+  
+  
   
 
   return (
