@@ -5,10 +5,11 @@ import './style/Timer.scss';
 
 interface Props {
   endtime: Date,
-  handleBidStatus: (isClosed: boolean) => void
+  handleBidStatus: (isClosed: boolean) => void,
+  classname: string
 }
 
-const Timer: React.FC<Props> = ({endtime, handleBidStatus}) => {
+const Timer: React.FC<Props> = ({endtime, handleBidStatus, classname}) => {
   const [restTime, setRestTime] = useState<string>(getRestTime(endtime));
 
   useEffect(() => {
@@ -25,7 +26,7 @@ const Timer: React.FC<Props> = ({endtime, handleBidStatus}) => {
   }, [restTime]);
 
   return (
-    <div className="timer">{restTime}</div>
+    <div className={classname}>{restTime}</div>
   );
 };
 

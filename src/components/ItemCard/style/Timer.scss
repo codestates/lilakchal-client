@@ -2,5 +2,10 @@
 타이머의 경우 매 초 새롭게 렌더링 되므로 styled component보단 scss를 쓰는 것이 나아 보인다.*/
 
 .timer {
+  display: inline;
   font-size: 2rem;
+}
+
+.itemdetail-time {
+  font-size: 1rem;
 }

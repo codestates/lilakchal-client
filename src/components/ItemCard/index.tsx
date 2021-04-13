@@ -42,15 +42,17 @@ const ItemCard: React.FC<Props> = ({item}) => {
     setIsOpenPopup(false);
   };
 
+  const classname = 'timer';
+
   return (
     <Container className={'itemcard-container'}>
       <Modal visible={isOpenPopup} color={'#7660dccc'}  closeCb={closePopUp} backColor={true} isWarning={false} isSide={true}>
-        <ItemDetail item={item} requestBid={requestBid} ></ItemDetail>
+        <ItemDetail item={item} requestBid={requestBid} endtime={item.endTime} handleBidStatus={handleBidStatus} isExpired={isExpired}></ItemDetail>
       </Modal>
       <Thumbnail bg={item.photo}></Thumbnail>
       <Contents>
         <Location>{item.city}</Location>
-        <Timer endtime={item.endTime} handleBidStatus={handleBidStatus}/>
+        <Timer classname={classname} endtime={item.endTime} handleBidStatus={handleBidStatus}/>
         <Title onClick={() => openPopUp()}>{item.title}</Title>
         <CurrentPrice itemId={item.id} price={item.price}></CurrentPrice>
         {
