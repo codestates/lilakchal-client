@@ -1,16 +1,19 @@
 import React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
 import { FaSearch } from 'react-icons/fa';
+import { useDispatch } from 'react-redux';
+import { HeaderHandler } from '../../redux/modules/HeaderState';
 
-interface props {
-  setNowPage: any
-}
 
-const GoSearch: React.FC<RouteComponentProps & props> = ({ history, setNowPage }) => {
+
+const GoSearch: React.FC<RouteComponentProps> = ({ history}) => {
+
+  const dispatch = useDispatch();
 
   const clickHandler = () => {
     history.push('/ko/search');
-    setNowPage(true);
+    dispatch(HeaderHandler(true));
+
   };
 
   return (
