@@ -54,7 +54,7 @@ const ItemCard: React.FC<Props> = ({item}) => {
         <Title onClick={() => openPopUp()}>{item.title}</Title>
         <CurrentPrice itemId={item.id} price={item.price}></CurrentPrice>
         {
-          (isExpired && id === item.sellerId) ?
+          (isExpired && (id === item.sellerId || id === item.winnerId)) ?
             <GoChat itemId={item.id} title={item.title}></GoChat> :
             <></>
         }

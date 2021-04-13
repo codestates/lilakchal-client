@@ -12,7 +12,7 @@ const Message: React.FC<Props> = ({text, isMine, time}) => {
   return (
     <Container isMine={isMine}>
       <TimeStamp>{getFormatedChatDate(time)}</TimeStamp>
-      <Text>{text}</Text>
+      <Text isMine={isMine}>{text}</Text>
     </Container>
   );
 };
