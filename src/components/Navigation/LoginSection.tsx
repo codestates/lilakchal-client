@@ -5,11 +5,7 @@ import { RootState } from '../../redux/modules/reducer';
 import GoMypage from '../Navigation/GoMypage';
 import Login from './Login';
 
-interface props {
-  setNowPage?: any,
-}
-
-const LoginSection: React.FC<props> = ({setNowPage}) => {
+const LoginSection: React.FC = () => {
   const loginState = useSelector((state: RootState) => state.AccountReducer);
   const {isLogin} = loginState;
 
@@ -17,7 +13,7 @@ const LoginSection: React.FC<props> = ({setNowPage}) => {
     <div className='login-section'>
       {
         isLogin ?
-          <GoMypage setNowPage={setNowPage}/> :
+          <GoMypage/> :
           <Login/>
       }
       

@@ -29,10 +29,6 @@ const SearchBar: React.FC<RouterProps> = ({history}) => {
 
   const handleSubmit = async () => {
     
-    // window.location.href = `/ko/search/${inputValue}`;
-
-    
-
     if(inputValue) {
       axios.get(`${process.env.REACT_APP_SERVER_ADDRESS}/search`,
         { params: { city: city, keyword: inputValue, offset: 0 }})
@@ -45,10 +41,6 @@ const SearchBar: React.FC<RouterProps> = ({history}) => {
           
         });
     }
-    
-    // window.location.href = `/ko/search/${inputValue}`;
-    
-    //console.log('요청보내기');
   };
   
   return (

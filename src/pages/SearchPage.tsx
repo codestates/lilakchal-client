@@ -4,8 +4,9 @@ import axios from 'axios';
 import dotenv from 'dotenv';
 import { RouteComponentProps, withRouter } from 'react-router';
 
-import { UserInfoHandler } from '../redux/modules/UserInfo';
-import { LoginHandler} from '../redux/modules/account';
+import {  LocationInfoHandler } from '../redux/modules/UserInfo';
+// import { LoginHandler} from '../redux/modules/account';
+import { HeaderHandler } from '../redux/modules/HeaderState';
 import { RootState } from '../redux/modules/reducer';
 import ItemCard from '../components/ItemCard/index';
 import {Container} from './style/SearchPageStyle';
@@ -24,29 +25,16 @@ interface MatchParams {
 
 const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}) => {
   const userInfoState = useSelector((state: RootState) => state.UserInfoReducer);
-  const { id, city } = userInfoState;
+  const { city } = userInfoState;
   const itemState = useSelector((state:RootStateOrAny) => state.ItemReducer);
   const {items} = itemState;
   const dispatch = useDispatch();
   const [Count, setCount] = useState(5);
   
-  //ouath관련 함수
-  const oauthLoginHandler = async (authorizationCode: string) => {
-    await axios.post(`${process.env.REACT_APP_SERVER_ADDRESS}/user/oauth`,
-      { authorizationCode },
-      {withCredentials: true})
-      .then(res => {
-        console.log('res.data = ', res.data);
-        dispatch(UserInfoHandler({id: res.data.id, name: res.data.name}));
-        dispatch(LoginHandler(true));
-        localStorage.setItem('isLogin', 'true');
-        localStorage.setItem('id', res.data.id);
-        history.push('/ko/search');
-      });
-  };
 
   // history.pushState(null, '', ''); 
-  window.onpopstate = function(event: any) { 
+  window.onpopstate = function(event: any) {
+    
     if(match.params.keyword) {
       axios.get('https://localhost:4000/search',
         { params: { city: city, keyword: match.params.keyword, offset: 0 }})
@@ -73,24 +61,7 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
 
   };
   
-  useEffect(() => {
-    //search 페이지 들어오면 할일
-    const url = new URL(window.location.href);
-    const authorizationCode = url.searchParams.get('code');
-    const login = localStorage.getItem('isLogin');
-    
-
-    if(login === 'true') {
-      dispatch(LoginHandler(true));
-    }
-
-    if (authorizationCode && id === 0) {
-      console.log(authorizationCode);
-      oauthLoginHandler(authorizationCode);
-      dispatch(LoginHandler(true));
-    }
-
-    
+  useEffect(() => {    
     // 2-(1) 검색키워드가 있을 때 서버에 요청
 
     // const SearchValue = (document.getElementById('searchbar') as HTMLInputElement);
