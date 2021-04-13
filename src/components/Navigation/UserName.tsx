@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/modules/reducer';
-import EditForm from './EditForm';
-import Modal from './modal/CenterModal';
+import EditForm from '../Modal/EditForm';
+import Modal from '../Modal';
 
 const UserName: React.FC = () => {
   const usernameState = useSelector((state: RootState) => state.UserInfoReducer);
@@ -15,7 +15,7 @@ const UserName: React.FC = () => {
 
   return (
     <>
-      <Modal visible={isOpenPopup} color={'#fff'} onClose={toglePopup} backColor={false}>
+      <Modal visible={isOpenPopup} color={'#fff'} closeCb={toglePopup} backColor={true} isWarning={true} isSide={false}>
         <EditForm setIsOpenPopup={setIsOpenPopup}/>
       </Modal>
       <button onClick={toglePopup}>{name ? `${name}` : '이름없음'}</button>
