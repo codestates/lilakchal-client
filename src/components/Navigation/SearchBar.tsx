@@ -35,10 +35,13 @@ const SearchBar: React.FC<RouterProps> = ({history}) => {
         .then(res => {
           //console.log('검색할때 city가 있나요?', city);
           console.log('SearchPage에서 city', res.data.items, city);
+          if (!res.data.items) {
+            dispatch(ItemHandler(getFormatedItems([])));
+          } else {
           // 리덕스 상태 만들어서 응답으로 온 검색결과 저장하기
-          dispatch(ItemHandler(getFormatedItems(res.data.items))); 
-          history.push(`/ko/search/${inputValue}`);
-          
+            dispatch(ItemHandler(getFormatedItems(res.data.items))); 
+            history.push(`/ko/search/${inputValue}`);
+          }
         });
     }
   };
