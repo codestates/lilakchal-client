@@ -19,7 +19,7 @@ const GoMypage: React.FC<SomeComponentProps> = ({history}) => {
     const SearchValue = (document.getElementById('searchbar') as HTMLInputElement);
     SearchValue.value = '';
     dispatch(HeaderHandler(false));
-    history.push('/ko/mypage');
+    history.push('/ko/mypage/auction');
   };
 
   return (

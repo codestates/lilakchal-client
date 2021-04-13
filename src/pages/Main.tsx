@@ -10,7 +10,7 @@ import {Content, Container} from './style/MainPageStyle';
 
 const Main:React.FC<RouterProps> = ({ history }) => {
 
-  console.log('뒤로가기 하면 main페이지가 재랜더링 되나요?');
+  console.log('뒤로가기 하면 main페이지가 재랜더링 되나요?', history);
 
   return (
     <Router history={history}>
