@@ -19,7 +19,6 @@ const ItemDetail: React.FC<Props> = ({item, requestBid, endtime, handleBidStatus
   const unit1000 = 1000;
   const unit10000 = 10000;
   const unit100000 = 100000;
-
   const classname = 'itemdetail-time';
 
   return (
