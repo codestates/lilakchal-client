@@ -1,0 +1,19 @@
+.filter-tooltip {
+  border-radius: 6px;
+  padding: 10px;
+  visibility: hidden;
+  overflow: visible;
+  display: flex;
+  /* Position the tooltip */
+  z-index: 1;
+  // margin-top: 100px;
+  left: -10%;
+  // margin-left: -60px;
+  
+}
+.filter-button {
+  display: flex;
+}
+.icon {
+  margin-top: 150px;
+}
