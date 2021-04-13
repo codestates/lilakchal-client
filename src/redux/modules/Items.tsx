@@ -32,44 +32,7 @@ export interface ItemsState {
 }
 
 export const initialState: ItemsState = {
-  items: [
-    {
-      id: 1, 
-      title: '나이키 바람막이', 
-      price: 11000, 
-      photo: 'error.png',
-      endTime: new Date('2021-04-08 20:33:00'),
-      description: '바람막이 급처합니다.',
-      winnerId: 3,
-      sellerId: 3,
-      isClosed: true,
-      city: '서울 성동구'
-    },
-    {
-      id: 2, 
-      title: '나이키 운동화', 
-      price: 24000, 
-      photo: 'nike.png',
-      endTime: new Date('2021-04-10 04:11:11'),
-      description: '운동화 급처합니다.',
-      winnerId: 3,
-      sellerId: 3,
-      isClosed: false,
-      city: '서울 동대문구'
-    },
-    {
-      id: 3, 
-      title: '나이키 후드집업', 
-      price: 24000, 
-      photo: 'nike.png',
-      endTime: new Date('2021-04-11 07:11:11'),
-      description: '옷 정리. s사이즈입니다.',
-      winnerId: 3,
-      sellerId: 3,
-      isClosed: false,
-      city: '서울 동대문구'
-    }
-  ]
+  items: []
 };
 
 //Action type 정의
