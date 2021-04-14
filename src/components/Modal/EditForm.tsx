@@ -3,7 +3,7 @@ import axios from 'axios';
 import dotenv from 'dotenv';
 
 import { Wrapper, Title, Container, InputName, ErrorMessage } from './style/EditFormStyle';
-import SubmitBtn from '../../modules/SubmitBtn';
+import SubmitBtn from '../Common/SubmitBtn';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../redux/modules/reducer';
 
