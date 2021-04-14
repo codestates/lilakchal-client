@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 import axios from 'axios';
 import dotenv from 'dotenv';
 
@@ -15,8 +16,12 @@ import { getFormatedItems } from '../../modules/converters';
 import './style/Auction.scss';
 
 dotenv.config();
+          
+export interface TitleInfo{
+  title: string
+}
 
-const Action: React.FC = () => {
+const Action: React.FC<RouteComponentProps> = ({history}) => {
 
   const userState = useSelector((state: RootStateOrAny) => state.UserInfoReducer);
   const { id } = userState;
@@ -26,6 +31,7 @@ const Action: React.FC = () => {
   const { searchType } = typeState;
   const dispatch = useDispatch();
   const [Count, setCount] = useState(5);
+  const [title, setTitle] = useState<string>('판매');
 
   console.log(items);
 
@@ -44,6 +50,17 @@ const Action: React.FC = () => {
   }, [searchType]);
   
     useEffect(() => {
+      
+      if(history.location.state) {
+      const { title } = history.location.state as TitleInfo;
+      console.log('useeffect실행될때 title=', title);
+      setTitle(title);
+    }
+    else {
+      console.log('처음 title=', title);
+      setTitle('판매');
+    }
+      
     //3. socketio에 연결: 가격정보 수신 시 querySelector로 해당 부분의 가격을 변경한다.
     auctionSocket.on('bid', ({itemId, price, userId}: bidData) => {
       console.log('receive bid', price, userId, itemId);
@@ -106,6 +123,9 @@ const Action: React.FC = () => {
 
   return (
     <div className='itemCard'>
+      <div className='auction-title'>
+        <div>{title}</div>
+      </div>
       <Container>
         {
           items.length ? (items.map((item: Item) => 
@@ -117,5 +137,4 @@ const Action: React.FC = () => {
   );
 };
 
-
-export default Auction;
+export default withRouter(Action);

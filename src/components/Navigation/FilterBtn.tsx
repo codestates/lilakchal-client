@@ -12,8 +12,11 @@ import { TypeHandler } from '../../redux/modules/SearchType';
 
 dotenv.config();
 
+interface Props extends RouteComponentProps{
+  title?: string
+}
 
-const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
+const FilterBtn: React.FC<Props> = ({history, title}) => {
 
   const userInfoState = useSelector((state: RootState) => state.UserInfoReducer);
   const { id } = userInfoState;
@@ -34,6 +37,20 @@ const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
       }
     }
   };
+
+  window.onpopstate = function(event: any) {
+    if(searchType === 'buyer') {
+      setsearchType('seller');
+    }
+    else {
+      setsearchType('buyer');
+    }
+  };
+  useEffect(() => {
+    return () => {
+      window.onpopstate = null;
+    };
+  }, []);
 
   useEffect(() => {
     axios.post(`${process.env.REACT_APP_SERVER_ADDRESS}/user/myauction/${searchType}`,
@@ -58,7 +75,9 @@ const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
         .then(res => {
           dispatch(ItemHandler(getFormatedItems(res.data.items)));
           console.log(res.data.items);
-          history.push('/ko/mypage/auction');
+          history.push('/ko/mypage/auction', {
+            title: '입찰'
+          });
           console.log('buyer 응답');
         });
     }
@@ -69,7 +88,9 @@ const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
         .then(res => {
           dispatch(ItemHandler(getFormatedItems(res.data.items)));
           console.log(res.data.items);
-          history.push('/ko/mypage/auction');
+          history.push('/ko/mypage/auction', {
+            title: '판매'
+          });
           console.log('seller 응답');
         });
     }
