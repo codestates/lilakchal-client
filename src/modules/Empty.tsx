@@ -1,5 +1,5 @@
 import React from 'react';
-import errImg from '../../res/error.png';
+import errImg from '../res/error.png';
 
 const Empty: React.FC = () => {
 

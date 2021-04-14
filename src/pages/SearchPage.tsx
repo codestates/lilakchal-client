@@ -15,7 +15,7 @@ import {bidData} from '../interface/Bid';
 import { getFormatedItems } from '../modules/converters';
 
 import LoadingModal from '../components/Modal/LoadingModal';
-import Empty from '../components/ItemCard/Empty';
+import Empty from '../modules/Empty';
 
 dotenv.config();
 
