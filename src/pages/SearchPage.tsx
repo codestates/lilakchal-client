@@ -106,7 +106,6 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
       console.log('receive bid', price, userId, itemId);
       //const priceDiv = document.querySelector(`#itemcard-${itemId}`) as Node;
       //priceDiv.textContent = price.toString();
-      console.log(items);
       const newItems = items.map((item: Item) => {
         if(item.id === itemId) {
           item.winnerId = userId;
@@ -114,7 +113,6 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
         }
         return item;
       });
-      console.log(newItems);
       dispatch(ItemHandler({items: newItems}));
     });
     return () => {
