@@ -13,7 +13,7 @@ import {bidData} from '../interface/Bid';
 import { getFormatedItems } from '../modules/converters';
 
 import LoadingModal from '../components/Modal/LoadingModal';
-import Empty from '../components/ItemCard/Empty';
+import Empty from '../modules/Empty';
 
 dotenv.config();
 
@@ -106,7 +106,6 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
       console.log('receive bid', price, userId, itemId);
       //const priceDiv = document.querySelector(`#itemcard-${itemId}`) as Node;
       //priceDiv.textContent = price.toString();
-      console.log(items);
       const newItems = items.map((item: Item) => {
         if(item.id === itemId) {
           item.winnerId = userId;
@@ -114,7 +113,6 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
         }
         return item;
       });
-      console.log(newItems);
       dispatch(ItemHandler({items: newItems}));
     });
     return () => {
@@ -127,9 +125,6 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
   // 인피니티 스크롤
 
   useEffect(() => {
-
-    
-    
     return () => {
       window.onscroll = null;
       window.onpopstate = null;
@@ -158,8 +153,8 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
     }
   };
   
-  
-  
+  const emptyTitle = '검색 결과가 없어요.';
+  const emptyText = '다른 검색어를 입력해주세요!';
 
   return (
     <Container>
@@ -167,7 +162,7 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
         :
         items.length ? (items.map((item: Item) => 
           <ItemCard item={item} key={item.id}></ItemCard>
-        )) : < Empty />
+        )) : < Empty emptyTitle={emptyTitle} emptyText={emptyText}/>
       }
     </Container>
   );
