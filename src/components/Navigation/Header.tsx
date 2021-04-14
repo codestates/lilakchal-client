@@ -1,36 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import MyoptionGroup from './MyoptionGroup';
-import DefaultGroup from './DefaultGroup';
+import MenuGroups from './MenuGroups';
 import logo from '../../res/logo.png';
 import './style/Header.scss';
-import { RootState } from '../../redux/modules/reducer';
-import { HeaderHandler } from '../../redux/modules/HeaderState';
-import { useDispatch, useSelector } from 'react-redux';
 
 
 
 const Header: React.FC = () => { 
 
-  const HeaderState = useSelector((state: RootState) => state.HeaderReducer);
-  const { Default } = HeaderState;
-  const dispatch = useDispatch();
-
   return (
-    
     <div className="header-container">
       <div className='header'>
         <div className="logo">
-          <Link to="/" onClick={()=> dispatch(HeaderHandler(true))}>
+          <Link to="/">
             <div className='header-logo-wrapper'>
               <img className='header-logo' alt="Logo" src={logo} />
             </div>
           </Link>
         </div>
-        <div className="group">
-          {Default ? (<DefaultGroup/>) : (<MyoptionGroup/>) }
-        </div>
-
+        <MenuGroups/>
       </div>
     </div>
   );
