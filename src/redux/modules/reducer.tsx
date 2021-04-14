@@ -3,7 +3,7 @@ import AccountReducer from './account';
 import InputvalueReducer from './SearchValue';
 import ItemReducer from './Items';
 import UserInfoReducer from './UserInfo';
-import HeaderReducer from './HeaderState';
+import HeaderReducer from './HeaderState'; //없애기!!
 
 const rootReducer = combineReducers({
   AccountReducer,
