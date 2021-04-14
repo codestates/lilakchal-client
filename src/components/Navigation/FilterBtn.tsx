@@ -40,10 +40,10 @@ const FilterBtn: React.FC<Props> = ({history, title}) => {
 
   window.onpopstate = function(event: any) {
     if(searchType === 'buyer') {
-      setsearchType('seller');
+      dispatch(TypeHandler('seller'));
     }
     else {
-      setsearchType('buyer');
+      dispatch(TypeHandler('buyer'));
     }
   };
   useEffect(() => {
