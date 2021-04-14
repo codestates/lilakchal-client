@@ -16,7 +16,7 @@ import { getFormatedItems } from '../../modules/converters';
 import './style/Auction.scss';
 
 dotenv.config();
-          
+
 export interface TitleInfo{
   title: string
 }
@@ -49,9 +49,8 @@ const Action: React.FC<RouteComponentProps> = ({history}) => {
     setCount(5);
   }, [searchType]);
   
-    useEffect(() => {
-      
-      if(history.location.state) {
+  useEffect(() => {
+    if (history.location.state) {
       const { title } = history.location.state as TitleInfo;
       console.log('useeffect실행될때 title=', title);
       setTitle(title);
