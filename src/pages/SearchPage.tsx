@@ -3,8 +3,6 @@ import { useDispatch, useSelector, RootStateOrAny  } from 'react-redux';
 import axios from 'axios';
 import dotenv from 'dotenv';
 import { RouteComponentProps, withRouter } from 'react-router';
-
-import { HeaderHandler } from '../redux/modules/HeaderState';
 import { RootState } from '../redux/modules/reducer';
 import ItemCard from '../components/ItemCard/index';
 import {Container} from './style/SearchPageStyle';
@@ -62,7 +60,6 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
   };
   
   useEffect(() => {    
-    dispatch(HeaderHandler(true));
     // 2-(1) 검색키워드가 있을 때 서버에 요청
 
     // const SearchValue = (document.getElementById('searchbar') as HTMLInputElement);
@@ -109,7 +106,6 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
       console.log('receive bid', price, userId, itemId);
       //const priceDiv = document.querySelector(`#itemcard-${itemId}`) as Node;
       //priceDiv.textContent = price.toString();
-      console.log(items);
       const newItems = items.map((item: Item) => {
         if(item.id === itemId) {
           item.winnerId = userId;
@@ -117,7 +113,6 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
         }
         return item;
       });
-      console.log(newItems);
       dispatch(ItemHandler({items: newItems}));
     });
     return () => {
