@@ -1,13 +1,18 @@
 import React from 'react';
 import errImg from '../res/error.png';
 
-const Empty: React.FC = () => {
+interface IEmpty {
+  emptyTitle: string,
+  emptyText: string
+}
+
+const Empty: React.FC<IEmpty> = ({ emptyTitle, emptyText}) => {
 
   return (
     <>
-      <div>검색 결과가 없어요.</div>
-      <div>다른 검색어를 입력해주세요!</div>
-      <img src={errImg} alt=""/>
+      <img className="empty-img" src={errImg} alt=""/>
+      <div className="empty-title">{emptyTitle}</div>
+      <div className="empty-text">{emptyText}</div>
     </>
   );
 };

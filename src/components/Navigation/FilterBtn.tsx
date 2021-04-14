@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
 import dotenv from 'dotenv';
 import { RootState } from '../../redux/modules/reducer';
@@ -8,6 +8,7 @@ import { getFormatedItems } from '../../modules/converters';
 import { ItemHandler } from '../../redux/modules/Items';
 import { FaFilter } from 'react-icons/fa';
 import './style/FilterBtn.scss';
+import { TypeHandler } from '../../redux/modules/SearchType';
 
 dotenv.config();
 
@@ -16,9 +17,11 @@ const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
 
   const userInfoState = useSelector((state: RootState) => state.UserInfoReducer);
   const { id } = userInfoState;
+  const typeState = useSelector((state: RootState) => state.SearchTypeReducer);
+  const { searchType } = typeState;
   const dispatch = useDispatch();
   const filterTooltip = useRef<HTMLDivElement>(null);
-  const [searchType, setsearchType] = useState('seller'); 
+  
 
   const handleFilterPopup = () => {
     const visibility = filterTooltip?.current?.style.visibility;
@@ -42,7 +45,7 @@ const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
     //2.응답받아서 리덕스에 저장하기
     if(searchType === 'buyer') {
       axios.post(`${process.env.REACT_APP_SERVER_ADDRESS}/user/myauction/buyer`,
-        {userId: id },
+        { offset: 0, userId: id },
         {withCredentials: true})
         .then(res => {
           dispatch(ItemHandler(getFormatedItems(res.data.items)));
@@ -53,7 +56,7 @@ const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
     }
     else {
       axios.post(`${process.env.REACT_APP_SERVER_ADDRESS}/user/myauction/seller`,
-        {userId: id },
+        { offset: 0, userId: id },
         {withCredentials: true})
         .then(res => {
           dispatch(ItemHandler(getFormatedItems(res.data.items)));
@@ -71,14 +74,14 @@ const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
         <div className='radio-button'>
           <div className="buyer">
             <label className="tooltip-container">
-              <input name='radio' type="radio" value="buyer" onChange={() => setsearchType('buyer')} checked={searchType === 'buyer' ? true : false} />
+              <input name='radio' type="radio" value="buyer" onChange={() => dispatch(TypeHandler('buyer'))} checked={searchType === 'buyer' ? true : false} />
               <span className="checkmark"></span>
                     입찰
             </label>
           </div>
           <div className="seller">
             <label className="tooltip-container">
-              <input name='radio' type="radio" value="seller" onChange={() => setsearchType('seller')} checked={searchType === 'seller' ? true : false} />
+              <input name='radio' type="radio" value="seller" onChange={() => dispatch(TypeHandler('seller'))} checked={searchType === 'seller' ? true : false} />
               <span className="checkmark"></span>
                     판매
             </label>
