@@ -3,14 +3,16 @@ import AccountReducer from './account';
 import InputvalueReducer from './SearchValue';
 import ItemReducer from './Items';
 import UserInfoReducer from './UserInfo';
-import HeaderReducer from './HeaderState'; //없애기!!
+import HeaderReducer from './HeaderState';
+import SearchTypeReducer from './SearchType';
 
 const rootReducer = combineReducers({
   AccountReducer,
   InputvalueReducer,
   ItemReducer,
   UserInfoReducer,
-  HeaderReducer
+  HeaderReducer,
+  SearchTypeReducer
 });
 
 export default rootReducer;
