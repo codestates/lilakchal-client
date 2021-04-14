@@ -3,7 +3,7 @@ import { Route, Switch, Router } from 'react-router-dom';
 import Chat from '../components/Chat';
 import { RouterProps, withRouter } from 'react-router';
 
-import Action from '../components/MyAuction/Action';
+import Auction from '../components/MyAuction/Auction';
 
 
 const Mypage: React.FC<RouterProps> = ({history}) => {
@@ -17,7 +17,7 @@ const Mypage: React.FC<RouterProps> = ({history}) => {
           <Chat/>
         </Route>
         <Route exact path='/ko/mypage/auction'>
-          <Action/>
+          <Auction/>
         </Route>
       </Switch>
     </Router>
