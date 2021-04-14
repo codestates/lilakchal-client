@@ -4,7 +4,7 @@ import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/modules/reducer';
 
-import SubmitBtn from '../../modules/SubmitBtn';
+import SubmitBtn from '../Common/SubmitBtn';
 import './style/RegisterForm.scss';
 
 const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {

@@ -15,7 +15,7 @@ const UserName: React.FC = () => {
 
   return (
     <>
-      <Modal visible={isOpenPopup} color={'#fff'} closeCb={toglePopup} backColor={true} isWarning={true} isSide={false}>
+      <Modal visible={isOpenPopup} color={'#fff'} closeCb={toglePopup} backColor={true} isWarning={false} isSide={false}>
         <EditForm setIsOpenPopup={setIsOpenPopup}/>
       </Modal>
       <button onClick={toglePopup}>{name ? `${name}` : '이름없음'}</button>
