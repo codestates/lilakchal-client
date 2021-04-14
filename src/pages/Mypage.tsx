@@ -5,10 +5,7 @@ import { RouterProps, withRouter } from 'react-router';
 
 import Auction from '../components/MyAuction/Auction';
 
-
 const Mypage: React.FC<RouterProps> = ({history}) => {
-
-  
 
   return (
     <Router history={history}>
