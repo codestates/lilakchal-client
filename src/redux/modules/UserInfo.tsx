@@ -9,8 +9,7 @@ export interface userInfoState {
 
 export const initialState: userInfoState = {
   id: 0,
-  name: '',
-  city: ''
+  name: ''
 };
 
 
