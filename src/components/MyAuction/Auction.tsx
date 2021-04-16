@@ -24,7 +24,7 @@ const Action: React.FC = () => {
   const typeState = useSelector((state: RootStateOrAny) => state.SearchTypeReducer);
   const { searchType } = typeState;
   const dispatch = useDispatch();
-  const [Count, setCount] = useState(5);
+  const [Count, setCount] = useState(4);
 
   //페이지 뒤로가기, 앞으로 가기 할때 items바뀌도록 하기
   useEffect(() => {
@@ -60,7 +60,7 @@ const Action: React.FC = () => {
   if (searchType === 'buyer') {
     window.onscroll = () => {
       if((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-        setCount(Count + 5);
+        setCount(Count + 4);
         axios.post(`${process.env.REACT_APP_SERVER_ADDRESS}/user/myauction/buyer`, 
           { offset: Count, userId: id },
           { withCredentials: true })
@@ -77,7 +77,7 @@ const Action: React.FC = () => {
   } else {
     window.onscroll = () => {
       if((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-        setCount(Count + 5);
+        setCount(Count + 4);
         axios.post(`${process.env.REACT_APP_SERVER_ADDRESS}/user/myauction/seller`, 
           { offset: Count, userId: id },
           { withCredentials: true })
