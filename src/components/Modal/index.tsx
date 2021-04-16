@@ -1,5 +1,6 @@
 import React from 'react';
-import { Dimmer, OuterContainer, InnerContainer } from './style/ModalStyle';
+import { Dimmer, OuterContainer, InnerContainer, CloseBtn } from './style/ModalStyle';
+import { AiOutlineClose } from 'react-icons/ai';
 
 interface Props {
   visible: boolean,
@@ -25,9 +26,12 @@ const Modal: React.FC<Props> = ({ visible, isSide, color, closeCb, className, ch
 
   return (
     <>
-      <Dimmer visible={visible} backColor={backColor}></Dimmer>
+      <Dimmer visible={visible} backColor={backColor} onClick={onClickDimmerHandler}></Dimmer>
       <OuterContainer visible={visible} onClick={onClickDimmerHandler}>
         <InnerContainer isSide={isSide} color={color} className={className} isWarning={isWarning} onClick={preventEventPropagation}>
+          <CloseBtn onClick={closeCb}>
+            <AiOutlineClose size="20"/>
+          </CloseBtn>
           {children}
           {/* <Icon bg={isBlackBtn ? './res/close_black.png' : './res/close_white.png'} onClick={onClose}></Icon> */}
         </InnerContainer>
