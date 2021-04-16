@@ -11,6 +11,10 @@ interface Props {
 
 const Timer: React.FC<Props> = ({endtime, handleBidStatus, classname}) => {
   const [restTime, setRestTime] = useState<string>(getRestTime(endtime));
+  const isCloseDeadLine = (): boolean => {
+    const hour = restTime.split(':')[0];
+    return !isNaN(Number(hour)) && Number(hour) < 24;
+  };
 
   useEffect(() => {
     const countdown = setInterval(() => {
@@ -26,7 +30,7 @@ const Timer: React.FC<Props> = ({endtime, handleBidStatus, classname}) => {
   }, [restTime]);
 
   return (
-    <div className={classname}>{restTime}</div>
+    <div className={classname + (isCloseDeadLine() ? ' deadline' : '')}>{restTime}</div>
   );
 };
 
