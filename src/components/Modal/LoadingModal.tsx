@@ -36,6 +36,9 @@ const LoadingModal: React.FC<Props> = ({isLoading}) => {
         dispatch(LocationInfoHandler(`${region_1depth_name} ${region_2depth_name}`));
         // localStorage.setItem('city', `${region_1depth_name} ${region_2depth_name}`);
           
+      }, 
+      () => {
+        dispatch(LocationInfoHandler('전국'));
       });
     } else {
       alert('GPS를 지원하지 않습니다');
