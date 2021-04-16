@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
-import { RouteComponentProps, withRouter } from 'react-router-dom';
 import axios from 'axios';
 import dotenv from 'dotenv';
 
@@ -16,11 +15,7 @@ import './style/Auction.scss';
 
 dotenv.config();
 
-export interface TitleInfo{
-  title: string
-}
-
-const Action: React.FC<RouteComponentProps> = ({history}) => {
+const Action: React.FC = () => {
 
   const userState = useSelector((state: RootStateOrAny) => state.UserInfoReducer);
   const { id } = userState;
@@ -30,15 +25,9 @@ const Action: React.FC<RouteComponentProps> = ({history}) => {
   const { searchType } = typeState;
   const dispatch = useDispatch();
   const [Count, setCount] = useState(5);
-  const [title, setTitle] = useState<string>('판매');
-
-  console.log(items);
 
   //페이지 뒤로가기, 앞으로 가기 할때 items바뀌도록 하기
   useEffect(() => {
-    
-    
-    console.log('앞으로 다시오면 mypage useeffect가 실행되나요?'); 
     return () => {
       window.onscroll = null;
     };
@@ -49,19 +38,9 @@ const Action: React.FC<RouteComponentProps> = ({history}) => {
   }, [searchType]);
   
   useEffect(() => {
-    if (history.location.state) {
-      const { title } = history.location.state as TitleInfo;
-      console.log('useeffect실행될때 title=', title);
-      setTitle(title);
-    }
-    else {
-      console.log('처음 title=', title);
-      setTitle('판매');
-    }
       
     //3. socketio에 연결: 가격정보 수신 시 querySelector로 해당 부분의 가격을 변경한다.
     auctionSocket.on('bid', ({itemId, price, userId}: bidData) => {
-      console.log('receive bid', price, userId, itemId);
       //const priceDiv = document.querySelector(`#itemcard-${itemId}`) as Node;
       //priceDiv.textContent = price.toString();
       const newItems = items.map((item: Item) => {
@@ -79,7 +58,6 @@ const Action: React.FC<RouteComponentProps> = ({history}) => {
   }, [items]);
 
   if (searchType === 'buyer') {
-    console.log('SearchType Buyer?', searchType);
     window.onscroll = () => {
       if((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
         setCount(Count + 5);
@@ -97,7 +75,6 @@ const Action: React.FC<RouteComponentProps> = ({history}) => {
       }
     };
   } else {
-    console.log('SearchType Seller?', searchType);
     window.onscroll = () => {
       if((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
         setCount(Count + 5);
@@ -122,7 +99,7 @@ const Action: React.FC<RouteComponentProps> = ({history}) => {
   return (
     <div className='itemCard'>
       <div className='auction-title'>
-        <div>{title}</div>
+        {searchType === 'buyer' ? (<div>입찰중인상품</div>) : (<div>판매중인상품</div>)} 
       </div>
       <Container>
         {
@@ -135,4 +112,4 @@ const Action: React.FC<RouteComponentProps> = ({history}) => {
   );
 };
 
-export default withRouter(Action);
+export default Action;
