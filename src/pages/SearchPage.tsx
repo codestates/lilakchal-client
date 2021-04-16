@@ -32,14 +32,11 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
 
   // history.pushState(null, '', ''); 
   window.onpopstate = function(event: any) {
-
-    console.log('나는 inpopstate다');
     
     if(match.params.keyword) {
       axios.get('https://localhost:4000/search',
         { params: { city: city, keyword: match.params.keyword, offset: 0 }})
         .then(res => {
-          console.log('SearchPage에서 items Effect', res.data.items);
           // 리덕스 상태 만들어서 응답으로 온 검색결과 저장하기
           dispatch(ItemHandler(getFormatedItems(res.data.items))); 
           setCount(5);
@@ -50,8 +47,6 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
       axios.get('https://localhost:4000/search',
         { params: { city: city, offset: 0}})
         .then(res => {
-          console.log(res.data.items);
-          console.log(getFormatedItems(res.data.items));
           // 리덕스 상태 만들어서 응답으로 온 검색결과 저장하기
           dispatch(ItemHandler(getFormatedItems(res.data.items))); //검색결과 받아서 리덕스에 저장
           setCount(5);
@@ -60,25 +55,12 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
   };
   
   useEffect(() => {    
-    // 2-(1) 검색키워드가 있을 때 서버에 요청
-
-    // const SearchValue = (document.getElementById('searchbar') as HTMLInputElement);
-
-    // if(SearchValue.value === null) {
-    //   SearchValue.value = '';
-    // }
-    // SearchValue.value = '';
-
-
-    console.log('match.params.keyword=', match.params.keyword);
 
     // if(city !== '') {
     if(match.params.keyword) {
       axios.get(`${process.env.REACT_APP_SERVER_ADDRESS}/search`,
         { params: { city: city, keyword: match.params.keyword, offset: 0 }})
         .then(res => {
-          console.log('SearchPage에서 items Effect', res.data.items);
-          // 리덕스 상태 만들어서 응답으로 온 검색결과 저장하기
           dispatch(ItemHandler(getFormatedItems(res.data.items)));
           setCount(5);
         });
@@ -88,9 +70,6 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
       axios.get(`${process.env.REACT_APP_SERVER_ADDRESS}/search`,
         { params: { city: city, offset: 0}})
         .then(res => {
-          console.log(res.data.items);
-          console.log(getFormatedItems(res.data.items));
-          // 리덕스 상태 만들어서 응답으로 온 검색결과 저장하기
           dispatch(ItemHandler(getFormatedItems(res.data.items))); //검색결과 받아서 리덕스에 저장
           setCount(5);
         });
@@ -103,7 +82,6 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
   useEffect(() => {
     //3. socketio에 연결: 가격정보 수신 시 querySelector로 해당 부분의 가격을 변경한다.
     auctionSocket.on('bid', ({itemId, price, userId}: bidData) => {
-      console.log('receive bid', price, userId, itemId);
       //const priceDiv = document.querySelector(`#itemcard-${itemId}`) as Node;
       //priceDiv.textContent = price.toString();
       const newItems = items.map((item: Item) => {
@@ -119,8 +97,6 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
       auctionSocket.off('bid');
     };
   }, [items]);
-  
-  console.log('SearchPage에서 city', items);
 
   // 인피니티 스크롤
 
@@ -143,7 +119,6 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
           // 리덕스 상태 만들어서 응답으로 온 검색결과 저장하기
           if (!res.data.items) {
             //dispatch(ItemHandler(getFormatedItems(items)));
-            console.log('없음..');
           } else {
             const newItems = getFormatedItems(res.data.items); 
             dispatch(ItemHandler({ items: [...items, ...newItems.items]})); //검색결과 받아서 리덕스에 저장    
