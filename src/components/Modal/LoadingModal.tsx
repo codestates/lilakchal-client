@@ -41,7 +41,7 @@ const LoadingModal: React.FC<Props> = ({isLoading}) => {
         dispatch(LocationInfoHandler('전국'));
       });
     } else {
-      alert('GPS를 지원하지 않습니다');
+      dispatch(LocationInfoHandler('전국'));
     }
   });
 
