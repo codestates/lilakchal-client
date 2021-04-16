@@ -5,6 +5,7 @@ import CurrentPrice from './CurrentPrice';
 import Timer from './Timer';
 import BidBtn from './BidBtn';
 import './style/itemDetail.scss';
+import closeButton from '../../res/closeButton.png';
 
 interface Props {
   item: Item,
@@ -12,9 +13,10 @@ interface Props {
   endtime: Date,
   handleBidStatus: (isClosed: boolean) => void,
   isExpired: boolean,
+  closeCb: ()=> void,
 }
 
-const ItemDetail: React.FC<Props> = ({item, requestBid, endtime, handleBidStatus, isExpired}) => {
+const ItemDetail: React.FC<Props> = ({item, requestBid, endtime, handleBidStatus, isExpired, closeCb}) => {
   
   const unit1000 = 1000;
   const unit10000 = 10000;
@@ -23,6 +25,7 @@ const ItemDetail: React.FC<Props> = ({item, requestBid, endtime, handleBidStatus
 
   return (
     <section className="itemdetail">
+      <img className="itemdetail-close" src={closeButton} onClick={closeCb} alt=''></img>
       <article className="itemdetail-topbox">
         <h1 className="itemdetail-title">{item.title}</h1>
         <img className="itemdetail-img" src={item.photo} alt=""/>
