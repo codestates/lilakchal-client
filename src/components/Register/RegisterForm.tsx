@@ -9,8 +9,8 @@ import './style/RegisterForm.scss';
 
 const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
 
-  const userid = useSelector((state: RootState) => state.UserInfoReducer);
-  const { id } = userid;
+  const userState = useSelector((state: RootState) => state.UserInfoReducer);
+  const { id, city } = userState;
 
   const [photo, setImage] = useState<any>(null);
   const [imgbase64, setImgbase64] = useState<string>('');
@@ -50,12 +50,13 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
 
     const formData = new FormData();
     formData.append('file', photo);
-    formData.append('UserId', String(id));
+    formData.append('userId', String(id));
     formData.append('photo', photo.name);
     formData.append('title', title);
     formData.append('price', String(price));
     formData.append('endTime', endtime);
     formData.append('description', description);
+    city && formData.append('city', city);
 
     // eslint-disable-next-line prefer-const
     for (let key of formData.keys()) {
