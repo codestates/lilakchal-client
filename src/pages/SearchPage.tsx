@@ -13,7 +13,7 @@ import {bidData} from '../interface/Bid';
 import { getFormatedItems } from '../modules/converters';
 
 import LoadingModal from '../components/Modal/LoadingModal';
-import Empty from '../modules/Empty';
+import Empty from '../components/Common/Empty';
 
 dotenv.config();
 
@@ -128,8 +128,8 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
     }
   };
   
-  const emptyTitle = '검색 결과가 없어요.';
-  const emptyText = '다른 검색어를 입력해주세요!';
+  const emptyTitle = '검색 결과가 없어요 :(';
+  const emptyText = '다른 검색어를 입력해보세요!';
 
   return (
     <Container>

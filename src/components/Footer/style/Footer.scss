@@ -1,0 +1,88 @@
+.footer {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0px auto;
+  max-width: 1000px;
+}
+
+.footer-topbox {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.footer-logo {
+  max-width: 300px;
+}
+
+.footer-service {
+  font-size: 20px;
+  text-decoration: none;
+  color: #4A5058;
+  &:hover {
+    color: #008698;
+  }
+}
+
+.footer-team {
+  font-size: 20px;
+  color: #4A5058;
+}
+
+.footer-teamlink {
+  margin-left: 10px;
+  text-decoration: none;
+  color: #4A5058;
+  &:hover {
+    color: #008698;
+  }
+}
+
+.footer-midbox {
+  width: 100%;
+  display: flex;
+  color: #4A5058;
+  margin: 10px 0px;
+}
+
+.footer-rightbox {
+  margin-left: 50px;
+}
+
+.footer-emailbox {
+  display: flex;
+  
+}
+
+.footer-question{
+  margin-right: 20px;
+  text-align: center;
+}
+
+.footer-bottombox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.footer-textbox {
+  display: flex;
+  flex-direction: column;
+  color: #4A5058;
+  flex: 1 0 0;
+}
+
+.footer-youtube {
+  margin-right: 10px;
+  text-decoration: none;
+  color: #000000;
+}
+
+.footer-github {
+  text-decoration: none;
+  color: #000000;
+}
