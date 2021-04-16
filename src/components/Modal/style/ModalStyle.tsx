@@ -77,6 +77,7 @@ export const OuterContainer = styled.div<{visible: boolean}>`
 
 export const InnerContainer = styled.div<{isWarning: boolean, isSide: boolean}>`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
@@ -116,4 +117,13 @@ export const LoadingContainer = styled.div`
   border-radius: 50%;
   width: 13.5vw;
   height: 13.5vw;
+`;
+
+export const CloseBtn = styled.button`
+  background: none;
+  border: none;
+  outline: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
 `;
