@@ -5,6 +5,8 @@ import CurrentPrice from './CurrentPrice';
 import Timer from './Timer';
 import BidBtn from './BidBtn';
 import './style/itemDetail.scss';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../redux/modules/reducer';
 
 interface Props {
   item: Item,
@@ -20,7 +22,9 @@ const ItemDetail: React.FC<Props> = ({item, requestBid, endtime, handleBidStatus
   const unit10000 = 10000;
   const unit100000 = 100000;
   const classname = 'itemdetail-time';
-
+  const userInfoState = useSelector((state: RootState) => state.UserInfoReducer);
+  const { id } = userInfoState;
+  
   return (
     <section className="itemdetail">
       <article className="itemdetail-topbox">
@@ -32,10 +36,15 @@ const ItemDetail: React.FC<Props> = ({item, requestBid, endtime, handleBidStatus
         <div className="itemdetail-timer"><span>남은시간: </span><span><Timer classname={classname} endtime={endtime} handleBidStatus={handleBidStatus} /></span></div>
       </article>
       <div className="itemdetail-description">{item.description}</div>
-      <article className="itemdetail-btnbox">
-        <BidBtn item={item} requestBid={requestBid} unit={unit1000} isExpired={isExpired}/>
-        <BidBtn item={item} requestBid={requestBid} unit={unit10000} isExpired={isExpired}/>
-        <BidBtn item={item} requestBid={requestBid} unit={unit100000} isExpired={isExpired}/>
+      <article className="itemdetail-btnbox"> 
+        {id !== item.sellerId ? 
+          <div><BidBtn item={item} requestBid={requestBid} unit={unit1000} isExpired={isExpired}/>
+            <BidBtn item={item} requestBid={requestBid} unit={unit10000} isExpired={isExpired}/>
+            <BidBtn item={item} requestBid={requestBid} unit={unit100000} isExpired={isExpired}/></div>
+          :
+          <div></div>
+        }
+        
       </article>
     </section>
   );
