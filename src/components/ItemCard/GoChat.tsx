@@ -1,6 +1,7 @@
 import React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
 import {constantString} from '../../modules/strings';
+import './style/GoChat.scss';
 
 interface Props extends RouteComponentProps{
   itemId: number,
