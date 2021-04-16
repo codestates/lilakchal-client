@@ -9,7 +9,7 @@ import { bidData } from '../../interface/Bid';
 import { auctionSocket } from '../../modules/socket';
 import { Item, ItemHandler } from '../../redux/modules/Items';
 import ItemCard from '../ItemCard';
-import Empty from '../../modules/Empty';
+import Empty from '../Common/Empty';
 import { getFormatedItems } from '../../modules/converters';
 import './style/Auction.scss';
 
