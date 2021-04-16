@@ -1,0 +1,39 @@
+.empty-container{
+  padding: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes loading {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0.8);
+  }
+}
+
+.empty-animation-text{
+  position:relative;
+  bottom: 0px;
+  font-size: 5rem;
+  color: #39bda9;
+  animation: loading .7s infinite alternate;
+}
+
+.empty-img{
+  max-width: 15rem;
+  max-height: 15rem;
+}
+
+.empty-title{
+  color: #727272;
+  font-size: 1.5rem;
+}
+
+.empty-text{
+  color: #8e8e8e;
+  font-size: 1rem;
+}
