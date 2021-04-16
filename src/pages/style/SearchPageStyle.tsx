@@ -3,9 +3,9 @@ import styled from 'styled-components';
 
 //#FFD9EC  
 export const Container = styled.div`
-  height: 100%;
+  min-height: calc(100vh-100px);
   width: 50%;
-  background-color: #FFD9EC;
+  background-color: #FFFFFF;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
