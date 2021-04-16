@@ -1,5 +1,6 @@
 import React from 'react';
 import {units} from '../../modules/units';
+import './style/ItemCard.scss';
 
 interface Props {
   itemId: number,
