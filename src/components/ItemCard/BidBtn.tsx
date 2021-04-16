@@ -40,7 +40,7 @@ const BidBtn: React.FC<IBidBtn> = ({ item, requestBid, unit, isExpired }) => {
       <Modal visible={isOpenPopup} color={'#fff'} closeCb={toglePopup} backColor={true} isWarning={true} isSide={false}>
         <LoginError/>
       </Modal>
-      <button onClick={clickHandler}>{`+${unit}원`}</button>
+      <button className='bidButton' onClick={clickHandler}>{`+${unit.toLocaleString('ko-KR')}원`}</button>
     </>
   );
 };
