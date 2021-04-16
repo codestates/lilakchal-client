@@ -8,7 +8,6 @@ import dotenv from 'dotenv';
 import { Container } from '../../pages/style/SearchPageStyle';
 import { bidData } from '../../interface/Bid';
 import { auctionSocket } from '../../modules/socket';
-import { HeaderHandler } from '../../redux/modules/HeaderState';
 import { Item, ItemHandler } from '../../redux/modules/Items';
 import ItemCard from '../ItemCard';
 import Empty from '../../modules/Empty';
@@ -38,7 +37,7 @@ const Action: React.FC<RouteComponentProps> = ({history}) => {
   //페이지 뒤로가기, 앞으로 가기 할때 items바뀌도록 하기
   useEffect(() => {
     
-    dispatch(HeaderHandler(false));
+    
     console.log('앞으로 다시오면 mypage useeffect가 실행되나요?'); 
     return () => {
       window.onscroll = null;
