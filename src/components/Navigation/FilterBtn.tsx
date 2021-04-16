@@ -12,11 +12,7 @@ import { TypeHandler } from '../../redux/modules/SearchType';
 
 dotenv.config();
 
-interface Props extends RouteComponentProps{
-  title?: string
-}
-
-const FilterBtn: React.FC<Props> = ({history, title}) => {
+const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
 
   const userInfoState = useSelector((state: RootState) => state.UserInfoReducer);
   const { id } = userInfoState;
@@ -47,6 +43,7 @@ const FilterBtn: React.FC<Props> = ({history, title}) => {
     }
   };
   useEffect(() => {
+    dispatch(TypeHandler('buyer'));
     return () => {
       window.onpopstate = null;
     };
@@ -58,11 +55,7 @@ const FilterBtn: React.FC<Props> = ({history, title}) => {
       {withCredentials: true})
       .then(res => {
         dispatch(ItemHandler(getFormatedItems(res.data.items)));
-        console.log(res.data.items);
-        // history.push('/ko/mypage/auction');
-        console.log('buyer 응답');
       });
-    console.log('왜');
   }, [searchType]);
 
   const handlefilter = (props: string) => {
@@ -74,11 +67,7 @@ const FilterBtn: React.FC<Props> = ({history, title}) => {
         {withCredentials: true})
         .then(res => {
           dispatch(ItemHandler(getFormatedItems(res.data.items)));
-          console.log(res.data.items);
-          history.push('/ko/mypage/auction', {
-            title: '입찰'
-          });
-          console.log('buyer 응답');
+          history.push('/ko/mypage/auction');
         });
     }
     else {
@@ -87,11 +76,7 @@ const FilterBtn: React.FC<Props> = ({history, title}) => {
         {withCredentials: true})
         .then(res => {
           dispatch(ItemHandler(getFormatedItems(res.data.items)));
-          console.log(res.data.items);
-          history.push('/ko/mypage/auction', {
-            title: '판매'
-          });
-          console.log('seller 응답');
+          history.push('/ko/mypage/auction');
         });
     }
   };
