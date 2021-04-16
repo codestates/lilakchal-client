@@ -51,7 +51,7 @@ const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
 
   useEffect(() => {
     axios.post(`${process.env.REACT_APP_SERVER_ADDRESS}/user/myauction/${searchType}`,
-      {userId: id },
+      { offset: 0, userId: id },
       {withCredentials: true})
       .then(res => {
         dispatch(ItemHandler(getFormatedItems(res.data.items)));

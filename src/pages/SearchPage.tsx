@@ -21,17 +21,17 @@ interface MatchParams {
   keyword: string;
 }
 
-const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}) => {
+const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
   const userInfoState = useSelector((state: RootState) => state.UserInfoReducer);
   const { city } = userInfoState;
   const itemState = useSelector((state:RootStateOrAny) => state.ItemReducer);
   const {items} = itemState;
   const dispatch = useDispatch();
-  const [Count, setCount] = useState(5);
+  const [Count, setCount] = useState(4);
   
 
   // history.pushState(null, '', ''); 
-  window.onpopstate = function(event: any) {
+  window.onpopstate = () => {
     
     if(match.params.keyword) {
       axios.get('https://localhost:4000/search',
@@ -39,7 +39,7 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
         .then(res => {
           // 리덕스 상태 만들어서 응답으로 온 검색결과 저장하기
           dispatch(ItemHandler(getFormatedItems(res.data.items))); 
-          setCount(5);
+          setCount(4);
         });
     }
     //2-(2) 검색 키워드가 없을때(처음 입장) 모든 자료 요청
@@ -49,7 +49,7 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
         .then(res => {
           // 리덕스 상태 만들어서 응답으로 온 검색결과 저장하기
           dispatch(ItemHandler(getFormatedItems(res.data.items))); //검색결과 받아서 리덕스에 저장
-          setCount(5);
+          setCount(4);
         });
     }
   };
@@ -62,7 +62,7 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
         { params: { city: city, keyword: match.params.keyword, offset: 0 }})
         .then(res => {
           dispatch(ItemHandler(getFormatedItems(res.data.items)));
-          setCount(5);
+          setCount(4);
         });
     }
     //2-(2) 검색 키워드가 없을때(처음 입장) 모든 자료 요청
@@ -71,7 +71,7 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
         { params: { city: city, offset: 0}})
         .then(res => {
           dispatch(ItemHandler(getFormatedItems(res.data.items))); //검색결과 받아서 리덕스에 저장
-          setCount(5);
+          setCount(4);
         });
     }
     // }
@@ -112,7 +112,7 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({ history, match}
     if((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
       //실행할 로직 (콘텐츠 추가)
       // count += 5;
-      setCount(Count + 5);
+      setCount(Count + 4);
       axios.get(`${process.env.REACT_APP_SERVER_ADDRESS}/search`,
         { params: { city: city, offset: Count, keyword: match.params.keyword }})
         .then(res => {
