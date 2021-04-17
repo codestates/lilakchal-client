@@ -15,7 +15,7 @@ dotenv.config();
 const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
 
   const userInfoState = useSelector((state: RootState) => state.UserInfoReducer);
-  const { id } = userInfoState;
+  const { id, city } = userInfoState;
   const typeState = useSelector((state: RootState) => state.SearchTypeReducer);
   const { searchType } = typeState;
   const dispatch = useDispatch();
@@ -51,7 +51,7 @@ const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
 
   useEffect(() => {
     axios.post(`${process.env.REACT_APP_SERVER_ADDRESS}/user/myauction/${searchType}`,
-      { offset: 0, userId: id },
+      { offset: 0, userId: id, city: city},
       {withCredentials: true})
       .then(res => {
         dispatch(ItemHandler(getFormatedItems(res.data.items)));
@@ -63,7 +63,7 @@ const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
     //2.응답받아서 리덕스에 저장하기
     if(props === 'buyer') {
       axios.post(`${process.env.REACT_APP_SERVER_ADDRESS}/user/myauction/buyer`,
-        { offset: 0, userId: id },
+        { offset: 0, userId: id, city: city },
         {withCredentials: true})
         .then(res => {
           dispatch(ItemHandler(getFormatedItems(res.data.items)));
@@ -72,7 +72,7 @@ const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
     }
     else {
       axios.post(`${process.env.REACT_APP_SERVER_ADDRESS}/user/myauction/seller`,
-        { offset: 0, userId: id },
+        { offset: 0, userId: id, city: city },
         {withCredentials: true})
         .then(res => {
           dispatch(ItemHandler(getFormatedItems(res.data.items)));
