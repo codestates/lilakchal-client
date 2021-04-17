@@ -1,12 +1,94 @@
+@import '../../../style/variable.scss';
+
 .register {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   position: relative;
   top: 100px;
+  width: 720px;
+}
+
+.register-topbox {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+}
+
+.register-filebox {
+  display: flex;
+  flex-direction: column;
+}
+
+.register-photobox {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  height: 300px;
+  border: 1px solid #000000;
+  border-radius: 20px;
+}
+
+.register-photoerror {
+  text-align: center;
+  margin: 10px;
+  height: 20px;
 }
 
 .register-photo {
-  width: 150px;
-  height: 150px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  border-radius: 20px;
+  object-fit: contain;
+}
+
+.register-iconbox {
+  position: absolute;
+  top: calc(300px - 60%);
+  left: calc(300px - 60%);
+  z-index: 1;
+}
+
+.register-file {
+  width: 300px;
+  height: 300px;
+  opacity: 0;
+  z-index: 3;
+}
+
+.register-infobox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1 0 0;
+  margin-left: 30px;
+}
+
+.register-title {
+  font-size: var(--font-large);
+}
+
+.register-titleErr,
+.register-priceErr,
+.register-endtime {
+  margin: 10px 0px;
+  height: 20px;
+}
+
+.register-price {
+  font-size: var(--font-large);
+}
+
+.register-period {
+  width: 100px;
+  height: 50px;
+}
+
+.register-visible {
+  opacity: 0;
+}
+
+.register-description {
+  resize: none;
 }
