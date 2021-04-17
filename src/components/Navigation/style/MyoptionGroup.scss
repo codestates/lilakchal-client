@@ -3,3 +3,30 @@
   justify-content: space-between;
   align-items: center;
 }
+.username-container {
+  display: flex;
+  width: 5.18rem;
+  flex: 1;
+  justify-content: center;
+}
+.GoSearch-container {
+  display: flex;
+  // width: 3rem;
+  margin: 0 0.5rem;
+  height: 100%;
+  // margin-left: -1rem;
+}
+.Logout-container {
+  display: flex;
+  justify-content: center;
+  // margin-right: 4rem;
+  margin-left: 0.5rem;
+}
+.FilterBtn-container {
+  display: flex;
+  justify-content: center;
+  // margin-top: 4rem;
+  // margin-left: 11.65rem;
+  // margin-right: 20px;
+  align-items: center;
+}

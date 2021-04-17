@@ -15,7 +15,7 @@ const SearchBtn = ({handleSubmit}: props) => {
   //3. 다 한다음에 feature 새로운거 파서 searchBar에서 실제로 함수 만들어서 props로 내려주기
   return (
     <div className='submit-button' onClick={()=>handleSubmit()}>
-      <FaSearch size='40' />
+      <FaSearch className= 'searchbtn' size='2rem' color='#4EBDC9'/>
     </div>
   );
 };

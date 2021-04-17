@@ -48,7 +48,7 @@ const SearchBar: React.FC<RouterProps> = ({history}) => {
   
   return (
     <div className="searchbar-input">
-      <input id="searchbar" type="search" placeholder="Search" onChange={e => setInputValue(e.target.value)} onKeyPress={handleKeyPress}/>
+      <input id="searchbar" type="search" placeholder="ex) 기프티콘" onChange={e => setInputValue(e.target.value)} onKeyPress={handleKeyPress}/>
       <SearchBtn handleSubmit={handleSubmit}/>
     </div>
   );

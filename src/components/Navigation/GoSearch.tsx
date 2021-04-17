@@ -10,7 +10,7 @@ const GoSearch: React.FC<RouteComponentProps> = ({ history}) => {
   };
 
   return (
-    <FaSearch size='40' onClick={clickHandler}/>
+    <FaSearch size='2rem' color='#4EBDC9' onClick={clickHandler}/>
   );
 };
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
 import {BsPersonFill} from 'react-icons/bs';
+import './style/GoMypage.scss';
 
 
 //1.버튼을 누르면 마이페이지로 라우팅
@@ -19,7 +20,7 @@ const GoMypage: React.FC<SomeComponentProps> = ({history}) => {
 
   return (
     <div className='mypage-btn'>
-      <BsPersonFill size='40'onClick={goMypage} />
+      <BsPersonFill size='2rem'onClick={goMypage} />
     </div>
   );
 };
