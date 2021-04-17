@@ -132,6 +132,7 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
 
   return (
     <section className="register">
+      <h1 className="register-header">경매 물품 등록</h1>
       <article className="register-topbox">
         <div className="register-filebox">
           <div className="register-photobox">
@@ -151,15 +152,15 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
             {!price ? <div className="register-priceErr">{priceErr}</div> : <div className="register-priceErr"></div>}
           </div>
           <div>
-            <button className="register-period" value="1d" onClick={getEndtime} >1일</button>
-            <button className="register-period" value="3d" onClick={getEndtime} >3일</button>
-            <button className="register-period" value="7d" onClick={getEndtime} >7일</button>
+            <button className="register-period 1d" value="1d" onClick={getEndtime} >1일</button>
+            <button className="register-period 3d" value="3d" onClick={getEndtime} >3일</button>
+            <button className="register-period 7d" value="7d" onClick={getEndtime} >7일</button>
             {!endtime ? <div className="register-endtime">경매 기간을 선택해주세요!</div> : <div className="register-endtime">경매 마감일 {endtime}</div>}
           </div>
         </div>
       </article>
       <article className="register-bottombox">
-        <textarea className="register-description" onChange={e => setDescription(e.target.value)}></textarea>
+        <textarea className="register-description" placeholder="물품에대한 설명을 입력해주세요!" onChange={e => setDescription(e.target.value)}></textarea>
         {errorMessage ? <div>{errorMessage}</div> : null}
         <SubmitBtn str={str} submitHandler={submitHandler}/>
       </article>
