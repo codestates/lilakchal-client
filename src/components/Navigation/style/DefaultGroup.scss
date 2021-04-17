@@ -1,32 +1,38 @@
+.search-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 9.5rem;
+  max-width: 20.688em;
+  flex: 1;
+}
+.searchbar-container {
+  display: flex;
+  flex: 1;
+}
+
 .defalut-container {
   display: flex;
   justify-content: space-between;
   flex: 1;
-  // align-items: center;
 }
+
 .default-icons {
   display: flex;
   align-items: center;
 }
-.search-container {
-  display: flex;
-  flex-direction: column;
-}
-.GoRegister-container {
-  // width: 4rem;
-  // height: 100%;
-  flex: 1;
-}
+
 .loginsection-container {
   display: flex;
   justify-content: center;
   width: 60px;
   height: 30px;
-  flex: 1;
 
 }
+
 .location-container {
   display: flex;
   justify-content: center;
   text-align: center;
+  margin-right: 2rem;
+  flex: 1;
 }

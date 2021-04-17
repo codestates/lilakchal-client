@@ -4,7 +4,6 @@ import { RootState } from '../../redux/modules/reducer';
 // import {LoginHandler, LogoutHandler} from '../../redux/modules/account';
 import GoMypage from '../Navigation/GoMypage';
 import Login from './Login';
-import './style/LoginSection.scss';
 
 const LoginSection: React.FC = () => {
   const loginState = useSelector((state: RootState) => state.AccountReducer);

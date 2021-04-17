@@ -1,38 +1,24 @@
 @import '../../../style//variable.scss';
 
-.filter-button {
-  
-}
-
 .filter-container {
   position: relative;
 }
 
 .filter-tooltip {
   position: absolute;
-  // top: 0;
-  // right: 0;
   border-radius: 6px;
   padding: 10px;
   visibility: hidden;
   overflow: visible;
   display: flex;
-  /* Position the tooltip */
   z-index: 1;
-  // margin-top: 100px;
   left: -10%;
-  // margin-left: -60px;
   border: 2px solid rgb(151, 149, 149);
   background-color: #ffff;
-  // left: 40rem;
   top: 3rem;
-  
 }
 .radio-button {
   display: flex;
   width: 100px;
   
-}
-.icon {
-  // margin-top: 150px;
 }
