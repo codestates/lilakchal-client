@@ -27,7 +27,7 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
   const itemState = useSelector((state:RootStateOrAny) => state.ItemReducer);
   const {items} = itemState;
   const dispatch = useDispatch();
-  const [Count, setCount] = useState(4);
+  const [Count, setCount] = useState(6);
   
 
   // history.pushState(null, '', ''); 
@@ -39,7 +39,7 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
         .then(res => {
           // 리덕스 상태 만들어서 응답으로 온 검색결과 저장하기
           dispatch(ItemHandler(getFormatedItems(res.data.items))); 
-          setCount(4);
+          setCount(6);
         });
     }
     //2-(2) 검색 키워드가 없을때(처음 입장) 모든 자료 요청
@@ -49,7 +49,7 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
         .then(res => {
           // 리덕스 상태 만들어서 응답으로 온 검색결과 저장하기
           dispatch(ItemHandler(getFormatedItems(res.data.items))); //검색결과 받아서 리덕스에 저장
-          setCount(4);
+          setCount(6);
         });
     }
   };
@@ -62,7 +62,7 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
         { params: { city: city, keyword: match.params.keyword, offset: 0 }})
         .then(res => {
           dispatch(ItemHandler(getFormatedItems(res.data.items)));
-          setCount(4);
+          setCount(6);
         });
     }
     //2-(2) 검색 키워드가 없을때(처음 입장) 모든 자료 요청
@@ -71,7 +71,7 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
         { params: { city: city, offset: 0}})
         .then(res => {
           dispatch(ItemHandler(getFormatedItems(res.data.items))); //검색결과 받아서 리덕스에 저장
-          setCount(4);
+          setCount(6);
         });
     }
     // }
@@ -111,8 +111,7 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
     //window height + window scrollY 값이 document height보다 클 경우,
     if((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
       //실행할 로직 (콘텐츠 추가)
-      // count += 5;
-      setCount(Count + 4);
+      setCount(Count + 6);
       axios.get(`${process.env.REACT_APP_SERVER_ADDRESS}/search`,
         { params: { city: city, offset: Count, keyword: match.params.keyword }})
         .then(res => {
