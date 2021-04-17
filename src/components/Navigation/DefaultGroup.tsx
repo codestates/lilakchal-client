@@ -15,19 +15,18 @@ const DefaultGroup:React.FC = () => {
         <div className='searchbar-container'>
           <SearchBar/>
         </div>
-        <div>
-          <div className='location-container'>
-            <Location/>
-          </div>
+        <div className='location-container'>
+          <Location/>
         </div>
       </div>
-      <div className='GoRegister-container'>
-        <GoRegister/>
+      <div className='default-icons'>
+        <div className='GoRegister-container'>
+          <GoRegister/>
+        </div>
+        <div className='loginsection-container'>
+          <LoginSection/>
+        </div>
       </div>
-      <div className='loginsection-container'>
-        <LoginSection/>
-      </div>
-      
     </div>
   );
 };

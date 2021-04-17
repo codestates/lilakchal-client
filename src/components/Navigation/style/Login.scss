@@ -1,11 +1,16 @@
 .login-container {
-  width: 90px;
-  height: 45px;
+  width: 60px;
+  height: 30px;
+  flex: 1;
+  // display: flex;
+  // align-items: center;
 }
 
 .login-button {
-  background-image: url('../../../res/kakao_login_medium.png');
+  background-image: url('../../../res//kakao_login_small.png');
   border-radius: 12px;
   width: 100%;
   height: 100%;
+  border: none;
+  // margin-left: 1rem;
 }
