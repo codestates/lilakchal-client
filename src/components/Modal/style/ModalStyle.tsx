@@ -6,6 +6,15 @@ const shakeAnimation = keyframes`
   20%, 40%, 60%, 80% { transform: translate(10px, -50%); }
 `;
 
+const showFromLeftAnimation = keyframes`
+  0% {
+    transform: translate(500px, -50%);
+  }
+  100% {
+      transform: translate(0, -50%);
+  }
+`;
+
 // const reverseAnimation = keyframes`
 //   0% {transform: rotateX(180deg);}
 //   100% {tranform: rotateX(0deg);}
@@ -84,10 +93,12 @@ export const InnerContainer = styled.div<{isWarning: boolean, isSide: boolean}>`
   position: relative;
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
   background-color: ${props => props.color};
-  border-radius: 20px;
   margin: 0 auto;
   transform: translateY(-50%);
   outline:none;
+  ${(props) => props.isSide && css`
+    animation: ${showFromLeftAnimation} 0.8s;
+  `}
   ;
 
   ${(props) => props.isSide && css ? `
@@ -95,7 +106,8 @@ export const InnerContainer = styled.div<{isWarning: boolean, isSide: boolean}>`
   height: 100%;
   right: 0; 
   position: fixed; 
-  top: 50%; ` : `
+  top: 50%;
+  ` : `
   max-width: 600px;
   min-width: 50px;
   min-height: 100px;
