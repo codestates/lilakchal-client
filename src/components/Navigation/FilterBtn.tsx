@@ -6,7 +6,7 @@ import { RootState } from '../../redux/modules/reducer';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFormatedItems } from '../../modules/converters';
 import { ItemHandler } from '../../redux/modules/Items';
-import { FaFilter } from 'react-icons/fa';
+import { BsFilter } from 'react-icons/bs';
 import './style/FilterBtn.scss';
 import { TypeHandler } from '../../redux/modules/SearchType';
 
@@ -15,7 +15,7 @@ dotenv.config();
 const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
 
   const userInfoState = useSelector((state: RootState) => state.UserInfoReducer);
-  const { id } = userInfoState;
+  const { id, city } = userInfoState;
   const typeState = useSelector((state: RootState) => state.SearchTypeReducer);
   const { searchType } = typeState;
   const dispatch = useDispatch();
@@ -51,7 +51,7 @@ const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
 
   useEffect(() => {
     axios.post(`${process.env.REACT_APP_SERVER_ADDRESS}/user/myauction/${searchType}`,
-      { offset: 0, userId: id },
+      { offset: 0, userId: id, city: city},
       {withCredentials: true})
       .then(res => {
         dispatch(ItemHandler(getFormatedItems(res.data.items)));
@@ -63,7 +63,7 @@ const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
     //2.응답받아서 리덕스에 저장하기
     if(props === 'buyer') {
       axios.post(`${process.env.REACT_APP_SERVER_ADDRESS}/user/myauction/buyer`,
-        { offset: 0, userId: id },
+        { offset: 0, userId: id, city: city },
         {withCredentials: true})
         .then(res => {
           dispatch(ItemHandler(getFormatedItems(res.data.items)));
@@ -72,7 +72,7 @@ const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
     }
     else {
       axios.post(`${process.env.REACT_APP_SERVER_ADDRESS}/user/myauction/seller`,
-        { offset: 0, userId: id },
+        { offset: 0, userId: id, city: city },
         {withCredentials: true})
         .then(res => {
           dispatch(ItemHandler(getFormatedItems(res.data.items)));
@@ -82,8 +82,8 @@ const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
   };
 
   return (
-    <div className='icon'>
-      <FaFilter xmlns="http://www.w3.org/2000/svg" className='filter-button' onClick={handleFilterPopup}/>
+    <div className='filter-container'>
+      <BsFilter xmlns="http://www.w3.org/2000/svg" className='filter-button' onClick={handleFilterPopup}/>
       <div className="filter-tooltip" ref={filterTooltip}>
         <div className='radio-button'>
           <div className="buyer">

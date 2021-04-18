@@ -7,7 +7,7 @@ import LoginError from '../Modal/LoginError';
 
 import './style/GoRegister.scss';
 // import { FaSearch } from 'react-icons/fa';
-import {AiOutlinePlusCircle} from 'react-icons/ai';
+import {FaPlus} from 'react-icons/fa';
 
 type SomeComponentProps = RouteComponentProps;
 
@@ -34,8 +34,8 @@ const GoRegister: React.FC<SomeComponentProps> = ({ history }) => {
       <Modal visible={isOpenPopup} color={'#fff'} closeCb={toglePopup} backColor={true} isWarning={true} isSide={false}>
         <LoginError/>
       </Modal>
-      <div className='register-btn' onClick={goRegister} >
-        <AiOutlinePlusCircle size='40' color='black'/>
+      <div onClick={goRegister} >
+        <FaPlus className='register-btn'/>
       </div>
     </>
   );

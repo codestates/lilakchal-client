@@ -7,12 +7,20 @@ import './style/MyoptionGroup.scss';
 
 const MyoptionGroup:React.FC = () => {
   return (
-    // FilterBtn , username, GoSearch, Logout
     <div className='MyoptionGroup-container'>
-      <UserName />
-      <GoSearch />
-      <Logout/>
-      <FilterBtn/>
+      <div className='FilterBtn-container'>
+        <FilterBtn/>
+      </div>
+      <div className='GoSearch-container'>
+        <GoSearch />
+      </div>
+      <div className='username-container'>
+        <UserName />
+      </div>
+      <div className='Logout-container'>
+        <Logout/>
+      </div>
+      
     </div>
   );
 };

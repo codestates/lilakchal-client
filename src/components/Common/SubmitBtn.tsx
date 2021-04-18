@@ -1,13 +1,15 @@
 import React from 'react';
+import './style/SubmitBtn.scss';
 
 interface Iprops {
   str: string,
-  submitHandler(): void
+  submitHandler(): void,
+  classname: string
 }
 
-const SubmitBtn: React.FC<Iprops> = ({str, submitHandler}) => {
+const SubmitBtn: React.FC<Iprops> = ({str, submitHandler, classname}) => {
   return (
-    <button onClick={submitHandler}>{str}</button>
+    <button className={classname} onClick={submitHandler}>{str}</button>
   );
 };
 
