@@ -129,6 +129,7 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
   };
 
   const str = '등록';
+  const classname = 'register-submit';
 
   return (
     <section className="register">
@@ -162,7 +163,7 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
       <article className="register-bottombox">
         <textarea className="register-description" placeholder="물품에대한 설명을 입력해주세요!" onChange={e => setDescription(e.target.value)}></textarea>
         {errorMessage ? <div>{errorMessage}</div> : null}
-        <SubmitBtn str={str} submitHandler={submitHandler}/>
+        <SubmitBtn classname={classname} str={str} submitHandler={submitHandler}/>
       </article>
     </section>
   );
