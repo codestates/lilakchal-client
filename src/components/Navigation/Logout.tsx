@@ -26,7 +26,7 @@ const Logout: React.FC = () => {
 
   return (
     <div>
-      <FiLogOut className='Logout' size='40' color='#4EBDC9' onClick={Logout}/>
+      <FiLogOut className='Logout' onClick={Logout}/>
     </div>
   );
 };

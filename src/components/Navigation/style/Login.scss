@@ -1,6 +1,6 @@
 .login-container {
-  width: 60px;
-  height: 30px;
+  width: 3.75rem;
+  height: 1.875rem;
 }
 
 .login-button {
@@ -9,4 +9,7 @@
   width: 100%;
   height: 100%;
   border: none;
+  &:hover {
+    transform:scale(1.2);
+  }
 }

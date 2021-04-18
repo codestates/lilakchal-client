@@ -83,7 +83,7 @@ const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
 
   return (
     <div className='filter-container'>
-      <BsFilter size='2rem' xmlns="http://www.w3.org/2000/svg" className='filter-button' color='#4EBDC9' onClick={handleFilterPopup}/>
+      <BsFilter xmlns="http://www.w3.org/2000/svg" className='filter-button' onClick={handleFilterPopup}/>
       <div className="filter-tooltip" ref={filterTooltip}>
         <div className='radio-button'>
           <div className="buyer">

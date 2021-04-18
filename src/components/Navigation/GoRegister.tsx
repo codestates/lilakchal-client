@@ -34,8 +34,8 @@ const GoRegister: React.FC<SomeComponentProps> = ({ history }) => {
       <Modal visible={isOpenPopup} color={'#fff'} closeCb={toglePopup} backColor={true} isWarning={true} isSide={false}>
         <LoginError/>
       </Modal>
-      <div className='register-btn' onClick={goRegister} >
-        <FaPlus size='2rem' color='#4EBDC9'/>
+      <div onClick={goRegister} >
+        <FaPlus className='register-btn'/>
       </div>
     </>
   );
