@@ -1,12 +1,157 @@
+@import '../../../style/variable.scss';
+
 .register {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   position: relative;
-  top: 100px;
+  max-width: 45rem;
+}
+
+.register-header {
+  text-align: center;
+  font-weight: 400;
+  font-size: 2rem;
+}
+
+.register-topbox {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  height: 100%;
+}
+
+.register-filebox {
+  display: flex;
+  flex-direction: column;
+}
+
+.register-photobox {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-width: 18.750rem;
+  height: 18.750rem;
+  border: 1px solid var(--footer-text-color);
+  border-radius: 1.25rem;
+}
+
+.register-photoerror {
+  text-align: center;
+  margin: 0.625rem;
+  height: 1.25rem;
+  color: var(--card-timer-soon-color);
 }
 
 .register-photo {
-  width: 150px;
-  height: 150px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  border-radius: 1.25rem;
+  object-fit: contain;
 }
+
+.register-iconbox {
+  position: absolute;
+  top: calc(18.750rem - 60%);
+  left: calc(18.750rem - 60%);
+  z-index: 1;
+}
+
+.register-file {
+  width: 18.750rem;
+  height: 18.750rem;
+  opacity: 0;
+  z-index: 3;
+}
+
+.register-infobox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 1.875rem;
+}
+
+.register-title,
+.register-price {
+  width: 100%;
+  font-size: var(--font-large);
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--footer-text-color);
+  outline: none;
+  &:hover {
+    border-color: var(--card-text-color);
+    transition: all 0.2s ease-in-out;
+  }
+}
+
+.register-titleErr,
+.register-priceErr,
+.register-endtime {
+  margin: 0.625rem 0px;
+  height: 1.25rem;
+  color: var(--card-timer-soon-color);
+}
+
+.register-period {
+  width: 5rem;
+  height: 1.875rem;
+  background-color: var(--modal-bg-color);
+  border: none;
+  border-radius: 0.313rem;
+  margin: 0px 0.625rem;
+  cursor: pointer;
+  font-size: var(--font-medium);
+  &:hover {
+    background-color: var(--card-text-color);
+    color: #ffffff;
+    transition: all 0.2s ease-in-out;
+  }
+}
+
+.register-bottombox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.register-description {
+  resize: none;
+  width: 100%;
+  height: 6.25rem;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--footer-text-color);
+  font-size: var(--font-small);
+  outline: none;
+  &:hover {
+    border-color: var(--card-text-color);
+    transition: all 0.2s ease-in-out;
+  }
+}
+
+.register-visible {
+  opacity: 0;
+}
+
+
+// @media screen and (max-width: 380px) {
+//   .register {
+//     max-width: 23.750rem;
+//   }
+
+//   .register-photobox {
+//     width: 9.357rem;
+//     height: 9.357rem;
+//   }
+
+//   .register-iconbox {
+//     top: calc(9.357rem - 70%);
+//     left: calc(9.357rem - 70%);
+//   }
+// }

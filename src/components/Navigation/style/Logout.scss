@@ -1,3 +1,11 @@
+@import '../../../style//variable.scss';
+
 .Logout {
-  width: 40px;
+  width: 2rem;
+  height: 2rem;
+  color: var(--header-icon-color);
+  &:hover {
+    transform:scale(1.2);
+    color: var(--text-btn-color);
+  }
 }

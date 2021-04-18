@@ -1,24 +1,38 @@
-.defalut-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
 .search-container {
   display: flex;
   flex-direction: column;
+  min-width: 9.5rem;
+  max-width: 21.2em;
   flex: 1;
-  margin-top: 10px;
 }
-.GoRegister-container {
+.searchbar-container {
   display: flex;
   flex: 1;
-  margin-top: -10px;
-  margin-left: 50px;
 }
+
+.defalut-container {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.default-icons {
+  display: flex;
+  align-items: center;
+}
+
 .loginsection-container {
   display: flex;
-  margin-top: -10px;
+  justify-content: center;
+  width: 3.75rem;
+  height: 1.875em;
+
+}
+
+.location-container {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-right: 2rem;
   flex: 1;
-  margin-left: 50px;
-  width: 70px;
 }

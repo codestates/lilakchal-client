@@ -15,7 +15,7 @@ const Location: React.FC = () => {
 
   return (
     <div className='location-section'>
-      {(city !== '전국') ? <div>{city}</div> : ('위치가 없어요!')}
+      {(city !== '전국') ? `${city}` : ('위치가 없어요!')}
     </div>
   );
 };
