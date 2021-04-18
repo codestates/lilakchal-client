@@ -1,15 +1,30 @@
 .message-input-form{
-  min-width: 80%;
-  border: 1px solid #cecece;
+  min-width: 100%;
+  border: none;
   display: flex;
+  height: 2.2rem;
 }
 
 .message-input{
   font-size: 1rem;
   flex: 2 1 auto;
+  border-top: 0px;
+  border-top:none;
+  border-left:none;
+  border-right:none;
+  outline: none;
 }
 
 .message-submit-btn{
   font-size: 1rem;
+  border: none;
   flex: 0 1 auto;
+  width: 2rem;
+  background-color: white;
+}
+
+.message-submit-icon{
+  width: 120%;
+  height: 120%;
+  color: #FF7997;
 }
