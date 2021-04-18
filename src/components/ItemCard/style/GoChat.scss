@@ -1,0 +1,14 @@
+@import '../../../style/variable.scss';
+.chat-btn{
+  background-color: var(--text-btn-color);
+  outline-style: none;
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  padding: 0.2rem 2rem;
+  font-size: var(--font-medium);
+  &:hover{
+    transform: scale(1.1);
+    transition: transform .35s;
+  }
+}

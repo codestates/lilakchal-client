@@ -1,15 +1,15 @@
-/*styled component는 렌더링 될 때마다 style 파일을 불러와야하는 단점이 있다.
-타이머의 경우 매 초 새롭게 렌더링 되므로 styled component보단 scss를 쓰는 것이 나아 보인다.*/
+@import '../../../style/variable.scss';
 
 .timer {
   display: inline;
-  font-size: 2rem;
+  font-size: var(--font-largest);
+  color: var(--card-timer-color);
 }
 
 .itemdetail-time {
-  font-size: 1rem;
+  font-size: var(--font-small);
 }
 
 .deadline{
-  color: #d83659;
+  color: var(--card-timer-soon-color);
 }

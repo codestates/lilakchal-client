@@ -17,7 +17,7 @@ export const constantString = {
   noSearchResult: '검색 결과가 없어요!',
   bidSuccess: '최종입찰되었습니다!',
   bidFail: '아쉽지만 최종입찰에 실패하였습니다.',
-  goChat: '채팅으로 거래하기',
+  goChat: '채팅',
   registeredItem: '등록한 경매',
   bidItem: '입찰한 경매',
   endBid: '입찰마감'

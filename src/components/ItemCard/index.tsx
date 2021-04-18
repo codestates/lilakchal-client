@@ -4,10 +4,10 @@ import GoChat from './GoChat';
 import Timer from './Timer';
 import {Item} from '../../redux/modules/Items';
 import { useSelector, RootStateOrAny  } from 'react-redux';
-import {Container, Thumbnail, Contents, Location, Title} from './style/ItemCardStyle';
 import {auctionSocket} from '../../modules/socket';
 import ItemDetail from './ItemDetail';
 import Modal from '../Modal/index';
+import './style/ItemCard.scss';
 
 interface Props {
   item: Item
@@ -23,9 +23,7 @@ const ItemCard: React.FC<Props> = ({item}) => {
     setIsExpired(isExpired);
   };
 
-  //{userId, itemId, price}
   const requestBid = (price: number) => {
-    console.log('bidsend', price);
     auctionSocket.emit('bid', {
       userId: id,
       itemId: item.id,
@@ -45,23 +43,29 @@ const ItemCard: React.FC<Props> = ({item}) => {
   const classname = 'timer';
 
   return (
-    <Container className={'itemcard-container'}>
-      <Modal visible={isOpenPopup} color={'#CCEBF5'}  closeCb={closePopUp} backColor={true} isWarning={false} isSide={true}>
+    <>
+      <Modal visible={isOpenPopup} color={'#CCEBF5'}  closeCb={closePopUp} backColor={true} isWarning={false} isSide={true} className={'sidemodal'}>
         <ItemDetail item={item} requestBid={requestBid} endtime={item.endTime} handleBidStatus={handleBidStatus} isExpired={isExpired} closeCb={closePopUp}></ItemDetail>
       </Modal>
-      <Thumbnail bg={item.photo}></Thumbnail>
-      <Contents>
-        <Location>{item.city}</Location>
-        <Timer classname={classname} endtime={item.endTime} handleBidStatus={handleBidStatus}/>
-        <Title onClick={() => openPopUp()}>{item.title}</Title>
-        <CurrentPrice itemId={item.id} price={item.price}></CurrentPrice>
-        {
-          (isExpired && (id === item.sellerId || id === item.winnerId)) ?
-            <GoChat itemId={item.id} title={item.title}></GoChat> :
-            <></>
-        }
-      </Contents>
-    </Container>
+      <div className="itemcard-container" onClick={() => openPopUp()}>
+        <div className="itemcard-location">{item.city}</div>
+        <div className="itemcard-content">
+          <div className="itemcard-imgbox">
+            <img className="itemcard-img" src={item.photo} alt=""/>
+          </div>
+          <div className="itemcard-text">
+            <Timer classname={classname} endtime={item.endTime} handleBidStatus={handleBidStatus}/>
+            <div className="itemcard-title">{item.title}</div>
+            <CurrentPrice itemId={item.id} price={item.price}></CurrentPrice>
+            {
+              (isExpired && (id === item.sellerId || id === item.winnerId)) ?
+                <GoChat itemId={item.id} title={item.title}></GoChat> :
+                <></>
+            }
+          </div> 
+        </div>
+      </div>
+    </>
   );
 };
 
