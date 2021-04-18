@@ -11,8 +11,8 @@ interface Props {
 const Message: React.FC<Props> = ({text, isMine, time}) => {
   return (
     <Container isMine={isMine}>
-      <TimeStamp>{getFormatedChatDate(time)}</TimeStamp>
       <Text isMine={isMine}>{text}</Text>
+      <TimeStamp>{getFormatedChatDate(time)}</TimeStamp>
     </Container>
   );
 };
