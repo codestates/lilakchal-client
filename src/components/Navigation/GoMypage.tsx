@@ -1,6 +1,6 @@
 import React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
-import {BsPersonFill} from 'react-icons/bs';
+import {BsPeopleCircle} from 'react-icons/bs';
 import './style/GoMypage.scss';
 
 
@@ -20,7 +20,7 @@ const GoMypage: React.FC<SomeComponentProps> = ({history}) => {
 
   return (
     <div className='mypage-btn'>
-      <BsPersonFill size='2rem'onClick={goMypage} />
+      <BsPeopleCircle className='gomypage'onClick={goMypage} />
     </div>
   );
 };

@@ -3,6 +3,15 @@
 .filter-container {
   position: relative;
 }
+.filter-button {
+  width: 2rem;
+  height: 2rem;
+  color: var(--header-icon-color);
+  &:hover {
+    transform:scale(1.2);
+    color: var(--text-btn-color);
+  }
+}
 
 .filter-tooltip {
   position: absolute;
@@ -17,8 +26,27 @@
   background-color: #ffff;
   top: 3rem;
 }
+.tooltip-container {
+  align-items: center;
+}
 .radio-button {
   display: flex;
-  width: 100px;
+  width: 6.25rem;
   
+}
+input[type='radio'],
+input[type='radio']:checked {
+  appearance: none;
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 10px;
+  margin-right: 0.1rem;
+}
+input[type='radio'] {
+  background-color: #eee;
+  border: 2px solid rgb(151, 149, 149);
+  // margin-top: 1rem;
+}
+input[type='radio']:checked {
+  background-color: var(--header-icon-color);
 }
