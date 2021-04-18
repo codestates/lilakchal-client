@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/modules/reducer';
+import { BsPlus } from 'react-icons/bs';
 
 import SubmitBtn from '../Common/SubmitBtn';
 import './style/RegisterForm.scss';
@@ -19,6 +20,8 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
   const [endtime, setEndtime] = useState<string>('');
   const [description, setDescription] = useState<string>('');
   const [errorMessage, setErrorMessage] = useState<string>('');
+  const [priceErr, setPriceErr] = useState<string>('');
+  const [titleErr, setTitleErr] = useState<string>('');
 
   const fileChange = (e: any): void => {
 
@@ -38,14 +41,10 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
   };
 
   const submitHandler = async () => {
-    if (!photo) {
-      setErrorMessage('사진을 등록해 주세요!');
+    
+    if (!title || !price || !photo || !description || !endtime) {
+      setErrorMessage('모두 입력되어야 등록이 가능합니다.');
       return;
-    } else if (price <= 0) {
-      setErrorMessage('최소 가격을 1원 이상 가격을 정해주세요!');
-      return;
-    } else if (!/^[0-9]/g.test(String(price))) {
-      setErrorMessage('최소 가격은 숫자만 입력 가능합니다!');
     }
 
     const formData = new FormData();
@@ -69,6 +68,26 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
 
     await axios.post('https://localhost:4000/auction/register', formData, { headers: {'Content-Type': 'multipart/form-data'}, withCredentials: true });
     history.push('/ko/search');
+  };
+
+  const titleHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTitle(e.target.value);
+
+    if (!title) {
+      setTitleErr('필수 입력사항입니다.');
+    }
+  };
+
+  const priceHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPrice(Number(e.target.value));
+
+    if (price <= 0) {
+      setPriceErr('최소 가격을 1원 이상 가격을 정해주세요!');
+    } else if (!/^[0-9]/g.test(String(price))) {
+      setPriceErr('최소 가격은 숫자만 입력 가능합니다!');
+    } else {
+      setPriceErr('필수 입력사항입니다.');
+    }
   };
 
   const getEndtime = (e: React.MouseEvent<HTMLButtonElement>): void => {
@@ -110,21 +129,42 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
   };
 
   const str = '등록';
+  const classname = 'register-submit';
 
   return (
     <section className="register">
-      {imgbase64 ? <img className="register-photo" src={imgbase64} /> : <></>}
-      <input className="register-file" type="file" accept="image/jpeg, image/png" onChange={fileChange}/>
-      <input className="register-title" type="text" onChange={e => setTitle(e.target.value)} placeholder="제목을 입력해주세요" />
-      <input className="register-price" type="text" onChange={e => setPrice(Number(e.target.value))} placeholder="최소 가격을 입력해주세요"/>
-      <div>
-        <button className="register-period" value="1d" onClick={getEndtime} >1일</button>
-        <button className="register-period" value="3d" onClick={getEndtime} >3일</button>
-        <button className="register-period" value="7d" onClick={getEndtime} >7일</button>
-      </div>
-      <textarea className="register-description" onChange={e => setDescription(e.target.value)}></textarea>
-      {errorMessage ? <div className="register-error">{errorMessage}</div> : <></>}
-      <SubmitBtn str={str} submitHandler={submitHandler}/>
+      <h1 className="register-header">경매 물품 등록</h1>
+      <article className="register-topbox">
+        <div className="register-filebox">
+          <div className="register-photobox">
+            {imgbase64 ? <img className="register-photo" src={imgbase64} /> : <></>}
+            <div className={!photo ? 'register-iconbox' : 'register-visible'}><BsPlus size="60"/></div>
+            <input className="register-file" type="file" accept="image/jpeg, image/png" onChange={fileChange}/>
+          </div>
+          {!photo ? <div className="register-photoerror">사진을 등록해주세요!</div> : <div className="register-photoerror"></div>}
+        </div>
+        <div className="register-infobox">
+          <div className="register-titlebox">
+            <input className="register-title" type="text" onChange={titleHandler} placeholder="제목을 입력해주세요" />
+            {!title ? <div className="register-titleErr">{titleErr}</div> : <div className="register-titleErr"></div>}
+          </div>
+          <div className="register-pricebox">
+            <input className="register-price" type="text" onChange={priceHandler} placeholder="최소 가격을 입력해주세요"/>
+            {!price ? <div className="register-priceErr">{priceErr}</div> : <div className="register-priceErr"></div>}
+          </div>
+          <div>
+            <button className="register-period 1d" value="1d" onClick={getEndtime} >1일</button>
+            <button className="register-period 3d" value="3d" onClick={getEndtime} >3일</button>
+            <button className="register-period 7d" value="7d" onClick={getEndtime} >7일</button>
+            {!endtime ? <div className="register-endtime">경매 기간을 선택해주세요!</div> : <div className="register-endtime">경매 마감일 {endtime}</div>}
+          </div>
+        </div>
+      </article>
+      <article className="register-bottombox">
+        <textarea className="register-description" placeholder="물품에대한 설명을 입력해주세요!" onChange={e => setDescription(e.target.value)}></textarea>
+        {errorMessage ? <div>{errorMessage}</div> : null}
+        <SubmitBtn classname={classname} str={str} submitHandler={submitHandler}/>
+      </article>
     </section>
   );
 };
