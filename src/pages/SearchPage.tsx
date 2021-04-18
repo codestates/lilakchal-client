@@ -5,7 +5,6 @@ import dotenv from 'dotenv';
 import { RouteComponentProps, withRouter } from 'react-router';
 import { RootState } from '../redux/modules/reducer';
 import ItemCard from '../components/ItemCard/index';
-import {Container} from './style/SearchPageStyle';
 import { Item, ItemHandler } from '../redux/modules/Items';
 // import {kakaoKey} from '../modules/constants';
 import {auctionSocket} from '../modules/socket';
@@ -15,6 +14,8 @@ import { getFormatedItems } from '../modules/converters';
 import LoadingModal from '../components/Modal/LoadingModal';
 import Empty from '../components/Common/Empty';
 
+import './style/SearchPage.scss';
+ 
 dotenv.config();
 
 interface MatchParams {
@@ -131,17 +132,17 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
   const emptyText = '다른 검색어를 입력해보세요!';
 
   return (
-    <Container>
+    <div className="search-container">
       {!city ?  <LoadingModal isLoading={true}/> 
         :
         items.length ? (items.map((item: Item) => 
           <ItemCard item={item} key={item.id}></ItemCard>
         )) : < Empty emptyTitle={emptyTitle} emptyText={emptyText}/>
       }
-    </Container>
+    </div>
   );
 };
 
-
+ 
 
 export default withRouter(SearchPage);

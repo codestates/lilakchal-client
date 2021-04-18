@@ -1,9 +1,19 @@
 import styled, { css, keyframes } from 'styled-components';
+import {device} from '../../../style/variable';
 
 const shakeAnimation = keyframes` 
   0%, 100% { transform: translate(0, -50%); }
   10%, 30%, 50%, 70%, 90% { transform: translate(-10px, -50%); }
   20%, 40%, 60%, 80% { transform: translate(10px, -50%); }
+`;
+
+const showFromLeftAnimation = keyframes`
+  0% {
+    transform: translate(500px, -50%);
+  }
+  100% {
+      transform: translate(0, -50%);
+  }
 `;
 
 // const reverseAnimation = keyframes`
@@ -43,7 +53,7 @@ export const Dimmer = styled.div<{visible: boolean, backColor: boolean}>`
   width: 100%;
   height: 100%;
   z-index: 999;
-  background-color: ${(props) => (props.backColor ? 'rgba(0, 0, 0, 0.3)' : 'rgba(0, 0, 0, 0)')};
+  background-color: ${(props) => (props.backColor ? 'rgba(190, 190, 190, 0.5)' : 'rgba(0, 0, 0, 0)')};
 `;
 
 export const OpaqueDimmer = styled.div<{visible: boolean}>`
@@ -84,10 +94,13 @@ export const InnerContainer = styled.div<{isWarning: boolean, isSide: boolean}>`
   position: relative;
   box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
   background-color: ${props => props.color};
-  border-radius: 20px;
   margin: 0 auto;
   transform: translateY(-50%);
   outline:none;
+  ${(props) => props.isSide && css`
+    animation: ${showFromLeftAnimation} 0.8s;
+  `}
+  }
   ;
 
   ${(props) => props.isSide && css ? `
@@ -95,7 +108,10 @@ export const InnerContainer = styled.div<{isWarning: boolean, isSide: boolean}>`
   height: 100%;
   right: 0; 
   position: fixed; 
-  top: 50%; ` : `
+  top: 50%;
+  @media ${device.mobile} {
+    width: 100%;
+  ` : `
   max-width: 600px;
   min-width: 50px;
   min-height: 100px;
