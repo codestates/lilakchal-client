@@ -136,7 +136,7 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
       <h1 className="register-header">경매 물품 등록</h1>
       <article className="register-topbox">
         <div className="register-filebox">
-          <div className="register-photobox">
+          <div className={imgbase64 ? 'register-photobox bordernone' : 'register-photobox'}>
             {imgbase64 ? <img className="register-photo" src={imgbase64} /> : <></>}
             <div className={!photo ? 'register-iconbox' : 'register-visible'}><BsPlus size="60"/></div>
             <input className="register-file" type="file" accept="image/jpeg, image/png" onChange={fileChange}/>
@@ -162,8 +162,8 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
       </article>
       <article className="register-bottombox">
         <textarea className="register-description" placeholder="물품에대한 설명을 입력해주세요!" onChange={e => setDescription(e.target.value)}></textarea>
-        {errorMessage ? <div>{errorMessage}</div> : null}
         <SubmitBtn classname={classname} str={str} submitHandler={submitHandler}/>
+        {errorMessage ? <div className="register-error">{errorMessage}</div> : <div className="register-error"></div>}
       </article>
     </section>
   );
