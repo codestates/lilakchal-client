@@ -1,6 +1,7 @@
 import React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
-import { FaSearch } from 'react-icons/fa';
+// import { FaSearch } from 'react-icons/fa';
+import { ImSearch } from 'react-icons/im';
 import './style/GoSearch.scss';
 
 const GoSearch: React.FC<RouteComponentProps> = ({ history}) => {
@@ -11,7 +12,7 @@ const GoSearch: React.FC<RouteComponentProps> = ({ history}) => {
   };
 
   return (
-    <FaSearch className='gosearch-btn'  onClick={clickHandler}/>
+    <ImSearch className='gosearch-btn'  onClick={clickHandler}/>
   );
 };
 
