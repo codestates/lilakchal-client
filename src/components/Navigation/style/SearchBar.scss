@@ -1,9 +1,23 @@
+@import '../../../style//variable.scss';
 .searchbar-input {
   display: flex;
   justify-content: center;
-  width: 300px;
-  margin-left: 50px;
+  align-items: center;
+  width: 100%;
+  height: 2.5rem;
+  margin: 0 auto;
+  margin-top: 1.5rem;
+  flex: 1 ;
 }
 #searchbar {
   width: 100%;
+  height: 100%;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  border-color: var(--header-icon-color);
+  outline:none;
+  font-size: var(--font-medium);
+  flex: 1 ;
+  
 }
