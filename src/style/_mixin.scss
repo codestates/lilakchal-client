@@ -1,0 +1,7 @@
+@import './variable';
+
+@mixin mobile {
+  @media screen and (max-width: #{$mobile-size}) {
+    @content;
+  }
+}

@@ -1,4 +1,5 @@
 import styled, { css, keyframes } from 'styled-components';
+import {device} from '../../../style/variable';
 
 const shakeAnimation = keyframes` 
   0%, 100% { transform: translate(0, -50%); }
@@ -52,7 +53,7 @@ export const Dimmer = styled.div<{visible: boolean, backColor: boolean}>`
   width: 100%;
   height: 100%;
   z-index: 999;
-  background-color: ${(props) => (props.backColor ? 'rgba(0, 0, 0, 0.3)' : 'rgba(0, 0, 0, 0)')};
+  background-color: ${(props) => (props.backColor ? 'rgba(190, 190, 190, 0.5)' : 'rgba(0, 0, 0, 0)')};
 `;
 
 export const OpaqueDimmer = styled.div<{visible: boolean}>`
@@ -99,6 +100,7 @@ export const InnerContainer = styled.div<{isWarning: boolean, isSide: boolean}>`
   ${(props) => props.isSide && css`
     animation: ${showFromLeftAnimation} 0.8s;
   `}
+  }
   ;
 
   ${(props) => props.isSide && css ? `
@@ -107,6 +109,8 @@ export const InnerContainer = styled.div<{isWarning: boolean, isSide: boolean}>`
   right: 0; 
   position: fixed; 
   top: 50%;
+  @media ${device.mobile} {
+    width: 100%;
   ` : `
   max-width: 600px;
   min-width: 50px;

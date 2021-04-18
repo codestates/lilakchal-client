@@ -1,3 +1,7 @@
+/*variable.scss는 변수만 따로 저장해놓는 파일이므로 별도 css 파일로 컴파일될 필요가 없다.
+  이 경우 _를 파일명 앞에 붙이면 성능 및 관리 상의 이득을 얻을 수 있다.: https://chaewonkong.github.io/posts/scss-media-query.html
+*/
+
 :root {
   --landing-first-color: #CAF3F7;
   --landing-third-color: #E8F8F9;
@@ -19,3 +23,5 @@
   --font-small: 1rem;
   --font-smallest: 0.8rem;
 }
+
+$mobile-size: 600px;
