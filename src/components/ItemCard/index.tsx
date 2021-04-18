@@ -48,20 +48,22 @@ const ItemCard: React.FC<Props> = ({item}) => {
         <ItemDetail item={item} requestBid={requestBid} endtime={item.endTime} handleBidStatus={handleBidStatus} isExpired={isExpired} closeCb={closePopUp}></ItemDetail>
       </Modal>
       <div className="itemcard-container" onClick={() => openPopUp()}>
+        <div className="itemcard-location">{item.city}</div>
         <div className="itemcard-content">
-          <div className="itemcard-location">{item.city}</div>
           <div className="itemcard-imgbox">
             <img className="itemcard-img" src={item.photo} alt=""/>
           </div>
-          <Timer classname={classname} endtime={item.endTime} handleBidStatus={handleBidStatus}/>
-          <div className="itemcard-title">{item.title}</div>
-          <CurrentPrice itemId={item.id} price={item.price}></CurrentPrice>
-          {
-            (isExpired && (id === item.sellerId || id === item.winnerId)) ?
-              <GoChat itemId={item.id} title={item.title}></GoChat> :
-              <></>
-          }
-        </div> 
+          <div className="itemcard-text">
+            <Timer classname={classname} endtime={item.endTime} handleBidStatus={handleBidStatus}/>
+            <div className="itemcard-title">{item.title}</div>
+            <CurrentPrice itemId={item.id} price={item.price}></CurrentPrice>
+            {
+              (isExpired && (id === item.sellerId || id === item.winnerId)) ?
+                <GoChat itemId={item.id} title={item.title}></GoChat> :
+                <></>
+            }
+          </div> 
+        </div>
       </div>
     </>
   );
