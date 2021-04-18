@@ -49,6 +49,7 @@ const EditForm: React.FC<IEditFrom> = ({ setIsOpenPopup }) => {
   };
 
   const str = '변경';
+  const classname = 'editform-submit';
 
   return (
     <Wrapper>
@@ -56,7 +57,7 @@ const EditForm: React.FC<IEditFrom> = ({ setIsOpenPopup }) => {
       <ErrorMessage>{errorMessage ? `${errorMessage}` : <></>}</ErrorMessage>
       <Container>
         <InputName placeholder="변경할 이름을 입력해주세요." onChange={getUserName}/>
-        <SubmitBtn str={str} submitHandler={submitHandler} />
+        <SubmitBtn classname={classname} str={str} submitHandler={submitHandler} />
       </Container>
     </Wrapper>
   );
