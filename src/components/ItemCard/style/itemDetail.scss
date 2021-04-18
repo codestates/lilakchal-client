@@ -3,7 +3,7 @@
   flex-direction: column;
   // justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 400px;
   margin: 20px;
   padding: 20px;
   height: 100%;
@@ -29,8 +29,8 @@
 }
 
 .itemdetail-imgbox {
-  width: 300px;
-  height: 270px;
+  width: 100%;
+  height: 300px;
   border-radius: 20px;
   background-color: #ffffff;
 }
@@ -45,7 +45,7 @@
 .itemdetail-midbox {
   display: flex;
   flex-direction: column;
-  width: 300px;
+  width: 100%;
   margin: 30px 0px;
 }
 
@@ -67,23 +67,27 @@
 
 .itemdetail-description {
   // margin-bottom: 20px;
-  padding: 20px;
+  width: 100%;
 }
 
 .itemdetail-btnbox {
   display: flex;
-  width: 80%;
+  width: 100%;
+  justify-content: center;
 }
 
 .bidButton {
   margin: 2%;
   border-radius: 10px;
-  border: 1px solid #43C2D9;
+  border: none;
   width: 6rem;
   height: 3rem;
+  background-color: #43C2D9;
+  color: #ffffff;
 }
 
 .bidButton:hover {
-  background-color: #43C2D9;
-  color: white;
+  background-color: #ffffff;
+  color: #43C2D9;
+  transition: all 0.2s ease-in-out;
 }
