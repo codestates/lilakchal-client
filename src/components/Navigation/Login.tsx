@@ -33,10 +33,6 @@ const Login: React.FC<RouteComponentProps> = ({history}) => {
             dispatch(LoginHandler(true));
             history.push('/ko/search');
           });
-        // dispatch(UserInfoHandler({id: 3, name: '김유상'}));
-        // dispatch(LoginHandler(true));
-        // history.push('/ko/search');
-        console.log(auth.access_token);
       },
       fail: (err : string) => {
         console.error(err);

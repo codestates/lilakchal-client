@@ -1,19 +1,52 @@
+@import '../../../style//variable.scss';
+
+.filter-container {
+  position: relative;
+}
+.filter-button {
+  width: 2rem;
+  height: 2rem;
+  color: var(--header-icon-color);
+  &:hover {
+    transform:scale(1.2);
+    color: var(--text-btn-color);
+  }
+}
+
 .filter-tooltip {
+  position: absolute;
   border-radius: 6px;
   padding: 10px;
   visibility: hidden;
   overflow: visible;
   display: flex;
-  /* Position the tooltip */
   z-index: 1;
-  // margin-top: 100px;
   left: -10%;
-  // margin-left: -60px;
+  border: 2px solid rgb(151, 149, 149);
+  background-color: #ffff;
+  top: 3rem;
+}
+.tooltip-container {
+  align-items: center;
+}
+.radio-button {
+  display: flex;
+  width: 6.25rem;
   
 }
-.filter-button {
-  display: flex;
+input[type='radio'],
+input[type='radio']:checked {
+  appearance: none;
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 10px;
+  margin-right: 0.1rem;
 }
-.icon {
-  margin-top: 150px;
+input[type='radio'] {
+  background-color: #eee;
+  border: 2px solid rgb(151, 149, 149);
+  // margin-top: 1rem;
+}
+input[type='radio']:checked {
+  background-color: var(--header-icon-color);
 }

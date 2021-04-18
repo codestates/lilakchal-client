@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 import { useDispatch } from 'react-redux';
 import { LogoutHandler } from '../../redux/modules/account';
 import { UserInfoHandler } from '../../redux/modules/UserInfo';
-import { FaDoorOpen } from 'react-icons/fa';
+import { FiLogOut } from 'react-icons/fi';
 import './style/Logout.scss';
 
 const { Kakao } = window;
@@ -26,7 +26,7 @@ const Logout: React.FC = () => {
 
   return (
     <div>
-      <FaDoorOpen className='Logout' size='40' onClick={Logout}/>
+      <FiLogOut className='Logout' onClick={Logout}/>
     </div>
   );
 };

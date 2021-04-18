@@ -1,0 +1,14 @@
+@import '../../../style//variable.scss';
+
+.username-btn {
+  background-color: #ffff;
+  border: 0;
+  outline: 0;
+  font-size: var(--font-medium);
+  text-align: center;
+  width: 100%;
+  &:hover {
+    transform:scale(1.2);
+    color: var(--header-icon-color);
+  }
+}

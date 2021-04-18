@@ -1,11 +1,11 @@
 @import '../../../style//variable.scss';
 
-.searchbtn {
+.gomypage {
   width: 2rem;
   height: 2rem;
-  color: var(--header-icon-color);
+  color: #4a5058;
   &:hover {
     transform:scale(1.2);
     color: var(--text-btn-color);
   }
-  }
+}
