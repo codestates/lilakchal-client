@@ -1,3 +1,5 @@
+@import '../../../style/variable.scss';
+
 .chat-container{
   display:flex;
   flex-direction: column;
@@ -7,19 +9,24 @@
 }
 
 .chat-title{
-  font-size: 1.2rem;
-  background-color: #6799FF55;
+  color :rgb(255, 255, 255);
+  font-size: var(--font-largest);
+  // background-color: var(--mobile-select-color);
+  background-color: #4EBDC9;
+  text-align: center;
 }
 
 .chat-message-box{
-  background-color: #EAEAEA;
+  background: linear-gradient(to bottom, #CAF3F7, 30%, #FFFFFF);
   overflow-y: scroll;
   height: 60vh;
   padding: 10px;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .chat-write-box{
-  background-color: #FFD9EC;
   display:flex;
   align-items: center;
   justify-content: center;

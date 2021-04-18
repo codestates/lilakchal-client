@@ -2,7 +2,6 @@ import styled, {css} from 'styled-components';
 
 export const Container = styled.div<{isMine: boolean}>`
   display: flex;
-  justify-content: flex-end;
   overflow: auto;
   ${(props) => props.isMine ? css`
     flex-direction: row-reverse;
@@ -17,9 +16,10 @@ export const Text = styled.span<{isMine: boolean}>`
   padding: 0.5rem;
   border-radius: 2rem;
   ${(props) => props.isMine ? css`
-    background-color: #F6F6F6;
+    background-color: #4EBDC9;
+    color: #FFFFFF;
   ` : `
-    background-color: #3DB7CC;
+    background-color: #FFFFFF;
   `}
 `;
  
