@@ -6,7 +6,8 @@ import { RootState } from '../../redux/modules/reducer';
 import { useDispatch, useSelector } from 'react-redux';
 import { getFormatedItems } from '../../modules/converters';
 import { ItemHandler } from '../../redux/modules/Items';
-import { BsFilter } from 'react-icons/bs';
+// import { BsFilter } from 'react-icons/bs';
+import { VscListFilter } from 'react-icons/vsc';
 import './style/FilterBtn.scss';
 import { TypeHandler } from '../../redux/modules/SearchType';
 
@@ -86,7 +87,7 @@ const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
 
   return (
     <div className='filter-container'>
-      <BsFilter xmlns="http://www.w3.org/2000/svg" className='filter-button' onClick={handleFilterPopup}/>
+      <VscListFilter xmlns="http://www.w3.org/2000/svg" className='filter-button' onClick={handleFilterPopup}/>
       <div className="filter-tooltip" ref={filterTooltip}>
         <div className='radio-button'>
           <div className="buyer">

@@ -14,6 +14,8 @@ import LoadingModal from '../components/Modal/LoadingModal';
 import Empty from '../components/Common/Empty';
 
 import './style/SearchPage.scss';
+
+let oneTime = false; // 무한스크롤시 중복요청 방지
  
 dotenv.config();
 
@@ -105,14 +107,18 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
 
   window.onscroll = function() {
     //window height + window scrollY 값이 document height보다 클 경우,
-    if((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+    if((window.innerHeight + window.scrollY) >= document.body.offsetHeight * 0.8 && !oneTime) {
       //실행할 로직 (콘텐츠 추가)
+      oneTime = true; // 중복요청하지 않게 조건변경
       setCount(Count + 6);
       axios.get(`${process.env.REACT_APP_SERVER_ADDRESS}/search`,
         { params: { city: city, offset: Count, keyword: match.params.keyword }})
         .then(res => {
           // 리덕스 상태 만들어서 응답으로 온 검색결과 저장하기
-          if (res.data.items) {
+          oneTime = false; // 아이템 받아온 후 다시 요청가능하게 바꿈
+          if (!res.data.items) {
+            //dispatch(ItemHandler(getFormatedItems(items)));
+          } else {
             const newItems = getFormatedItems(res.data.items); 
             dispatch(ItemHandler({ items: [...items, ...newItems.items]})); //검색결과 받아서 리덕스에 저장  
             console.log('search_onscroll', res.data.items);

@@ -1,7 +1,7 @@
 import React from 'react';
 import './style/SearchBtn.scss';
-import { FaSearch } from 'react-icons/fa';
-
+// import { FaSearch } from 'react-icons/fa';
+import { ImSearch } from 'react-icons/im';
 interface props {
   
   handleSubmit: () => void
@@ -15,7 +15,7 @@ const SearchBtn = ({handleSubmit}: props) => {
   //3. 다 한다음에 feature 새로운거 파서 searchBar에서 실제로 함수 만들어서 props로 내려주기
   return (
     <div className='submit-button' onClick={()=>handleSubmit()}>
-      <FaSearch className= 'searchbtn'/>
+      <ImSearch className= 'searchbtn'/>
     </div>
   );
 };
