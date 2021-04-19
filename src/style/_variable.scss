@@ -1,0 +1,29 @@
+/*variable.scss는 변수만 따로 저장해놓는 파일이므로 별도 css 파일로 컴파일될 필요가 없다.
+  이 경우 _를 파일명 앞에 붙이면 성능 및 관리 상의 이득을 얻을 수 있다.: https://chaewonkong.github.io/posts/scss-media-query.html
+*/
+
+
+$landing-first-color: #CAF3F7;
+$landing-third-color: #E8F8F9;
+$header-icon-color: #4EBDC9;
+$modal-bg-color: #CCEBF5;
+$card-timer-color: #43C2D9;
+$card-text-color: #78CBDA;
+$text-btn-color: #FF7997;
+$chat-my-msg-color:  #4EBDC9;
+$chat-your-msg-color:  #FFFFFF;
+$mobile-select-color:  #b3e0b8;
+$footer-bg-color: #FFFFFF;
+$footer-text-color: #4A5058;
+$card-timer-soon-color: #f26180;
+$card-location-color: #7f7f7f;
+$font-largest: 2rem;
+$font-large: 1.6rem;
+$font-medium: 1.2rem;
+$font-small: 1rem;
+$font-smallest: 0.8rem;
+
+
+$mobile-size: 600px;
+$desktopS-size: 1152px;
+$desktopM-size: 1700px;

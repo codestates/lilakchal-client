@@ -7,9 +7,9 @@
   width: 2rem;
   height: 2rem;
   margin-top: 0.3rem;
-  color: var(--footer-text-color);
+  color: $footer-text-color;
   &:hover {
-    color: var(--header-icon-color);
+    color: --header-icon-color;
     transition: 0.5s ease;
   }
 }
@@ -50,5 +50,5 @@ input[type='radio'] {
   // margin-top: 1rem;
 }
 input[type='radio']:checked {
-  background-color: var(--header-icon-color);
+  background-color: $header-icon-color;
 }

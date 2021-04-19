@@ -1,14 +1,18 @@
 import React from 'react';
+import { useMediaQuery } from 'react-responsive';
 import SearchBar from './SearchBar';
 import GoRegister from './GoRegister';
 import LoginSection from './LoginSection';
 import Location from './Location';
+import {device} from '../../style/variable';
 import './style/DefaultGroup.scss';
 
 const DefaultGroup:React.FC = () => {
 
-  //서치바, 물품등록 btn
-  //서치바는 input, 물품등록은 버튼 =>  두개다 컴포넌트로 만들어야함
+  const isMobile = useMediaQuery({
+    query: `${device.mobile}`
+  });
+
   return (
     <div className="defalut-container">
       <div className='search-container'>
@@ -20,9 +24,12 @@ const DefaultGroup:React.FC = () => {
         </div>
       </div>
       <div className='default-icons'>
-        <div className='GoRegister-container'>
-          <GoRegister/>
-        </div>
+        {isMobile ? 
+          <></> :
+          <div className='GoRegister-container'>
+            <GoRegister/>
+          </div>
+        }
         <div className='loginsection-container'>
           <LoginSection/>
         </div>
