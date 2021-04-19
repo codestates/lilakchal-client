@@ -1,14 +1,16 @@
 @import '../../../style/variable.scss';
 @import '../../../style/mixin';
 
+$photoHeightDesktop: 18.750rem;
+$photoHeightMobile: 9.375rem;
+
 .register {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: relative;
   max-width: 45rem;
-  top: 6.25rem;
+  margin-top: -10%;
 }
 
 .register-header {
@@ -28,14 +30,15 @@
 .register-filebox {
   display: flex;
   flex-direction: column;
+  justify-content: center;
 }
 
 .register-photobox {
   position: relative;
   display: flex;
   flex-direction: column;
-  max-width: 18.750rem;
-  height: 18.750rem;
+  max-width: $photoHeightDesktop;
+  height: $photoHeightDesktop;
   border: 1px solid $footer-text-color;
   border-radius: 1.25rem;
 }
@@ -58,8 +61,8 @@
 
 .register-iconbox {
   position: absolute;
-  top: calc(18.750rem - 60%);
-  left: calc(18.750rem - 60%);
+  top: calc(#{$photoHeightDesktop} - 60%);
+  left: calc(#{$photoHeightDesktop} - 60%);
   z-index: 1;
 }
 
@@ -71,10 +74,11 @@
 }
 
 .register-infobox {
+  height: $photoHeightDesktop;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  margin-left: 1.875rem;
+  padding: 1% 1% 1% 5%;
 }
 
 .register-title,
@@ -100,15 +104,20 @@
   color: $card-timer-soon-color;
 }
 
+.register-period-button-box {
+  display: flex;
+  flex-direction: row;
+}
+
 .register-period {
-  width: 5rem;
+  width: 30%;
   height: 1.875rem;
   background-color: $modal-bg-color;
   border: none;
   border-radius: 0.313rem;
-  margin: 0px 0.625rem;
   cursor: pointer;
   font-size: $font-medium;
+  margin-right: calc(10% / 3);
   &:hover {
     background-color: $card-text-color;
     color: #ffffff;
@@ -167,19 +176,31 @@
     left: calc(9.375rem - 70%);
   }
 
+  .register-infobox {
+    height: calc(#{$photoHeightMobile} + 2.5rem);
+    margin: 0;
+  }
+
+  .register-title::placeholder,
+  .register-price::placeholder,
+  .register-description::placeholder{
+  font-size: $font-small;
+  }
+
   .register-titleErr,
   .register-priceErr,
   .register-endtime,
   .register-error {
     font-size: $font-smallest;
+    margin: 0;
   }
 
   .register-photoerror {
     font-size: $font-smallest;
+    margin: 0;
   }
 
   .register-period {
-    width: 2.5rem;
     font-size: $font-small;
   }
 

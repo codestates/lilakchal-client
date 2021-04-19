@@ -57,15 +57,6 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
     formData.append('description', description);
     city && formData.append('city', city);
 
-    // eslint-disable-next-line prefer-const
-    for (let key of formData.keys()) {
-      console.log(key);
-    }
-    // eslint-disable-next-line prefer-const
-    for (let value of formData.values()) {
-      console.log(value);
-    }
-
     await axios.post('https://localhost:4000/auction/register', formData, { headers: {'Content-Type': 'multipart/form-data'}, withCredentials: true });
     history.push('/ko/search');
   };
@@ -82,9 +73,9 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
     setPrice(Number(e.target.value));
 
     if (price <= 0) {
-      setPriceErr('최소 가격을 1원 이상 가격을 정해주세요!');
+      setPriceErr('가격은 1원 이상이어야 합니다!');
     } else if (!/^[0-9]/g.test(String(price))) {
-      setPriceErr('최소 가격은 숫자만 입력 가능합니다!');
+      setPriceErr('가격은 숫자만 입력 가능합니다!');
     } else {
       setPriceErr('필수 입력사항입니다.');
     }
@@ -149,10 +140,12 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
             <input className="register-price" type="text" onChange={priceHandler} placeholder="최소 가격을 입력해주세요"/>
             {!price ? <div className="register-priceErr">{priceErr}</div> : <div className="register-priceErr"></div>}
           </div>
-          <div>
-            <button className="register-period 1d" value="1d" onClick={getEndtime} >1일</button>
-            <button className="register-period 3d" value="3d" onClick={getEndtime} >3일</button>
-            <button className="register-period 7d" value="7d" onClick={getEndtime} >7일</button>
+          <div className="register-period-box">
+            <div className="register-period-button-box">
+              <button className="register-period 1d" value="1d" onClick={getEndtime} >1일</button>
+              <button className="register-period 3d" value="3d" onClick={getEndtime} >3일</button>
+              <button className="register-period 7d" value="7d" onClick={getEndtime} >7일</button>
+            </div>
             {!endtime ? <div className="register-endtime">경매 기간을 선택해주세요!</div> : <div className="register-endtime">경매 마감일 {endtime}</div>}
           </div>
         </div>
