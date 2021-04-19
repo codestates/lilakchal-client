@@ -10,6 +10,12 @@
   flex-wrap: wrap;
 }
 
+@include desktopM {
+  .auction-container {
+    width: 55%;
+  } 
+}
+
 @include mobile {
   .auction-container {
     width: 100%;
