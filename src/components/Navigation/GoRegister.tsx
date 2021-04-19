@@ -6,8 +6,8 @@ import Modal from '../Modal';
 import LoginError from '../Modal/LoginError';
 
 import './style/GoRegister.scss';
-// import { FaSearch } from 'react-icons/fa';
 import {FaPlus} from 'react-icons/fa';
+
 
 type SomeComponentProps = RouteComponentProps;
 

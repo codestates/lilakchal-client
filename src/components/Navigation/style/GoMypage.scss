@@ -3,9 +3,9 @@
 .gomypage {
   width: 2rem;
   height: 2rem;
-  color: #4a5058;
+  color: var(--footer-text-color);
   &:hover {
-    transform:scale(1.2);
     color: var(--text-btn-color);
+    transition: 0.5s ease;
   }
 }
