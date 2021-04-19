@@ -16,6 +16,7 @@ import Empty from '../components/Common/Empty';
 import './style/SearchPage.scss';
 
 let oneTime = false; // 무한스크롤시 중복요청 방지
+let isChanged = false; // 페이지 이동시 이전 저장된 아이템이 안보이게
  
 dotenv.config();
 
@@ -39,7 +40,8 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
         { params: { city: city, keyword: match.params.keyword, offset: 0 }})
         .then(res => {
           // 리덕스 상태 만들어서 응답으로 온 검색결과 저장하기
-          dispatch(ItemHandler(getFormatedItems(res.data.items))); 
+          dispatch(ItemHandler(getFormatedItems(res.data.items)));
+          isChanged = true;
           setCount(6);
           console.log('search_뒤로가기_keyword', res.data.items);
         });
@@ -52,6 +54,7 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
           // 리덕스 상태 만들어서 응답으로 온 검색결과 저장하기
           dispatch(ItemHandler(getFormatedItems(res.data.items))); //검색결과 받아서 리덕스에 저장
           setCount(6);
+          isChanged = true;
           console.log('search_뒤로가기_no_keyword', res.data.items);
         });
     }
@@ -65,6 +68,7 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
         .then(res => {
           dispatch(ItemHandler(getFormatedItems(res.data.items)));
           setCount(6);
+          isChanged = true;
           console.log('search_keyword', res.data.items);
         });
     }
@@ -75,6 +79,7 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
         .then(res => {
           dispatch(ItemHandler(getFormatedItems(res.data.items))); //검색결과 받아서 리덕스에 저장
           setCount(6);
+          isChanged = true;
           console.log('search_no_keyword', res.data.items);
         });
     }
@@ -102,6 +107,7 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
     return () => {
       window.onscroll = null;
       window.onpopstate = null;
+      isChanged = false; // 화면전환 로딩조건
     };
   }, []);
 
@@ -130,14 +136,15 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
   
   const emptyTitle = '검색 결과가 없어요 :(';
   const emptyText = '다른 검색어를 입력해보세요!';
-
+  
   return (
     <div className="searchpage-container">
-      {!city ?  <LoadingModal isLoading={true}/> 
-        :
+      { city && isChanged ? 
         items.length ? (items.map((item: Item) => 
           <ItemCard item={item} key={item.id}></ItemCard>
         )) : < Empty emptyTitle={emptyTitle} emptyText={emptyText}/>
+        :
+        <LoadingModal isLoading={true}/> 
       }
     </div>
   );
