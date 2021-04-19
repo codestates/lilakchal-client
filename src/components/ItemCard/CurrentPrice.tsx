@@ -3,14 +3,14 @@ import {units} from '../../modules/units';
 import './style/ItemCard.scss';
 
 interface Props {
-  itemId: number,
-  price: number
+  price: number,
+  className: string
 }
 
-const CurrentPrice: React.FC<Props> = ({itemId, price}) => {
+const CurrentPrice: React.FC<Props> = ({ price, className}) => {
   return (
-    <div className="itemcard-price" >
-      <span id={`itemcard-${itemId}`}>{price.toLocaleString('ko-KR')}</span><span>{units.price}</span>
+    <div className={className} >
+      <span>{price.toLocaleString('ko-KR')}</span><span>{units.price}</span>
     </div>
   );
 };

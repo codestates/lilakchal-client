@@ -56,7 +56,7 @@ const ItemCard: React.FC<Props> = ({item}) => {
           <div className="itemcard-text">
             <Timer classname={classname} endtime={item.endTime} handleBidStatus={handleBidStatus}/>
             <div className="itemcard-title">{item.title}</div>
-            <CurrentPrice itemId={item.id} price={item.price}></CurrentPrice>
+            <CurrentPrice price={item.price} className="itemcard-price"></CurrentPrice>
             {
               (isExpired && (id === item.sellerId || id === item.winnerId)) ?
                 <GoChat itemId={item.id} title={item.title}></GoChat> :
