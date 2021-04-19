@@ -9,9 +9,9 @@ import {TypeHandler} from '../../redux/modules/SearchType';
 import {getFormatedItems} from '../../modules/converters';
 import { FiLogOut } from 'react-icons/fi';
 import './style/MobileMenu.scss';
-import bidIcon from '../../res/svgs/BidIcon.svg';
-import registerIcon from '../../res/svgs/EditIcon.svg';
-import moneyIcon from '../../res/svgs/MoneyIcon.svg';
+import {ReactComponent as BidIcon} from '../../res/svgs/BidIcon.svg';
+import {ReactComponent as RegisterIcon} from '../../res/svgs/EditIcon.svg';
+import {ReactComponent as MoneyIcon} from '../../res/svgs/MoneyIcon.svg';
 
 interface Props extends RouteComponentProps{
   closeCb: () => void,
@@ -63,15 +63,15 @@ const MobileMenu: React.FC<Props> = ({history, closeCb}) => {
       <span className='mobile-name'>{name}</span>
       <div className='mobile-menu-container'>
         <div className='mobile-menu' onClick={goResigtorPage}>
-          <img className='mobile-icon' src={registerIcon} />
+          <RegisterIcon className='mobile-icon' fill="black"/>
           <span>경매등록</span>
         </div>
         <div className='mobile-menu' onClick={() => {handleMyAuctionBtn('seller');}}>
-          <img className='mobile-icon' src={moneyIcon} />
+          <MoneyIcon className='mobile-icon' fill="black"/>
           <span>판매상품</span>
         </div>
         <div className='mobile-menu' onClick={() => {handleMyAuctionBtn('buyer');}}>
-          <img className='mobile-icon' src={bidIcon} />
+          <BidIcon className='mobile-icon' fill="black"/>
           <span>입찰상품</span>
         </div>
       </div>

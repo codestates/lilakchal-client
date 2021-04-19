@@ -13,10 +13,10 @@ const MyoptionGroup:React.FC = () => {
     query: `${device.mobile}`
   });
   return (
-    <div className='MyoptionGroup-container'>
+    <div className='myoptionGroup-container'>
       {isMobile ? 
         <>
-          <GoSearch />
+          <GoSearch/>
           <GoMypage/>
         </> : 
         <>
