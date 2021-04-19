@@ -45,7 +45,7 @@ const ItemCard: React.FC<Props> = ({item}) => {
   return (
     <>
       <Modal visible={isOpenPopup} color={'#CCEBF5'}  closeCb={closePopUp} backColor={true} isWarning={false} isSide={true} className={'sidemodal'}>
-        <ItemDetail item={item} requestBid={requestBid} endtime={item.endTime} handleBidStatus={handleBidStatus} isExpired={isExpired} closeCb={closePopUp}></ItemDetail>
+        <ItemDetail item={item} requestBid={requestBid} endtime={item.endTime} handleBidStatus={handleBidStatus} isExpired={isExpired}></ItemDetail>
       </Modal>
       <div className="itemcard-container" onClick={() => openPopUp()}>
         <div className="itemcard-location">{item.city}</div>
