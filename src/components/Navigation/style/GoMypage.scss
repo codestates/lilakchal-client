@@ -4,6 +4,7 @@
   width: 2rem;
   height: 2rem;
   color: var(--footer-text-color);
+  outline: none;
   &:hover {
     color: var(--text-btn-color);
     transition: 0.5s ease;

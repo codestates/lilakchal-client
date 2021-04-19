@@ -17,7 +17,7 @@ const EditForm: React.FC<IEditFrom> = ({ setIsOpenPopup }) => {
 
   const dispatch = useDispatch();
   const userinfoState = useSelector((state: RootState) => state.UserInfoReducer);
-  const { id, name } = userinfoState;
+  const { id } = userinfoState;
 
   const [errorMessage, setErrorMessage] = useState<string>('');
   const [newName, setNewName] = useState<string>('');
@@ -34,7 +34,7 @@ const EditForm: React.FC<IEditFrom> = ({ setIsOpenPopup }) => {
       return;
     } else {
       await axios.patch(`${process.env.REACT_APP_SERVER_ADDRESS}/user/name`, 
-        {userId: id, name}, 
+        {userId: id, name: newName}, 
         {withCredentials: true})
         .then(() => dispatch(UserInfoHandler({id, name: newName})));
       setErrorMessage('');
@@ -46,16 +46,13 @@ const EditForm: React.FC<IEditFrom> = ({ setIsOpenPopup }) => {
     setNewName(e.target.value);
   };
 
-  const str = '변경';
-  const classname = 'editform-submit';
-
   return (
     <section className='editform-wrapper'>
       <div className='editform-title'>이름 변경</div>
-      <span>{errorMessage ? `${errorMessage}` : <></>}</span>
+      <span className="editform-error">{errorMessage ? `${errorMessage}` : <></>}</span>
       <div className='editform-container'>
         <input type='text' className='editform-input-name' placeholder="변경할 이름을 입력해주세요." onChange={getUserName}/>
-        <SubmitBtn classname={classname} str={str} submitHandler={submitHandler} />
+        <SubmitBtn classname="editform-submit" str='변경' submitHandler={submitHandler} />
       </div>
     </section>
   );

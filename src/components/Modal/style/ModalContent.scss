@@ -17,13 +17,23 @@
 
 .editform-container {
   display: flex;
+  width: 100%;
 }
 
 .editform-input-name {
+  width: 100%;
   height: 1.5rem;
   border: none;
   border-bottom: 1px solid;
   outline: none;
   flex: 1 0 0;
-  margin-right: 20px;
+  margin-right: 1.25rem;
+  margin-top: 0.25rem;
+  font-size: 1rem;
+}
+
+.editform-error {
+  height: 1rem;
+  margin: 0.25rem 0px;
+  color: #f26180;
 }
