@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import dotenv from 'dotenv';
-
-import { Wrapper, Title, Container, InputName, ErrorMessage } from './style/EditFormStyle';
 import SubmitBtn from '../Common/SubmitBtn';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../redux/modules/reducer';
@@ -52,14 +50,14 @@ const EditForm: React.FC<IEditFrom> = ({ setIsOpenPopup }) => {
   const classname = 'editform-submit';
 
   return (
-    <Wrapper>
-      <Title>이름 변경</Title>
-      <ErrorMessage>{errorMessage ? `${errorMessage}` : <></>}</ErrorMessage>
-      <Container>
-        <InputName placeholder="변경할 이름을 입력해주세요." onChange={getUserName}/>
+    <section className='editform-wrapper'>
+      <div className='editform-title'>이름 변경</div>
+      <span>{errorMessage ? `${errorMessage}` : <></>}</span>
+      <div className='editform-container'>
+        <input type='text' className='editform-input-name' placeholder="변경할 이름을 입력해주세요." onChange={getUserName}/>
         <SubmitBtn classname={classname} str={str} submitHandler={submitHandler} />
-      </Container>
-    </Wrapper>
+      </div>
+    </section>
   );
 };
 
