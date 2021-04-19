@@ -1,21 +1,20 @@
+.defalut-container {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+}
+
 .search-container {
   display: flex;
   flex-direction: column;
   min-width: 9.5rem;
   max-width: 21.2em;
   flex: 1;
-  margin-left: 2rem;
-  margin-right: 4rem;
+  margin-left: 1rem;
 }
 .searchbar-container {
   display: flex;
   width: 100%;
-  flex: 1;
-}
-
-.defalut-container {
-  display: flex;
-  justify-content: space-between;
   flex: 1;
 }
 
@@ -36,6 +35,5 @@
   display: flex;
   justify-content: center;
   text-align: center;
-  margin-right: 2rem;
   flex: 1;
 }

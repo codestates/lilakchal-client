@@ -39,6 +39,6 @@
 
 @include mobile {
   .header-logo-wrapper{
-    width: 60%;
+    max-width: 3rem;
   }
 }
