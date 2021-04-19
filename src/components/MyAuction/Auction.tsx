@@ -14,6 +14,8 @@ import { getFormatedItems } from '../../modules/converters';
 import './style/Auction.scss';
 import '../../pages/style/MainPage.scss';
 
+let oneTime = false; // 무한스크롤시 중복요청 방지
+
 dotenv.config();
 
 const Action: React.FC = () => {
@@ -58,12 +60,14 @@ const Action: React.FC = () => {
 
   if (searchType === 'buyer') {
     window.onscroll = () => {
-      if((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+      if((window.innerHeight + window.scrollY) >= document.body.offsetHeight * 0.8 && !oneTime) {
+        oneTime = true; // 중복요청하지 않게 조건변경
         setCount(Count + 6);
         axios.post(`${process.env.REACT_APP_SERVER_ADDRESS}/user/myauction/buyer`, 
           { offset: Count, userId: id, city: city },
           { withCredentials: true })
           .then(res => {
+            oneTime = false; // 아이템 받아온 후 다시 요청가능하게 바꿈
             if(!res.data.items) {
               return;
             } else {
@@ -76,12 +80,14 @@ const Action: React.FC = () => {
     };
   } else {
     window.onscroll = () => {
-      if((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+      if((window.innerHeight + window.scrollY) >= document.body.offsetHeight * 0.8 && !oneTime) {
+        oneTime = true; // 중복요청하지 않게 조건변경
         setCount(Count + 6);
         axios.post(`${process.env.REACT_APP_SERVER_ADDRESS}/user/myauction/seller`, 
           { offset: Count, userId: id, city: city },
           { withCredentials: true })
           .then(res => {
+            oneTime = false; // 아이템 받아온 후 다시 요청가능하게 바꿈
             if (!res.data.items) {
               return;
             } else {

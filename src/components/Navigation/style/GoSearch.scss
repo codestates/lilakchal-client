@@ -1,11 +1,12 @@
 @import '../../../style//variable.scss';
 
 .gosearch-btn {
-  width: 2rem;
-  height: 2rem;
-  color: var(--header-icon-color);
+  width: 1.8rem;
+  height: 1.8rem;
+  margin-bottom: 0.1rem;
+  color: var(--footer-text-color);
   &:hover {
-    transform:scale(1.2);
-    color: var(--text-btn-color);
+    color: var(--header-icon-color);
+    transition: 0.5s ease;
   }
 }

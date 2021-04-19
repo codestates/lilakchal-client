@@ -1,4 +1,5 @@
 @import '../../../style/variable.scss';
+@import '../../../style/mixin';
 
 .register {
   display: flex;
@@ -7,12 +8,14 @@
   justify-content: center;
   position: relative;
   max-width: 45rem;
+  top: 6.25rem;
 }
 
 .register-header {
   text-align: center;
   font-weight: 400;
   font-size: 2rem;
+  margin: 10px 0px;
 }
 
 .register-topbox {
@@ -61,8 +64,8 @@
 }
 
 .register-file {
-  width: 18.750rem;
-  height: 18.750rem;
+  width: 18.75rem;
+  height: 18.75rem;
   opacity: 0;
   z-index: 3;
 }
@@ -70,7 +73,7 @@
 .register-infobox {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-left: 1.875rem;
 }
 
@@ -90,7 +93,8 @@
 
 .register-titleErr,
 .register-priceErr,
-.register-endtime {
+.register-endtime,
+.register-error {
   margin: 0.625rem 0px;
   height: 1.25rem;
   color: var(--card-timer-soon-color);
@@ -123,11 +127,11 @@
 .register-description {
   resize: none;
   width: 100%;
-  height: 6.25rem;
+  height: 4rem;
   background: none;
   border: none;
   border-bottom: 1px solid var(--footer-text-color);
-  font-size: var(--font-small);
+  font-size: var(--font-medium);
   outline: none;
   &:hover {
     border-color: var(--card-text-color);
@@ -139,19 +143,48 @@
   opacity: 0;
 }
 
+.bordernone {
+  border: none;
+}
 
-// @media screen and (max-width: 380px) {
-//   .register {
-//     max-width: 23.750rem;
-//   }
+@include mobile {
+  .register {
+    max-width: 23.750rem;
+  }
 
-//   .register-photobox {
-//     width: 9.357rem;
-//     height: 9.357rem;
-//   }
+  .register-photobox {
+    width: 9.375rem;
+    height: 9.375rem;
+  }
 
-//   .register-iconbox {
-//     top: calc(9.357rem - 70%);
-//     left: calc(9.357rem - 70%);
-//   }
-// }
+  .register-file {
+    width: 9.375rem;
+    height: 9.375rem;
+  }
+
+  .register-iconbox {
+    top: calc(9.375rem - 70%);
+    left: calc(9.375rem - 70%);
+  }
+
+  .register-titleErr,
+  .register-priceErr,
+  .register-endtime,
+  .register-error {
+    font-size: var(--font-smallest);
+  }
+
+  .register-photoerror {
+    font-size: var(--font-smallest);
+  }
+
+  .register-period {
+    width: 2.5rem;
+    font-size: var(--font-small);
+  }
+
+  .register-title,
+  .register-price {
+    font-size: var(--font-medium);
+  }
+}
