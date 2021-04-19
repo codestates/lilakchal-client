@@ -5,7 +5,6 @@ import { RootState } from '../../redux/modules/reducer';
 import axios from 'axios';
 import dotenv from 'dotenv';
 
-import { Container } from '../../pages/style/SearchPageStyle';
 import { bidData } from '../../interface/Bid';
 import { auctionSocket } from '../../modules/socket';
 import { Item, ItemHandler } from '../../redux/modules/Items';
@@ -13,6 +12,7 @@ import ItemCard from '../ItemCard';
 import Empty from '../Common/Empty';
 import { getFormatedItems } from '../../modules/converters';
 import './style/Auction.scss';
+import '../../pages/style/MainPage.scss';
 
 dotenv.config();
 
@@ -41,11 +41,7 @@ const Action: React.FC = () => {
   }, [searchType]);
   
   useEffect(() => {
-      
-    //3. socketio에 연결: 가격정보 수신 시 querySelector로 해당 부분의 가격을 변경한다.
     auctionSocket.on('bid', ({itemId, price, userId}: bidData) => {
-      //const priceDiv = document.querySelector(`#itemcard-${itemId}`) as Node;
-      //priceDiv.textContent = price.toString();
       const newItems = items.map((item: Item) => {
         if(item.id === itemId) {
           item.winnerId = userId;
@@ -73,6 +69,7 @@ const Action: React.FC = () => {
             } else {
               const newItems = getFormatedItems(res.data.items); 
               dispatch(ItemHandler({ items: [...items, ...newItems.items]}));
+              console.log('auction_scroll_buyer', res.data.items);
             }
           });
       }
@@ -90,6 +87,7 @@ const Action: React.FC = () => {
             } else {
               const newItems = getFormatedItems(res.data.items); 
               dispatch(ItemHandler({ items: [...items, ...newItems.items]}));
+              console.log('auction_scroll_seller', res.data.items);
             }
           });
       }
@@ -100,18 +98,19 @@ const Action: React.FC = () => {
   const emptyText = '물건을 등록하거나 입찰해보세요!';
 
   return (
-    <div className='itemCard'>
+    <>
+      {console.log(items)}
       <div className='auction-title'>
         {searchType === 'buyer' ? (<div>입찰중인상품</div>) : (<div>판매중인상품</div>)} 
       </div>
-      <Container>
+      <div className='auction-container'>
         {
           items.length ? (items.map((item: Item) => 
             <ItemCard item={item} key={item.id}></ItemCard>
           )) : <Empty emptyTitle={emptyTitle} emptyText={emptyText}/>
         }
-      </Container>
-    </div>
+      </div>
+    </>
   );
 };
 

@@ -26,7 +26,6 @@ const BidBtn: React.FC<IBidBtn> = ({ item, requestBid, unit, isExpired }) => {
   const clickHandler = () => {
 
     if (isLogin && !isExpired) {
-      console.log('BidBtn line 29', item.price, item.price + unit);
       requestBid(item.price + unit);
     } else if (!isLogin) {
       setIsOpenPopup(true);
