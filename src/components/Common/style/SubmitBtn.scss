@@ -4,14 +4,14 @@
   width: 9.375rem;
   height: 1.875rem;
   margin-top: 1.25rem; 
-  background-color: var(--modal-bg-color);
+  background-color: $modal-bg-color;
   border: none;
   border-radius: 0.313rem;
   outline: none;
   cursor: pointer;
-  font-size: var(--font-medium);
+  font-size: $font-medium;
   &:hover {
-    background-color: var(--header-icon-color);
+    background-color: $header-icon-color;
     color: #ffffff;
     transition: all 0.2s ease-in-out;
   }
@@ -20,14 +20,14 @@
 .editform-submit {
   width: 9.375rem;
   height: 1.875rem; 
-  background-color: var(--modal-bg-color);
+  background-color: $modal-bg-color;
   border: none;
   border-radius: 0.313rem;
   outline: none;
   cursor: pointer;
-  font-size: var(--font-medium);
+  font-size: $font-medium;
   &:hover {
-    background-color: var(--header-icon-color);
+    background-color: $header-icon-color;
     color: #ffffff;
     transition: all 0.2s ease-in-out;
   }

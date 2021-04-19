@@ -3,11 +3,11 @@
 .register-btn {
   width: 2rem;
   height: 2rem;
-  color: var(--footer-text-color);
+  color: $footer-text-color;
   margin-right: 0.5rem;
   margin-top: 0.5rem;
   &:hover {
-    color: var(--header-icon-color);
+    color: $header-icon-color;
     transition: 0.5s ease;
   }
 }

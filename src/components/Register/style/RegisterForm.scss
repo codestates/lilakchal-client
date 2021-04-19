@@ -36,7 +36,7 @@
   flex-direction: column;
   max-width: 18.750rem;
   height: 18.750rem;
-  border: 1px solid var(--footer-text-color);
+  border: 1px solid $footer-text-color;
   border-radius: 1.25rem;
 }
 
@@ -44,7 +44,7 @@
   text-align: center;
   margin: 0.625rem;
   height: 1.25rem;
-  color: var(--card-timer-soon-color);
+  color: $card-timer-soon-color;
 }
 
 .register-photo {
@@ -80,13 +80,13 @@
 .register-title,
 .register-price {
   width: 100%;
-  font-size: var(--font-large);
+  font-size: $font-large;
   background: none;
   border: none;
-  border-bottom: 1px solid var(--footer-text-color);
+  border-bottom: 1px solid $footer-text-color;
   outline: none;
   &:hover {
-    border-color: var(--card-text-color);
+    border-color: $card-text-color;
     transition: all 0.2s ease-in-out;
   }
 }
@@ -97,20 +97,20 @@
 .register-error {
   margin: 0.625rem 0px;
   height: 1.25rem;
-  color: var(--card-timer-soon-color);
+  color: $card-timer-soon-color;
 }
 
 .register-period {
   width: 5rem;
   height: 1.875rem;
-  background-color: var(--modal-bg-color);
+  background-color: $modal-bg-color;
   border: none;
   border-radius: 0.313rem;
   margin: 0px 0.625rem;
   cursor: pointer;
-  font-size: var(--font-medium);
+  font-size: $font-medium;
   &:hover {
-    background-color: var(--card-text-color);
+    background-color: $card-text-color;
     color: #ffffff;
     transition: all 0.2s ease-in-out;
   }
@@ -130,11 +130,11 @@
   height: 4rem;
   background: none;
   border: none;
-  border-bottom: 1px solid var(--footer-text-color);
-  font-size: var(--font-medium);
+  border-bottom: 1px solid $footer-text-color;
+  font-size: $font-medium;
   outline: none;
   &:hover {
-    border-color: var(--card-text-color);
+    border-color: $card-text-color;
     transition: all 0.2s ease-in-out;
   }
 }
@@ -171,20 +171,20 @@
   .register-priceErr,
   .register-endtime,
   .register-error {
-    font-size: var(--font-smallest);
+    font-size: $font-smallest;
   }
 
   .register-photoerror {
-    font-size: var(--font-smallest);
+    font-size: $font-smallest;
   }
 
   .register-period {
     width: 2.5rem;
-    font-size: var(--font-small);
+    font-size: $font-small;
   }
 
   .register-title,
   .register-price {
-    font-size: var(--font-medium);
+    font-size: $font-medium;
   }
 }

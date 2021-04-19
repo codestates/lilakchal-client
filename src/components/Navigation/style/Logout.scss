@@ -4,9 +4,9 @@
   width: 2rem;
   height: 2rem;
   margin-top: 0.1rem;
-  color: var(--footer-text-color);
+  color: $footer-text-color;
   &:hover {
-    color: var(--text-btn-color);
+    color: $text-btn-color;
     transition: 0.5s ease;
   }
 }
