@@ -1,3 +1,5 @@
+@import '../../../style/_mixin.scss';
+
 .header-container {
   display: flex;
 	z-index: 998;
@@ -23,10 +25,10 @@
   background-color: #ffff;
 }
 
-.header-logo-wrapper {
+.header-logo-wrapper { 
   display: flex;
   width: 15.625rem;
-  height: 5rem;;
+  height: 5rem;
 }
 
 .header-logo {
@@ -35,3 +37,8 @@
   object-fit: scale-down;
 }
 
+@include mobile {
+  .header-logo-wrapper{
+    width: 60%;
+  }
+}

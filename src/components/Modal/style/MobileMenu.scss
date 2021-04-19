@@ -1,0 +1,21 @@
+.mobile-menu-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 40%;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.mobile-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mobile-icon {
+  width: 50%;
+}
+
+.mobile-logout {
+  width: 40%;
+}
