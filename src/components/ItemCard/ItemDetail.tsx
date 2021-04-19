@@ -15,10 +15,9 @@ interface Props {
   endtime: Date,
   handleBidStatus: (isClosed: boolean) => void,
   isExpired: boolean,
-  closeCb: ()=> void,
 }
 
-const ItemDetail: React.FC<Props> = ({item, requestBid, endtime, handleBidStatus, isExpired, closeCb}) => {
+const ItemDetail: React.FC<Props> = ({item, requestBid, endtime, handleBidStatus, isExpired}) => {
   
   const unit1000 = 1000;
   const unit10000 = 10000;

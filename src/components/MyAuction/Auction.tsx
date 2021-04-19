@@ -88,9 +88,7 @@ const Action: React.FC = () => {
           { withCredentials: true })
           .then(res => {
             oneTime = false; // 아이템 받아온 후 다시 요청가능하게 바꿈
-            if (!res.data.items) {
-              return;
-            } else {
+            if (res.data.items) {
               const newItems = getFormatedItems(res.data.items); 
               dispatch(ItemHandler({ items: [...items, ...newItems.items]}));
               console.log('auction_scroll_seller', res.data.items);
