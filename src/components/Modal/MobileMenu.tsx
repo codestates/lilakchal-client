@@ -46,8 +46,8 @@ const MobileMenu: React.FC<Props> = ({history, closeCb}) => {
 
   return (
     <>
+      <span className='mobile-name'>{name}</span>
       <div className='mobile-menu-container'>
-        <span>{name}</span>
         <div className='mobile-menu' onClick={goResigtorPage}>
           <img className='mobile-icon' src={registerIcon} />
           <span>경매등록</span>
@@ -60,8 +60,8 @@ const MobileMenu: React.FC<Props> = ({history, closeCb}) => {
           <img className='mobile-icon' src={bidIcon} />
           <span>입찰상품</span>
         </div>
-        <FiLogOut className='mobile-logout'/>
       </div>
+      <FiLogOut className='mobile-logout' size='36'/>
     </>
   );
 };

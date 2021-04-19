@@ -4,6 +4,13 @@
   min-height: 40%;
   justify-content: space-around;
   align-items: center;
+  position: absolute;
+  top: calc(10%+2rem); 
+}
+
+.mobile-name {
+  position: absolute;
+  top: 10%;
 }
 
 .mobile-menu {
@@ -17,5 +24,8 @@
 }
 
 .mobile-logout {
+  position: absolute;
+  right: 1%;
+  bottom: 10%;
   width: 40%;
 }
