@@ -1,16 +1,24 @@
 @import '../../style/mixin';
 
-.search-container {
+.searchpage-container {
   min-height: calc(100vh-100px);
-  width: 50%;
+  width: 40%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  flex-wrap: wrap;
+}
+
+@include desktopM {
+  .searchpage-container {
+    width: 55%;
+  } 
 }
 
 @include mobile {
-  .search-container {
+  .searchpage-container {
     width: 100%;
-  }
+  } 
 }
+

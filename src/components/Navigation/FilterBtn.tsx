@@ -56,6 +56,7 @@ const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
       {withCredentials: true})
       .then(res => {
         dispatch(ItemHandler(getFormatedItems(res.data.items)));
+        console.log('filter_searchtype', res.data.items);
       });
   }, [searchType]);
 
@@ -68,6 +69,7 @@ const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
         {withCredentials: true})
         .then(res => {
           dispatch(ItemHandler(getFormatedItems(res.data.items)));
+          console.log('filter_buyer', res.data.items);
           history.push('/ko/mypage/auction');
         });
     }
@@ -77,6 +79,7 @@ const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
         {withCredentials: true})
         .then(res => {
           dispatch(ItemHandler(getFormatedItems(res.data.items)));
+          console.log('filter_seller', res.data.items);
           history.push('/ko/mypage/auction');
         });
     }

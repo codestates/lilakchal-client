@@ -9,16 +9,6 @@
   height: 100%;
 }
 
-.itemdetail-close {
-  margin-left: 100%;
-  width: 30px;
-}
-
-.itemdetail-close:hover {
-  filter:brightness(20%);
-  -webkit-filter:brightness(20%);
-}
-
 .itemdetail-topbox {
   display: flex;
   flex-direction: column;
@@ -29,8 +19,8 @@
 }
 
 .itemdetail-imgbox {
-  width: 100%;
-  height: 300px;
+  width: 80%;
+  height: 80%;
   border-radius: 20px;
   background-color: #ffffff;
 }
@@ -45,17 +35,15 @@
 .itemdetail-midbox {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  margin: 30px 0px;
+  width: 80%;
+  margin: 2rem 0px;
 }
 
 .itemdetail-price {
   display: flex;
   justify-content: space-between;
-}
-
-.itemdetail-price {
   font-size: 1rem;
+  color: #000;
 }
 
 .itemdetail-timer {
@@ -66,7 +54,7 @@
 }
 
 .itemdetail-description {
-  // margin-bottom: 20px;
+  margin: 2rem 0;
   width: 100%;
 }
 
@@ -82,12 +70,13 @@
   border: none;
   width: 6rem;
   height: 3rem;
-  background-color: #43C2D9;
+  background-color: var(--card-timer-color);
   color: #ffffff;
 }
 
 .bidButton:hover {
   background-color: #ffffff;
-  color: #43C2D9;
+  color: var(--card-timer-color);
   transition: all 0.2s ease-in-out;
 }
+

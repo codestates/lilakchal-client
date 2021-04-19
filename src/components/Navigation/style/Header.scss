@@ -1,14 +1,9 @@
 .header-container {
-   display: flex;
-	position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  display: flex;
 	z-index: 998;
 	height: 6.25rem;
 	padding: 0 1rem;
   background-color: #ffff;
-  flex: 1;
 }
 
 .header {
@@ -24,7 +19,8 @@
   justify-content: space-between;
   height: 6.25rem;
   z-index: 998;
-  
+  flex: 0 1 100px;
+  background-color: #ffff;
 }
 
 .header-logo-wrapper {
