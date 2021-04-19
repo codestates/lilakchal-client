@@ -19,7 +19,7 @@ const EditForm: React.FC<IEditFrom> = ({ setIsOpenPopup }) => {
 
   const dispatch = useDispatch();
   const userinfoState = useSelector((state: RootState) => state.UserInfoReducer);
-  const { id, name } = userinfoState;
+  const { id } = userinfoState;
 
   const [errorMessage, setErrorMessage] = useState<string>('');
   const [newName, setNewName] = useState<string>('');
@@ -36,7 +36,7 @@ const EditForm: React.FC<IEditFrom> = ({ setIsOpenPopup }) => {
       return;
     } else {
       await axios.patch(`${process.env.REACT_APP_SERVER_ADDRESS}/user/name`, 
-        {userId: id, name}, 
+        {userId: id, name: newName}, 
         {withCredentials: true})
         .then(() => dispatch(UserInfoHandler({id, name: newName})));
       setErrorMessage('');

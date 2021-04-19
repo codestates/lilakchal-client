@@ -10,20 +10,27 @@ export const Wrapper = styled.section`
 
 export const Title = styled.div`
   font-size: 1.5rem;
-  margin-bottom: 5px;
 `;
 
 export const Container = styled.div`
   display: flex;
+  width: 100%;
 `;
 
 export const InputName = styled.input`
+  width: 100%;
   height: 1.5rem;
   border: none;
   border-bottom: 1px solid;
   outline: none;
   flex: 1 0 0;
-  margin-right: 20px;
+  margin-top: 0.25rem;
+  margin-right: 1.25rem;
+  font-size: 1rem;
 `;
 
-export const ErrorMessage = styled.span``;
+export const ErrorMessage = styled.span`
+  height: 1rem;
+  margin: 0.25rem 0px;
+  color: #f26180;
+`;
