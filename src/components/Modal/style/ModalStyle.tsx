@@ -100,7 +100,6 @@ export const InnerContainer = styled.div<{isWarning: boolean, isSide: boolean}>`
   ${(props) => props.isSide && css`
     animation: ${showFromLeftAnimation} 0.8s;
   `}
-  }
   ;
 
   ${(props) => props.isSide && css ? `
@@ -124,6 +123,26 @@ export const InnerContainer = styled.div<{isWarning: boolean, isSide: boolean}>`
     animation: ${shakeAnimation} 0.3s alternate;
   `}
 `;
+
+export const InnerMenuContainer = styled.div<{color: string}>`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  position: relative;
+  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5);
+  background-color: ${props => props.color};
+  margin: 0 auto;
+  top: 50%;
+  transform: translateY(-50%);
+  outline:none;
+  animation: ${showFromLeftAnimation} 0.4s;
+  width: 30%;
+  height: 100vh;
+  right: 0; 
+  position: fixed; 
+  `;
 
 export const LoadingContainer = styled.div`
   position: fixed;
