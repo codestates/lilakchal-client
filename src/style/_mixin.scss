@@ -5,3 +5,9 @@
     @content;
   }
 }
+
+@mixin desktopM {
+  @media screen and (max-width: #{$desktopM-size}) {
+    @content;
+  }
+}

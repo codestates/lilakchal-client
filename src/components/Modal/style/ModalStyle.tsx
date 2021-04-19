@@ -109,8 +109,10 @@ export const InnerContainer = styled.div<{isWarning: boolean, isSide: boolean}>`
   right: 0; 
   position: fixed; 
   top: 50%;
+  @media ${device.desktopS} {
+    min-width: 50%;}
   @media ${device.mobile} {
-    width: 100%;
+    width: 100%;}
   ` : `
   max-width: 600px;
   min-width: 50px;
