@@ -1,6 +1,7 @@
 import React from 'react';
 import { Dimmer, OuterContainer, InnerContainer, CloseBtn } from './style/ModalStyle';
 import { IoClose } from 'react-icons/io5';
+import './style/ModalContent.scss';
 
 interface Props {
   visible: boolean,
