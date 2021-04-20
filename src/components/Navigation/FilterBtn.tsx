@@ -60,7 +60,6 @@ const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
   const requestHistoryItemCallback = (items:Array<UnformatedItem>) => {
     dispatch(ItemHandler(getFormatedItems(items)));
     isChanged = true;
-    console.log('filter_searchtype', items);
   };
 
   const requestFilteredItemCallback = (items:Array<UnformatedItem>) => {
