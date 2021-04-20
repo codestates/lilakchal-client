@@ -8,6 +8,9 @@
 }
 
 @include mobile {
+  .myoptionGroup-container {
+    flex: 1 1 auto;
+  }
   .myoptionGroup-container > div{
     margin-left: 0.25rem;
   }
