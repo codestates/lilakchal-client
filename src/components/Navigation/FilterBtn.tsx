@@ -1,12 +1,11 @@
-import axios from 'axios';
 import React, { useEffect, useRef } from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
 import dotenv from 'dotenv';
 import { RootState } from '../../redux/modules/reducer';
 import { useDispatch, useSelector } from 'react-redux';
-import { getFormatedItems } from '../../modules/converters';
-import { ItemHandler } from '../../redux/modules/Items';
-// import { BsFilter } from 'react-icons/bs';
+import {requestMyAuction} from '../../modules/request';
+import { getFormatedItems  } from '../../modules/converters';
+import { ItemHandler, UnformatedItem } from '../../redux/modules/Items';
 import { VscListFilter } from 'react-icons/vsc';
 import './style/FilterBtn.scss';
 import { TypeHandler } from '../../redux/modules/SearchType';
@@ -38,7 +37,7 @@ const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
     }
   };
 
-  window.onpopstate = function(event: any) {
+  window.onpopstate = function() {
     if(searchType === 'buyer') {
       dispatch(TypeHandler('seller'));
     }
@@ -55,37 +54,22 @@ const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
   }, []);
 
   useEffect(() => {
-    axios.post(`${process.env.REACT_APP_SERVER_ADDRESS}/user/myauction/${searchType}`,
-      { offset: 0, userId: id, city: city},
-      {withCredentials: true})
-      .then(res => {
-        dispatch(ItemHandler(getFormatedItems(res.data.items)));
-        isChanged = true;
-        console.log('filter_searchtype', res.data.items);
-      });
+    requestMyAuction(searchType, { offset: 0, userId: id, city: city }, requestHistoryItemCallback);
   }, [searchType]);
 
+  const requestHistoryItemCallback = (items:Array<UnformatedItem>) => {
+    dispatch(ItemHandler(getFormatedItems(items)));
+    isChanged = true;
+    console.log('filter_searchtype', items);
+  };
+
+  const requestFilteredItemCallback = (items:Array<UnformatedItem>) => {
+    dispatch(ItemHandler(getFormatedItems(items)));
+    history.push('/ko/mypage/auction');
+  };
+
   const handlefilter = (props: string) => {
-    //1.setSearchType으로 서버에 요청 분기(요청할 때 필요한것:userId => 리덕스에 있음)
-    //2.응답받아서 리덕스에 저장하기
-    if(props === 'buyer') {
-      axios.post(`${process.env.REACT_APP_SERVER_ADDRESS}/user/myauction/buyer`,
-        { offset: 0, userId: id, city: city },
-        {withCredentials: true})
-        .then(res => {
-          dispatch(ItemHandler(getFormatedItems(res.data.items)));
-          history.push('/ko/mypage/auction');
-        });
-    }
-    else {
-      axios.post(`${process.env.REACT_APP_SERVER_ADDRESS}/user/myauction/seller`,
-        { offset: 0, userId: id, city: city },
-        {withCredentials: true})
-        .then(res => {
-          dispatch(ItemHandler(getFormatedItems(res.data.items)));
-          history.push('/ko/mypage/auction');
-        });
-    }
+    requestMyAuction(props, { offset: 0, userId: id, city: city }, requestFilteredItemCallback);
   };
 
   return (
