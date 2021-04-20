@@ -9,6 +9,7 @@
   font-size: $font-medium;
   text-align: center;
   width: 100%;
+  word-break: break-all;
   &:hover {
     color: $header-icon-color;
     cursor: pointer ;
