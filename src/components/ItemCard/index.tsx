@@ -7,6 +7,7 @@ import { useSelector, RootStateOrAny  } from 'react-redux';
 import {auctionSocket} from '../../modules/socket';
 import ItemDetail from './ItemDetail';
 import Modal from '../Modal/index';
+import stamp from '../../res/stamp.png';
 import './style/ItemCard.scss';
 
 interface Props {
@@ -62,6 +63,7 @@ const ItemCard: React.FC<Props> = ({item}) => {
                 <GoChat itemId={item.id} title={item.title}></GoChat> :
                 <></>
             }
+            { id === item.winnerId ? <img className="itemcard-stamp" src={stamp} alt=""/> : null }
           </div> 
         </div>
       </div>

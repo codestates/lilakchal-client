@@ -82,6 +82,15 @@
   object-fit: scale-down;
 }
 
+.itemcard-stamp {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  width: 50%;
+  opacity: 0.3;
+  z-index: 1;
+}
+
 @include mobile {
   .itemcard-container {
     width: 100%;
