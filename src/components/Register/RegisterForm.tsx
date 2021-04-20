@@ -45,6 +45,9 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
     if (!title || !price || !photo || !description || !endtime || priceErr !== '') {
       setErrorMessage('모두 입력되어야 등록이 가능합니다.');
       return;
+    } else if (description.length > 100) {
+      setErrorMessage('설명은 100자 이내로 작성해야 합니다.');
+      return;
     }
 
     const formData = new FormData();
