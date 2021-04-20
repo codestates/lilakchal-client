@@ -2,6 +2,7 @@
 
 .timer {
   display: inline;
+  font-family: 'Jua', sans-serif;
   font-size: $font-largest;
   color: $card-timer-color;
 }
@@ -11,5 +12,6 @@
 }
 
 .deadline{
+  font-family: 'Jua', sans-serif;
   color: $card-timer-soon-color;
 }

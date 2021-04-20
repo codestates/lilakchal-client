@@ -27,13 +27,14 @@
   background-color: #ffff;
   top: 3rem;
 }
+
 .tooltip-container {
   align-items: center;
 }
+
 .radio-button {
   display: flex;
-  width: 6.25rem;
-  
+  width: max-content;
 }
 input[type='radio'],
 input[type='radio']:checked {
