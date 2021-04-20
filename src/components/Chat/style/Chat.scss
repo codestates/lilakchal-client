@@ -6,7 +6,7 @@
   flex-direction: column;
   justify-content: center;
   height: 70vh;
-  max-width: 25rem;
+  width: 25rem;
 }
 
 .chat-title{
@@ -37,5 +37,8 @@
   .chat-title{
     line-height: 50px;
     font-size: $font-medium;
+  }
+  .chat-container {
+    width: 90%;
   }
 }
