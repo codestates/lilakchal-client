@@ -1,16 +1,23 @@
+@import '../../../style/variable.scss';
+
 .mobile-menu-container {
   display: flex;
   flex-direction: column;
-  min-height: 40%;
+  min-height: 38%;
   justify-content: space-around;
   align-items: center;
   position: absolute;
-  top: calc(7% + 2rem); 
+  top: calc(7% + 1.5rem); 
 }
 
 .mobile-name {
   position: absolute;
   top: 7%;
+  right: calc((100% - (#{$font-small}) * 4) / 2);
+  font-size: $font-medium;
+  text-align: right;
+  color: #020f0e;
+  width: 100%;
 }
 
 .mobile-menu {
@@ -18,10 +25,13 @@
   flex-direction: column;
   height: 4rem;
   align-items: center;
+  color: #474c47;
+  font-size: $font-small;
 }
 
 .mobile-icon {
   width: 80%;
+  margin-bottom: 0.1rem;
 }
 
 .mobile-logout {
