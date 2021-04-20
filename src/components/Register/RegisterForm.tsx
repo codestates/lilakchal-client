@@ -42,7 +42,7 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
 
   const submitHandler = async () => {
     
-    if (!title || !price || !photo || !description || !endtime) {
+    if (!title || !price || !photo || !description || !endtime || priceErr !== '') {
       setErrorMessage('모두 입력되어야 등록이 가능합니다.');
       return;
     }
@@ -70,14 +70,17 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
   };
 
   const priceHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPrice(Number(e.target.value));
+    const newMoneyStr = e.target.value;
 
-    if (price <= 0) {
-      setPriceErr('가격은 1원 이상이어야 합니다!');
-    } else if (!/^[0-9]/g.test(String(price))) {
+    if (!/^(0|[1-9]+[0-9]*)$/g.test(newMoneyStr)) {
       setPriceErr('가격은 숫자만 입력 가능합니다!');
-    } else {
+    } else if (Number(newMoneyStr) <= 0) {
+      setPriceErr('가격은 1원 이상이어야 합니다!');
+    } else if (newMoneyStr === '') {
       setPriceErr('필수 입력사항입니다.');
+    } else {
+      setPrice(Number(e.target.value));
+      setPriceErr('');
     }
   };
 
@@ -138,7 +141,7 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
           </div>
           <div className="register-pricebox">
             <input className="register-price" type="text" onChange={priceHandler} placeholder="최소 가격을 입력해주세요"/>
-            {!price ? <div className="register-priceErr">{priceErr}</div> : <div className="register-priceErr"></div>}
+            {priceErr !== '' ? <div className="register-priceErr">{priceErr}</div> : <div className="register-priceErr"></div>}
           </div>
           <div className="register-period-box">
             <div className="register-period-button-box">
