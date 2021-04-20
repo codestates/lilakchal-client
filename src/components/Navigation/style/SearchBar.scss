@@ -15,9 +15,9 @@
   border-left: 0;
   border-right: 0;
   border-top: 0;
-  border-color: var(--header-icon-color);
+  border-color: $header-icon-color;
   outline:none;
-  font-size: var(--font-medium);
+  font-size: $font-medium;
   flex: 1 ;
   
 }

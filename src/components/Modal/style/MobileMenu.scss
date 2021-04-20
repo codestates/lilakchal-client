@@ -5,27 +5,28 @@
   justify-content: space-around;
   align-items: center;
   position: absolute;
-  top: calc(10% + 2rem); 
+  top: calc(7% + 2rem); 
 }
 
 .mobile-name {
   position: absolute;
-  top: 10%;
+  top: 7%;
 }
 
 .mobile-menu {
   display: flex;
   flex-direction: column;
+  height: 4rem;
   align-items: center;
 }
 
 .mobile-icon {
-  width: 50%;
+  width: 80%;
 }
 
 .mobile-logout {
   position: absolute;
   right: 1%;
-  bottom: 10%;
+  bottom: 5%;
   width: 40%;
 }

@@ -51,20 +51,20 @@
 .itemcard-location {
   right: 0.5rem;
   width: 100%;
-  font-size: var(--font-small);
+  font-size: $font-small;
   text-align: right;
-  color: var(--card-location-color);
+  color: card-location-color;
 }
 
 .itemcard-title {
-  font-size: var(--font-medium);
-  color: var(--card-text-color);
+  font-size: $font-medium;
+  color: $card-text-color;
   overflow:hidden;
 }
 
 .itemcard-price {
-  color: var(--card-text-color);
-  font-size: var(--font-medium);
+  color: $card-text-color;
+  font-size: $font-medium;
 }
 
 .itemcard-imgbox {

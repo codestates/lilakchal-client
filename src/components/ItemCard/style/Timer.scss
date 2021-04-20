@@ -2,14 +2,14 @@
 
 .timer {
   display: inline;
-  font-size: var(--font-largest);
-  color: var(--card-timer-color);
+  font-size: $font-largest;
+  color: $card-timer-color;
 }
 
 .itemdetail-time {
-  font-size: var(--font-small);
+  font-size: $font-small;
 }
 
 .deadline{
-  color: var(--card-timer-soon-color);
+  color: $card-timer-soon-color;
 }

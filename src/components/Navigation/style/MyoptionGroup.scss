@@ -1,10 +1,19 @@
-.MyoptionGroup-container {
+@import '../../../style/_mixin.scss';
+
+.myoptionGroup-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-right: 1rem;
-  margin-top: 0.5rem;
 }
+
+@include mobile {
+  .myoptionGroup-container > div{
+    margin-left: 0.25rem;
+  }
+}
+
+
 .username-container {
   display: flex;
   width: 5.18rem;
