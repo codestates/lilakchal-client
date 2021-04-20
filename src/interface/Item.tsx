@@ -1,5 +1,5 @@
 export interface itemParams {
   userId: number,
-  city: string,
+  city?: string,
   offset: number
 }

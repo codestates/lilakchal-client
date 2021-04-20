@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/modules/reducer';
-import axios from 'axios';
 import dotenv from 'dotenv';
 
 import { bidData } from '../../interface/Bid';
 import { auctionSocket } from '../../modules/socket';
-import { Item, ItemHandler } from '../../redux/modules/Items';
+import {requestMyAuction} from '../../modules/request';
+import { Item, ItemHandler, UnformatedItem } from '../../redux/modules/Items';
 import ItemCard from '../ItemCard';
 import Empty from '../Common/Empty';
 import { getFormatedItems } from '../../modules/converters';
@@ -42,6 +42,20 @@ const Action: React.FC = () => {
     setCount(6);
   }, [searchType]);
   
+
+  const dispatchItemsByScroll = (additionalItems:Array<UnformatedItem>) => {
+    const newItems = getFormatedItems(additionalItems);
+    dispatch(ItemHandler({ items: [...items, ...newItems.items]}));
+  };
+
+  const requestCallback = (additionalItems:Array<UnformatedItem>) => {
+    oneTime = false; // 아이템 받아온 후 다시 요청가능하게 바꿈
+    if(additionalItems) {
+      dispatchItemsByScroll(additionalItems);
+    }        
+  };
+
+
   useEffect(() => {
     auctionSocket.on('bid', ({itemId, price, userId}: bidData) => {
       const newItems = items.map((item: Item) => {
@@ -58,45 +72,13 @@ const Action: React.FC = () => {
     };
   }, [items]);
 
-  if (searchType === 'buyer') {
-    window.onscroll = () => {
-      if((window.innerHeight + window.scrollY) >= document.body.offsetHeight * 0.8 && !oneTime) {
-        oneTime = true; // 중복요청하지 않게 조건변경
-        setCount(Count + 6);
-        axios.post(`${process.env.REACT_APP_SERVER_ADDRESS}/user/myauction/buyer`, 
-          { offset: Count, userId: id, city: city },
-          { withCredentials: true })
-          .then(res => {
-            oneTime = false; // 아이템 받아온 후 다시 요청가능하게 바꿈
-            if(!res.data.items) {
-              return;
-            } else {
-              const newItems = getFormatedItems(res.data.items); 
-              dispatch(ItemHandler({ items: [...items, ...newItems.items]}));
-              console.log('auction_scroll_buyer', res.data.items);
-            }
-          });
-      }
-    };
-  } else {
-    window.onscroll = () => {
-      if((window.innerHeight + window.scrollY) >= document.body.offsetHeight * 0.8 && !oneTime) {
-        oneTime = true; // 중복요청하지 않게 조건변경
-        setCount(Count + 6);
-        axios.post(`${process.env.REACT_APP_SERVER_ADDRESS}/user/myauction/seller`, 
-          { offset: Count, userId: id, city: city },
-          { withCredentials: true })
-          .then(res => {
-            oneTime = false; // 아이템 받아온 후 다시 요청가능하게 바꿈
-            if (res.data.items) {
-              const newItems = getFormatedItems(res.data.items); 
-              dispatch(ItemHandler({ items: [...items, ...newItems.items]}));
-              console.log('auction_scroll_seller', res.data.items);
-            }
-          });
-      }
-    };
-  }
+  window.onscroll = () => {
+    if((window.innerHeight + window.scrollY) >= document.body.offsetHeight * 0.8 && !oneTime) {
+      oneTime = true; // 중복요청하지 않게 조건변경
+      setCount(Count + 6);
+      requestMyAuction(searchType, { offset: Count, userId: id, city: city }, requestCallback);
+    }
+  };
   
   const emptyTitle = '입찰/판매중인 물품이 없어요.';
   const emptyText = '물건을 등록하거나 입찰해보세요!';
