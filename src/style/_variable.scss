@@ -24,6 +24,34 @@
   --font-smallest: 0.8rem;
 }
 
+
+$landing-first-color: #CAF3F7;
+$landing-third-color: #E8F8F9;
+$header-icon-color: #4EBDC9;
+$modal-bg-color: #CCEBF5;
+$card-timer-color: #43C2D9;
+$card-text-color: #78CBDA;
+$text-btn-color: #FF7997;
+$chat-my-msg-color:  #4EBDC9;
+$chat-your-msg-color:  #FFFFFF;
+$mobile-menu-color:  #b3e0b8;
+$footer-bg-color: #FFFFFF;
+$footer-text-color: #4A5058;
+$card-timer-soon-color: #f26180;
+$card-location-color: #7f7f7f;
+$font-largest: 2rem;
+$font-large: 1.6rem;
+$font-medium: 1.2rem;
+$font-small: 1rem;
+$font-smallest: 0.8rem;
+
 $mobile-size: 600px;
 $desktopS-size: 1152px;
 $desktopM-size: 1700px;
+
+:export {
+  mobileSelectColor: $mobile-menu-color;
+  mobileSize: $mobile-size;
+  desktopSSize: $desktopS-size;
+  desktopMSize: $desktopM-size;
+}

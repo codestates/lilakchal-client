@@ -27,7 +27,7 @@
 
 .header-logo-wrapper { 
   display: flex;
-  width: 15.625rem;
+  width: 12rem;
   height: 5rem;
 }
 
@@ -39,6 +39,7 @@
 
 @include mobile {
   .header-logo-wrapper{
-    width: 60%;
+    max-width: 3rem;
+    margin-left: 0.5rem;
   }
 }

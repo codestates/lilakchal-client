@@ -3,13 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RouterProps, withRouter } from 'react-router';
 import axios from 'axios';
 import dotenv from 'dotenv';
-// import {ItemHandler} from '../../redux/modules/Items';
 import SearchBtn from './SearchBtn';
 import './style/SearchBar.scss';
-// import { getFormatedItems } from '../../modules/converters';
 import { RootState } from '../../redux/modules/reducer';
 import { getFormatedItems } from '../../modules/converters';
 import { ItemHandler } from '../../redux/modules/Items';
+import {constantString} from '../../modules/strings';
 
 
 dotenv.config();
@@ -48,7 +47,7 @@ const SearchBar: React.FC<RouterProps> = ({history}) => {
   
   return (
     <div className="searchbar-input">
-      <input id="searchbar" type="search" placeholder="ex) 맥북" onChange={e => setInputValue(e.target.value)} onKeyPress={handleKeyPress}/>
+      <input id="searchbar" type="search" placeholder={constantString.searchPlaceHolder} onChange={e => setInputValue(e.target.value)} onKeyPress={handleKeyPress}/>
       <SearchBtn handleSubmit={handleSubmit}/>
     </div>
   );

@@ -10,8 +10,7 @@
 
 .chat-title{
   color :rgb(255, 255, 255);
-  font-size: var(--font-largest);
-  // background-color: var(--mobile-select-color);
+  font-size: $font-largest;
   background-color: #4EBDC9;
   text-align: center;
 }
