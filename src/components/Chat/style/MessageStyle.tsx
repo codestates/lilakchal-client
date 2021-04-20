@@ -2,7 +2,8 @@ import styled, {css} from 'styled-components';
 
 export const Container = styled.div<{isMine: boolean}>`
   display: flex;
-  overflow: auto;
+  align-items: flex-end;
+  
   ${(props) => props.isMine ? css`
     flex-direction: row-reverse;
   ` : `
@@ -15,6 +16,7 @@ export const Text = styled.span<{isMine: boolean}>`
   margin: 1rem;
   padding: 0.5rem;
   border-radius: 2rem;
+  line-height: 30px;
   ${(props) => props.isMine ? css`
     background-color: #4EBDC9;
     color: #FFFFFF;
@@ -27,4 +29,5 @@ export const Text = styled.span<{isMine: boolean}>`
 export const Time = styled.div`
   font-size: 0.8rem;
   line-height: 4rem;
+  min-width: 70px;
 `;

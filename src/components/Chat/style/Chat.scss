@@ -1,11 +1,12 @@
 @import '../../../style/variable.scss';
+@import '../../../style/mixin';
 
 .chat-container{
   display:flex;
   flex-direction: column;
   justify-content: center;
   height: 70vh;
-  min-width: 30%;
+  max-width: 25rem;
 }
 
 .chat-title{
@@ -13,6 +14,7 @@
   font-size: $font-largest;
   background-color: #4EBDC9;
   text-align: center;
+  line-height: 70px;
 }
 
 .chat-message-box{
@@ -29,4 +31,11 @@
   display:flex;
   align-items: center;
   justify-content: center;
+}
+
+@include mobile{
+  .chat-title{
+    line-height: 50px;
+    font-size: $font-medium;
+  }
 }

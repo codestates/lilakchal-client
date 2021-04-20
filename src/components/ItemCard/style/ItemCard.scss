@@ -60,6 +60,8 @@
   font-size: $font-medium;
   color: $card-text-color;
   overflow:hidden;
+  word-break: keep-all;
+  text-align: center;
 }
 
 .itemcard-price {
