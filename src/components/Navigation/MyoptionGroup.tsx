@@ -20,11 +20,11 @@ const MyoptionGroup:React.FC = () => {
           <GoMypage/>
         </> : 
         <>
-          <div className='FilterBtn-container'>
-            <FilterBtn/>
-          </div>
           <div className='GoSearch-container'>
             <GoSearch />
+          </div>
+          <div className='FilterBtn-container'>
+            <FilterBtn/>
           </div>
           <div className='username-container'>
             <UserName />

@@ -1,5 +1,5 @@
 import React from 'react';
-import './style/SearchBtn.scss';
+//import './style/SearchBtn.scss';
 // import { FaSearch } from 'react-icons/fa';
 import { ImSearch } from 'react-icons/im';
 interface props {

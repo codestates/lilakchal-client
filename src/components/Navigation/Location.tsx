@@ -1,8 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/modules/reducer';
-import './style/Location.scss';
-
 
 const Location: React.FC = () => {
 

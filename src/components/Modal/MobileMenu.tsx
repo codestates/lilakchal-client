@@ -60,22 +60,22 @@ const MobileMenu: React.FC<Props> = ({history, closeCb}) => {
 
   return (
     <>
-      <span className='mobile-name'>{name}</span>
+      <div className='mobile-name'>{name}</div>
       <div className='mobile-menu-container'>
         <div className='mobile-menu' onClick={goResigtorPage}>
-          <RegisterIcon className='mobile-icon' fill="black"/>
+          <RegisterIcon className='mobile-icon' fill="#212321"/>
           <span>경매등록</span>
         </div>
         <div className='mobile-menu' onClick={() => {handleMyAuctionBtn('seller');}}>
-          <MoneyIcon className='mobile-icon' fill="black"/>
+          <MoneyIcon className='mobile-icon' fill="#212321"/>
           <span>판매상품</span>
         </div>
         <div className='mobile-menu' onClick={() => {handleMyAuctionBtn('buyer');}}>
-          <BidIcon className='mobile-icon' fill="black"/>
+          <BidIcon className='mobile-icon' fill="#212321"/>
           <span>입찰상품</span>
         </div>
       </div>
-      <FiLogOut className='mobile-logout' size='36' onClick={logout}/>
+      <FiLogOut className='mobile-logout' size='36' color="#212321" onClick={logout}/>
     </>
   );
 };

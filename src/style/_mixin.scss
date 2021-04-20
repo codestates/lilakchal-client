@@ -6,6 +6,12 @@
   }
 }
 
+@mixin desktopS {
+  @media screen and (max-width: #{$desktopS-size}) {
+    @content;
+  }
+}
+
 @mixin desktopM {
   @media screen and (max-width: #{$desktopM-size}) {
     @content;
