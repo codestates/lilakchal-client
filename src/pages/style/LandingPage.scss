@@ -1,8 +1,8 @@
 #scroll-section-0 {
   display: flex;
   background-color: #caf3f7;
-  padding-top: 30vh;
-  padding-left: 5vh;
+  padding-top: 15%;
+  padding-left: 5%;
   padding-right: 5vh;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -13,6 +13,7 @@
   max-width: 50rem;
   min-width: 30rem;
   height: 250px;
+  margin-top: 5%;
   flex-direction: column;
   text-align: center;
   animation-duration: 1s;
@@ -84,19 +85,20 @@
   flex: 1;
   max-width: 40rem;
   min-width: 30rem;
-  height: 500px;
+  height: 700px;
   flex-direction: column;
   text-align: center;
 }
 .scroll-section1-search-img {
-  display: flex;
+  background-image: url('../../res//landing_search.png');
+  background-size: cover;
   width: 100%;
   height: 100%;
   margin-top: 3rem;
 }
 .scroll-section1-message-a {
   width: 100%;
-  height: 100%;
+  // height: 100%;
   font-size: 1.5rem;
 }
 .scroll-section1-right {
@@ -104,40 +106,41 @@
   flex-direction: column;
   text-align: center;
   flex: 1;
-  max-width: 30rem;
+  max-width: 40rem;
   min-width: 20rem;
-  height: 600px;
+  height: 700px;
 }
 .scroll-section1-map-img {
-  flex: 1;
-  width: 100%;
-  height: 100%;
-  background-color: white;
+  background-image: url('../../res//landing_map.png');
+  background-size: contain;
+  width: 90%;
+  height: 70%;
 }
 .scroll-section1-right-bottom {
   display: flex;
   flex: 1;
   width: 100%;
-  height: 100px;
+  height: 20%;
   justify-content: space-between;
 }
 .scroll-section1-message-b {
   width: 100%;
-  height: 100%;
+  // height: 100%;
   margin-top: 2rem;
   font-size: 1.5rem;
 }
 .scroll-section1-thinking-img {
-  flex: 1;
-  width: 50%;
-  height: 50%;
+  background-image: url('../../res//thinking.png');
+  background-size: contain;
+  width: 30%;
+  height: 60%;
 }
 
 //////////////
 #scroll-section-2 {
   display: flex;
   background-color: #e8f8f9;
-  padding-top: 10vh;
+  padding-top: 10%;
   padding-left: 10vh;
   padding-right: 10vh;
   justify-content: space-between;
@@ -151,13 +154,13 @@
   height: 500px;
   flex-direction: column;
   text-align: center;
-}
+}///
 .scroll-section2-register-img {
-  display: flex;
+  background-image: url('../../res/apple.png');
+  background-size: contain;
   width: 100%;
   height: 100%;
-  margin-top: 7rem;
-  border-radius: 30px;
+  border-radius: 20px;
 }
 .scroll-section2-right {
   display: flex;
@@ -172,13 +175,16 @@
 .scroll-section2-img {
   display: flex;
   justify-content: center;
-  width: 100%;
-  height: 100%;
+  width: 45%;
+  margin: 0 auto;
+  height: 50%;
   flex: 1;
 }
 .scroll-section2-auction-img {
-  width: 50%;
-  height: 80%;
+  background-image: url('../../res/auction.png');
+  background-size: contain;
+  width: 100%;
+  height: 100%;
 }
 .scroll-section2-message-a {
   width: 100%;
