@@ -126,7 +126,7 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
         <div className="register-filebox">
           <div className={imgbase64 ? 'register-photobox bordernone' : 'register-photobox'}>
             {imgbase64 ? <img className="register-photo" src={imgbase64} /> : <></>}
-            <div className={!photo ? 'register-iconbox' : 'register-visible'}><BsPlus size="60"/></div>
+            <div className={!photo ? 'register-iconbox' : 'register-visible'}><BsPlus className="register-icon"/></div>
             <input className="register-file" type="file" accept="image/jpeg, image/png" onChange={fileChange}/>
           </div>
           {!photo ? <div className="register-photoerror">사진을 등록해주세요!</div> : <div className="register-photoerror"></div>}
