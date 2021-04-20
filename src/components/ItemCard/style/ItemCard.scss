@@ -70,8 +70,9 @@
 }
 
 .itemcard-imgbox {
+  position: relative;
   width: 15rem;
-  height: 12rem;
+  height: 10rem;
   border-radius: 20px;
   background-color: #ffffff;
   margin: 0.3rem 0;
@@ -84,6 +85,13 @@
   object-fit: scale-down;
 }
 
+.itemcard-stamp {
+  position: absolute;
+  top: -18%;
+  left: -5%;
+  width: 30%;
+}
+
 @include mobile {
   .itemcard-container {
     width: 100%;
@@ -92,5 +100,11 @@
   .itemcard-content {
     flex-direction: row;
     justify-content: center;
+  }
+  .itemcard-stamp {
+    width: 30%;
+    top: -6%;
+    left: 80%;
+    transform: rotate(45deg);
   }
 }
