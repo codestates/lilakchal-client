@@ -6,7 +6,7 @@ export const getPlaceMessage = (place: string):string => {
   }
 };
 
-export const constantString = {
+export default {
   sloganPart1: '우리동네 경매장',
   sloganPart2: '땅땅마켓',
   go: '시작하기',
@@ -20,5 +20,7 @@ export const constantString = {
   goChat: '채팅',
   registeredItem: '등록한 경매',
   bidItem: '입찰한 경매',
-  endBid: '입찰마감'
+  endBid: '입찰마감',
+  noResult: '검색 결과가 없어요 :(',
+  noResultDetail: '다른 검색어를 입력해보세요!'
 };
