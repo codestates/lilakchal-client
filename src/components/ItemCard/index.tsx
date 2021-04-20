@@ -52,6 +52,7 @@ const ItemCard: React.FC<Props> = ({item}) => {
         <div className="itemcard-location">{item.city}</div>
         <div className="itemcard-content">
           <div className="itemcard-imgbox">
+            { id === item.winnerId ? <img className="itemcard-stamp" src={stamp} alt=""/> : null }
             <img className="itemcard-img" src={item.photo} alt=""/>
           </div>
           <div className="itemcard-text">
@@ -63,7 +64,6 @@ const ItemCard: React.FC<Props> = ({item}) => {
                 <GoChat itemId={item.id} title={item.title}></GoChat> :
                 <></>
             }
-            { id === item.winnerId ? <img className="itemcard-stamp" src={stamp} alt=""/> : null }
           </div> 
         </div>
       </div>
