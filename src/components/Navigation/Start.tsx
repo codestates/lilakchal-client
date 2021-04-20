@@ -1,5 +1,6 @@
 import React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router';
+import './style/StartBtn.scss';
 
 
 type SomeComponentProps = RouteComponentProps;
@@ -10,8 +11,8 @@ const Start: React.FC<SomeComponentProps> = ({ history }) => {
   
   return (
     <div className='start-button'>
-      <button onClick={goMain}>
-        시작하기
+      <button className='startBtn' onClick={goMain}>
+        START
       </button>
     </div>
   );
