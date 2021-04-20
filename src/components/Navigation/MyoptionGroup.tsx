@@ -2,6 +2,7 @@ import React from 'react';
 import { useMediaQuery } from 'react-responsive';
 import Logout from './Logout';
 import UserName from './UserName';
+import SearchContainer from './SearchContainer';
 import GoSearch from './GoSearch';
 import FilterBtn from './FilterBtn';
 import GoMypage from './GoMypage';
@@ -16,7 +17,8 @@ const MyoptionGroup:React.FC = () => {
     <div className='myoptionGroup-container'>
       {isMobile ? 
         <>
-          <GoSearch/>
+          {/* <GoSearch/> */}
+          <SearchContainer/>
           <GoMypage/>
         </> : 
         <>

@@ -55,17 +55,20 @@ input::-webkit-search-results-decoration{
 
 @include mobile {
   #searchbar {
+    height: auto;
     width: 0px;
     visibility: hidden;
     transition: all 0.2s ease-in-out;
+    font-size: $font-small;
   }
 
   .location-section {
-    visibility: hidden;
+    visibility: hidden; 
     transition: all 0.2s ease-in-out;
   }
 
-  .search-container {
+  .search-container{
+    justify-content: center;
     &:hover {
       & #searchbar {
         width: 100%;
@@ -74,6 +77,10 @@ input::-webkit-search-results-decoration{
       & .location-section  {
         visibility: visible;
       }
+    }
+
+    .searchbar-input {
+      margin-top: 1rem;
     }
   }
 

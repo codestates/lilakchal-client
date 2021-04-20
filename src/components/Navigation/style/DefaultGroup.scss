@@ -15,11 +15,6 @@
   flex: 1;
   margin-left: 1rem;
 }
-.searchbar-container {
-  display: flex;
-  width: 100%;
-  flex: 1;
-}
 
 .default-icons {
   display: flex;
@@ -31,7 +26,6 @@
   justify-content: center;
   width: 3.75rem;
   height: 1.875em;
-
 }
 
 .location-container {
@@ -44,5 +38,18 @@
 @include mobile {
   .defalut-container {
     justify-content: flex-end;
+  }
+  .search-container {
+    min-width: 9rem;
+    max-width: 15em;
+  }
+  .loginsection-container{
+    width: auto;
+    height: auto;
+    margin-bottom: 0.5rem;
+    margin-right: 1rem;
+  }
+  .loginsection-container > div {
+    margin-left: 0.5rem;
   }
 }
