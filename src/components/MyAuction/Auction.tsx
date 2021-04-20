@@ -11,6 +11,7 @@ import { Item, ItemHandler, UnformatedItem } from '../../redux/modules/Items';
 import ItemCard from '../ItemCard';
 import Empty from '../Common/Empty';
 import { getFormatedItems } from '../../modules/converters';
+import ConstantString from '../../modules/strings';
 import './style/Auction.scss';
 import '../../pages/style/MainPage.scss';
 
@@ -31,7 +32,6 @@ const Action: React.FC = () => {
   const userInfoState = useSelector((state: RootState) => state.UserInfoReducer);
   const { city } = userInfoState;
 
-  //페이지 뒤로가기, 앞으로 가기 할때 items바뀌도록 하기
   useEffect(() => {
     return () => {
       window.onscroll = null;
@@ -74,26 +74,22 @@ const Action: React.FC = () => {
 
   window.onscroll = () => {
     if((window.innerHeight + window.scrollY) >= document.body.offsetHeight * 0.8 && !oneTime) {
-      oneTime = true; // 중복요청하지 않게 조건변경
+      oneTime = true; // 중복요청하지 않게 
       setCount(Count + 6);
       requestMyAuction(searchType, { offset: Count, userId: id, city: city }, requestCallback);
     }
   };
-  
-  const emptyTitle = '입찰/판매중인 물품이 없어요.';
-  const emptyText = '물건을 등록하거나 입찰해보세요!';
 
   return (
     <>
-      {console.log(items)}
       <div className='auction-title'>
-        {searchType === 'buyer' ? (<div>입찰중인상품</div>) : (<div>판매중인상품</div>)} 
+        {searchType === 'buyer' ? (ConstantString.buyerTitle) : (ConstantString.sellerTitle)} 
       </div>
       <div className='auction-container'>
         {
           items.length ? (items.map((item: Item) => 
             <ItemCard item={item} key={item.id}></ItemCard>
-          )) : <Empty emptyTitle={emptyTitle} emptyText={emptyText}/>
+          )) : <Empty emptyTitle={ConstantString.noFilteredResult} emptyText={ConstantString.noFilteredResultDetail}/>
         }
       </div>
     </>
