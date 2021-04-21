@@ -65,7 +65,8 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
   };
 
   const titleHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTitle(e.target.value);
+    const newText = e.target.value.replace(/(<([^>]+)>)/ig, ''); // html 태그 제거
+    setTitle(newText);
 
     if (!title) {
       setTitleErr('필수 입력사항입니다.');
@@ -81,6 +82,8 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
       setPriceErr('가격은 1원 이상이어야 합니다!');
     } else if (newMoneyStr === '') {
       setPriceErr('필수 입력사항입니다.');
+    } else if (Number(newMoneyStr) >= 2100000000) {
+      setPriceErr('금액 초과!');
     } else {
       setPrice(Number(e.target.value));
       setPriceErr('');
@@ -125,6 +128,12 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
     }
   };
 
+  const descriptionHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const newText = e.target.value.replace(/(<([^>]+)>)/ig, ''); // html 태그 제거
+    setDescription(newText);
+
+  };
+
   return (
     <section className="register">
       <h1 className="register-header">경매 물품 등록</h1>
@@ -157,7 +166,7 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
         </div>
       </article>
       <article className="register-bottombox">
-        <textarea className="register-description" placeholder="물품에대한 설명을 입력해주세요!" onChange={e => setDescription(e.target.value)}></textarea>
+        <textarea className="register-description" placeholder="물품에대한 설명을 입력해주세요!" onChange={descriptionHandler}></textarea>
         <SubmitBtn classname="register-submit" str="등록" submitHandler={submitHandler}/>
         {errorMessage ? <div className="register-error">{errorMessage}</div> : <div className="register-error"></div>}
       </article>
