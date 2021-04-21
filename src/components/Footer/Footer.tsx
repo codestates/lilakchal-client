@@ -34,7 +34,7 @@ const Footer: React.FC = () => {
             <span className="footer-email">imhyelim1091@gmail.com</span>
           </div>
           <div className="footer-emailbox">
-            <div className="footer-question">PR 문의</div>
+            <div className="footer-question prquestion">PR 문의</div>
             <span className="footer-email">moananazzang@gmail.com</span>
           </div>
         </div>
@@ -45,8 +45,8 @@ const Footer: React.FC = () => {
           <span className="footer-copyright">Copyright © 2021 Lilakchal all rights reserved</span>
         </div>
         <div className="footer-iconbox">
-          <a className="footer-youtube" href="https://www.youtube.com/c/CodeStates/featured"><AiFillYoutube size="60"/></a>
-          <a className="footer-github" href="https://github.com/codestates/lilakchal-server"><AiFillGithub size="60"/></a>
+          <a href="https://www.youtube.com/c/CodeStates/featured"><AiFillYoutube className="footer-youtube"/></a>
+          <a href="https://github.com/codestates/lilakchal-server"><AiFillGithub className="footer-github"/></a>
         </div>
       </article>
     </section>

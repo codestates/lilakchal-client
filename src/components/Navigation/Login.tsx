@@ -13,6 +13,7 @@ dotenv.config();
 
 declare global {
   interface Window {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     Kakao?: any ;
   }
 }
@@ -33,9 +34,6 @@ const Login: React.FC<RouteComponentProps> = ({history}) => {
             dispatch(LoginHandler(true));
             history.push('/ko/search');
           });
-      },
-      fail: (err : string) => {
-        console.error(err);
       }
     });    
   };
