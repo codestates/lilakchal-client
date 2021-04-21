@@ -239,17 +239,37 @@ const LandingPage: React.FC = () => {
       playAnimation();
     };
   
-    window.addEventListener('scroll', () => {
+    // window.addEventListener('scroll', () => {
+    //   yOffset = window.pageYOffset;
+    //   scrollLoop();
+    // });
+
+    // window.addEventListener('load', () => {
+    //   setLayout();
+    // }); //로드됬을 때 
+    // window.addEventListener('resize', setLayout);
+    // setLayout();
+
+    window.onscroll = () => {
       yOffset = window.pageYOffset;
       scrollLoop();
-    });
+    };
 
-    window.addEventListener('load', () => {
+    window.onload = () => {
       setLayout();
-    }); //로드됬을 때 
-    window.addEventListener('resize', setLayout);
+    };
+
+    window.onresize = setLayout;
     setLayout();
 
+    return () => {
+      // process.removeAllListeners('scroll');
+      // process.removeAllListeners('load');
+      // process.removeAllListeners('resize');
+      window.onscroll = null;
+      window.onload = null;
+      window.onresize = null;
+    };
   }, []);
   
   return (
