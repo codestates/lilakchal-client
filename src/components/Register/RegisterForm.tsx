@@ -126,6 +126,13 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
       date.setDate(date.getDate() + 7);
       setEndtime(getTime());
     }
+    changeSelectedPeriodBtnColor(e.target as HTMLElement);
+  };
+
+  const changeSelectedPeriodBtnColor = (selectedBtn: HTMLElement): void => {
+    const lastSelectedBtn = document.querySelector('.selected-period');
+    lastSelectedBtn?.classList.remove('selected-period');
+    selectedBtn.classList.add('selected-period');
   };
 
   const descriptionHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {

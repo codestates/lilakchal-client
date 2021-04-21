@@ -128,11 +128,17 @@ $photoHeightMobile: 6.25rem;
   cursor: pointer;
   font-size: $font-medium;
   margin-right: calc(10% / 3);
+  outline: none;
   &:hover {
     background-color: $card-text-color;
     color: #ffffff;
     transition: all 0.2s ease-in-out;
   }
+}
+
+.selected-period {
+  background-color: $card-text-color;
+  color: #ffffff;
 }
 
 .register-bottombox {
@@ -164,6 +170,31 @@ $photoHeightMobile: 6.25rem;
 
 .bordernone {
   border: none;
+}
+
+@include desktopS {
+  .register {
+    width: 70%;
+  }
+
+  .register-title,
+  .register-price {
+    font-size: $font-medium;
+    &::placeholder {
+      font-size: $font-small;
+    }
+  }
+
+  .register-period
+  .register-submit {
+    font-size: $font-small;
+  }
+
+  .register-description {
+    &::placeholder {
+      font-size: $font-small;
+    }
+  }
 }
 
 @include mobile {
@@ -220,12 +251,6 @@ $photoHeightMobile: 6.25rem;
     margin: 0;
   }
 
-  .register-title::placeholder,
-  .register-price::placeholder,
-  .register-description::placeholder{
-  font-size: $font-small;
-  }
-
   .register-titleErr,
   .register-priceErr,
   .register-endtime,
@@ -241,6 +266,9 @@ $photoHeightMobile: 6.25rem;
   .register-title,
   .register-price {
     font-size: $font-medium;
+    &::placeholder {
+      font-size: $font-small;
+    }
   }
 
   .register-bottombox {

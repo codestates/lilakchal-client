@@ -8,8 +8,12 @@
 }
 
 @include mobile {
+  .myoptionGroup-container {
+    justify-content: flex-end;
+    flex: 1 1 auto;
+  }
   .myoptionGroup-container > div{
-    margin-left: 0.25rem;
+    margin-left: 0.5rem;
   }
 }
 
