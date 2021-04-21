@@ -44,7 +44,7 @@ const Footer: React.FC = () => {
           <span className="footer-address">서울특별시 서초구 서초4동 서초대로77길 19</span>
           <span className="footer-copyright">Copyright © 2021 Lilakchal all rights reserved</span>
         </div>
-        <div>
+        <div className="footer-iconbox">
           <a className="footer-youtube" href="https://www.youtube.com/c/CodeStates/featured"><AiFillYoutube size="60"/></a>
           <a className="footer-github" href="https://github.com/codestates/lilakchal-server"><AiFillGithub size="60"/></a>
         </div>
