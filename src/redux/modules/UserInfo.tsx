@@ -35,7 +35,6 @@ const UserInfoReducer = createReducer<userInfoState, UserInfoAction>(initialStat
     });
   },
   [changeInfoByGPS]: (state, action) => {
-    // console.log(action.payload);
     return Object.assign({}, state, {
       'id': state.id,
       'name': state.name,
