@@ -1,11 +1,18 @@
+@import '../../style/mixin';
+
+.landing-container {
+  width: 100%;
+  overflow:hidden
+}
 #scroll-section-0 {
   display: flex;
   background-color: #caf3f7;
-  padding-top: 15%;
+  padding-top: 10rem;
   padding-left: 5%;
   padding-right: 5vh;
   justify-content: space-between;
   flex-wrap: wrap;
+  width: 100%;
 }
 .scroll-section0-left {
   display: flex;
@@ -20,6 +27,10 @@
   animation-name: show-from-bottom;
   transition: all .15s ease-in-out .15s;
 }
+.logo {
+  width: 100%;
+  height: 100%;
+}
 .scroll-section0-img {
   display: flex;
   width: 100%;
@@ -30,6 +41,8 @@
   width: 100%;
   height: 100%;
   font-size: 1.5rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
 }
 .scroll-section0-right {
   display: flex;
@@ -43,10 +56,17 @@
 }
 .scroll-section0-gif {
   flex: 1;
+  max-width: 40rem;
+  min-width: 30rem;
+  max-height: 30rem;
+  min-height: 25rem;
+  border-radius: 20px;
+  background-color: white;
+}
+.landing-gif {
   width: 100%;
   height: 100%;
   border-radius: 20px;
-  background-color: white;
 }
 @keyframes show-from-bottom{
   0% {
@@ -69,14 +89,14 @@
       opacity: 1;
   }
 }
-///////////////
+/////////////// section1
 #scroll-section-1 {
   display: flex;
   background-color: #ffffff;
-  padding-top: 20vh;
-  padding-left: 5vh;
-  padding-right: 15vh;
-  justify-content: space-between;
+  padding-top: 10%;
+  padding-left: 5%;
+  padding-right: 5%;
+  justify-content: center;
   flex-wrap: wrap;
 }
 
@@ -84,105 +104,118 @@
   display: flex;
   flex: 1;
   max-width: 40rem;
-  min-width: 30rem;
+  min-width: 20rem;
+  margin-right: 5rem;
   height: 700px;
   flex-direction: column;
   text-align: center;
 }
 .scroll-section1-search-img {
-  background-image: url('../../res//landing_search.png');
-  background-size: cover;
-  width: 100%;
+  max-width: 45rem;
+  min-width: 30rem;
   height: 100%;
   margin-top: 3rem;
+  flex: 1;
+}
+.search-img {
+  width: 100%;
+  height: 100%;
 }
 .scroll-section1-message-a {
   width: 100%;
-  // height: 100%;
   font-size: 1.5rem;
 }
 .scroll-section1-right {
   display: flex;
   flex-direction: column;
   text-align: center;
+  justify-content: center;
   flex: 1;
+  margin-left: 10rem;
   max-width: 40rem;
   min-width: 20rem;
   height: 700px;
 }
 .scroll-section1-map-img {
-  background-image: url('../../res//landing_map.png');
-  background-size: contain;
-  width: 90%;
-  height: 70%;
+  max-width: 28rem;
+  min-width: 23rem;
+  height: 22rem;
+  flex: 1;
+}
+.map-img {
+  width: 100%;
+  height: 100%;
 }
 .scroll-section1-right-bottom {
   display: flex;
   flex: 1;
   width: 100%;
-  height: 20%;
   justify-content: space-between;
 }
 .scroll-section1-message-b {
   width: 100%;
-  // height: 100%;
-  margin-top: 2rem;
+  margin-top: 5rem;
   font-size: 1.5rem;
 }
 .scroll-section1-thinking-img {
-  background-image: url('../../res//thinking.png');
-  background-size: contain;
-  width: 30%;
-  height: 60%;
+  width: 10rem;
+  height: 10rem;
+}
+.thinking-img {
+  width: 100%;
+  height: 100%;
 }
 
-//////////////
+//////////////section2
 #scroll-section-2 {
   display: flex;
   background-color: #e8f8f9;
   padding-top: 10%;
-  padding-left: 10vh;
-  padding-right: 10vh;
-  justify-content: space-between;
+  justify-content: center;
   flex-wrap: wrap;
 }
 .scroll-section2-left {
   display: flex;
   flex: 1;
-  max-width: 40rem;
+  max-width: 45rem;
   min-width: 30rem;
   height: 500px;
   flex-direction: column;
   text-align: center;
-}///
+}
+
 .scroll-section2-register-img {
-  background-image: url('../../res/apple.png');
-  background-size: contain;
+  
+  max-width: 40rem;
+  min-width: 20rem;
+  height: 35rem;
+  
+}
+.register {
   width: 100%;
   height: 100%;
   border-radius: 20px;
 }
+
 .scroll-section2-right {
   display: flex;
   flex-direction: column;
   text-align: center;
-  justify-content: center;
+  align-items: center;
   flex: 1;
   max-width: 30rem;
   min-width: 20rem;
   height: 500px;
 }
-.scroll-section2-img {
-  display: flex;
-  justify-content: center;
-  width: 45%;
-  margin: 0 auto;
-  height: 50%;
-  flex: 1;
-}
+
 .scroll-section2-auction-img {
-  background-image: url('../../res/auction.png');
-  background-size: contain;
+  
+  max-width: 10rem;
+  min-width: 5rem;
+  height: 10rem;
+  margin-top: 5rem;
+}
+.auction-img {
   width: 100%;
   height: 100%;
 }
@@ -191,9 +224,293 @@
   height: 20%;
   font-size: 1.5rem;
 }
-.scroll-section2-message-b {
-  width: 100%;
-  height: 10%;
-  font-size: 1.5rem;
-  margin-bottom: 7rem;
+
+@include desktopL {
+  .landing-container {
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    
+  }
+  #scroll-section-0 {
+    display: flex;
+    background-color: #caf3f7;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+  .scroll-section0-left {
+    margin-top: -7rem;
+    align-items: center;
+  }
+  .logo {
+    width: 70%;
+    height: 70%;
+  }
+  .scroll-section0-img {
+    display: flex;
+    justify-content: center;
+    width: 70%;
+    height: 200px;
+  }
+  .scroll-section0-message-a{
+    height: 1.5rem;
+    font-size: 1rem;
+    margin-bottom: 0;
+
+  }
+
+  .section0-logo-bottom {
+    width: 70%;
+  }
+  .scroll-section0-right {
+    display: flex;
+    flex: 1;
+    max-width: 35rem;
+    margin-left: 1rem;
+    margin-top: -15rem;
+    height: 200px;
+    animation-duration: 1s;
+    animation-name: show-from-right;
+    transition: all .15s ease-in-out .15s;
+  }
+  .scroll-section0-gif {
+    flex: 1;
+    max-width: 40rem;
+    height: 100%;
+    border-radius: 20px;
+    background-color: white;
+  }
+  .landing-gif {
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+  }
+  ////////////////////////////////section1
+
+  #scroll-section-1 {
+    display: flex;
+    background-color: #ffffff;
+    flex-direction: column;
+    align-content: center;
+    margin-left: 2rem;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .scroll-section1-left {
+    max-width: 30rem;
+    margin-top: -2rem;
+    height: 25rem;
+  }
+  
+  .search-img {
+    width: 30rem;
+    height: 25rem;
+  }
+  .scroll-section1-message-a {
+    width: 100%;
+    font-size: 1.5rem;
+  }
+  .scroll-section1-right {
+    width: 20rem;
+    height: 50%;    
+  }
+  .scroll-section1-map-img {
+    width: 10rem;
+    height: 10rem;
+    margin-left: -8rem;
+    margin-top: 5rem;
+    
+  }
+  .map-img {
+    width: 20rem;
+    height: 10rem;
+  }
+  .scroll-section1-right-bottom {
+    margin-left: -5rem;
+  }
+  .scroll-section1-message-b {
+    margin-top: 5rem;
+
+  }
+  .scroll-section1-thinking-img {
+    width: 10rem;
+    height: 10rem;
+  }
+
+  ////////////////////////section2
+
+  #scroll-section-2 {
+    display: flex;
+    background-color: #e8f8f9;
+    padding-top: 10%;
+    flex-direction: column;
+    align-content: center;
+  }
+  .scroll-section2-left {
+    display: flex;
+    flex: 1;
+    max-width: 40rem;
+    min-width: 30rem;
+    height: 300px;
+    flex-direction: column;
+    text-align: center;
+    margin-top: -3rem;
+  }
+  
+  .scroll-section2-right {
+    margin-top: 6rem;
+    margin-left: 5rem;
+  }
+///////////////////////////////MOBILE
+  @include mobile {
+
+    #scroll-section-0 {
+      display: flex;
+      background-color: #caf3f7;
+      padding-top: 0;
+      padding-left: 5%;
+      padding-right: 5vh;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      width: 100%;
+    }
+    .scroll-section0-left {
+      display: flex;
+      flex: 1;
+      max-width: 250px;
+      min-width: 250px;
+      height: 200px;
+      margin-top: 5%;
+      flex-direction: column;
+      text-align: center;
+      animation-duration: 1s;
+      animation-name: show-from-bottom;
+      transition: all .15s ease-in-out .15s;
+    }
+    .logo {
+      width: 250px;
+      height: 100px;
+    }
+    .scroll-section0-img {
+      display: flex;
+      width: 100%;
+      height: 100px;
+    }
+    .scroll-section0-message-a{
+      // margin-left: 20vh;
+      width: 100%;
+      height: 50px;
+      font-size: 1.5rem;
+      margin-top: 3rem;
+      margin-bottom: 3rem;
+    }
+    .scroll-section0-right {
+      display: flex;
+      flex: 1;
+      max-width: 300px;
+      min-width: 300px;
+      height: 150px;
+      animation-duration: 1s;
+      animation-name: show-from-right;
+      transition: all .15s ease-in-out .15s;
+    }
+    .scroll-section0-gif {
+      flex: 1;
+      max-width: 300px;
+      min-width: 300px;
+      max-height: 30rem;
+      min-height: 25rem;
+      border-radius: 20px;
+      background-color: white;
+    }
+
+    /////////////////////////////////// section1
+
+    #scroll-section-1 {
+      display: flex;
+      background-color: #ffffff;
+      flex-direction: column;
+      align-content: center;
+      margin-left: 10px;
+      height: 100%;
+      width: 100%;
+    }
+    
+    .scroll-section1-left {
+      max-width: 300px;
+      margin-top: -2rem;
+      height: 25rem;
+    }
+    
+    .search-img {
+      width: 300px;
+      height: 25rem;
+    }
+
+    .scroll-section1-message-a {
+      width: 100%;
+      font-size: 1.5rem;
+      margin-left: 70px;
+    }
+
+    .map-img {
+      width: 300px;
+      height: 10rem;
+    }
+    /////section2
+    #scroll-section-2 {
+      display: flex;
+      background-color: #e8f8f9;
+      padding-top: 10%;
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+    }
+    .scroll-section2-left {
+      display: flex;
+      flex: 1;
+      max-width: 200px;
+      min-width: 200px;
+      height: 200px;
+      flex-direction: column;
+      text-align: center;
+      
+      align-items: center;
+      margin-top: 0;
+    }
+    
+    .scroll-section2-right {
+      
+      margin-top: 0;
+      margin-left: 0;
+    }
+    .scroll-section2-auction-img {
+  
+      max-width: 200px;
+      min-width: 200px;
+      height: 10rem;
+      margin-top: 0;
+    }
+    .auction-img {
+      width: 200px;
+      height: 100%;
+    }
+    .scroll-section2-register-img {
+  
+  max-width: 300px;
+  min-width: 300px;
+  height: 300px;
+  
 }
+.register {
+  width: 300px;
+  height: 300px;
+  border-radius: 20px;
+}
+    
+  }
+} 
