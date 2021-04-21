@@ -1,9 +1,10 @@
 import React from 'react';
 import { useMediaQuery } from 'react-responsive';
-import SearchBar from './SearchBar';
 import GoRegister from './GoRegister';
 import LoginSection from './LoginSection';
-import Location from './Location';
+import SearchContainer from './SearchContainer';
+//import SearchBar from './SearchBar';
+//import Location from './Location';
 import {device} from '../../style/variable';
 import './style/DefaultGroup.scss';
 
@@ -15,14 +16,7 @@ const DefaultGroup:React.FC = () => {
 
   return (
     <div className="defalut-container">
-      <div className='search-container'>
-        <div className='searchbar-container'>
-          <SearchBar/>
-        </div>
-        <div className='location-container'>
-          <Location/>
-        </div>
-      </div>
+      <SearchContainer/>
       <div className='default-icons'>
         {isMobile ? 
           <></> :

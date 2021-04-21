@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {getRestTime} from '../../modules/utils';
-import {constantString} from '../../modules/strings';
+import ConstantString from '../../modules/strings';
 import './style/Timer.scss';
 
 interface Props {
@@ -20,7 +20,7 @@ const Timer: React.FC<Props> = ({endtime, handleBidStatus, classname}) => {
     const countdown = setInterval(() => {
       const result = getRestTime(endtime);
       setRestTime(result);
-      if(result === constantString.endBid) {
+      if(result === ConstantString.endBid) {
         handleBidStatus(true);
         clearInterval(countdown); 
       }

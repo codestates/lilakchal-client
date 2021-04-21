@@ -11,7 +11,6 @@ const GoMypage: React.FC<RouteComponentProps> = ({history}) => {
 
   const [isVisibleMenu, setIsVisibleMenu] = useState<boolean>(false);
   const goMypage = () => {
-    //1. html에 있는 검색 값 지우기
     const SearchValue = (document.getElementById('searchbar') as HTMLInputElement);
     SearchValue.value = '';
     history.push('/ko/mypage/auction');
