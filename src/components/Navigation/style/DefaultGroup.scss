@@ -38,6 +38,7 @@
 @include mobile {
   .defalut-container {
     justify-content: flex-end;
+    align-items: center;
   }
   .search-container {
     min-width: 9rem;
@@ -46,10 +47,10 @@
   .loginsection-container{
     width: auto;
     height: auto;
-    margin-bottom: 0.5rem;
     margin-right: 1rem;
-  }
-  .loginsection-container > div {
     margin-left: 0.5rem;
   }
+  // .loginsection-container > div {
+  //   margin-left: 0.3rem;
+  // }
 }
