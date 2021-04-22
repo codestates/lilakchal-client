@@ -61,7 +61,7 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
     formData.append('description', description);
     city && formData.append('city', city);
 
-    await axios.post('https://localhost:4000/auction/register', formData, { headers: {'Content-Type': 'multipart/form-data'}, withCredentials: true });
+    await axios.post(`${process.env.REACT_APP_SERVER_ADDRESS}/auction/register`, formData, { headers: {'Content-Type': 'multipart/form-data'}, withCredentials: true });
     history.push('/ko/search');
   };
 
