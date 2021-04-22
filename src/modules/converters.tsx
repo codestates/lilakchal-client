@@ -1,6 +1,9 @@
+import dotenv from 'dotenv';
 import ConstantString from './strings';
 import { ItemsState, UnformatedItem } from '../redux/modules/Items';
 import {message, unFormatedMessage} from '../interface/Chat';
+
+dotenv.config();
 
 export const convertSecToHourString = (targetSec: number): string => {
   const hour = Math.floor(targetSec / 3600);
@@ -29,7 +32,7 @@ export const getFormatedItems = (items: Array<UnformatedItem>): ItemsState => {
 
   return {items: items.map(item => {
     const {id, title, price, photo, description, winnerId, sellerId, isClosed, city} = item;
-    return {id, title, price, photo: `https://localhost:4000/${photo}`, endTime: new Date(item.endTime), description, winnerId, sellerId, isClosed, city};
+    return {id, title, price, photo: `${process.env.REACT_APP_SERVER_ADDRESS}/${photo}`, endTime: new Date(item.endTime), description, winnerId, sellerId, isClosed, city};
   })};
 };
 
