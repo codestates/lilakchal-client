@@ -269,7 +269,7 @@ const LandingPage: React.FC = () => {
       <section className="scroll-section" id="scroll-section-0">
         <div className='scroll-section0-left'>
           <div className='scroll-section0-img'>
-            <img  className='logo' src={landing}/>
+            <img  className='landing-section0-logo' src={landing}/>
           </div>
           
           <div className='section0-logo-bottom'>
