@@ -242,17 +242,6 @@ const LandingPage: React.FC = () => {
   
       playAnimation();
     };
-  
-    // window.addEventListener('scroll', () => {
-    //   yOffset = window.pageYOffset;
-    //   scrollLoop();
-    // });
-
-    // window.addEventListener('load', () => {
-    //   setLayout();
-    // }); //로드됬을 때 
-    // window.addEventListener('resize', setLayout);
-    // setLayout();
 
     window.onscroll = () => {
       yOffset = window.pageYOffset;
@@ -265,14 +254,10 @@ const LandingPage: React.FC = () => {
 
     window.onresize = ()=>{
       setLayout;
-      console.log(window.innerHeight);
     };
     setLayout();
 
     return () => {
-      // process.removeAllListeners('scroll');
-      // process.removeAllListeners('load');
-      // process.removeAllListeners('resize');
       window.onscroll = null;
       window.onload = null;
       window.onresize = null;
