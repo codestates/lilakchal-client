@@ -23,6 +23,7 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
   const [errorMessage, setErrorMessage] = useState<string>('');
   const [priceErr, setPriceErr] = useState<string>('');
   const [titleErr, setTitleErr] = useState<string>('');
+  const [fixTime, setFixTime] = useState<string>('');
 
   const fileChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
 
@@ -57,7 +58,7 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
     formData.append('photo', photo.name);
     formData.append('title', title);
     formData.append('price', String(price));
-    formData.append('endTime', endtime);
+    formData.append('endTime', fixTime);
     formData.append('description', description);
     city && formData.append('city', city);
 
@@ -120,12 +121,18 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
     if (e.currentTarget.value === '1d') {
       date.setDate(date.getDate() + 1);
       setEndtime(getTime());
+      date.setHours(date.getHours() - 9);
+      setFixTime(getTime());
     } else if (e.currentTarget.value === '3d') {
       date.setDate(date.getDate() + 3);
       setEndtime(getTime());
+      date.setHours(date.getHours() - 9);
+      setFixTime(getTime());
     } else if (e.currentTarget.value === '7d') {
       date.setDate(date.getDate() + 7);
       setEndtime(getTime());
+      date.setHours(date.getHours() - 9);
+      setFixTime(getTime());
     }
     changeSelectedPeriodBtnColor(e.target as HTMLElement);
   };
