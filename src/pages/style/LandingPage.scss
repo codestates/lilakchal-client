@@ -37,9 +37,7 @@
   height: 100%;
 }
 .scroll-section0-message-a{
-  // margin-left: 20vh;
   width: 100%;
-  // height: 100%;
   font-size: 1.5rem;
   margin-top: 3rem;
   margin-bottom: 3rem;
@@ -47,8 +45,6 @@
 .scroll-section0-right {
   display: flex;
   flex: 1;
-  // max-width: 50rem;
-  // min-width: 25rem;
   align-items: center;
   height: 500px;
   animation-duration: 1s;
@@ -59,10 +55,6 @@
   display: flex;
   align-items: center;
   flex: 1;
-  // max-width: 40rem;
-  // min-width: 30rem;
-  // max-height: 30rem;
-  // min-height: 25rem;
   border-radius: 20px;
   background-color: white;
 }
@@ -168,7 +160,6 @@
   height: 100%;
 }
 
-//////////////section2
 #scroll-section-2 {
   display: flex;
   background-color: #e8f8f9;
@@ -187,7 +178,6 @@
 }
 
 .scroll-section2-register-img {
-  
   max-width: 40rem;
   min-width: 20rem;
   height: 35rem;
@@ -230,17 +220,13 @@
 @include desktopL {
   .landing-container {
     width: 100%;
-    height: 100%;
     justify-content: center;
     
   }
   #scroll-section-0 {
-    display: flex;
-    background-color: #caf3f7;
     flex-direction: column;
     align-items: center;
     justify-items: center;
-    width: 100%;
     height: 100%;
   }
   .scroll-section0-left {
@@ -252,7 +238,6 @@
     height: 70%;
   }
   .scroll-section0-img {
-    display: flex;
     justify-content: center;
     width: 80%;
     height: 200px;
@@ -261,7 +246,6 @@
     height: 1.5rem;
     font-size: 1rem;
     margin: 0px;
-
   }
 
   .section0-logo-bottom {
@@ -269,33 +253,25 @@
   }
   .scroll-section0-right {
     display: flex;
-  flex: 1;
-  max-width: 50rem;
-  min-width: 25rem;
-  margin-top: -35%;
-  align-items: center;
-  height: 300px;
+    flex: 1;
+    max-width: 50rem;
+    min-width: 25rem;
+    margin-top: -35%;
+    align-items: center;
+    height: 300px;
   }
   .scroll-section0-gif {
-    display: flex;
-    align-items: center;
-    flex: 1;
     max-width: 40rem;
     min-width: 30rem;
     max-height: 30rem;
     min-height: 25rem;
-    border-radius: 20px;
-    background-color: white;
   }
   .landing-gif {
     width: 100%;
-  border-radius: 20px;
+    border-radius: 20px;
   }
-  ////////////////////////////////section1
 
   #scroll-section-1 {
-    display: flex;
-    background-color: #ffffff;
     flex-direction: column;
     align-content: center;
     margin-left: 4rem;
@@ -304,8 +280,6 @@
   }
   
   .scroll-section1-left {
-    display: flex;
-  flex: 1;
   max-width: 50rem;
   min-width: 25rem;
   margin-top: -5%;
@@ -325,7 +299,6 @@
     width: 20rem;
     height: 50%;
     margin-left: 4.5rem;
-    justify-content: center;
     align-items: center;
   }
   
@@ -347,37 +320,26 @@
     height: 7rem;
   }
 
-  ////////////////////////section2
-
   #scroll-section-2 {
-    display: flex;
-      background-color: #e8f8f9;
-      padding-top: 10%;
-      width: 100%;
-      flex-direction: column;
-      align-items: center;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
   }
   .scroll-section2-left {
-    display: flex;
-      flex: 1;
-      max-width: 100%;
-      min-width: 100%;
-      height: 200px;
-      flex-direction: column;
-      text-align: center;
-      
-      align-items: center;
-      margin-top: 0;
+    max-width: 100%;
+    min-width: 100%;
+    height: 200px;
+    align-items: center;
+    margin-top: 0;
   }
   
   .scroll-section2-right {
     margin-top: 0;
-      margin-left: 0;
-      height: 100%;
+    margin-left: 0;
+    height: 100%;
   }
 
   .scroll-section2-register-img {
-  
     max-width: 100%;
     min-width: 100%;
     height: 450px;
@@ -386,164 +348,108 @@
 
   .landing-register {
     width: 60%;
-    height: 100%;
-    border-radius: 20px;
   }
 
   .scroll-section2-message-a {
     margin-top: 1rem;
     font-size: 1rem;
   }
-///////////////////////////////MOBILE
-  @include mobile {
 
-    #scroll-section-0 {
-      display: flex;
-    background-color: #caf3f7;
+@include mobile {
+  #scroll-section-0 {
     flex-direction: column;
     align-items: center;
     justify-items: center;
-    width: 100%;
     height: 100%;
     padding-top: 0;
     padding-left: 0;
-  padding-right: 0;
-    }
-    .scroll-section0-left {
-      display: flex;
-      flex: 1;
-      max-width: 80%;
-      min-width: 80%;
-      height: 50%;
-      margin-top: 10%;
-      flex-direction: column;
-      text-align: center;
-      z-index: 999;
-    }
-    .landing-section0-logo {
-      width: 100%;
-      height: 100%;
-    }
-    .scroll-section0-img {
-      display: flex;
-    justify-content: center;
+    padding-right: 0;
+  }
+  .scroll-section0-left {
+    min-width: 100%;
+    height: 50%;
+    margin-top: 10%;
+    z-index: 999;
+  }
+  .landing-section0-logo {
+    height: 50%;
     width: 100%;
-    height: 30%;
-    }
-    .scroll-section0-message-a{
-      // margin-left: 20vh;
-      width: 100%;
-      height: 50px;
-      font-size: 1rem;
-      word-break: keep-all;
-      margin-top: 3rem;
-      margin-bottom: 3rem;
-    }
-    .scroll-section0-right {
-      display: flex;
-      flex: 1;
-      max-width: 100%;
-      min-width: 100%;
-      height: 200px;
-      justify-content: center;
-      margin-top: -50%;
-      animation-duration: 1s;
-      animation-name: show-from-right;
-      transition: all .15s ease-in-out .15s;
-    }
-    .scroll-section0-gif {
-      flex: 1;
-      max-width: 80%;
-      min-width: 80%;
-      max-height: 200px;
-      min-height: 200px;
-      border-radius: 20px;
-      background-color: white;
-    }
-    .landing-gif {
-      width: 100%;
-    border-radius: 20px;
-    }
+  }
+  .scroll-section0-img {
+    justify-content: center;
+  }
+  .scroll-section0-message-a{
+    height: 50px;
+    font-size: 1rem;
+    word-break: keep-all;
+  }
+  .scroll-section0-right {
+    max-width: 100%;
+    min-width: 100%;
+    height: 200px;
+    justify-content: center;
+    margin-top: -50%;
+  }
+  .scroll-section0-gif {
+    max-width: 80%;
+    min-width: 80%;
+    max-height: 200px;
+    min-height: 200px;
+  }
 
-    /////////////////////////////////// section1
+  #scroll-section-1 {
+    padding-left: 0;
+  }
 
-    #scroll-section-1 {
-      display: flex;
-      background-color: #ffffff;
-      padding-top: 10%;
-      padding-left: 0;
-      // margin-left: 0;
-      padding-right: 5%;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
+  .scroll-section1-message-a {
+    font-size: 1rem;
+  }
 
-    .scroll-section1-message-a {
-      font-size: 1rem;
-    }
+  .scroll-section1-right {
+    margin-top: 3rem;
+  }
+  .scroll-section1-message-b {
+    margin-top: 3rem;
+    font-size: 1rem;
+    word-break: keep-all;
+  }
+
+  #scroll-section-2 {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+  .scroll-section2-left {  
+    max-width: 100%;
+    min-width: 100%;
+    height: 200px;
+    align-items: center;
+    margin-top: 0;
+  }
     
-    .scroll-section1-right {
-      margin-top: 3rem;
-    }
-    .scroll-section1-message-b {
-      margin-top: 3rem;
-      font-size: 1rem;
-      word-break: keep-all;
-    }
-    /////section2
-    #scroll-section-2 {
-      display: flex;
-      background-color: #e8f8f9;
-      padding-top: 10%;
-      width: 100%;
-      flex-direction: column;
-      align-items: center;
-    }
-    .scroll-section2-left {
-      display: flex;
-      flex: 1;
-      max-width: 100%;
-      min-width: 100%;
-      height: 200px;
-      flex-direction: column;
-      text-align: center;
-      
-      align-items: center;
-      margin-top: 0;
-    }
-    
-    .scroll-section2-right {
-      
-      margin-top: 0;
-      margin-left: 0;
-    }
-    .scroll-section2-auction-img {
-  
-      max-width: 200px;
-      min-width: 200px;
-      height: 10rem;
-      margin-top: 2rem;
-    }
-    .auction-img {
-      width: 200px;
-      height: 100%;
-    }
-    .scroll-section2-register-img {
-  
-  max-width: 100%;
-  min-width: 100%;
-  height: 80%;
-  
-}
-.landing-register {
-  width: 80%;
-  height: 100%;
-  border-radius: 20px;
-}
-.scroll-section2-message-a {
+  .scroll-section2-right {
+    margin-top: 0;
+    margin-left: 0;
+  }
+
+  .scroll-section2-auction-img {
+    max-width: 200px;
+    min-width: 200px;
+    height: 200px;
+    margin-top: 2rem;
+  }
+
+  .scroll-section2-register-img {
+    max-width: 100%;
+    min-width: 100%;
+    height: 80%;
+  }
+  .landing-register {
+    width: 80%;
+  }
+  .scroll-section2-message-a {
   margin-top: 1rem;
   font-size: 1rem;
-}
-    
   }
+}
 } 
