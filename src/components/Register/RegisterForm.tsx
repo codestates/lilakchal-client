@@ -13,6 +13,7 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
   const userState = useSelector((state: RootState) => state.UserInfoReducer);
   const { id, city } = userState;
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [photo, setImage] = useState<any>(null);
   const [imgbase64, setImgbase64] = useState<string>('');
   const [title, setTitle] = useState<string>('');
@@ -23,7 +24,7 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
   const [priceErr, setPriceErr] = useState<string>('');
   const [titleErr, setTitleErr] = useState<string>('');
 
-  const fileChange = (e: any): void => {
+  const fileChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
 
     const reader = new FileReader();
 
@@ -34,7 +35,7 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
       }
     };
 
-    if (e.target.files[0]) {
+    if (e.target.files && e.target.files[0]) {
       reader.readAsDataURL(e.target.files[0]);
       setImage(e.target.files[0]);
     }

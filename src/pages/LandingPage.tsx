@@ -280,14 +280,14 @@ const LandingPage: React.FC = () => {
   }, []);
   
   return (
-    <div className='landing-container'>
-      <section className="scroll-section" id="scroll-section-0">
-        <div className='scroll-section0-left'>
-          <div className='scroll-section0-img'>
-            <img  className='logo' src={landing}/>
-          </div>
+      <div className='landing-container'>
+        <section className="scroll-section" id="scroll-section-0">
+          <div className='scroll-section0-left'>
+            <div className='scroll-section0-img'>
+              <img  className='logo' src={landing}/>
+            </div>
           
-          <div className='section0-logo-bottom'>
+            <div className='section0-logo-bottom'>
             <div className='scroll-section0-message-a'>
           좋은 물건을 구경하고 경매에 참여해 보세요!
             </div>
@@ -318,6 +318,7 @@ const LandingPage: React.FC = () => {
             </div>
             <div className='scroll-section1-message-b'>
             내 위치 주변의 물품들을 확인해 보세요!
+              </div>
             </div>
           </div>
         </div>
@@ -345,7 +346,7 @@ const LandingPage: React.FC = () => {
           <Start/>
         </div>
       </section>
-      {/* <Footer/> */}
+      <Footer/>
     </div>
   );
 };
