@@ -1,3 +1,4 @@
+@import '../../../style/variable';
 @import '../../../style/_mixin.scss';
 
 .itemcard-container {
@@ -90,6 +91,21 @@
   top: -18%;
   left: -5%;
   width: 30%;
+  border-radius: 50px;
+  animation-name:spinCircle;
+  animation-duration:.8s;
+  animation-iteration-count: 1;
+}
+
+@keyframes spinCircle {
+  from {
+      // transform:rotate(0);
+      background-color: gray;
+  }
+  to {
+      // transform:rotate(360deg);
+      background-color: rgba(255, 255, 255, 0);
+  }
 }
 
 @include mobile {
@@ -106,5 +122,20 @@
     top: -6%;
     left: 80%;
     transform: rotate(45deg);
+    border-radius: 50px;
+    animation-name:spinCircle;
+    animation-duration:.8s;
+    animation-iteration-count: 1;
+  }
+  
+  @keyframes spinCircle {
+    from {
+        // transform:rotate(45deg);
+        background-color: gray;
+    }
+    to {
+        // transform:rotate(400deg);
+        background-color: rgba(255, 255, 255, 0);
+    }
   }
 }
