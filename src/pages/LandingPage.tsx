@@ -105,7 +105,7 @@ const LandingPage: React.FC = () => {
       for (let i = 0; i < sceneInfo.length; i++) {
         sceneInfo[i].scrollHeight = sceneInfo[i].heightNum * window.innerHeight;
         sceneInfo[i].objs.container.style.height = `${sceneInfo[i].scrollHeight}px`;
-        sceneInfo[i].objs.container.style.width = `${window.innerWidth}px`;
+        // sceneInfo[i].objs.container.style.width = `${window.innerWidth}px`;
       }
       yOffset = window.pageYOffset; //전체 페이지 스크롤 값을 간단하게 쓰기위해서 변수로 할당
       let totalScrollHeight = 0;
@@ -273,53 +273,55 @@ const LandingPage: React.FC = () => {
   }, []);
   
   return (
-    <div className='landing-container'>
-      <section className="scroll-section" id="scroll-section-0">
-        <div className='scroll-section0-left'>
-          <img className='scroll-section0-img' src={landing}/>
-          <div className='scroll-section0-message-a'>
+    <>
+      <div className='landing-container'>
+        <section className="scroll-section" id="scroll-section-0">
+          <div className='scroll-section0-left'>
+            <img className='scroll-section0-img' src={landing}/>
+            <div className='scroll-section0-message-a'>
           좋은 물건을 구경하고 경매에 참여해 보세요!
+            </div>
+            <Start/>
           </div>
-          <Start/>
-        </div>
-        <div className='scroll-section0-right'>
-          <div className='scroll-section0-gif'/>
-        </div>
-      </section>
-      <section className="scroll-section" id="scroll-section-1">
-        <div className='scroll-section1-left'>
-          <div className='scroll-section1-message-a' >원하는 물품을 검색해 보세요!</div>
-          <div className='scroll-section1-search-img'/>
-        </div>
-        <div className='scroll-section1-right'>
-          <div className='scroll-section1-map-img'/>
-          <div className='scroll-section1-right-bottom'>
-            <div className='scroll-section1-thinking-img'/>
-            <div className='scroll-section1-message-b'>
+          <div className='scroll-section0-right'>
+            <div className='scroll-section0-gif'/>
+          </div>
+        </section>
+        <section className="scroll-section" id="scroll-section-1">
+          <div className='scroll-section1-left'>
+            <div className='scroll-section1-message-a' >원하는 물품을 검색해 보세요!</div>
+            <div className='scroll-section1-search-img'/>
+          </div>
+          <div className='scroll-section1-right'>
+            <div className='scroll-section1-map-img'/>
+            <div className='scroll-section1-right-bottom'>
+              <div className='scroll-section1-thinking-img'/>
+              <div className='scroll-section1-message-b'>
             내 위치 주변의 물품들을 확인해 보세요!
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-      <section className="scroll-section" id="scroll-section-2">
-        <div className='scroll-section2-left'>
-          <div className='scroll-section2-register-img'/>
-        </div>
-        <div className='scroll-section2-right'>
-          <div className='scroll-section2-img'>
-            <div className='scroll-section2-auction-img'/>
+        </section>
+        <section className="scroll-section" id="scroll-section-2">
+          <div className='scroll-section2-left'>
+            <div className='scroll-section2-register-img'/>
           </div>
-          <div className='scroll-section2-message-a'>
+          <div className='scroll-section2-right'>
+            <div className='scroll-section2-img'>
+              <div className='scroll-section2-auction-img'/>
+            </div>
+            <div className='scroll-section2-message-a'>
             경매 주최자가 되어보세요
-          </div>
-          <div className='scroll-section2-message-b'>
+            </div>
+            <div className='scroll-section2-message-b'>
             내 물건의 경매를 시작해 보세요!
+            </div>
+            <Start/>
           </div>
-          <Start/>
-        </div>
-      </section>
+        </section>
+      </div>
       <Footer/>
-    </div>
+    </>
   );
 };
 
