@@ -1,8 +1,17 @@
 import React, { useEffect } from 'react';
 import Start from '../components/Navigation/Start';
-import Footer from '../components/Footer/Footer';
+// import Footer from '../components/Footer/Footer';
 import './style/LandingPage.scss';
 import landing from '../res/landing_logo.png';
+import apple from '../res/apple.png';
+import auction from '../res/auction.png';
+import GIF from '../res/landing1.gif';
+import search from '../res/landing_search.png';
+import map from '../res/landing_map.png';
+import thinking from '../res/thinking.png';
+
+
+
 
 const LandingPage: React.FC = () => {
   localStorage.setItem('city', '');
@@ -49,7 +58,7 @@ const LandingPage: React.FC = () => {
           messageA: document.querySelector('.scroll-section1-message-a') as HTMLElement,
           messageB: document.querySelector('.scroll-section1-message-b') as HTMLElement,
           messageD: document.querySelector('.scroll-section2-message-a') as HTMLElement,
-          messageE: document.querySelector('.scroll-section2-message-b') as HTMLElement,
+
           imgA: document.querySelector('.scroll-section1-search-img') as HTMLElement,
           imgB: document.querySelector('.scroll-section1-map-img') as HTMLElement,
           imgC: document.querySelector('.scroll-section1-thinking-img') as HTMLElement,
@@ -78,8 +87,7 @@ const LandingPage: React.FC = () => {
           imgD_translateY_in: [20, 0, { start: 0.5, end: 0.7 }],
           messageD_opacity_in: [0, 1, { start: 0.7, end: 0.8 }],
           messageD_translateY_in: [20, 0, { start: 0.7, end: 0.8 }],
-          messageE_opacity_in: [0, 1, { start: 0.8, end: 0.9 }],
-          messageE_translateY_in: [20, 0, { start: 0.8, end: 0.9 }],
+          
           imgE_opacity_in: [0, 1, { start: 0.5, end: 0.7 }],
           imgE_translateY_in: [20, 0, { start: 0.5, end: 0.7 }],
         }
@@ -92,7 +100,6 @@ const LandingPage: React.FC = () => {
           // container: document.getElementById('scroll-section-0'),
           container: document.querySelector('#scroll-section-2') as HTMLElement,
           messageA: document.querySelector('.scroll-section2-message-a') as HTMLElement,
-          messageB: document.querySelector('.scroll-section2-message-b') as HTMLElement,
           imgA: document.querySelector('.scroll-section2-register-img') as HTMLElement,
           imgB: document.querySelector('.scroll-section2-auction-img') as HTMLElement,
         }
@@ -176,10 +183,7 @@ const LandingPage: React.FC = () => {
             objs.messageD.style.opacity = calcValues(values?.messageD_opacity_in, currentYOffset);
             objs.messageD.style.transform = `translate3d(${calcValues(values?.messageD_translateY_in, currentYOffset)}%, 0, 0)`;
           }
-          if(scrollRatio <= 0.95) {
-            objs.messageE.style.opacity = calcValues(values?.messageE_opacity_in, currentYOffset);
-            objs.messageE.style.transform = `translate3d(-${calcValues(values?.messageE_translateY_in, currentYOffset)}%, 0, 0)`;
-          }
+          
         }
         break;
       }
@@ -259,7 +263,10 @@ const LandingPage: React.FC = () => {
       setLayout();
     };
 
-    window.onresize = setLayout;
+    window.onresize = ()=>{
+      setLayout;
+      console.log(window.innerHeight);
+    };
     setLayout();
 
     return () => {
@@ -273,55 +280,74 @@ const LandingPage: React.FC = () => {
   }, []);
   
   return (
-    <>
       <div className='landing-container'>
         <section className="scroll-section" id="scroll-section-0">
           <div className='scroll-section0-left'>
-            <img className='scroll-section0-img' src={landing}/>
+            <div className='scroll-section0-img'>
+              <img  className='logo' src={landing}/>
+            </div>
+          
+            <div className='section0-logo-bottom'>
             <div className='scroll-section0-message-a'>
           좋은 물건을 구경하고 경매에 참여해 보세요!
             </div>
             <Start/>
           </div>
-          <div className='scroll-section0-right'>
-            <div className='scroll-section0-gif'/>
+          
+        </div>
+        <div className='scroll-section0-right'>
+          <div className='scroll-section0-gif'>
+            <img className='landing-gif' src={GIF}/>
           </div>
-        </section>
-        <section className="scroll-section" id="scroll-section-1">
-          <div className='scroll-section1-left'>
-            <div className='scroll-section1-message-a' >원하는 물품을 검색해 보세요!</div>
-            <div className='scroll-section1-search-img'/>
+        </div>
+      </section>
+      <section className="scroll-section" id="scroll-section-1">
+        <div className='scroll-section1-left'>
+          <div className='scroll-section1-message-a' >원하는 물품을 검색해 보세요!</div>
+          <div className='scroll-section1-search-img'>
+            <img className='search-img'src={search}/>
           </div>
-          <div className='scroll-section1-right'>
-            <div className='scroll-section1-map-img'/>
-            <div className='scroll-section1-right-bottom'>
-              <div className='scroll-section1-thinking-img'/>
-              <div className='scroll-section1-message-b'>
+        </div>
+        <div className='scroll-section1-right'>
+          <div className='scroll-section1-map-img'>
+            <img className='map-img' src={map}/>
+          </div>
+          <div className='scroll-section1-right-bottom'>
+            <div className='scroll-section1-thinking-img'>
+              <img className='thinking-img' src={thinking}/>
+            </div>
+            <div className='scroll-section1-message-b'>
             내 위치 주변의 물품들을 확인해 보세요!
               </div>
             </div>
           </div>
-        </section>
-        <section className="scroll-section" id="scroll-section-2">
-          <div className='scroll-section2-left'>
-            <div className='scroll-section2-register-img'/>
+        </div>
+      </section>
+      <section className="scroll-section" id="scroll-section-2">
+        <div className='scroll-section2-left'>
+          
+          <div className='scroll-section2-register-img'>
+            <img className='register' src={apple}/>
           </div>
-          <div className='scroll-section2-right'>
-            <div className='scroll-section2-img'>
-              <div className='scroll-section2-auction-img'/>
-            </div>
-            <div className='scroll-section2-message-a'>
+
+          
+        </div>
+        <div className='scroll-section2-right'>
+          <div className='scroll-section2-auction-img'>
+
+            <img className='auction-img' src={auction}/>
+          </div>
+            
+
+          <div className='scroll-section2-message-a'>
             경매 주최자가 되어보세요
-            </div>
-            <div className='scroll-section2-message-b'>
-            내 물건의 경매를 시작해 보세요!
-            </div>
-            <Start/>
           </div>
-        </section>
-      </div>
+          
+          <Start/>
+        </div>
+      </section>
       <Footer/>
-    </>
+    </div>
   );
 };
 

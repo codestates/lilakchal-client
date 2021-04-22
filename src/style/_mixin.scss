@@ -17,3 +17,9 @@
     @content;
   }
 }
+
+@mixin desktopL {
+  @media screen and (max-width: #{$desktopL-size}) {
+    @content;
+  }
+}
