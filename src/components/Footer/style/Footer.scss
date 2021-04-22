@@ -1,10 +1,13 @@
+@import '../../../style/variable';
+@import '../../../style/mixin';
+
 .footer {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 0px auto;
-  max-width: 1000px;
+  width: 62.5rem;
 }
 
 .footer-topbox {
@@ -15,41 +18,41 @@
 }
 
 .footer-logo {
-  max-width: 300px;
+  max-width: 18.75rem;
 }
 
 .footer-service {
-  font-size: 20px;
+  font-size: $font-medium;
   text-decoration: none;
-  color: #4A5058;
+  color: $footer-text-color;
   &:hover {
-    color: #008698;
+    color: $mobile-select-color;
   }
 }
 
 .footer-team {
-  font-size: 20px;
-  color: #4A5058;
+  font-size: $font-medium;
+  color: $footer-text-color;
 }
 
 .footer-teamlink {
-  margin-left: 10px;
+  margin-left: 0.625rem;
   text-decoration: none;
-  color: #4A5058;
+  color: $footer-text-color;
   &:hover {
-    color: #008698;
+    color: $mobile-select-color;
   }
 }
 
 .footer-midbox {
-  width: 100%;
   display: flex;
-  color: #4A5058;
-  margin: 10px 0px;
+  width: 100%;
+  color: $footer-text-color;
+  margin: 0.625rem 0px;
 }
 
-.footer-rightbox {
-  margin-left: 50px;
+.footer-leftbox {
+  margin-right: 0.625rem;
 }
 
 .footer-emailbox {
@@ -58,7 +61,7 @@
 }
 
 .footer-question{
-  margin-right: 20px;
+  margin-right: 1.25rem;
   text-align: center;
 }
 
@@ -72,17 +75,75 @@
 .footer-textbox {
   display: flex;
   flex-direction: column;
-  color: #4A5058;
-  flex: 1 0 0;
+  color: $footer-text-color;
+  // flex: 1 0 0;
 }
 
 .footer-youtube {
-  margin-right: 10px;
+  width: 3.75rem;
+  height: 3.75rem;
+  margin-right: 0.625rem;
   text-decoration: none;
   color: #000000;
 }
 
 .footer-github {
+  width: 3.75rem;
+  height: 3.75rem;
   text-decoration: none;
   color: #000000;
+}
+
+@include mobile {
+  .footer {
+    width: 21.25rem;
+    display: flex;
+    flex-direction: column;
+    margin: 0px 0.625rem;
+  }
+
+  .footer-logo {
+    max-width: 12.5rem;
+  }
+
+  .footer-topbox {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-service {
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-service {
+    font-size: $font-small;
+  }
+
+  .footer-team {
+    font-size: 0.688rem;
+  }
+
+  .footer-midbox {
+    flex-direction: column;
+  }
+
+  .footer-question,
+  .footer-email {
+    font-size: $font-smallest;
+  }
+
+  .prquestion {
+    margin-right: 1.769rem;
+  }
+
+  .footer-textbox {
+    font-size: $font-smallest;
+  }
+
+  .footer-youtube,
+  .footer-github {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
 }
