@@ -49,10 +49,12 @@ $font-smallest: 0.8rem;
 $mobile-size: 600px;
 $desktopS-size: 1152px;
 $desktopM-size: 1700px;
+$desktopL-size: 990px;
 
 :export {
   mobileSelectColor: $mobile-menu-color;
   mobileSize: $mobile-size;
   desktopSSize: $desktopS-size;
   desktopMSize: $desktopM-size;
+  desktopLSize: $desktopL-size;
 }
