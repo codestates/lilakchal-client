@@ -311,7 +311,7 @@ const LandingPage: React.FC = () => {
         <div className='scroll-section2-left'>
           
           <div className='scroll-section2-register-img'>
-            <img className='register' src={apple}/>
+            <img className='landing-register' src={apple}/>
           </div>
 
           
