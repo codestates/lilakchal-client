@@ -19,7 +19,7 @@ const UserName: React.FC = () => {
       <Modal visible={isOpenPopup} color={'#fff'} closeCb={toglePopup} backColor={true} isWarning={false} isSide={false}>
         <EditForm setIsOpenPopup={setIsOpenPopup}/>
       </Modal>
-      <button className='username-btn' onClick={toglePopup}>{name ? `${name}` : '이름없음'}</button>
+      <button className='username-btn' onClick={toglePopup}>{name ? `${name}` : ' •᷄⌓•᷅ '}</button>
     </>
   );
 };
