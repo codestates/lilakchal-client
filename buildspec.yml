@@ -4,6 +4,7 @@ phases:
     commands:
       - echo Installing source NPM dependencies...
       - npm install
+      - npm install --save --legacy-peer-deps
   build:
     commands:
       - echo Build started on `date`
