@@ -7,7 +7,6 @@ import BidBtn from './BidBtn';
 import './style/itemDetail.scss';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/modules/reducer';
-// import closeButton from '../../res/closeButton.png';
 
 interface Props {
   item: Item,
@@ -46,19 +45,15 @@ const ItemDetail: React.FC<Props> = ({item, requestBid, endtime, handleBidStatus
           </span>
         </div>
         <div className="itemdetail-description">{item.description}</div>
-        {id !== item.sellerId ? 
-          <div className="itemdetail-btnbox"> 
-            <BidBtn item={item} requestBid={requestBid} unit={unit1000} isExpired={isExpired}/>
-            <BidBtn item={item} requestBid={requestBid} unit={unit10000} isExpired={isExpired}/>
-            <BidBtn item={item} requestBid={requestBid} unit={unit100000} isExpired={isExpired}/>
-          </div>
-          :
-          <></>
+        { id === item.sellerId ?
+          <></> : isExpired || item.isClosed ? <></> :
+            <div className="itemdetail-btnbox"> 
+              <BidBtn item={item} requestBid={requestBid} unit={unit1000}/>
+              <BidBtn item={item} requestBid={requestBid} unit={unit10000}/>
+              <BidBtn item={item} requestBid={requestBid} unit={unit100000}/>
+            </div>
         }
       </div>
-      
-      
-        
     </section>
   );
 };

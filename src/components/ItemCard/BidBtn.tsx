@@ -10,11 +10,10 @@ import BidError from '../Modal/BidError';
 interface IBidBtn {
   item: Item,
   requestBid: (price:number) => void,
-  unit: number,
-  isExpired: boolean
+  unit: number
 }
 
-const BidBtn: React.FC<IBidBtn> = ({ item, requestBid, unit, isExpired }) => {
+const BidBtn: React.FC<IBidBtn> = ({ item, requestBid, unit }) => {
 
   const loginState = useSelector((state: RootState) => state.AccountReducer);
   const { isLogin } = loginState;
@@ -31,12 +30,10 @@ const BidBtn: React.FC<IBidBtn> = ({ item, requestBid, unit, isExpired }) => {
 
   const clickHandler = () => {
 
-    if (isLogin && !isExpired && item.price + unit <= 2100000000) {
+    if (isLogin && item.price + unit <= 2100000000) {
       requestBid(item.price + unit);
     } else if (!isLogin) {
       setIsOpenPopup(true);
-    } else if (isExpired) {
-      alert('이 경매는 마감되었습니다.');
     } else if (item.price + unit > 2100000000) {
       setIsOverLimit(true);
     } 
