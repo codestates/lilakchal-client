@@ -12,6 +12,8 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
 
   const userState = useSelector((state: RootState) => state.UserInfoReducer);
   const { id, city } = userState;
+  const loginState = useSelector((state: RootState) => state.AccountReducer);
+  const { isLogin } = loginState;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [photo, setImage] = useState<any>(null);
@@ -49,6 +51,9 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
       return;
     } else if (description.length > 100) {
       setErrorMessage('설명은 100자 이내로 작성해야 합니다.');
+      return;
+    } else if (!isLogin) {
+      setErrorMessage('다시 로그인 후 이용해주세요.');
       return;
     }
 
