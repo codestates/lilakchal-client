@@ -35,11 +35,13 @@ const Action: React.FC = () => {
   useEffect(() => {
     return () => {
       window.onscroll = null;
+      window.scrollTo(0, 0);
     };
   }, []);
 
   useEffect(() => {
     setCount(6);
+    window.scrollTo(0, 0);
   }, [searchType]);
   
 

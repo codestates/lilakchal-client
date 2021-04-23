@@ -246,6 +246,7 @@ const LandingPage: React.FC = () => {
       window.onscroll = null;
       window.onload = null;
       window.onresize = null;
+      window.scrollTo(0, 0);
     };
   }, []);
   
