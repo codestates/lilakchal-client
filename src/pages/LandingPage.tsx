@@ -115,6 +115,7 @@ const LandingPage: React.FC = () => {
     };
 
     const playAnimation = () => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const objs: any = sceneInfo[currentScene].objs; 
       const values = sceneInfo[currentScene].values; 
       const currentYOffset = yOffset - prevScrollHeight; 
@@ -176,6 +177,7 @@ const LandingPage: React.FC = () => {
       }
     };
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const calcValues = (values: any, currentYOffset: number) => {
 
       let rv;
@@ -269,7 +271,7 @@ const LandingPage: React.FC = () => {
       </section>
       <section className="scroll-section" id="scroll-section-1">
         <div className='scroll-section1-left'>
-          <div className='scroll-section1-message-a' >원하는 물품을 검색해 보세요!</div>
+          <div className='scroll-section1-message-a' >실시간으로 원하는 물품을 검색해 보세요!</div>
           <div className='scroll-section1-search-img'>
             <img className='search-img'src={search}/>
           </div>
@@ -283,7 +285,7 @@ const LandingPage: React.FC = () => {
               <img className='thinking-img' src={thinking}/>
             </div>
             <div className='scroll-section1-message-b'>
-            내 위치 주변의 물품들을 확인해 보세요!
+            우리동네의 경매를 확인할 수 있어요!
             </div>
           </div>
         </div>
@@ -299,7 +301,7 @@ const LandingPage: React.FC = () => {
             <img className='auction-img' src={auction}/>
           </div>
           <div className='scroll-section2-message-a'>
-            경매 주최자가 되어보세요
+            지금 바로 참여해보세요!
           </div>
           <Start/>
         </div>
