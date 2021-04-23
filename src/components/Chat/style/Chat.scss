@@ -45,8 +45,8 @@
       position: absolute;
       top: 35%;
       left: 35%;
-      width: 4px;
-      height: 4px;
+      width: 1px;
+      height: 1px;
       border-radius: 50%;
       border: 2px solid rgba(red, 0.7);
       filter: blur(0);
@@ -57,8 +57,8 @@
       &:before,
       &:after{
           border-color: transparent;
-          filter: blur(1px);
-          transform: scale(10);
+          filter: blur(1.5px);
+          transform: scale(15);
           transition: 1000ms transform ease, 2100ms blur ease, 900ms border-color ease;
       }
       &:after {
