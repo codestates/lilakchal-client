@@ -9,7 +9,7 @@
   margin-top: 0.3rem;
   color: $footer-text-color;
   &:hover {
-    color: --header-icon-color;
+    color: $header-icon-color;
     transition: 0.5s ease;
   }
 }
