@@ -8,13 +8,13 @@ const Footer: React.FC = () => {
     <section className="footer">
       <article className="footer-topbox">
         <img className="footer-logo" src={logo} alt=""/>
-        <a className="footer-service" href="https://github.com/codestates/lilakchal-server">서비스 소개</a>
+        <a className="footer-service" href="https://github.com/codestates/lilakchal-server" target="_blank">서비스 소개</a>
         <div className="footer-team">
           <span>팀원</span>
-          <a className="footer-teamlink" href="https://github.com/Pangho297">Baek Kwangho</a>
-          <a className="footer-teamlink" href="https://github.com/kimyoosang">Kim Yoosang</a>
-          <a className="footer-teamlink" href="https://github.com/ImHyeLim1209">Im Hyelim</a>
-          <a className="footer-teamlink" href="https://github.com/flobeeee">Lee Eunjeong</a>
+          <a className="footer-teamlink" href="https://github.com/Pangho297" target="_blank">Baek Kwangho</a>
+          <a className="footer-teamlink" href="https://github.com/kimyoosang" target="_blank">Kim Yoosang</a>
+          <a className="footer-teamlink" href="https://github.com/ImHyeLim1209" target="_blank">Im Hyelim</a>
+          <a className="footer-teamlink" href="https://github.com/flobeeee" target="_blank">Lee Eunjeong</a>
         </div>
       </article>
       <article className="footer-midbox">
@@ -45,8 +45,8 @@ const Footer: React.FC = () => {
           <span className="footer-copyright">Copyright © 2021 Lilakchal all rights reserved</span>
         </div>
         <div className="footer-iconbox">
-          <a href="https://www.youtube.com/c/CodeStates/featured"><AiFillYoutube className="footer-youtube"/></a>
-          <a href="https://github.com/codestates/lilakchal-server"><AiFillGithub className="footer-github"/></a>
+          <a href="https://www.youtube.com/c/CodeStates/featured" target="_blank"><AiFillYoutube className="footer-youtube"/></a>
+          <a href="https://github.com/codestates/lilakchal-server" target="_blank"><AiFillGithub className="footer-github"/></a>
         </div>
       </article>
     </section>

@@ -75,6 +75,7 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
     return () => {
       window.onscroll = null;
       window.onpopstate = null;
+      window.scrollTo(0, 0);
       isChanged = false; // 화면전환 로딩조건
     };
   }, []);

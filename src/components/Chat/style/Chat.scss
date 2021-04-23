@@ -10,6 +10,7 @@
 }
 
 .chat-title{
+  position: relative;
   color :rgb(255, 255, 255);
   font-size: $font-largest;
   background-color: #4EBDC9;
@@ -31,6 +32,46 @@
   display:flex;
   align-items: center;
   justify-content: center;
+}
+
+.chat-reportbox {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  &:before,
+  &:after{
+      content: '';
+      position: absolute;
+      top: 35%;
+      left: 35%;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      border: 2px solid rgba(red, 0.7);
+      filter: blur(0);
+      transform-origin: 50%;
+      z-index: -1;
+  }
+  &:hover {
+      &:before,
+      &:after{
+          border-color: transparent;
+          filter: blur(1px);
+          transform: scale(10);
+          transition: 1000ms transform ease, 2100ms blur ease, 900ms border-color ease;
+      }
+      &:after {
+          transition-delay: 100ms;
+      }
+  }
+}
+
+.chat-report {
+  width: 30px;
+  height: 30px;
+  text-decoration: none;
+  color: red;
 }
 
 @include mobile{

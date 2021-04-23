@@ -1,6 +1,7 @@
 import React, {useEffect, useState, useRef}from 'react';
 import { useSelector, RootStateOrAny  } from 'react-redux';
 import { RouteComponentProps, withRouter } from 'react-router';
+import { AiFillAlert } from 'react-icons/ai';
 import './style/Chat.scss';
 import Message from './Message';
 import MessageInput from './MessageInput';
@@ -67,7 +68,8 @@ const Chat:React.FC<RouteComponentProps> = ({history}) => {
   return (
     <div className="chat-container">
       {isLogin ? (<>
-        <div className="chat-title">{itemInfo.title}</div>
+        <a className="chat-reportbox" href="https://cyberbureau.police.go.kr/prevention/sub7.jsp?mid=020600" target="_blank"><AiFillAlert className="chat-report"/></a><div className="chat-title">{itemInfo.title}</div>
+        
         <div className="chat-message-box" id="chat-message-box" ref={messageBox}>
           {
             chats.map((chat:message) => 
