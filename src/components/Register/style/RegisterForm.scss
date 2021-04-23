@@ -109,15 +109,20 @@ $photoHeightMobile: 6.25rem;
 .register-priceErr,
 .register-endtime,
 .register-error {
+  width: 15.625rem;
   margin: 0.625rem 0px;
   height: 1.25rem;
   color: $card-timer-soon-color;
 }
 
+.register-error {
+  text-align: center;
+}
+
 .register-period-button-box {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .register-period {
