@@ -117,6 +117,7 @@ $photoHeightMobile: 6.25rem;
 .register-period-button-box {
   display: flex;
   flex-direction: row;
+  justify-content: space-around;
 }
 
 .register-period {
@@ -127,7 +128,6 @@ $photoHeightMobile: 6.25rem;
   border-radius: 0.313rem;
   cursor: pointer;
   font-size: $font-medium;
-  margin-right: calc(10% / 3);
   outline: none;
   &:hover {
     background-color: $card-text-color;
@@ -151,13 +151,14 @@ $photoHeightMobile: 6.25rem;
 
 .register-description {
   resize: none;
-  width: 100%;
+  width: calc(#{$photoHeightDesktop} + 50% + calc((50% - #{$photoHeightDesktop})/2));
   height: 4rem;
   background: none;
   border: none;
   border-bottom: 1px solid $footer-text-color;
   font-size: $font-medium;
   outline: none;
+  margin-left: calc((50% - #{$photoHeightDesktop})/2);
   &:hover {
     border-color: $card-text-color;
     transition: all 0.2s ease-in-out;
@@ -273,5 +274,10 @@ $photoHeightMobile: 6.25rem;
 
   .register-bottombox {
     padding: 0px 10px;
+  }
+
+  .register-description {
+    margin-left: 0;
+    width: 100%;
   }
 }
