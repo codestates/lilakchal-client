@@ -1,4 +1,3 @@
-  
 import React, {useEffect} from 'react';
 import { useDispatch  } from 'react-redux';
 import Lottie from 'react-lottie';
@@ -9,7 +8,7 @@ import {kakaoKey} from '../../modules/constants';
 import { LocationInfoHandler } from '../../redux/modules/UserInfo';
 
 interface Props {
-  isLoading: boolean
+  isLoading: boolean,
 }
 const LoadingModal: React.FC<Props> = ({isLoading}) => {
   const dispatch = useDispatch();

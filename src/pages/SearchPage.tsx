@@ -102,6 +102,4 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
   );
 };
 
- 
-
 export default withRouter(SearchPage);
