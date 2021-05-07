@@ -15,7 +15,6 @@ const Header: React.FC = () => {
     query: `${device.mobile}`
   });
 
-
   return (
     <div className="header-container">
       <div className='header'>

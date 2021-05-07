@@ -1,18 +1,21 @@
-import React, {useState} from 'react'; //{useState}
+import React, {useState, Suspense, lazy, useEffect} from 'react'; //{useState}
 import CurrentPrice from './CurrentPrice';
 import GoChat from './GoChat';
 import Timer from './Timer';
 import {Item} from '../../redux/modules/Items';
 import { useSelector, RootStateOrAny  } from 'react-redux';
 import {auctionSocket} from '../../modules/socket';
-import ItemDetail from './ItemDetail';
-import Modal from '../Modal/index';
+// import ItemDetail from './ItemDetail';
+// import Modal from '../Modal/index';
 import stamp from '../../res/stamp.png';
 import './style/ItemCard.scss';
 
 interface Props {
   item: Item
 }
+
+const Modal = lazy(() => import('../Modal/index'));
+const ItemDetail = lazy(() => import('./ItemDetail'));
 
 const ItemCard: React.FC<Props> = ({item}) => {
   const userState = useSelector((state:RootStateOrAny) => state.UserInfoReducer);
@@ -41,13 +44,18 @@ const ItemCard: React.FC<Props> = ({item}) => {
     setIsOpenPopup(false);
   };
 
-  const classname = 'timer';
+  useEffect(() => {    
+    import('../Modal/index');
+    import('./ItemDetail');
+  }, []);
 
   return (
     <>
-      <Modal visible={isOpenPopup} color={'#CCEBF5'}  closeCb={closePopUp} backColor={true} isWarning={false} isSide={true} className={'sidemodal'}>
-        <ItemDetail item={item} requestBid={requestBid} endtime={item.endTime} handleBidStatus={handleBidStatus} isExpired={isExpired}></ItemDetail>
-      </Modal>
+      <Suspense fallback={null}>
+        <Modal visible={isOpenPopup} color={'#CCEBF5'}  closeCb={closePopUp} backColor={true} isWarning={false} isSide={true} className={'sidemodal'}>
+          <ItemDetail item={item} requestBid={requestBid} endtime={item.endTime} handleBidStatus={handleBidStatus} isExpired={isExpired}></ItemDetail>
+        </Modal>
+      </Suspense>
       <div className="itemcard-container" onClick={() => openPopUp()}>
         <div className="itemcard-location">{item.city}</div>
         <div className="itemcard-content">
@@ -56,7 +64,7 @@ const ItemCard: React.FC<Props> = ({item}) => {
             <img className="itemcard-img" src={item.photo} alt=""/>
           </div>
           <div className="itemcard-text">
-            <Timer classname={classname} endtime={item.endTime} handleBidStatus={handleBidStatus}/>
+            <Timer classname='timer' endtime={item.endTime} handleBidStatus={handleBidStatus}/>
             <div className="itemcard-title">{item.title}</div>
             <CurrentPrice price={item.price} className="itemcard-price"></CurrentPrice>
             {
