@@ -1,6 +1,10 @@
+@import '../../../style/variable';
 @import '../../../style/mixin';
 
 .Logout {
   @include header-icon;
   margin-top: 0.1rem;
+  &:hover {
+    color: $text-btn-color;
+  }
 }

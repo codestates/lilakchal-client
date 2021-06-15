@@ -1,5 +1,9 @@
+@import '../../../style/variable';
 @import '../../../style/mixin';
 
 .gomypage {
-  @include header-icon
+  @include header-icon;
+  &:hover {
+    color: $text-btn-color;
+  }
 }
