@@ -5,10 +5,9 @@ import Timer from './Timer';
 import {Item} from '../../redux/modules/Items';
 import { useSelector, RootStateOrAny  } from 'react-redux';
 import {auctionSocket} from '../../modules/socket';
-// import ItemDetail from './ItemDetail';
-// import Modal from '../Modal/index';
 import stamp from '../../res/stamp.png';
 import './style/ItemCard.scss';
+import LoadingModal from '../Modal/LoadingModal';
 
 interface Props {
   item: Item
@@ -51,7 +50,7 @@ const ItemCard: React.FC<Props> = ({item}) => {
 
   return (
     <>
-      <Suspense fallback={null}>
+      <Suspense fallback={<LoadingModal isLoading={true} />}>
         <Modal visible={isOpenPopup} color={'#CCEBF5'}  closeCb={closePopUp} backColor={true} isWarning={false} isSide={true} className={'sidemodal'}>
           <ItemDetail item={item} requestBid={requestBid} endtime={item.endTime} handleBidStatus={handleBidStatus} isExpired={isExpired}></ItemDetail>
         </Modal>
