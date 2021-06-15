@@ -31,7 +31,7 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
   const itemState = useSelector((state:RootStateOrAny) => state.ItemReducer);
   const {items} = itemState;
   const dispatch = useDispatch();
-  const [Count, setCount] = useState(6);
+  const [count, setCount] = useState(6);
 
   const requestCallback = (items:Array<UnformatedItem>) => {
     dispatch(ItemHandler(getFormatedItems(items)));
@@ -39,16 +39,12 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
     setCount(6);
   };
 
-  const requestCallbackByScroll = (addtionalItems:Array<UnformatedItem>) => {
+  const requestCallbackByScroll = (additionalItems:Array<UnformatedItem>) => {
     oneTime = false; // 아이템 받아온 후 다시 요청가능하게 바꿈
-    if (addtionalItems) {
-      const newItems = getFormatedItems(addtionalItems); 
+    if (additionalItems) {
+      const newItems = getFormatedItems(additionalItems); 
       dispatch(ItemHandler({ items: [...items, ...newItems.items]})); //검색결과 받아서 리덕스에 저장  
     }
-  };
-
-  window.onpopstate = () => {
-    requestSearchItems({ params: { city: city, keyword: match.params.keyword, offset: 0 }}, requestCallback);
   };
 
   useEffect(() => {    
@@ -56,6 +52,15 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
   }, [city, match.params.keyword]);
 
   useEffect(() => {
+    window.onscroll = function() {
+    //window height + window scrollY 값이 document height보다 클 경우,
+      if((window.innerHeight + window.scrollY) >= document.body.offsetHeight * 0.8 && !oneTime) {
+        oneTime = true; // 중복요청하지 않게 조건변경
+        setCount(count + 6);
+        requestSearchItems({ params: { city: city, offset: count, keyword: match.params.keyword }}, requestCallbackByScroll);
+      }
+    };
+
     auctionSocket.on('bid', ({itemId, price, userId}: bidData) => {
       const newItems = items.map((item: Item) => {
         if(item.id === itemId) {
@@ -72,6 +77,9 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
   }, [items]);
 
   useEffect(() => {
+    window.onpopstate = () => {
+      requestSearchItems({ params: { city: city, keyword: match.params.keyword, offset: 0 }}, requestCallback);
+    };
     return () => {
       window.onscroll = null;
       window.onpopstate = null;
@@ -80,15 +88,6 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
     };
   }, []);
 
-  window.onscroll = function() {
-    //window height + window scrollY 값이 document height보다 클 경우,
-    if((window.innerHeight + window.scrollY) >= document.body.offsetHeight * 0.8 && !oneTime) {
-      oneTime = true; // 중복요청하지 않게 조건변경
-      setCount(Count + 6);
-      requestSearchItems({ params: { city: city, offset: Count, keyword: match.params.keyword }}, requestCallbackByScroll);
-    }
-  };
-  
   return (
     <div className="searchpage-container">
       { city && isChanged ? 
@@ -96,7 +95,7 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
           <ItemCard item={item} key={item.id}></ItemCard>
         )) : < Empty emptyTitle={ConstantString.noResult} emptyText={ConstantString.noResultDetail}/>
         :
-        <LoadingModal isLoading={true}/> 
+        <LoadingModal isLoading={true} isGeoLocation={true}/> 
       }
     </div>
   );

@@ -96,7 +96,7 @@ const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
             </div>
           </div>
         </>
-        : <LoadingModal isLoading={true}/> }
+        : <LoadingModal isLoading={true} isGeoLocation={false}/> }
     </div>
   );
 };

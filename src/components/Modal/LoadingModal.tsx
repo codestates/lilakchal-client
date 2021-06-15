@@ -9,8 +9,9 @@ import { LocationInfoHandler } from '../../redux/modules/UserInfo';
 
 interface Props {
   isLoading: boolean,
+  isGeoLocation: boolean,
 }
-const LoadingModal: React.FC<Props> = ({isLoading}) => {
+const LoadingModal: React.FC<Props> = ({isLoading, isGeoLocation}) => {
   const dispatch = useDispatch();
 
   const defaultOptions = {
@@ -21,7 +22,8 @@ const LoadingModal: React.FC<Props> = ({isLoading}) => {
       preserveAspectRatio: 'xMidYMid slice',
     },
   };
-  useEffect(() => {
+
+  const geoLocation = () => {
     if(window.navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(async ({coords}) => {
         const address = await axios.get(
@@ -43,6 +45,11 @@ const LoadingModal: React.FC<Props> = ({isLoading}) => {
     } else {
       dispatch(LocationInfoHandler('전국'));
     }
+  };
+
+
+  useEffect(() => {
+    isGeoLocation && geoLocation();
   });
 
   return (

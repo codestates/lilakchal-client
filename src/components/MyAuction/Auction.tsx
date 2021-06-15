@@ -59,6 +59,14 @@ const Action: React.FC = () => {
 
 
   useEffect(() => {
+    window.onscroll = () => {
+      if((window.innerHeight + window.scrollY) >= document.body.offsetHeight * 0.8 && !oneTime) {
+        oneTime = true; // 중복요청하지 않게 
+        setCount(Count + 6);
+        requestMyAuction(searchType, { offset: Count, userId: id, city: city }, requestCallback);
+      }
+    };
+
     auctionSocket.on('bid', ({itemId, price, userId}: bidData) => {
       const newItems = items.map((item: Item) => {
         if(item.id === itemId) {
@@ -73,14 +81,6 @@ const Action: React.FC = () => {
       auctionSocket.off('bid');
     };
   }, [items]);
-
-  window.onscroll = () => {
-    if((window.innerHeight + window.scrollY) >= document.body.offsetHeight * 0.8 && !oneTime) {
-      oneTime = true; // 중복요청하지 않게 
-      setCount(Count + 6);
-      requestMyAuction(searchType, { offset: Count, userId: id, city: city }, requestCallback);
-    }
-  };
 
   return (
     <>
