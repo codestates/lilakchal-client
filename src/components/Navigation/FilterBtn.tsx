@@ -10,20 +10,18 @@ import { VscListFilter } from 'react-icons/vsc';
 import './style/FilterBtn.scss';
 import { TypeHandler } from '../../redux/modules/SearchType';
 import LoadingModal from '../Modal/LoadingModal';
+import { useState } from 'react';
 
 dotenv.config();
 
-let isChanged = false; // 페이지 이동시 이전 저장된 아이템이 안보이게
-
 const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
-
   const userInfoState = useSelector((state: RootState) => state.UserInfoReducer);
   const { id, city } = userInfoState;
   const typeState = useSelector((state: RootState) => state.SearchTypeReducer);
   const { searchType } = typeState;
   const dispatch = useDispatch();
   const filterTooltip = useRef<HTMLDivElement>(null);
-  
+  const [isChanged, setIsChanged] = useState(false);
 
   const handleFilterPopup = () => {
     const visibility = filterTooltip?.current?.style.visibility;
@@ -49,7 +47,7 @@ const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
     dispatch(TypeHandler('buyer'));
     return () => {
       window.onpopstate = null;
-      isChanged = false;
+      setIsChanged(false);
     };
   }, []);
 
@@ -59,7 +57,7 @@ const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
 
   const requestHistoryItemCallback = (items:Array<UnformatedItem>) => {
     dispatch(ItemHandler(getFormatedItems(items)));
-    isChanged = true;
+    setIsChanged(true);
   };
 
   const requestFilteredItemCallback = (items:Array<UnformatedItem>) => {
@@ -73,30 +71,29 @@ const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
 
   return (
     <div className='filter-container'>
-      {isChanged  ? 
-        <>
-          <VscListFilter xmlns="http://www.w3.org/2000/svg" className='filter-button' onClick={handleFilterPopup}/>
-          <div className="filter-tooltip" ref={filterTooltip}>
+      <>
+        <VscListFilter xmlns="http://www.w3.org/2000/svg" className='filter-button' onClick={handleFilterPopup}/>
+        <div className="filter-tooltip" ref={filterTooltip}>
         
-            <div className='radio-button'>
-              <div className="buyer">
-                <label className="tooltip-container">
-                  <input name='radio' type="radio" value="buyer" onClick={()=>handlefilter('buyer')} onChange={() => dispatch(TypeHandler('buyer'))} checked={searchType === 'buyer' ? true : false} />
-                  <span className="checkmark"></span>
+          <div className='radio-button'>
+            <div className="buyer">
+              <label className="tooltip-container">
+                <input name='radio' type="radio" value="buyer" onClick={()=>handlefilter('buyer')} onChange={() => dispatch(TypeHandler('buyer'))} checked={searchType === 'buyer' ? true : false} />
+                <span className="checkmark"></span>
                     입찰
-                </label>
-              </div>
-              <div className="seller">
-                <label className="tooltip-container">
-                  <input name='radio' type="radio" value="seller" onClick={()=>handlefilter('seller')} onChange={() => dispatch(TypeHandler('seller'))} checked={searchType === 'seller' ? true : false} />
-                  <span className="checkmark"></span>
+              </label>
+            </div>
+            <div className="seller">
+              <label className="tooltip-container">
+                <input name='radio' type="radio" value="seller" onClick={()=>handlefilter('seller')} onChange={() => dispatch(TypeHandler('seller'))} checked={searchType === 'seller' ? true : false} />
+                <span className="checkmark"></span>
                     판매
-                </label>
-              </div>
+              </label>
             </div>
           </div>
-        </>
-        : <LoadingModal isLoading={true}/> }
+        </div>
+      </>
+      <LoadingModal isLoading={!isChanged}/>
     </div>
   );
 };
