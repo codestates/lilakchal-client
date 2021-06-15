@@ -1,7 +1,6 @@
 import React, { Suspense, lazy, useEffect } from 'react';
 import { Route, Switch, Router } from 'react-router-dom';
 import { RouteComponentProps, withRouter } from 'react-router';
-//import MyoptionGroup from './MyoptionGroup';
 import DefaultGroup from './DefaultGroup';
 import LoadingModal from '../Modal/LoadingModal';
 

@@ -5,8 +5,6 @@ import Timer from './Timer';
 import {Item} from '../../redux/modules/Items';
 import { useSelector, RootStateOrAny  } from 'react-redux';
 import {auctionSocket} from '../../modules/socket';
-// import ItemDetail from './ItemDetail';
-// import Modal from '../Modal/index';
 import stamp from '../../res/stamp.png';
 import './style/ItemCard.scss';
 import LoadingModal from '../Modal/LoadingModal';

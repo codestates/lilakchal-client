@@ -1,4 +1,5 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { useDispatch, useSelector, RootStateOrAny  } from 'react-redux';
 import dotenv from 'dotenv';
 import { RouteComponentProps, withRouter } from 'react-router';
@@ -10,14 +11,11 @@ import {auctionSocket} from '../modules/socket';
 import {bidData} from '../interface/Bid';
 import { getFormatedItems } from '../modules/converters';
 import ConstantString from '../modules/strings';
-
 import LoadingModal from '../components/Modal/LoadingModal';
 import Empty from '../components/Common/Empty';
-
-import './style/SearchPage.scss';
 import { LocationInfoHandler } from '../redux/modules/UserInfo';
 import { kakaoKey } from '../modules/constants';
-import axios from 'axios';
+import './style/SearchPage.scss';
 
 let oneTime = false; // 무한스크롤시 중복요청 방지
 let isChanged = false; // 페이지 이동시 이전 저장된 아이템이 안보이게
@@ -50,7 +48,6 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
         const {region_1depth_name, region_2depth_name} = address.data.documents[0].address;
         dispatch(LocationInfoHandler(`${region_1depth_name} ${region_2depth_name}`));
         // localStorage.setItem('city', `${region_1depth_name} ${region_2depth_name}`);
-          
       }, 
       () => {
         dispatch(LocationInfoHandler('전국'));
@@ -80,7 +77,6 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
 
   useEffect(() => {
     window.onscroll = function() {
-    //window height + window scrollY 값이 document height보다 클 경우,
       if((window.innerHeight + window.scrollY) >= document.body.offsetHeight * 0.8 && !oneTime) {
         oneTime = true; // 중복요청하지 않게 조건변경
         setCount(count + 6);

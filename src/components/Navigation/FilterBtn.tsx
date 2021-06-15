@@ -47,7 +47,6 @@ const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
     dispatch(TypeHandler('buyer'));
     return () => {
       window.onpopstate = null;
-      //isChanged = false;
       setIsChanged(false);
     };
   }, []);
@@ -72,30 +71,29 @@ const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
 
   return (
     <div className='filter-container'>
-      {isChanged  ? 
-        <>
-          <VscListFilter xmlns="http://www.w3.org/2000/svg" className='filter-button' onClick={handleFilterPopup}/>
-          <div className="filter-tooltip" ref={filterTooltip}>
+      <>
+        <VscListFilter xmlns="http://www.w3.org/2000/svg" className='filter-button' onClick={handleFilterPopup}/>
+        <div className="filter-tooltip" ref={filterTooltip}>
         
-            <div className='radio-button'>
-              <div className="buyer">
-                <label className="tooltip-container">
-                  <input name='radio' type="radio" value="buyer" onClick={()=>handlefilter('buyer')} onChange={() => dispatch(TypeHandler('buyer'))} checked={searchType === 'buyer' ? true : false} />
-                  <span className="checkmark"></span>
+          <div className='radio-button'>
+            <div className="buyer">
+              <label className="tooltip-container">
+                <input name='radio' type="radio" value="buyer" onClick={()=>handlefilter('buyer')} onChange={() => dispatch(TypeHandler('buyer'))} checked={searchType === 'buyer' ? true : false} />
+                <span className="checkmark"></span>
                     입찰
-                </label>
-              </div>
-              <div className="seller">
-                <label className="tooltip-container">
-                  <input name='radio' type="radio" value="seller" onClick={()=>handlefilter('seller')} onChange={() => dispatch(TypeHandler('seller'))} checked={searchType === 'seller' ? true : false} />
-                  <span className="checkmark"></span>
+              </label>
+            </div>
+            <div className="seller">
+              <label className="tooltip-container">
+                <input name='radio' type="radio" value="seller" onClick={()=>handlefilter('seller')} onChange={() => dispatch(TypeHandler('seller'))} checked={searchType === 'seller' ? true : false} />
+                <span className="checkmark"></span>
                     판매
-                </label>
-              </div>
+              </label>
             </div>
           </div>
-        </>
-        : <LoadingModal isLoading={!isChanged}/> }
+        </div>
+      </>
+      <LoadingModal isLoading={!isChanged}/>
     </div>
   );
 };
