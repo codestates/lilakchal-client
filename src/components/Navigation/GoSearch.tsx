@@ -4,14 +4,12 @@ import { ImSearch } from 'react-icons/im';
 import './style/GoSearch.scss';
 
 const GoSearch: React.FC<RouteComponentProps> = ({ history}) => {
-
-
-  const clickHandler = () => {
+  const handleClick = () => {
     history.push('/ko/search');
   };
 
   return (
-    <ImSearch className='gosearch-btn'  onClick={clickHandler}/>
+    <ImSearch className='gosearch-btn'  onClick={handleClick}/>
   );
 };
 

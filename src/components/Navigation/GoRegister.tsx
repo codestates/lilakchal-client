@@ -4,13 +4,10 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/modules/reducer';
 import Modal from '../Modal';
 import LoginError from '../Modal/LoginError';
-
-import './style/GoRegister.scss';
 import {FaPlus} from 'react-icons/fa';
-
+import './style/GoRegister.scss';
 
 type SomeComponentProps = RouteComponentProps;
-
 const GoRegister: React.FC<SomeComponentProps> = ({ history }) => {
 
   const loginState = useSelector((state: RootState) => state.AccountReducer);

@@ -1,13 +1,7 @@
 @import '../../../style/mixin';
 
 .auction-container {
-  min-height: calc(100vh-100px);
-  width: 40%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
+  @include content-container 
 }
 
 @include desktopM {

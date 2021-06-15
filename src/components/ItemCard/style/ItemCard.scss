@@ -21,15 +21,6 @@
   }
 }
 
-@keyframes show-from-bottom{
-  0% {
-      transform: translate3D(0, 200px, 0);
-  }
-  100% {
-      transform: translate3D(0, 0, 0);
-  }
-}
-
 .itemcard-content {
   width: 100%;
   height: 100%;
@@ -57,17 +48,16 @@
   color: $card-location-color;
 }
 
-.itemcard-title {
-  font-size: $font-medium;
-  color: $card-text-color;
-  overflow:hidden;
-  word-break: keep-all;
-  text-align: center;
-}
-
+.itemcard-title,
 .itemcard-price {
   color: $card-text-color;
   font-size: $font-medium;
+}
+
+.itemcard-title {
+  overflow:hidden;
+  word-break: keep-all;
+  text-align: center;
 }
 
 .itemcard-imgbox {
@@ -95,6 +85,15 @@
   animation-name:spinCircle;
   animation-duration:.8s;
   animation-iteration-count: 1;
+}
+
+@keyframes show-from-bottom{
+  0% {
+      transform: translate3D(0, 200px, 0);
+  }
+  100% {
+      transform: translate3D(0, 0, 0);
+  }
 }
 
 @keyframes spinCircle {
