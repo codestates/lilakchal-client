@@ -3,8 +3,6 @@ import { useMediaQuery } from 'react-responsive';
 import GoRegister from './GoRegister';
 import LoginSection from './LoginSection';
 import SearchContainer from './SearchContainer';
-//import SearchBar from './SearchBar';
-//import Location from './Location';
 import {device} from '../../style/variable';
 import './style/DefaultGroup.scss';
 

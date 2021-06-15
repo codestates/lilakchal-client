@@ -2,45 +2,19 @@ import styled, { css, keyframes } from 'styled-components';
 import {device} from '../../../style/variable';
 
 const shakeAnimation = keyframes` 
-  0%, 100% { transform: translate(0, -50%); }
-  10%, 30%, 50%, 70%, 90% { transform: translate(-10px, -50%); }
-  20%, 40%, 60%, 80% { transform: translate(10px, -50%); }
+  0%, 100% { transform: translate3D(0, -50%, 0); }
+  10%, 30%, 50%, 70%, 90% { transform: translate3D(-10px, -50%, 0); }
+  20%, 40%, 60%, 80% { transform: translate3D(10px, -50%, 0); }
 `;
 
 const showFromLeftAnimation = keyframes`
   0% {
-    transform: translate(500px, -50%);
+    transform: translate3D(500px, -50%, 0);
   }
   100% {
-      transform: translate(0, -50%);
+      transform: translate3D(0, -50%, 0);
   }
 `;
-
-// const reverseAnimation = keyframes`
-//   0% {transform: rotateX(180deg);}
-//   100% {tranform: rotateX(0deg);}
-// `;
-
-// const boxBlink = keyframes`
-//   0% {
-//     opacity: 1;
-//   }
-//   50% {
-//     opacity: 0;
-//   }
-//   100% {
-//     opacity: 1;
-//   }
-// `;
-
-// const boxFade = keyframes`
-//   0% {
-//     opacity: 0;
-//   }
-//   100% {
-//     opacity: 1;
-//   }
-// `;
 
 export const Dimmer = styled.div<{visible: boolean, backColor: boolean}>`
   box-sizing: border-box;

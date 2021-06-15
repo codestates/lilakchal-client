@@ -28,7 +28,7 @@ const BidBtn: React.FC<IBidBtn> = ({ item, requestBid, unit }) => {
     setIsOverLimit(!isOverLimit);
   };
 
-  const clickHandler = () => {
+  const handleClick = () => {
 
     if (isLogin && item.price + unit <= 2100000000) {
       requestBid(item.price + unit);
@@ -47,7 +47,7 @@ const BidBtn: React.FC<IBidBtn> = ({ item, requestBid, unit }) => {
       <Modal visible={isOverLimit} color={'#fff'} closeCb={closePopup} backColor={true} isWarning={true} isSide={false}>
         <BidError/>
       </Modal>
-      <button className='bidButton' onClick={clickHandler}>{`+${unit.toLocaleString('ko-KR')}원`}</button>
+      <button className='bidButton' onClick={handleClick}>{`+${unit.toLocaleString('ko-KR')}원`}</button>
     </>
   );
 };

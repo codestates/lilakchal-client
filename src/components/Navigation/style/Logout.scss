@@ -1,12 +1,10 @@
-@import '../../../style//variable.scss';
+@import '../../../style/variable';
+@import '../../../style/mixin';
 
 .Logout {
-  width: 2rem;
-  height: 2rem;
+  @include header-icon;
   margin-top: 0.1rem;
-  color: $footer-text-color;
   &:hover {
     color: $text-btn-color;
-    transition: 0.5s ease;
   }
 }

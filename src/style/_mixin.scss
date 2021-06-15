@@ -1,5 +1,25 @@
 @import './variable';
 
+@mixin content-container {
+  min-height: calc(100vh-100px);
+  width: 40%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@mixin header-icon {
+  width: 2rem;
+  height: 2rem;
+  color: $footer-text-color;
+  &:hover {
+    color: $header-icon-color;
+    transition: 0.5s ease;
+  }
+}
+
 @mixin mobile {
   @media screen and (max-width: #{$mobile-size}) {
     @content;
