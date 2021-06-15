@@ -22,7 +22,7 @@ const EditForm: React.FC<IEditFrom> = ({ setIsOpenPopup }) => {
   const [errorMessage, setErrorMessage] = useState<string>('');
   const [newName, setNewName] = useState<string>('');
 
-  const submitHandler = async () => {
+  const handleSubmit = async () => {
 
     const regexr = /[\s]|[~!@#$%^&*()_+|<>?:{}]/;
 
@@ -52,7 +52,7 @@ const EditForm: React.FC<IEditFrom> = ({ setIsOpenPopup }) => {
       <span className="editform-error">{errorMessage ? `${errorMessage}` : <></>}</span>
       <div className='editform-container'>
         <input type='text' className='editform-input-name' placeholder="변경할 이름을 입력해주세요." onChange={getUserName}/>
-        <SubmitBtn classname="editform-submit" str='변경' submitHandler={submitHandler} />
+        <SubmitBtn classname="editform-submit" str='변경' submitHandler={handleSubmit} />
       </div>
     </section>
   );

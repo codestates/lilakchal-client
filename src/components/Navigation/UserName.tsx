@@ -10,16 +10,16 @@ const UserName: React.FC = () => {
   const { name } = usernameState;
   const [isOpenPopup, setIsOpenPopup] = useState<boolean>(false);
 
-  const toglePopup = () => {
+  const togglePopup = () => {
     setIsOpenPopup(!isOpenPopup);
   };
 
   return (
     <>
-      <Modal visible={isOpenPopup} color={'#fff'} closeCb={toglePopup} backColor={true} isWarning={false} isSide={false}>
+      <Modal visible={isOpenPopup} color={'#fff'} closeCb={togglePopup} backColor={true} isWarning={false} isSide={false}>
         <EditForm setIsOpenPopup={setIsOpenPopup}/>
       </Modal>
-      <button className='username-btn' onClick={toglePopup}>{name ? `${name}` : ''}</button>
+      <button className='username-btn' onClick={togglePopup}>{name ? `${name}` : ''}</button>
     </>
   );
 };

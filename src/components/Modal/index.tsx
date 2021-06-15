@@ -17,7 +17,7 @@ interface Props {
 
 const Modal: React.FC<Props> = ({ visible, isSide, color, closeCb, className, children, backColor, isWarning }) => {
 
-  const onClickDimmerHandler = () => {
+  const HandleClickDimmer = () => {
     closeCb();
   };
 
@@ -27,8 +27,8 @@ const Modal: React.FC<Props> = ({ visible, isSide, color, closeCb, className, ch
 
   return (
     <>
-      <Dimmer visible={visible} backColor={backColor} onClick={onClickDimmerHandler}></Dimmer>
-      <OuterContainer visible={visible} onClick={onClickDimmerHandler}>
+      <Dimmer visible={visible} backColor={backColor} onClick={HandleClickDimmer}></Dimmer>
+      <OuterContainer visible={visible} onClick={HandleClickDimmer}>
         <InnerContainer isSide={isSide} color={color} className={className} isWarning={isWarning} onClick={preventEventPropagation}>
           <CloseBtn onClick={closeCb}>
             <IoClose color="#707070" size={isSide ? '40' : '20'}/>
