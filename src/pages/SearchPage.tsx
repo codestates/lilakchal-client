@@ -15,6 +15,9 @@ import LoadingModal from '../components/Modal/LoadingModal';
 import Empty from '../components/Common/Empty';
 
 import './style/SearchPage.scss';
+import { LocationInfoHandler } from '../redux/modules/UserInfo';
+import { kakaoKey } from '../modules/constants';
+import axios from 'axios';
 
 let oneTime = false; // 무한스크롤시 중복요청 방지
 let isChanged = false; // 페이지 이동시 이전 저장된 아이템이 안보이게
@@ -32,6 +35,30 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
   const {items} = itemState;
   const dispatch = useDispatch();
   const [count, setCount] = useState(6);
+
+  const geoLocation = () => {
+    if(window.navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(async ({coords}) => {
+        const address = await axios.get(
+          `https://dapi.kakao.com/v2/local/geo/coord2address.json?x=${coords.longitude}&y=${coords.latitude}`,
+          {
+            headers: {
+              Authorization: `KakaoAK ${kakaoKey.REST_API}`,
+            },
+          }
+        );
+        const {region_1depth_name, region_2depth_name} = address.data.documents[0].address;
+        dispatch(LocationInfoHandler(`${region_1depth_name} ${region_2depth_name}`));
+        // localStorage.setItem('city', `${region_1depth_name} ${region_2depth_name}`);
+          
+      }, 
+      () => {
+        dispatch(LocationInfoHandler('전국'));
+      });
+    } else {
+      dispatch(LocationInfoHandler('전국'));
+    }
+  };
 
   const requestCallback = (items:Array<UnformatedItem>) => {
     dispatch(ItemHandler(getFormatedItems(items)));
@@ -95,7 +122,7 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
           <ItemCard item={item} key={item.id}></ItemCard>
         )) : < Empty emptyTitle={ConstantString.noResult} emptyText={ConstantString.noResultDetail}/>
         :
-        <LoadingModal isLoading={true} isGeoLocation={true}/> 
+        <LoadingModal isLoading={true} callback={geoLocation}/> 
       }
     </div>
   );

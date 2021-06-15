@@ -10,20 +10,18 @@ import { VscListFilter } from 'react-icons/vsc';
 import './style/FilterBtn.scss';
 import { TypeHandler } from '../../redux/modules/SearchType';
 import LoadingModal from '../Modal/LoadingModal';
+import { useState } from 'react';
 
 dotenv.config();
 
-let isChanged = false; // 페이지 이동시 이전 저장된 아이템이 안보이게
-
 const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
-
   const userInfoState = useSelector((state: RootState) => state.UserInfoReducer);
   const { id, city } = userInfoState;
   const typeState = useSelector((state: RootState) => state.SearchTypeReducer);
   const { searchType } = typeState;
   const dispatch = useDispatch();
   const filterTooltip = useRef<HTMLDivElement>(null);
-  
+  const [isChanged, setIsChanged] = useState(false);
 
   const handleFilterPopup = () => {
     const visibility = filterTooltip?.current?.style.visibility;
@@ -49,7 +47,8 @@ const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
     dispatch(TypeHandler('buyer'));
     return () => {
       window.onpopstate = null;
-      isChanged = false;
+      //isChanged = false;
+      setIsChanged(false);
     };
   }, []);
 
@@ -59,7 +58,7 @@ const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
 
   const requestHistoryItemCallback = (items:Array<UnformatedItem>) => {
     dispatch(ItemHandler(getFormatedItems(items)));
-    isChanged = true;
+    setIsChanged(true);
   };
 
   const requestFilteredItemCallback = (items:Array<UnformatedItem>) => {
@@ -96,7 +95,7 @@ const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
             </div>
           </div>
         </>
-        : <LoadingModal isLoading={true} isGeoLocation={false}/> }
+        : <LoadingModal isLoading={!isChanged}/> }
     </div>
   );
 };
