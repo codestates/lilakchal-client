@@ -1,12 +1,9 @@
-@import '../../../style//variable.scss';
+@import '../../../style/variable';
+@import '../../../style/mixin';
 
 .gomypage {
-  width: 2rem;
-  height: 2rem;
-  color: $footer-text-color;
-  outline: none;
+  @include header-icon;
   &:hover {
     color: $text-btn-color;
-    transition: 0.5s ease;
   }
 }

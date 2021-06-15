@@ -1,13 +1,7 @@
-@import '../../../style//variable.scss';
+@import '../../../style/mixin';
 
 .register-btn {
-  width: 2rem;
-  height: 2rem;
-  color: $footer-text-color;
+  @include header-icon;
   margin-right: 0.5rem;
   margin-top: 0.5rem;
-  &:hover {
-    color: $header-icon-color;
-    transition: 0.5s ease;
-  }
 }

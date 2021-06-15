@@ -1,13 +1,8 @@
-@import '../../../style//variable.scss';
 @import '../../../style/_mixin.scss';
 
 .searchbtn {
+  @include header-icon;
   width: 1.8rem;
   height: 1.8rem;
   margin-top: 0.5rem;
-  color: $footer-text-color;
-  &:hover {
-    color: $header-icon-color;
-    transition: 0.5s ease;
-  }
 }

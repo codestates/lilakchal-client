@@ -1,12 +1,8 @@
-@import '../../../style//variable.scss';
+@import '../../../style/mixin';
 
 .gosearch-btn {
+  @include header-icon;
   width: 1.8rem;
   height: 1.8rem;
   margin-bottom: 0.1rem;
-  color: $footer-text-color;
-  &:hover {
-    color: $header-icon-color;
-    transition: 0.5s ease;
-  }
 }

@@ -1,17 +1,12 @@
 @import '../../../style//variable.scss';
+@import '../../../style//mixin.scss';
 
 .filter-container {
   position: relative;
 }
 .filter-button {
-  width: 2rem;
-  height: 2rem;
+  @include header-icon;
   margin-top: 0.3rem;
-  color: $footer-text-color;
-  &:hover {
-    color: $header-icon-color;
-    transition: 0.5s ease;
-  }
 }
 
 .filter-tooltip {
@@ -36,6 +31,7 @@
   display: flex;
   width: max-content;
 }
+
 input[type='radio'],
 input[type='radio']:checked {
   appearance: none;
@@ -48,7 +44,6 @@ input[type='radio']:checked {
 input[type='radio'] {
   background-color: #eee;
   border: 2px solid rgb(151, 149, 149);
-  // margin-top: 1rem;
 }
 input[type='radio']:checked {
   background-color: $header-icon-color;
