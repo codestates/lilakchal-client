@@ -3,22 +3,22 @@ import { Route, Switch, Router } from 'react-router-dom';
 import SearchPage from './SearchPage';
 import Header from '../components/Navigation/Header';
 import { RouterProps, withRouter } from 'react-router';
-//import LoadingModal from '../components/Modal/LoadingModal';
 import './style/MainPage.scss';
+import LoadingModal from '../components/Modal/LoadingModal';
 
 const RegisterPage = lazy(() => import('./RegisterPage'));
 const Mypage = lazy(() => import('./Mypage'));
 
 const Main:React.FC<RouterProps> = ({ history }) => {
 
-  useEffect(() => {
+  useEffect(() => { 
     import ('./RegisterPage');
     import ('./Mypage');
   }, []);
 
   return (
     <Router history={history}>
-      <Suspense fallback={<div>loading..</div>}>
+      <Suspense fallback={<LoadingModal isLoading={true} />}>
         <div className='main-container'>
           <Header/>
           <div className='main-content'>

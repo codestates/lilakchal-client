@@ -3,6 +3,7 @@ import { Route, Switch, Router } from 'react-router-dom';
 import { RouteComponentProps, withRouter } from 'react-router';
 //import MyoptionGroup from './MyoptionGroup';
 import DefaultGroup from './DefaultGroup';
+import LoadingModal from '../Modal/LoadingModal';
 
 const MyoptionGroup = lazy(() => import('./MyoptionGroup'));
 
@@ -14,7 +15,7 @@ const MenuGroup:React.FC<RouteComponentProps> = ({ history }) => {
 
   return (
     <Router history={history}>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<LoadingModal isLoading={true} />}>
         <Switch>
           <Route path='/ko/mypage'>
             <MyoptionGroup/>
