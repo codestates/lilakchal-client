@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/modules/reducer';
-import dotenv from 'dotenv';
-
 import { bidData } from '../../interface/Bid';
 import { auctionSocket } from '../../modules/socket';
 import {requestMyAuction} from '../../modules/request';
@@ -14,6 +12,7 @@ import { getFormatedItems } from '../../modules/converters';
 import ConstantString from '../../modules/strings';
 import './style/Auction.scss';
 import '../../pages/style/MainPage.scss';
+import dotenv from 'dotenv';
 
 let oneTime = false; // 무한스크롤시 중복요청 방지
 

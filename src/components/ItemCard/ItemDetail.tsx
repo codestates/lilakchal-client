@@ -7,6 +7,7 @@ import BidBtn from './BidBtn';
 import './style/itemDetail.scss';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/modules/reducer';
+import constantString from '../../modules/strings';
 
 interface Props {
   item: Item,
@@ -33,13 +34,13 @@ const ItemDetail: React.FC<Props> = ({item, requestBid, endtime, handleBidStatus
       </div>
       <div className="itemdetail-midbox">
         <div className="itemdetail-price">
-          <span>현재가격: </span>
+          <span>{constantString.currentPrice}</span>
           <span>
             <CurrentPrice price={item.price} className="itemdetail-price-text"/>
           </span>
         </div>
         <div className="itemdetail-timer">
-          <span>남은시간: </span>
+          <span>{constantString.restTime}</span>
           <span>
             <Timer classname={classname} endtime={endtime} handleBidStatus={handleBidStatus} />
           </span>

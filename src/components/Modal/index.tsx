@@ -21,7 +21,7 @@ const Modal: React.FC<Props> = ({ visible, isSide, color, closeCb, className, ch
     closeCb();
   };
 
-  const preventEventPropagation = (e: React.MouseEvent<HTMLElement>) => { //any는 추후 수정하자..
+  const preventEventPropagation = (e: React.MouseEvent<HTMLElement>) => { 
     e.stopPropagation();
   };
 

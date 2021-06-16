@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import SubmitBtn from '../Common/SubmitBtn';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../redux/modules/reducer';
+import constantString from '../../modules/strings';
 
 dotenv.config();
 
@@ -27,10 +28,10 @@ const EditForm: React.FC<IEditFrom> = ({ setIsOpenPopup }) => {
     const regexr = /[\s]|[~!@#$%^&*()_+|<>?:{}]/;
 
     if (newName.length === 0 || newName.length > 12) {
-      setErrorMessage('닉네임은 1글자 이상, 12글자 이하여야 합니다.');
+      setErrorMessage(constantString.nameInputError1);
       return;
     } else if (regexr.test(newName)) {
-      setErrorMessage('공백, 특수문자는 사용할 수 없습니다.');
+      setErrorMessage(constantString.nameInputError2);
       return;
     } else {
       await axios.patch(`${process.env.REACT_APP_SERVER_ADDRESS}/user/name`, 
@@ -48,11 +49,11 @@ const EditForm: React.FC<IEditFrom> = ({ setIsOpenPopup }) => {
 
   return (
     <section className='editform-wrapper'>
-      <div className='editform-title'>이름 변경</div>
+      <div className='editform-title'>{constantString.nameUpdateTitle}</div>
       <span className="editform-error">{errorMessage ? `${errorMessage}` : <></>}</span>
       <div className='editform-container'>
-        <input type='text' className='editform-input-name' placeholder="변경할 이름을 입력해주세요." onChange={getUserName}/>
-        <SubmitBtn classname="editform-submit" str='변경' submitHandler={handleSubmit} />
+        <input type='text' className='editform-input-name' placeholder={constantString.namePlaceholder} onChange={getUserName}/>
+        <SubmitBtn classname="editform-submit" str={constantString.btnChange} submitHandler={handleSubmit} />
       </div>
     </section>
   );
