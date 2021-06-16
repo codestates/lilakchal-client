@@ -9,6 +9,7 @@ import { chatSocket } from '../../modules/socket';
 import {itemInfo, message, unFormatedMessage} from '../../interface/Chat';
 import {getFormatedMessages, getFormatedMessage} from '../../modules/converters';
 import Empty from '../Common/Empty';
+import constantString from '../../modules/strings';
 
 
 const Chat:React.FC<RouteComponentProps> = ({history}) => {
@@ -69,7 +70,6 @@ const Chat:React.FC<RouteComponentProps> = ({history}) => {
     <div className="chat-container">
       {isLogin ? (<>
         <a className="chat-reportbox" href="https://cyberbureau.police.go.kr/prevention/sub7.jsp?mid=020600" target="_blank"><AiFillAlert className="chat-report"/></a><div className="chat-title">{itemInfo.title}</div>
-        
         <div className="chat-message-box" id="chat-message-box" ref={messageBox}>
           {
             chats.map((chat:message) => 
@@ -77,9 +77,9 @@ const Chat:React.FC<RouteComponentProps> = ({history}) => {
           } 
         </div>
         <div className="chat-write-box">
-          <MessageInput submitMessage={inputMessage}>입력하기</MessageInput>
+          <MessageInput submitMessage={inputMessage}></MessageInput>
         </div>
-      </>) : <Empty emptyTitle="" emptyText="다시 로그인 후 이용해 주세요 :(" />}
+      </>) : <Empty emptyTitle="" emptyText={constantString.loginError} />}
     </div>
   );
 };

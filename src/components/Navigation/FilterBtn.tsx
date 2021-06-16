@@ -11,6 +11,7 @@ import './style/FilterBtn.scss';
 import { TypeHandler } from '../../redux/modules/SearchType';
 import LoadingModal from '../Modal/LoadingModal';
 import { useState } from 'react';
+import constantString from '../../modules/strings';
 
 dotenv.config();
 
@@ -80,14 +81,14 @@ const FilterBtn: React.FC<RouteComponentProps> = ({history}) => {
               <label className="tooltip-container">
                 <input name='radio' type="radio" value="buyer" onClick={()=>handlefilter('buyer')} onChange={() => dispatch(TypeHandler('buyer'))} checked={searchType === 'buyer' ? true : false} />
                 <span className="checkmark"></span>
-                    입찰
+                {constantString.filterBuyer}
               </label>
             </div>
             <div className="seller">
               <label className="tooltip-container">
                 <input name='radio' type="radio" value="seller" onClick={()=>handlefilter('seller')} onChange={() => dispatch(TypeHandler('seller'))} checked={searchType === 'seller' ? true : false} />
                 <span className="checkmark"></span>
-                    판매
+                {constantString.filterSeller}
               </label>
             </div>
           </div>

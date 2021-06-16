@@ -4,8 +4,8 @@ import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../redux/modules/reducer';
 import { BsPlus } from 'react-icons/bs';
-
 import SubmitBtn from '../Common/SubmitBtn';
+import constantStrings from '../../modules/strings';
 import './style/RegisterForm.scss';
 
 const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
@@ -20,7 +20,7 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
   const [imgbase64, setImgbase64] = useState<string>('');
   const [title, setTitle] = useState<string>('');
   const [price, setPrice] = useState<number>(0);
-  const [endtime, setEndtime] = useState<string>('');
+  const [endtime, setEndTime] = useState<string>('');
   const [description, setDescription] = useState<string>('');
   const [errorMessage, setErrorMessage] = useState<string>('');
   const [priceErr, setPriceErr] = useState<string>('');
@@ -47,13 +47,13 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
   const submitHandler = async () => {
     
     if (!title || !price || !photo || !description || !endtime || priceErr !== '') {
-      setErrorMessage('모두 입력되어야 등록이 가능합니다.');
+      setErrorMessage(constantStrings.registerInputError1);
       return;
     } else if (description.length > 100) {
-      setErrorMessage('설명은 100자 이내로 작성해야 합니다.');
+      setErrorMessage(constantStrings.registerInputError2);
       return;
     } else if (!isLogin) {
-      setErrorMessage('다시 로그인 후 이용해주세요.');
+      setErrorMessage(constantStrings.loginError);
       return;
     }
 
@@ -72,11 +72,11 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
   };
 
   const titleHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newText = e.target.value.replace(/(<([^>]+)>)/ig, ''); // html 태그 제거
+    const newText = e.target.value.replace(/(<([^>]+)>)/ig, ''); 
     setTitle(newText);
 
     if (!title) {
-      setTitleErr('필수 입력사항입니다!');
+      setTitleErr(constantStrings.registerInputError3);
     }
   };
 
@@ -84,20 +84,20 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
     const newMoneyStr = e.target.value;
 
     if (!/^(0|[1-9]+[0-9]*)$/g.test(newMoneyStr)) {
-      setPriceErr('가격은 숫자만 입력 가능합니다!');
+      setPriceErr(constantStrings.registerInputError4);
     } else if (Number(newMoneyStr) <= 0) {
-      setPriceErr('가격은 1원 이상이어야 합니다!');
+      setPriceErr(constantStrings.registerInputError5);
     } else if (newMoneyStr === '') {
-      setPriceErr('필수 입력사항입니다!');
+      setPriceErr(constantStrings.registerInputError3);
     } else if (Number(newMoneyStr) >= 2100000000) {
-      setPriceErr('금액 초과입니다!');
+      setPriceErr(constantStrings.registerInputError6);
     } else {
       setPrice(Number(e.target.value));
       setPriceErr('');
     }
   };
 
-  const getEndtime = (e: React.MouseEvent<HTMLButtonElement>): void => {
+  const getEndTime = (e: React.MouseEvent<HTMLButtonElement>): void => {
     const date = new Date();
 
     const getTime = () => {
@@ -125,17 +125,17 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
 
     if (e.currentTarget.value === '1d') {
       date.setDate(date.getDate() + 1);
-      setEndtime(getTime());
+      setEndTime(getTime());
       date.setHours(date.getHours() - 9);
       setFixTime(getTime());
     } else if (e.currentTarget.value === '3d') {
       date.setDate(date.getDate() + 3);
-      setEndtime(getTime());
+      setEndTime(getTime());
       date.setHours(date.getHours() - 9);
       setFixTime(getTime());
     } else if (e.currentTarget.value === '7d') {
       date.setDate(date.getDate() + 7);
-      setEndtime(getTime());
+      setEndTime(getTime());
       date.setHours(date.getHours() - 9);
       setFixTime(getTime());
     }
@@ -156,7 +156,7 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
 
   return (
     <section className="register">
-      <h1 className="register-header">경매 물품 등록</h1>
+      <h1 className="register-header">{constantStrings.registerTitle}</h1>
       <article className="register-topbox">
         <div className="register-filebox">
           <div className={imgbase64 ? 'register-photobox bordernone' : 'register-photobox'}>
@@ -164,29 +164,29 @@ const RegisterForm: React.FC<RouteComponentProps> = ({history}) => {
             <div className={!photo ? 'register-iconbox' : 'register-visible'}><BsPlus className="register-icon"/></div>
             <input className="register-file" type="file" accept="image/jpeg, image/png" onChange={fileChange}/>
           </div>
-          {!photo ? <div className="register-photoerror">사진을 등록해주세요!</div> : <div className="register-photoerror"></div>}
+          {!photo ? <div className="register-photoerror">{constantStrings.registerInputError7}</div> : <div className="register-photoerror"></div>}
         </div>
         <div className="register-infobox">
           <div className="register-titlebox">
-            <input className="register-title" type="text" onChange={titleHandler} placeholder="제목을 입력해주세요" />
+            <input className="register-title" type="text" onChange={titleHandler} placeholder={constantStrings.registerPlaceholder1} />
             {!title ? <div className="register-titleErr">{titleErr}</div> : <div className="register-titleErr"></div>}
           </div>
           <div className="register-pricebox">
-            <input className="register-price" type="text" onChange={priceHandler} placeholder="최소 가격을 입력해주세요"/>
+            <input className="register-price" type="text" onChange={priceHandler} placeholder={constantStrings.registerPlaceholder2}/>
             {priceErr !== '' ? <div className="register-priceErr">{priceErr}</div> : <div className="register-priceErr"></div>}
           </div>
           <div className="register-period-box">
             <div className="register-period-button-box">
-              <button className="register-period 1d" value="1d" onClick={getEndtime} >1일</button>
-              <button className="register-period 3d" value="3d" onClick={getEndtime} >3일</button>
-              <button className="register-period 7d" value="7d" onClick={getEndtime} >7일</button>
+              <button className="register-period 1d" value="1d" onClick={getEndTime} >{constantStrings.registerDay1}</button>
+              <button className="register-period 3d" value="3d" onClick={getEndTime} >{constantStrings.registerDay3}</button>
+              <button className="register-period 7d" value="7d" onClick={getEndTime} >{constantStrings.registerDay7}</button>
             </div>
-            {!endtime ? <div className="register-endtime">경매 기간을 선택해주세요!</div> : <div className="register-endtime">경매 마감일 {endtime}</div>}
+            {!endtime ? <div className="register-endtime">{constantStrings.registerInputError8}</div> : <div className="register-endtime">{constantStrings.registerEndDay} {endtime}</div>}
           </div>
         </div>
       </article>
       <article className="register-bottombox">
-        <textarea className="register-description" placeholder="물품에대한 설명을 입력해주세요" onChange={descriptionHandler}></textarea>
+        <textarea className="register-description" placeholder={constantStrings.registerPlaceholder3} onChange={descriptionHandler}></textarea>
         <SubmitBtn classname="register-submit" str="등록" submitHandler={submitHandler}/>
         {errorMessage ? <div className="register-error">{errorMessage}</div> : <div className="register-error"></div>}
       </article>
