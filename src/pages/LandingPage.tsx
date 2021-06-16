@@ -9,6 +9,7 @@ import GIF from '../res/landing1.gif';
 import search from '../res/landing_search.png';
 import map from '../res/landing_map.png';
 import thinking from '../res/thinking.png';
+import constantString from '../modules/strings';
 
 const LandingPage: React.FC = () => {
   localStorage.setItem('city', '');
@@ -259,7 +260,7 @@ const LandingPage: React.FC = () => {
           </div>
           <div className='section0-logo-bottom'>
             <div className='scroll-section0-message-a'>
-          좋은 물건을 구경하고 경매에 참여해 보세요!
+              {constantString.landing1}
             </div>
             <Start/>
           </div>
@@ -272,7 +273,7 @@ const LandingPage: React.FC = () => {
       </section>
       <section className="scroll-section" id="scroll-section-1">
         <div className='scroll-section1-left'>
-          <div className='scroll-section1-message-a' >실시간으로 원하는 물품을 검색해 보세요!</div>
+          <div className='scroll-section1-message-a' >{constantString.landing2}</div>
           <div className='scroll-section1-search-img'>
             <img className='search-img'src={search}/>
           </div>
@@ -286,7 +287,7 @@ const LandingPage: React.FC = () => {
               <img className='thinking-img' src={thinking}/>
             </div>
             <div className='scroll-section1-message-b'>
-            우리동네의 경매를 확인할 수 있어요!
+              {constantString.landing3}
             </div>
           </div>
         </div>
@@ -302,7 +303,7 @@ const LandingPage: React.FC = () => {
             <img className='auction-img' src={auction}/>
           </div>
           <div className='scroll-section2-message-a'>
-            지금 바로 참여해보세요!
+            {constantString.landing4}
           </div>
           <Start/>
         </div>

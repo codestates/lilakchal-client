@@ -1,8 +1,9 @@
 import React from 'react';
+import constantStrings from '../../modules/strings';
 
 const BidError: React.FC = () => {
   return (
-    <div className='bid-error-message'>이 경매는 더 이상 입찰할 수 없습니다.</div>
+    <div className='bid-error-message'>{constantStrings.bidError}</div>
   );
 };
 

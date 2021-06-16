@@ -26,7 +26,7 @@ const Timer: React.FC<Props> = ({endtime, handleBidStatus, classname}) => {
       }
     }, 1000);
 
-    return () => clearInterval(countdown); //componenwillunmount
+    return () => clearInterval(countdown); 
   }, [restTime]);
 
   return (

@@ -10,7 +10,7 @@ import { Item, ItemHandler, UnformatedItem } from '../redux/modules/Items';
 import {auctionSocket} from '../modules/socket';
 import {bidData} from '../interface/Bid';
 import { getFormatedItems } from '../modules/converters';
-import ConstantString from '../modules/strings';
+import constantString from '../modules/strings';
 import LoadingModal from '../components/Modal/LoadingModal';
 import Empty from '../components/Common/Empty';
 import { LocationInfoHandler } from '../redux/modules/UserInfo';
@@ -50,10 +50,10 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
         // localStorage.setItem('city', `${region_1depth_name} ${region_2depth_name}`);
       }, 
       () => {
-        dispatch(LocationInfoHandler('전국'));
+        dispatch(LocationInfoHandler(constantString.defaultLocation));
       });
     } else {
-      dispatch(LocationInfoHandler('전국'));
+      dispatch(LocationInfoHandler(constantString.defaultLocation));
     }
   };
 
@@ -116,7 +116,7 @@ const SearchPage:React.FC<RouteComponentProps<MatchParams>> = ({match}) => {
       { city && isChanged ? 
         items.length ? (items.map((item: Item) => 
           <ItemCard item={item} key={item.id}></ItemCard>
-        )) : < Empty emptyTitle={ConstantString.noResult} emptyText={ConstantString.noResultDetail}/>
+        )) : < Empty emptyTitle={constantString.noResult} emptyText={constantString.noResultDetail}/>
         :
         <LoadingModal isLoading={true} callback={geoLocation}/> 
       }

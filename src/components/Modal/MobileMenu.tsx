@@ -11,7 +11,8 @@ import { FiLogOut } from 'react-icons/fi';
 import './style/MobileMenu.scss';
 import {ReactComponent as BidIcon} from '../../res/svgs/BidIcon.svg';
 import {ReactComponent as RegisterIcon} from '../../res/svgs/EditIcon.svg';
-import {ReactComponent as MoneyIcon} from '../../res/svgs/MoneyIcon.svg';
+import { ReactComponent as MoneyIcon } from '../../res/svgs/MoneyIcon.svg';
+import constantString from '../../modules/strings';
 
 interface Props extends RouteComponentProps{
   closeCb: () => void,
@@ -52,7 +53,7 @@ const MobileMenu: React.FC<Props> = ({history, closeCb}) => {
     if (Kakao.Auth.getAccessToken()) {
       Kakao.Auth.logout(() => {
         dispatch(LogoutHandler(false));
-        dispatch(UserInfoHandler({id: 0, name: ''})); //서버로부터 응답받으면 리덕스에 정보 저장
+        dispatch(UserInfoHandler({id: 0, name: ''})); 
         window.location.href = '/';
       });
     }
@@ -64,15 +65,15 @@ const MobileMenu: React.FC<Props> = ({history, closeCb}) => {
       <div className='mobile-menu-container'>
         <div className='mobile-menu' onClick={goResigtorPage}>
           <RegisterIcon className='mobile-icon' fill="#212321"/>
-          <span>경매등록</span>
+          <span>{constantString.mobileRegisterMenu}</span>
         </div>
         <div className='mobile-menu' onClick={() => {handleMyAuctionBtn('seller');}}>
           <MoneyIcon className='mobile-icon' fill="#212321"/>
-          <span>판매상품</span>
+          <span>{constantString.mobileSellerMenu}</span>
         </div>
         <div className='mobile-menu' onClick={() => {handleMyAuctionBtn('buyer');}}>
           <BidIcon className='mobile-icon' fill="#212321"/>
-          <span>입찰상품</span>
+          <span>{constantString.mobileBuyerMenu}</span>
         </div>
       </div>
       <FiLogOut className='mobile-logout' size='36' color="#212321" onClick={logout}/>
